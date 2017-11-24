@@ -1,0 +1,45 @@
+body {
+    background: #FAFAFA;
+}
+
+.top-bar {
+    background-color: #4f4f4f;
+    color: #ffffff;
+}
+
+a, a:hover, a:visited, a:active {
+    color: #FAFAFA;
+}
+.top-bar, .top-bar ul {
+    background-color: #5f5f5f;
+}
+
+.menu li a {
+    padding: 1px 14px 0px 28px;
+}
+
+.centrar {
+    text-align: center;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.file-upload input.file-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0); 
+}
+
+#nombreArchivo {
+    display: none;
+}

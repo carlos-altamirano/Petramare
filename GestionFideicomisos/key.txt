@@ -1,0 +1,32 @@
+	Garante
+Host: b.abugaber.com (149.56.134.20)
+Dominio: http://www.fideicomisogds.mx/
+Username:  administrator
+Password:  GFnkSP7b
+
+USUARIO SIN PRIVILEGIOS
+Username: Admingds
+Password: gds#2016
+
+
+soporte@fideicomisogds.mx  passw: Tecnico16* Soport3*  (Para Clientes)
+liquidaciones@fideicomisogds.mx   passw: Liqui16* L1qu1da*   (Emisión de reportes de liquidación)
+edocta@fideicomisogds.mx    passw: Cuenta16*  Ed0Cuet4*  (Emisión de Estados de Cuenta)
+ 
+ 
+Servidor de correo entrante (POP): mail.abugaber.com
+Servidor de correo saliente (SMTP): mail.abugaber.com
+Puerto POP: 110
+Puerto SMTP: 587
+
+
+Accesos del sistema de fideicomisos
+SQL Server 2014
+Username: sa
+Password: Garante#2016
+
+SQL Server 2014
+Username: garante
+Password: Garante#2016
+
+

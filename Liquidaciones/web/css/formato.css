@@ -1,0 +1,328 @@
+/* 
+    Document   : formato
+    Created on : 21/02/2011, 02:52:17 PM
+    Author     : Luis Antio Valerio Gayosso
+    Description: Define el formato general
+    Purpose of the stylesheet follows.
+    TODO customize this sample styl
+    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+#login{
+    /*background-color: #00f;*/
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    padding: 25px 0px;
+}
+
+.Titulo
+{
+    font-family:Arial;
+    font-size:19px;
+    color:#006699;
+    font-weight:bold;
+}
+
+.letraDefault
+{
+    font-family:Arial;
+    font-size:12px;
+}
+
+.Subtitulo
+{
+    font-family:Arial;
+    font-size:13px;
+    color:#006699;
+    font-weight:bold;
+}
+.NormalBoton
+{
+    background:#006699;
+    color:#E7C904;
+    font-weight:bold;
+}
+
+.botonFecha {
+    border:none;
+    width:30px;
+    height:25px;
+}
+
+.sobreBoton
+{
+    background:#6F9EDA;
+}
+
+.LetraReporte
+{
+    font-family:Arial;
+    font-size:15px;
+}
+
+.TamDirBienv
+{
+    height:260px;
+    width:375px;
+
+}
+
+/*.form-noindent {
+    background-color: rgb(255,175,102);
+    background: -webkit-radial-gradient(circle, #f2cf65, #ff7f00);  For Safari 5.1 to 6.0 
+    background: -o-radial-gradient(circle,  #f2cf65,  #ff7f00);  For Opera 11.6 to 12.0 
+    background: -moz-radial-gradient(circle,  #f2cf65,  #ff7f00);  For Fx 3.6 to 15 
+    background: radial-gradient(circle,  #f2cf65, #ff7f00);  Standard syntax (must be last)     
+    width:380px;
+    height:270px;
+    font-family:Arial;
+    font-size:15px;
+    color:#660166;
+    font-weight: 600;
+}
+
+.form-noindent input[type="text"]{
+    height: 20px;
+    width: 140px;
+    background-color: #e0e2e5;
+    border: none; 
+}
+
+.form-noindent input[type="password"]{    
+    height: 20px;
+    width: 140px;    
+    background-color: #e0e2e5;  
+    border: none;
+}
+.form-noindent input[type="button"]{
+    height: 30px;
+    width: 100px;    
+    background-color: #e0e2e5; 
+    border: none; 
+    margin-right: 45px;
+    font-size:14px;
+    color:#660166; 
+    font-weight: 600;
+}
+.form-noindent input[type="button"]:hover{ 
+    cursor: pointer;
+    background-color: #b4bdc4;
+}
+
+.form-noindent .encabezado{
+    font-size:20px;
+    font-weight: 600;
+}*/
+
+.form-login {
+    background-color: #F7815E;   
+    width:360px;
+    height:230px;
+    font-family:Arial;
+    color:#18187d;
+    font-weight: 600;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.form-login input[type="text"]{
+    height: 20px;
+    width: 140px;
+    background-color: #e0e2e5;
+    border: none; 
+}
+
+.form-login input[type="password"]{    
+    height: 20px;
+    width: 140px;    
+    background-color: #e0e2e5;  
+    border: none;
+}
+.form-login input[type="button"]{
+    height: 30px;
+    width: 100px;    
+    background-color: #e0e2e5; 
+    border: none; 
+    font-size:14px;
+    color:#18187d;  
+    font-weight: 600;
+}
+.form-login input[type="button"]:hover{ 
+    cursor: pointer;
+    background-color: #ffffcc;
+}
+
+.form-login .encabezado{
+    font-size:20px;
+    font-weight: 600;
+}
+
+.form-noindentCapture {
+    background-color: #E3F2FE;
+    border:#006699 1px solid;
+    width:610px;
+    height:620px;
+}
+
+.form-errorCapture {
+    background-color: #E3F2FE;
+    border:#006699 1px solid;
+    font-size:13px;
+    width:660px;
+}
+
+.form-UserConfim {
+    background-color: #E3F2FE;
+    border:#006699 1px solid;
+    border-radius: 5px;
+    width:310px;
+    height:180px;
+}
+
+#pane1{height:232px;overflow:hidden;width:500px;}
+
+.jScrollPaneContainer {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.jScrollPaneTrack {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: #93c4ae;
+}
+.jScrollPaneDrag {
+    position: absolute;
+    background: #559777;
+    cursor: pointer;
+    overflow: hidden;
+}
+.jScrollPaneDragTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.jScrollPaneDragBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+a.jScrollArrowUp {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    text-indent: -2000px;
+    overflow: hidden;
+    /*background-color: #666;*/
+    height: 9px;
+}
+a.jScrollArrowUp:hover {
+    /*background-color: #f60;*/
+}
+
+a.jScrollArrowDown {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    text-indent: -2000px;
+    overflow: hidden;
+    /*background-color: #666;*/
+    height: 9px;
+}
+a.jScrollArrowDown:hover {
+    /*background-color: #f60;*/
+}
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+    /*background-color: #f00;*/
+}
+
+.tabla_saldos{
+    background-color: #eeeeee;
+    font-family: sans-serif;
+    font-size: 16px;
+
+}
+.tabla_saldos td{
+    border-bottom-style: solid;
+    border-bottom-color: silver;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+
+
+#agrupar {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    font-family: Verdana, Tahoma, Geneva, sans-serif;
+}
+
+#cabecera{
+    text-align: center;
+    margin: 20px;
+}
+#login{
+    /*background-color: #00f;*/
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    padding: 25px 0px;
+}
+
+#pie{
+    width:100%;
+    border-top: 5px #00008C solid;
+    background: rgb(187, 37, 44);
+    padding: 5px 20px;
+    margin: 100px 0px 0px 0px;
+    text-align: center;
+}
+
+#pie p{
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;	
+    line-height: 12px;
+    font-weight: 800;
+    padding: 0px 0px;
+    margin: 5px 0px;
+}
+
+#pie p a{
+    font-size: 12px;
+    color: #F7CA9A;
+    text-decoration: none;	
+}
+
+#pie p a:link {
+    font-size: 12px;
+    color: #F7CA9A;
+    text-decoration: none;
+}
+#pie p a:visited {
+    font-size: 12px;
+    color: #F7CA9A;
+    text-decoration: underline;
+}
+
+#pie p a:hover {
+    font-size: 12px;
+    color: #00008C;
+    text-decoration: underline;
+}

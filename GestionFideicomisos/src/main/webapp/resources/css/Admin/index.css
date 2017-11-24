@@ -1,0 +1,73 @@
+body {
+    background: #FAFAFA;
+}
+
+.top-bar {
+    background-color: #4f4f4f;
+    color: #ffffff;
+}
+
+a, a:hover, a:visited, a:active {
+    color: #FAFAFA;
+}
+.top-bar, .top-bar ul {
+    background-color: #4f4f4f;
+}
+
+.menu li a {
+    padding: 1px 14px 0px 28px;
+}
+
+.centrar {
+    text-align: center;
+}
+
+.fieldset {
+    background-color: #ffffff;
+}
+
+.fieldset legend {
+    background: -moz-linear-gradient(top, rgba(250,250,250,1) 0%, rgba(216,216,216,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(250,250,250,1) 0%,rgba(216,216,216,0) 100%);
+    background: linear-gradient(to bottom, rgba(250,250,250,1) 0%,rgba(216,216,216,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#00d8d8d8',GradientType=0 );
+}
+
+/* Iconos */
+.iconoTam {
+    font-size: 3em;
+}
+
+/* Tablas */
+
+#colorUsuarios {
+    /*background-color: #3adb76;
+    color: #000;*/
+    background-color: #032280; 
+    color: #fff;
+}
+
+#colorContratos {
+    /*background-color: #ec5840;
+    color: #000;*/
+    background-color: #032280; 
+    color: #fff;
+}
+
+#colorCuentas {
+    /*background-color: #2199e8;
+    color: #000;*/
+    background-color: #032280; 
+    color: #fff;
+}
+
+#colorClientes {
+    /*background-color: #ffae00;
+    color: #000;*/
+    background-color: #032280; 
+    color: #fff;
+}
+
+.botonSofom, .botonSofom:hover {
+    background-color: #04845e;
+}

@@ -1,0 +1,41 @@
+body {
+    background: #FAFAFA;
+}
+.login-box {
+    background: #fff;
+    border: 1px solid #ddd; 
+    margin: 100px 0;
+    padding: 40px 20px 20px 20px;
+}
+
+#mostrarContra:hover{
+    cursor: pointer;
+}
+
+.top-bar {
+    background-color: #4f4f4f;
+    color: #ffffff;
+}
+
+/*footer {
+    padding: 10px;
+    background-color: #777;
+    color: #fff;
+    margin-bottom: -3em;
+}
+
+a {
+    color: #fff;
+}*/
+
+a, a:hover, a:visited, a:active {
+    color: #e82129;
+}
+
+#error-auth {
+    display: none;
+}
+
+input[type=submit] {
+    background-color: #04855F;
+}

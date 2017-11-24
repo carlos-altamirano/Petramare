@@ -1,0 +1,324 @@
+/* 
+    Document   : Saldo
+    Created on : 29/05/2014, 04:55:52 PM
+    Author     : Luis Antio Valerio Gayosso
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.Titulo
+{
+    font-family: Arial;
+    font-size:19px;
+    color:#006699;
+    font-weight:bold;
+	background-color: #eeeefe;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:16px;
+	font-family: Arial;
+	font-weight:bold;
+	color: #006699;
+        border-radius: 2px;    
+    
+}
+
+.Subtitulo
+{
+    font-family: Arial;
+    font-size:14px;
+    color: #006699;
+    font-weight:bold;
+    
+   
+}
+
+.tabla_saldo {
+	margin:10px;padding:0px;
+	width: 100%;
+	box-shadow: 3px 3px 3px #000000;
+	border:1px solid #000000;
+	
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+	
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+	
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+	
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}.tabla_saldo table{
+        border-collapse: collapse;
+        border-spacing: 0;
+/*	width:  50px;
+	height: 50px;*/
+	margin:0px;padding:0px;
+}
+/*.tabla_saldo tr:last-child td:last-child {
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+.tabla_saldo table tr:first-child td:first-child {
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+.tabla_saldo table tr:first-child td:last-child {
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+}.tabla_saldo tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+}*/
+.tabla_saldo tr:hover td{
+	background-color:#d4d9f7;
+}
+.tabla_saldo td{
+	vertical-align:middle;
+	
+	background-color:#ffffff;
+
+	border:1px solid #000000;
+	border-width:0px 0px 0px 0px;
+	text-align:left;
+	padding:7px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+}.tabla_saldo tr:last-child td{
+	border-width:0px 0px 0px 0px;
+}.tabla_saldo tr td:last-child{
+	border-width:0px 0px 0px 0px;
+}.tabla_saldo tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_saldo tr:first-child td{
+/*	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	
+        background: -o-linear-gradient(top,#3030db,55d655);*/
+
+	background-color:#3030db;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:12px;
+	font-family: Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+}
+
+.tabla_saldo tr:first-child td:first-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_saldo tr:first-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+
+
+/*   Comienza el diseño de la tabla de liquidaciones
+*
+*
+*
+*/
+
+.tabla_liquidaciones {
+	margin:0px;padding:0px;
+	width: 100%;
+	box-shadow: 3px 3px 3px #000000;
+	border:1px solid #000000;
+	
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+	
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+	
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+	
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+.tabla_saldo table{
+        border-collapse: collapse;
+        border-spacing: 0;
+	width:  50px;
+	height: 50px;
+	margin:0px;padding:0px;
+}     
+.tabla_liquidaciones tr:hover td{
+	background-color:#aaff56;
+
+}
+.tabla_liquidaciones td{
+	vertical-align:middle;
+	
+	background-color:#ffffff;
+
+	border:1px solid #000000;
+	border-width:0px 0px 0px 0px;
+	text-align:center;
+	padding:7px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+        
+        
+}.tabla_liquidaciones tr:last-child td{
+	border-width:0px 0px 0px 0px;
+}.tabla_liquidaciones tr td:last-child{
+	border-width:0px 0px 0px 0px;
+}.tabla_liquidaciones tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_liquidaciones tr:first-child td{
+/*	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	background: -o-linear-gradient(top,#3030db,55d655);*/
+
+	background-color:#3f7f00;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:12px;
+	font-family: Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+}
+/*.tabla_liquidaciones tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 10%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#3030db", endColorstr="#3030db");	background: -o-linear-gradient(top,#3030db,#3030db);
+
+	background-color:#3030db;
+}*/
+.tabla_liquidaciones tr:first-child td:first-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_liquidaciones tr:first-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+
+.input{
+    border-radius: 3px;
+}
+
+.encabezadoMovimiento{
+	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	background: -o-linear-gradient(top,#3030db,55d655);
+
+	background-color:#3030db;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:16px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+}
+
+.bodyMenor9{
+        table-layout: fixed;
+        /*display: ruby-text;*/
+        /*height:300px;*/
+        width:100%;
+        overflow: auto;
+        overflow-x: auto;
+        table-layout: fixed;
+}
+.bodyMayor9{
+        display:  block;
+        /*display: ruby-text;*/
+        height:320px;
+        width:100%;
+        overflow: auto;
+        overflow-x: auto;
+        
+}
+
+.LiqBodyMenor9{
+        display: ruby-text;
+        /*display: ruby-text;*/
+        /*height:300px;*/
+        width:100%;
+        overflow: auto;
+        overflow-x: auto;
+}
+.LiqBodyMayor9{
+        display:  block;
+        /*display: ruby-text;*/
+        height:320px;
+        width:100%;
+        overflow: auto;
+        overflow-x: auto;
+}
+
+.tabla_saldos{
+	background-color: #eeeeee;
+	font-family: Arial;
+        font-size: 14px;
+        border-radius: 2px;
+        alignment-adjust: central;
+        width: 400px;
+        text-align:center;
+}
+.tabla_saldos td{
+	border-bottom-style: solid;
+        border-bottom-color: silver;
+        border-left-style: hidden;
+        border-right-style: hidden;
+}
+
+.button {
+   border: 1px solid #030303;
+   background: #d2d9d4;
+   padding: 4px 8px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+/*   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
+   color: #000000;
+   font-size: 14px;
+   font-family: Arial;
+   vertical-align: middle;
+   cursor: pointer;
+   }
+.button:hover {
+   background: #99dfff;
+   color: #080808;
+   border: 1px solid #3b9aed;
+   }
+.button:active {
+   border-top-color: #4cafed;
+   background: #4cafed;
+   }

@@ -1,0 +1,409 @@
+/* 
+    Document   : Saldo
+    Created on : 29/05/2014, 04:55:52 PM
+    Author     : Luis Antio Valerio Gayosso
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.tabla_saldo {
+	margin:10px;padding:0px;
+	width: 100%;
+	box-shadow: 3px 3px 3px #000000;
+	border:1px solid #000000;
+	
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+	
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+	
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+	
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}.tabla_saldo table{
+        border-collapse: collapse;
+        border-spacing: 0;
+/*	width:  50px;
+	height: 50px;*/
+	margin:0px;padding:0px;
+}
+
+/*.tabla_saldo tr:last-child td:last-child {
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+.tabla_saldo table tr:first-child td:first-child {
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+.tabla_saldo table tr:first-child td:last-child {
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+}.tabla_saldo tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+}*/
+.tabla_saldo tr:hover td{
+	background-color:#d4d9f7;
+}
+.tabla_saldo td{
+	vertical-align:middle;
+	
+	background-color:#ffffff;
+
+	border:1px solid #000000;
+	border-width:0px 0px 0px 0px;
+	text-align:left;
+	padding:7px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+        
+}
+/*.tabla_saldo tr:last-child td{
+	border-width:0px 0px 0px 0px;
+}.tabla_saldo tr td:last-child{
+	border-width:0px 0px 0px 0px;
+}.tabla_saldo tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}*/
+.tabla_saldo tr:first-child td{
+	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	
+        background: -o-linear-gradient(top,#3030db,55d655);
+
+	background-color:#3030db;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:12px;
+	font-family: Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+}
+
+/*.tabla_saldo thead{
+	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	
+        background: -o-linear-gradient(top,#3030db,55d655);
+
+	background-color:#3030db;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:12px;
+	font-family: Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+        position: absolute;
+}*/
+
+.tabla_saldos{
+	background-color: #eeeeee;
+	font-family: Arial;
+        font-size: 14px;
+        border-radius: 2px;
+        alignment-adjust: central;
+        width: 400px;
+        text-align:center;
+}
+.tabla_saldos td{
+	border-bottom-style: solid;
+        border-bottom-color: silver;
+        border-left-style: hidden;
+        border-right-style: hidden;
+}
+
+/*.tabla_saldo tr:first-child td:first-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_saldo tr:first-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}*/
+
+
+/*   Comienza el diseño de la tabla de liquidaciones
+*
+*
+*
+*/
+
+.tabla_liquidaciones {
+	margin:10px;padding:0px;
+	width: 100%;
+	box-shadow: 3px 3px 3px #000000;
+	border:1px solid #000000;       
+	
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+	
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+	
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+	
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+
+.tabla_liquidaciones tr:hover td{
+	background-color:#aaff56;
+
+}
+.tabla_liquidaciones td{
+	vertical-align:middle;
+	
+	background-color:#ffffff;
+
+	border:1px solid #000000;
+	border-width:0px 0px 0px 0px;
+	text-align:center;
+	padding:7px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+        
+        
+}.tabla_liquidaciones tr:last-child td{
+	border-width:0px 0px 0px 0px;
+}.tabla_liquidaciones tr td:last-child{
+	border-width:0px 0px 0px 0px;
+}.tabla_liquidaciones tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_liquidaciones tr:first-child td{
+/*	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	background: -o-linear-gradient(top,#3030db,55d655);*/
+
+	background-color:#3f7f00;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:12px;
+	font-family: Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+}
+
+/*.tabla_liquidaciones tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 10%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#3030db", endColorstr="#3030db");	background: -o-linear-gradient(top,#3030db,#3030db);
+
+	background-color:#3030db;
+}*/
+.tabla_liquidaciones tr:first-child td:first-child{
+	border-width:0px 0px 0px 0px;
+}
+.tabla_liquidaciones tr:first-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+
+
+.encabezadoMovimiento{
+	background:-o-linear-gradient(bottom, #3030db 5%, #3030db 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3030db), color-stop(1, #3030db) );
+	background:-moz-linear-gradient( center top, #3030db 5%, #3030db 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#55d655", endColorstr="#55d655");	background: -o-linear-gradient(top,#3030db,55d655);
+
+	background-color:#3030db;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 0px 0px;
+	font-size:16px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+        border-radius: 2px;
+}
+
+.bodyMenor9{
+        display: ruby-text;
+        /*display: block;*/
+        /*position: absolute;*/
+        /*height:300px;*/
+        width:100%;
+        overflow: auto;
+        overflow-x: auto;
+}
+.bodyMayor9{
+        display:  block;
+        /*position: absolute;*/
+        height:320px;
+        width:100%;
+        overflow: auto;
+        /*overflow-x: auto;*/
+        
+}
+
+.LiqBodyMenor9{
+        display: ruby-text;
+        /*display: ruby-text;*/
+        /*height:300px;*/
+        width:100%;
+        overflow: auto;
+        overflow-x: auto;
+}
+.LiqBodyMayor9{
+        display:  block;
+        /*display: ruby-text;*/
+        height:320px;
+        width:100%;
+        overflow: auto;
+        /*overflow-x: auto;*/
+}
+
+.tabla_prueba{
+    background-color: #aaaaaa;
+    display: block;
+}
+.tabla_prueba body{
+/*    background-color: #dddddd;
+    height: 100px;
+    overflow: auto;
+    display: block;
+    position: fixed;
+    margin-top: 10px;*/
+    height: 200px;
+    display: inline-block;
+    width: 100%;
+    overflow-y: visible;
+    position: relative;
+}
+/*.tabla_prueba td{
+    padding: 3px 10px;
+}*/
+.tabla_prueba thead{
+    /*position: fixed;*/
+    display: inline-block;
+    height: 10px;
+    width: 100%;
+}
+/*.tabla_prueba th{
+    display: block;
+}*/
+
+
+.fixed_headers {
+  width: 1000px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  box-shadow: 3px 3px 3px #000000;
+  border:1px solid #000000;
+  
+  
+}
+
+.fixed_headers table{
+    
+              border-spacing: 0;
+/*	width:  50px;
+	height: 50px;*/
+	margin:0px;padding:0px;
+        border-radius: 8px;
+}
+
+
+.fixed_headers th {
+  /*text-decoration: underline;*/
+/*  	border:1px solid #ffffff;
+	border-width:1px 1px 1px 1px;*/
+/*	text-align:left;
+	font-size:12px;        */
+	/*padding:7px;*/
+        /*border-radius: 10px;*/
+	font-family:Arial;
+/*	font-weight:normal;
+	color:#000000;*/
+}
+.fixed_headers th,
+.fixed_headers td {
+  padding: 7px;
+  /*text-align: left;*/
+}
+.fixed_headers td:nth-child(1),
+.fixed_headers th:nth-child(1) {
+  width: 150px;
+}
+.fixed_headers td:nth-child(2),
+.fixed_headers th:nth-child(2) {
+  width: 150px;
+}
+.fixed_headers td:nth-child(3),
+.fixed_headers th:nth-child(3) {
+  width: 150px;
+}
+.fixed_headers td:nth-child(4),
+.fixed_headers th:nth-child(4) {
+  width: 150px;
+}
+.fixed_headers td:nth-child(5),
+.fixed_headers th:nth-child(5) {
+  width: 150px;
+}
+.fixed_headers td:nth-child(6),
+.fixed_headers th:nth-child(6) {
+  width: 150px;
+}
+.fixed_headers thead {
+  background-color: #333333;
+  color: #fdfdfd;
+}
+.fixed_headers thead tr {
+  display: block;
+  position: relative;  
+}
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  width: 1000px;
+  height: 300px;
+  font-family:Arial;
+  font-size: 12px;
+}
+.fixed_headers tr:hover td{
+	background-color:#aad4ff;
+
+}
+
+.fixed_headers tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.old_ie_wrapper {
+  height: 300px;
+  width: 1000px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.old_ie_wrapper tbody {
+  height: auto;
+}
