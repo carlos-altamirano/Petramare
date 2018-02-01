@@ -1,9 +1,3 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        21/06/2011
- *    Descripción:                  Modelo : "ModeloLiquidation.java" modelo del sistema
- *    Responsable:                  Carlos Altamirano
- */
 package Modelos;
 
 import java.io.*;
@@ -13,7 +7,6 @@ import Beans.Usuario;
 import Beans.Movimiento;
 
 import Common.clsFecha;
-import Common.EnvioMail;
 import Common.clsConexion;
 
 import java.util.Map;
@@ -22,8 +15,6 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,13 +23,8 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor.*;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.*;
 
-//import java.io.FileOutputStream; crear excel
-//import org.apache.poi.hmef.attribute.MAPIAttribute;
-//import org.apache.poi.hsmf.datatypes.MAPIProperty;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -6001,7 +5987,7 @@ public class ModeloLiquidation {
                             }
                             break;
                         case 2:
-                            reporte = this.creaReporteLiquidacion("OT", realPath + "WEB-INF\\classes\\Common\\LayOutM2.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("OT", realPath + "\\WEB-INF\\classes\\Common\\LayOutM2.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {
@@ -6011,7 +5997,7 @@ public class ModeloLiquidation {
                             }
                             break;
                         case 3:
-                            reporte = this.creaReporteLiquidacion("TD", realPath + "WEB-INF\\classes\\Common\\LayOutM3.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("TD", realPath + "\\WEB-INF\\classes\\Common\\LayOutM3.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {
@@ -6022,7 +6008,7 @@ public class ModeloLiquidation {
                             break;
                         case 4:
                             //Generamos el Reporte de Liquidación Correspondiente al Movimiento Tipo 4.
-                            reporte = this.creaReporteLiquidacion("CH", realPath + "WEB-INF\\classes\\Common\\LayOutM4.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("CH", realPath + "\\WEB-INF\\classes\\Common\\LayOutM4.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {

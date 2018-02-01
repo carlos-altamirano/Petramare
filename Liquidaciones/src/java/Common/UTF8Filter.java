@@ -1,7 +1,3 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Responsable:                  Carlos Altamirano
- */
 package Common;
 
 import java.io.IOException;

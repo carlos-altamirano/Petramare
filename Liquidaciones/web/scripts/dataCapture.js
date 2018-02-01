@@ -212,7 +212,7 @@ function guardarMovimiento(formulario, accion) {
                                                                                     alert(' Capture el importe de liquidación sin formato y hasta dos decimales. ');
                                                                                 } else {
                                                                                     // Validación del salario mínimo
-                                                                                    if (movimiento != '5' && importeLiquidacion < 80.04) {
+                                                                                    if (movimiento != '5' && importeLiquidacion < 88.36) {
                                                                                         alert(' Monto de indemnización inferior al legal permitida: $' + importeLiquidacion);
                                                                                     } else {
                                                                                         if (envioCheque == '') {

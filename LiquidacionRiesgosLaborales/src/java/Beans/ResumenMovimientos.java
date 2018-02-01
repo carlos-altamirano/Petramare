@@ -1,9 +1,3 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        07/03/2011
- *    Descripción:                  Controlador : "ResumenMovimientos.java" Bean que define todo lo referente al resumen de movimientos.
- *    Responsable:                  Carlos Altamirano
- */
 package Beans;
 
 import java.math.BigDecimal;

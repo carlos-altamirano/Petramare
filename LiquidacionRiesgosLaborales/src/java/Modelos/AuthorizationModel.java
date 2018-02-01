@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelos;
 
 import Beans.ResumenMovimientos;
@@ -26,26 +22,11 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor.*;
-import org.apache.naming.java.javaURLContextFactory;
 
 public class AuthorizationModel {
 
-    /**
-     * Método que proporciona el conjunto de fechas de liquidacion del cliente
-     * que se le pasa como parámetro con transacciones pendientes por confirmar.
-     *
-     * @param clave_contrato : Clave de contrato asociada a un cliente.
-     * @param fecha_liquidacion: fecha de liquidación a verificar.
-     * @param status: Status del Lay-Out.
-     * @return Vector clientes: Nombre de Lay-Out's cargados.
-     */
     //Variable que almacena el nombre del fideicomitente.
     public static String nombre_cliente = "";
     //Variable que almacena el nombre que se le dará al pdf al adjuntar en mail.

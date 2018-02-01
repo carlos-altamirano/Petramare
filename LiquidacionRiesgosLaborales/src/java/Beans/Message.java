@@ -1,9 +1,3 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        21/06/2011
- *    Descripción:                  Bean : "Usuario.java" Almacena los mensajes de respuesta del usuario
- *    Responsable:                  Fernando Cardenas
- */
 package Beans;
 
 public class Message {

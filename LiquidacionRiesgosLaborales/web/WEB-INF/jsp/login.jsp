@@ -1,33 +1,17 @@
-<!--
-     Creado por:                   Luis Antio Valerio Gayosso
-     Fecha:                        20/06/2011
-     Descripción:                  Vista : "login.jsp" para Pantalla de Bienvenida
-     Responsable:                  Carlos Altamirano
--->
-
 <%@ page language="java" import="java.math.BigInteger" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <title> Ingresar </title>
-        <!-- Especificamos el Logo en pequeño -->
         <link rel="shortcut icon" href="images/icono.png">
-        <!-- Especificamos las palabras claves al realizar la busqueda en algun buscador -->
-        <meta name="keywords" content=""/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Aqui importamos los estilos que necesitemos-->
         <link rel="stylesheet" type="text/css" href="css/formato.css">
-        <!-- Aqui importamos los scripts que necesitemos-->
         <script language="javascript" type="text/javascript" src="scripts/login.js"></script>
     </head>
-
-
-    <body style=" background-color: rgb(247, 232, 227);"
+    <body style="background-color: rgb(247, 232, 227);"
           <c:if test="${sessionScope.messageBean != null && sessionScope.messageBean.desc != ''}">
               onLoad="alert('<c:out value="${sessionScope.messageBean.desc}"/>');"
               <c:remove var="messageBean" scope="session" />
@@ -36,7 +20,7 @@
         <c:remove var="userApp" scope="session" />
         <div id="agrupar">
             <header id="cabecera">
-                <a href="http://fideicomisogds.mx/LiquidacionRiesgosLaborales" style="cursor:inherit"> 
+                <a href="/LiquidacionRiesgosLaborales" style="cursor:inherit"> 
                     <img src="images/logo.png" alt="Garante" height="120" width="250" /> 
                 </a>
             </header>

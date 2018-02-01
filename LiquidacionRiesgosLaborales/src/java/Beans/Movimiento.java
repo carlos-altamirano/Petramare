@@ -1,9 +1,3 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        05/12/2011 16:01 P.M.
- *    Descripción:                  Bean : "Movimiento.java" Bean que define las caracteristicas de un Movimiento.
- *    Responsable:                  Carlos Altamirano
- */
 package Beans;
 
 public class Movimiento {

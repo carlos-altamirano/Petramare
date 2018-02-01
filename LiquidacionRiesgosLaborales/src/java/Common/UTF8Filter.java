@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Common;
 
 import java.io.IOException;
@@ -16,10 +12,6 @@ public class UTF8Filter implements Filter {
 
     private String encoding;
 
-    /**
-     * Recogemos el tipo de codificación definido en el web.xml
-     * Si no se hubiera especificado ninguno se toma "UTF-8" por defecto
-     */
     public void init(FilterConfig filterConfig) throws ServletException {
 
         encoding = filterConfig.getInitParameter("requestEncoding");
@@ -28,11 +20,7 @@ public class UTF8Filter implements Filter {
         }
     }
 
-    /**
-     * Metemos en la request el formato de codificacion UTF-8
-     */
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain fc)
-            throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain fc) throws IOException, ServletException {
         request.setCharacterEncoding(encoding);
         fc.doFilter(request, response);
     }

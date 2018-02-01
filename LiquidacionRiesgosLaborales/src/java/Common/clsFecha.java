@@ -1,16 +1,6 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        24/02/2011
- *    Descripción:                  Controlador : "clsFecha.java" Controla el formato de fechas
- *    Responsable:                  Carlos Altamirano
- */
-
 package Common;
 
 import java.util.*;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Connection;
 import java.text.*;
 
 public class clsFecha {

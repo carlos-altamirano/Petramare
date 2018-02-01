@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servlets;
 
 import Beans.Message;
@@ -10,7 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Luis-Valerio
- */
 public class DescargaArchivo extends HttpServlet {
 
     /**
@@ -83,7 +74,7 @@ public class DescargaArchivo extends HttpServlet {
                 }
                 if (correcto) {
                     System.out.println("Se ha generado correctamente file:" + pdfFileName);
-                    String urlReporte = "C:\\Users\\Administrator\\Documents\\apache-tomcat-8.5.23\\bin\\temp\\";
+                    String urlReporte = "D:\\apache-tomcat-8.5.23\\bin\\temp\\";
                     File pdfFile = new File(urlReporte + pdfFileName);
                     response.setContentType("text/csv;");
                     response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);

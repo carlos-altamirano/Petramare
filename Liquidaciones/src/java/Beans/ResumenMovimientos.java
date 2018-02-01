@@ -1,15 +1,8 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        07/03/2011
- *    Descripción:                  Controlador : "ResumenMovimientos.java" Bean que define todo lo referente al resumen de movimientos.
- *    Responsable:                  Carlos Altamirano
- */
 package Beans;
 
 import java.math.BigDecimal;
 
 public class ResumenMovimientos {
-//Clave del fideicomiso.
 
     public String clave_contrato = "";
     //Cantidad de dispersiones de Bancomer a Bancomer

@@ -31,7 +31,7 @@ $(function(){
         $('html,body').animate({
             scrollTop: $("#moverAbajo").offset().top
         }, 0);
-        main.creaModal('modal', 'warning', '¡Atención!', 'El peso maximo del archivo es de 2MB');
+        main.creaModal('modal', 'warning', '¡Atención!', 'El peso maximo del archivo es de 10MB');
     }
     if (main.getQueryString('msg') === '2') {
         $('html,body').animate({

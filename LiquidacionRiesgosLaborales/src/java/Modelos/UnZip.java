@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.nio.channels.FileChannel;
 import java.nio.file.CopyOption;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.Paths;
@@ -16,8 +15,6 @@ import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UnZip {
 
@@ -102,7 +99,7 @@ public class UnZip {
     private synchronized static String copy_ESTADOS_CUENTA() throws IOException {
         String destino = "C:\\EDOS_CTA_UPLOADS\\" + generaNombre_ESTADOS_CUENTA();
         //URL en Servidor Virtual
-        String origen = "C:\\Users\\Administrator\\Documents\\apache-tomcat-8.5.23\\bin\\uploads\\ESTADOS_CUENTA\\EdosCta_temporal.zip";
+        String origen = "D:\\apache-tomcat-8.5.23\\bin\\uploads\\ESTADOS_CUENTA\\EdosCta_temporal.zip";
 
         Path FROM = Paths.get(origen);
         Path TO = Paths.get(destino);

@@ -1,34 +1,24 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        21/02/2011
- *    Descripción:                  Controlador : "ControllerUpload.java" Controlador para cargar el LayOut.
- *    Responsable:                  Carlos Altamirano
- */
 package servlets;
 
 import Beans.Usuario;
 import Beans.Message;
-import Modelos.ModeloLayOut;
 import Modelos.ModeloCapture;
 import Beans.ResumenMovimientos;
 import Common.clsConexion;
 
 import java.io.File;
 import java.io.IOException;
-//import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import java.sql.Connection;
 
 import java.util.List;
-//import java.util.Vector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Vector;
 import Modelos.ModeloLayOut;
-import java.text.DecimalFormat;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
@@ -37,11 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 
-//import net.sf.jasperreports.view.JasperViewer;
-//import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
-import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor.*;
 
 //Para Cargar Archivo
 import org.apache.commons.fileupload.FileItem;
@@ -357,7 +344,7 @@ public class ControllerUpload extends HttpServlet {
                                                     fileItem.write(saveTo);
                                                     // Hasta aqui el archivo ya esta en el servidor y se puede leer, escribir, mover, etc.
                                                     String clave_contrato = userApp.getClave_contrato().toString().trim();
-                                                    salario_minimo = 80.04F;
+                                                    salario_minimo = 88.36F;
                                                     //Se realiza la validación del Archivo
                                                     String messageVal = ModeloLayOut.isArchivoValido(dirNameTmp + fileName, clave_contrato, salario_minimo);
                                                     

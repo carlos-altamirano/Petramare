@@ -1,9 +1,3 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        24/02/2011
- *    Descripción:                  Controlador : "ModeloCaputre.java" Controla el formato de fechas.
- *    Responsable:                  Carlos Altamirano
- */
 package Modelos;
 
 import java.math.BigDecimal;
@@ -17,13 +11,10 @@ import java.io.PrintWriter;
 import java.io.FileOutputStream;
 import Common.clsConexion;
 
-import Common.clsConexionMySQL;
 import Common.clsFecha;
-import Common.EnvioMail;
 import Beans.Usuario;
 import Beans.Movimiento;
 import Beans.ResumenMovimientos;
-import static Modelos.ModeloLayOut.errores;
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1416,54 +1407,4 @@ public class ModeloCapture {
         return valido;
     }
 
-    /**
-     * Método que regresa el conjunto de claves de moneda actuales.
-     *
-     * @return Vector: MXP .- MEXICO. Si ocurre un error regresa null.
-     */
-    public static Vector pruebaMySQL() {
-
-        clsConexionMySQL conn = new clsConexionMySQL();
-        Connection connection = null;
-        Statement statement = null;
-
-        Vector claves = new Vector();
-        String clave = "";
-        String MySql = "";
-
-        try {
-            connection = conn.ConectaMySQL();
-            statement = connection.createStatement();
-            statement.execute("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
-
-            MySql = " select * ";
-            MySql += " from clientes ";
-
-//            System.out.println(MySql);
-            ResultSet rstSQLServer = statement.executeQuery(MySql);
-            claves.add("  Seleccione  ");
-
-            while (rstSQLServer.next()) {
-                clave = rstSQLServer.getString(1).toString().trim();
-                clave = clave + ".-" + rstSQLServer.getString(2).toString().trim();
-                claves.add(clave);
-            }
-            rstSQLServer.close();
-            statement.close();
-
-            if (connection != null) {
-                conn.Desconecta(connection);
-            }
-        } catch (Exception e) {
-            clave = null;
-            System.out.println("ModeloCapture-getClavesMoneda:" + e.toString());
-        }
-        return claves;
-    }
-
-    public static void main(String[] args) {
-        String s = "";
-        Vector t = ModeloCapture.pruebaMySQL();
-//        System.out.println(ModeloCapture.validaFechaLiquidacion("07/12/2012"));
-    }
 }

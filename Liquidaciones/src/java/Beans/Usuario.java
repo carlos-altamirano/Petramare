@@ -1,9 +1,3 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        23/02/2011
- *    Descripción:                  Controlador : "Usuario.java" Bean para el usuario que ingresa al sistema.
- *    Responsable:                  Carlos Altamirano
- */
 package Beans;
 
 

@@ -24,7 +24,7 @@ public class UploadController {
         try {
             if (!archivo.isEmpty()) {
                 byte[] archivoBytes = archivo.getBytes();
-                if (archivoBytes.length > 2000000) {
+                if (archivoBytes.length > 10000000) {
                     url = "redirect:/adm/contrato/"+documentacion.getClaveContrato()+"/edit?msg=1";
                 } else {
                     String ext = this.extValidas(archivo.getContentType());

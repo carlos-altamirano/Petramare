@@ -1,50 +1,25 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        24/02/2011
- *    Descripción:                  Controlador : "clsFecha.java" Controla el formato de fechas.
- *    Responsable:                  Carlos Altamirano
- */
 package Common;
 
 import java.util.*;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Connection;
 import java.text.*;
 
 public class clsFecha {
 
-    /** Contiene el Formato de la fecha a usar
-     **/
     private String FormatoFecha;
-    /** Contiene la fecha creada
-     **/
     private Date Fecha;
-
-    /** Constructor que inicializa el formato de la fecha cuando se es instanciada,
-     * por default ser&aacute; dd/MM/yyyy kk:mm:ss
-     **/
+    
     public clsFecha() {
         this.FormatoFecha = "dd/MM/yyyy kk:mm:ss";
     }
 
-    /** Coloca el nuevo formato de fecha a usar
-     *@param Formato de fecha
-     **/
     public void setFormato(String Formato) {
         this.FormatoFecha = Formato;
     }
 
-    /** Retorna el Formato que se a estado usando
-     *@return Formato
-     **/
     public String getFormato() {
         return this.FormatoFecha;
     }
 
-    /** Establece una Fecha
-     * @param Date Fecha
-     **/
     public void setFecha(Date Fec) {
         this.Fecha = Fec;
     }
@@ -53,44 +28,21 @@ public class clsFecha {
         return this.Fecha;
     }
 
-    /** Inserta la fecha pero deber&aacute; de respetar el formato de la fecha para que no marque
-     * una Exception
-     * @param Date Fecha
-     **/
     public void setFecha(String lFecha) {
-
         SimpleDateFormat lsdfFecha = new SimpleDateFormat(this.FormatoFecha);
         this.Fecha = lsdfFecha.parse(lFecha, new ParsePosition(0));
-        //System.out.println("setFecha(): " + this.Fecha + "\t" + "lFecha: " + lFecha);
-
     }
 
-    /** Obtiene la fecha en el formato solicitado
-     * @param Formato
-     * @return String Fecha
-     **/
     public String getFecha(String Formato) {
         SimpleDateFormat NewFecha = new SimpleDateFormat(Formato);
         return (NewFecha.format(this.Fecha));
     }
 
-    /** Obtiene la fecha en el formato que a sido configurado previamente
-     * @param Formato
-     * @return String Fecha
-     **/
     public String getFecha() {
-
         SimpleDateFormat NewFecha = new SimpleDateFormat(this.FormatoFecha);
-        //System.out.println("getFecha(): " + this.Fecha);
         return (NewFecha.format(this.Fecha));
     }
 
-    /** Realiza el cambio de formato de una fecha establecida
-     * @param String lstrOriginal Contiene el formato original la fecha a transformar
-     * @param String lstrNuevo Contiene el formato al que se desea cambiar
-     * @param String lstrFecha Fecha que se va a transformar
-     * @return String Fecha Transformada
-     **/
     public String CambiaFormatoFecha(String lstrOriginal, String lstrNuevo, String lstrFecha) {
         //"yyMMdd"      //"dd/MM/yyyy"
         SimpleDateFormat lsdfFecha = new SimpleDateFormat(lstrOriginal);
@@ -99,9 +51,6 @@ public class clsFecha {
         return (lsdfNuevo.format(lfecOriginal));
     }
 
-    /** Regresa la fecha del Sistema
-     * @return fecha del sistema
-     **/
     public String getFechaHoy() {
         String fetch = "";
         Date date = new Date();
@@ -114,9 +63,6 @@ public class clsFecha {
         return fetch;
     }
 
-    /** Regresa la fecha del Sistema
-     * @return fecha del sistema
-     **/
     public String getFechaHoy(String formato) {
         String fetch = "";
         Date date = new Date();
@@ -145,13 +91,6 @@ public class clsFecha {
         return getFecha();
     }
 
-    /**Compara Fecha
-     *@param String Fecha1 Base
-     *@param String Formato de la Fecha1
-     *@param String Fecha2 a Comparar
-     *@param String Formato de la Fecha2
-     *@return int 0 si son iguales, número negativo si es menor, número positivo si es mayor.
-     **/
     public int ComparaFecha(String lstrFec1, String lstrFormato1, String lstrFec2, String lstrFormato2) {
         clsFecha lobjFec1 = new clsFecha();
         clsFecha lobjFec2 = new clsFecha();
@@ -165,20 +104,10 @@ public class clsFecha {
         return (lobjFec1.getFechaDate().compareTo(lobjFec2.getFechaDate()));
     }
 
-    /**Compara Fecha
-     *@param Date Fecha a comparar con este Objeto
-     *@return int 0 si son iguales, n&uacute;mero negativo si es menor, n&uacute;mero positivo si es mayor
-     **/
     public int ComparaFecha(Date lobjFecha) {
         return (this.getFechaDate().compareTo(lobjFecha));
     }
 
-    /** Obtiene el número de dias entre dos fechas
-     *
-     *@param Date  Fecha Inicial
-     *@param Date  Fecha Final
-     *@return long Número de días entre las 2 fechas
-     **/
     public long getNumDays(Date fecIni, Date fecFin) {
         int oneMinute = 60 * 1000;
         int oneHour = oneMinute * 60;
@@ -192,23 +121,12 @@ public class clsFecha {
         }
     }
 
-    /** Obtiene el dia de la semana para una fecha
-     *
-     *@param Date  Fecha
-     *@return int  Número de día de la semana 0-Domingo, 6-Sábado
-     **/
     public int getDayOfWeek(Date FecD) {
         Calendar Fech = null;
         Fech.setTime(FecD);
         return Fech.get(Fech.DAY_OF_WEEK);
     }
 
-    /** Obtiene el número de dias entre dos fechas sin contar los domingos
-     *
-     *@param String  Fecha Inicial
-     *@param String  Fecha Final
-     *@return long   Número de días sin contar los domingos
-     **/
     public long getNumDaysNoSun(String lstrFecI, String lstrFecF) {
         SimpleDateFormat lsdfFecha = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date fecIni = lsdfFecha.parse(lstrFecI, new ParsePosition(0));
@@ -224,16 +142,7 @@ public class clsFecha {
         return numDays - numSun;
     }
 
-    /** Obtiene el número de dias entre dos fechas sin contar los domingos
-     *
-     *@param String  Fecha Inicial
-     *@param String  Fecha Final
-     *@return long   Número de días sin contar los domingos
-     **/
     public long getNumDaysNoSunDom(Date fecIni, Date fecFin) {
-        //SimpleDateFormat lsdfFecha = new SimpleDateFormat("dd/MM/yyyy");
-        //java.util.Date fecIni=lsdfFecha.parse(lstrFecI,new ParsePosition(0));
-        //java.util.Date fecFin=lsdfFecha.parse(lstrFecF,new ParsePosition(0));
         long numDays = getNumDays(fecIni, fecFin);
         long numSun = (numDays / 7);
         numSun = numSun * 2;
@@ -246,31 +155,11 @@ public class clsFecha {
         return numDays - numSun;
     }
 
-    /**Calcula la diferencia de Dias entre una fecha
-     * NOTA: el tiempo esta en milisegundos con getTime(): long, representando los
-     * milisegundos transcurridos desde el 1/1/1970.
-     * Con lo que para restar dos fechas basta con restar los long y la
-     * diferencia son los milisegundos de diferencia,
-     * que en horas seria dividir por 3600000 y en dias en
-     * 3600000 * 24 horas
-     * @param clsFecha lobjFec Fecha a Comparar
-     * @return int Numero de Dias de Diferencia
-     **/
     public int DiferenciaDias(clsFecha lobjFec) {
         long lDiferencia = this.Fecha.getTime() - (lobjFec.getFechaDate().getTime());
         return ((int) lDiferencia / 86400000);
     }
 
-    /**Calcula la diferencia de Dias entre una fecha
-     *NOTA: el tiempo esta en milisegundos con getTime(): long, representando los
-     * milisegundos transcurridos desde el 1/1/1970.
-     * Con lo que para restar dos fechas basta con restar los long y la
-     * diferencia son los milisegundos de diferencia,
-     * que en horas seria dividir por 3600000 y en dias en
-     * 3600000 * 24 horas
-     * @param Date lobjFec Fecha a Comparar
-     * @return int Numero de Dias de Diferencia
-     **/
     public int DiferenciaDias(Date lobjFec) {
         long lDiferencia = this.Fecha.getTime() - lobjFec.getTime();
         return ((int) lDiferencia / 86400000);
@@ -356,9 +245,6 @@ public class clsFecha {
         return true;
     }
 
-    /*
-     *Regresa el numero del dia de la semana de una fecha
-     * */
     public int diaSemana(String fecha) {
         java.util.Date formato = new java.util.Date();
         java.text.SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");

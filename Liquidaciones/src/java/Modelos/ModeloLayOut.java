@@ -1,9 +1,3 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        22/02/2011
- *    Descripción:                  Controlador : "ModeloLayOut.java" Modelo del sistema.
- *    Responsable:                  Carlos Altamirano
- */
 package Modelos;
 
 import java.io.*;
@@ -17,7 +11,6 @@ import Common.clsFecha;
 import Common.clsConexion;
 import Common.EnvioMail;
 
-import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -34,11 +27,7 @@ import java.util.regex.Pattern;
 import java.util.StringTokenizer;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor.*;
 
-import java.util.Random;
 import java.util.Vector;
 
 public class ModeloLayOut {
@@ -3198,19 +3187,19 @@ public class ModeloLayOut {
                 ResultSet rstSQLServer = statement.executeQuery(MySql);
 
                 if (rstSQLServer.next()) {
-                    tmp = rstSQLServer.getString(1).toString().trim(); // Clave de cliente
+                    tmp = rstSQLServer.getString(1).trim(); // Clave de cliente
                     userApp.setId_cliente(tmp);
 
-                    tmp = rstSQLServer.getString(2).toString().trim(); // Clave de contrato
+                    tmp = rstSQLServer.getString(2).trim(); // Clave de contrato
                     userApp.setClave_contrato(tmp);
 
-                    tmp = rstSQLServer.getString(3).toString().trim(); //Nombre de cliente
+                    tmp = rstSQLServer.getString(3).trim(); //Nombre de cliente
                     userApp.setCliente(tmp);
 
-                    tmp = rstSQLServer.getString(4).toString().trim(); //Usuario de cliente
+                    tmp = rstSQLServer.getString(4).trim(); //Usuario de cliente
                     userApp.setUsuario(tmp);
 
-                    tmp = rstSQLServer.getString(5).toString().trim(); //Password de cliente
+                    tmp = rstSQLServer.getString(5).trim(); //Password de cliente
                     userApp.setPassword(tmp);
 
                     userApp.setAutentificado(true);

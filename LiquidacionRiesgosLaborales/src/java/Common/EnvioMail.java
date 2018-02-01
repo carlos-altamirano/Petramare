@@ -1,9 +1,3 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        28/07/2011
- *    Descripción:                  Controlador : "EnvioMail.java" Clase para el enviar correo electrónico.
- *    Responsable:                  Carlos Altamirano
- */
 package Common;
 
 import java.util.Properties;

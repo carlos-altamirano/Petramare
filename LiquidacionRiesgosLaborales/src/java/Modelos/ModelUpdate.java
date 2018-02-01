@@ -1,17 +1,8 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        18/08/2011
- *    Descripción:                  Modelo : "ModeloLiquidation.java" modelo para Actualización de importe MXP
- *    Responsable:                  Carlos Altamirano
- */
 package Modelos;
 
-import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor.*;
-import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.*;
 import java.math.BigDecimal;
 import Common.clsConexion;
-import Common.EnvioMail;
 import Common.clsFecha;
 import java.util.HashMap;
 import java.util.Vector;
@@ -21,9 +12,6 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-//import java.math.BigInteger;
 
 public class ModelUpdate {
 
@@ -52,25 +40,6 @@ public class ModelUpdate {
         ModelUpdate.nombre_fideicomitente = nombre_fideicomitente;
     }
 
-//    public static String getNombre_pdf() {
-//        return nombre_pdf;
-//    }
-//
-//    public void setNombre_pdf(String nombre_pdf) {
-//        this.nombre_pdf = nombre_pdf;
-//    }
-    /**
-     * Método que regresa el importe de liquidación en moneda extranjera de un
-     * fideicomisario en particular con los datos que se le pasan como
-     * parámetro.
-     *
-     * @param String cliente: Nombre del Fideicomitente.
-     * @param clave_contrato: Clave asociada al contrato del cliente anterior.
-     * @param fecha_liquidacion: Fecha de Liquidación.
-     * @param nombre_archivo: Nombre del LayOut.
-     * @param nombre_fidei: Nombre del Fideicomisario.
-     * @return String: Importe de Liquidación en Moneda Extranjera.
-     */
     public static String getImporteMonedaExtranjera(String cliente, String clave_contrato, String fecha_liquidacion, String nombre_archivo, String nombre_fidei, String status_lote) {
         clsConexion conn = new clsConexion();
         Connection connection = null;
@@ -122,13 +91,6 @@ public class ModelUpdate {
         return importe;
     }
 
-    /**
-     * Método para calcular la Administración Fiduciaria Integral (AFI) según
-     *
-     * @param String infoContrato: honorario,%honorario_sin_iva
-     * @param BigDecimal importe: Importe total en MXP.
-     * @return String: Importe Total de la Administración Fiduciaria Integral.
-     */
     public static String getAFI(String infoContrato, BigDecimal importe) {
 
         String honorario = "", iva = "";
@@ -172,12 +134,6 @@ public class ModelUpdate {
         return valorAFI;
     }
 
-    /**
-     * Método para calcular la IVA según los campos que se pasan como parámetro.
-     *
-     * @param BigDecimal AFI: AFI
-     * @return String: IVA del AFI (16%).
-     */
     public static String getIVA(String val) {
         double iva = 0.16D, resultado = 0.0D;
         BigDecimal big = null;
@@ -335,7 +291,9 @@ public class ModelUpdate {
      *
      * @param cliente : Nombre del Cliente
      * @param clave_contrato : Clave de contrato asociada al cliente.
+     * @param miFecha
      * @param nombre_archivo : Nombre del Lay-Out cargado.
+     * @param status_lote
      * @return String montoFormato: Importe total de Bancomer a Bancomer; si
      * ocurre un error regresa una cadena vacia.
      */
@@ -811,6 +769,7 @@ public class ModelUpdate {
      * @param correoOrigen:Correo que envía el correo de notificación.
      * @param correoDestino:Correo de destinatarios.
      * @param asunto: Asunto del correo de notificación.
+     * @param cuerpoCorreo
      * @param urlArchivo: ruta del archivo a adjuntar al correo.
      * @param idx_archivo: Identificador del lote procesado.
      * @return boolean: true si se creo y envío correctamente el reporte de
@@ -920,27 +879,11 @@ public class ModelUpdate {
 
     }
 
-    /**
-     * Método que GENERA el reporte de Liquidación en formato pdf
-     * correspondiente a la información que se pasa como parametro, el reporte
-     * se almacena en el directorio correspondiente al ciente en cuestion.
-     *
-     * @param cliente : Nombre del cliente.
-     * @param clave_contrato : clave del contrato del cliente.
-     * @param fecha_liquidacion : Fecha de Liquidación.
-     * @param nombre_archivo : Nombre del Lay-Out al que corresponden los
-     * movimientos.
-     * @param nombre_fidei : Nombre del Fideicomisario a actualizar importe.
-     * @param importe_mxp : Importe a Actualizar en pesos mexicanos.
-     * @param idx: Identificador del lote procesado.
-     * @return boolean valido: Regresa true si se genero satisfactoriamente,
-     * else en otro caso
-     */
     public synchronized boolean generaM5_PDF(String cliente, String clave_contrato, String fecha_liquidacion,
             String nombre_archivo, String nombre_fidei, String importe_mxp, String status, String urlArchivo, int verifica, String realPath) {
 
         clsConexion conn = new clsConexion();
-        String archivo = realPath + "WEB-INF\\classes\\Common\\LayOutM5_MXP.jrxml";
+        String archivo = realPath + "\\WEB-INF\\classes\\Common\\LayOutM5_MXP.jrxml";
         Connection connection = null;
         JasperReport report = null;
         OutputStream output = null;

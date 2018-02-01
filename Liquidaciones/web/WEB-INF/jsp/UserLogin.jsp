@@ -14,6 +14,7 @@
     <head>
         <!--<link rel="shortcut icon" href="images/icono.png">-->
         <title> Ingresar </title>
+        <link rel="shortcut icon" href="images/icono.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Aqui importamos los estilos que necesitemos-->
         <link rel="stylesheet" type="text/css" href="css/formato.css">
@@ -31,7 +32,7 @@
         <c:remove var="userApp" scope="session" /> <br>
         <div id="agrupar">
             <header id="cabecera">
-                <a href="http://fideicomisogds.mx/Liquidaciones" style="cursor:inherit"> 
+                <a href="/Liquidaciones" style="cursor:inherit"> 
                     <img src="images/logo.png" alt="Garante" height="120" width="250" /> 
                 </a>
             </header>

@@ -1,9 +1,3 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        24/11/2011 09:53 A.M.
- *    Descripción:                  Controlador : "ControllerCapture.java" Controlador para la Captura Manual de Movimientos.
- *    Responsable:                  Carlos Altamirano
- */
 package servlets;
 
 import java.util.Vector;
@@ -21,7 +15,6 @@ import Beans.Message;
 import Beans.ResumenMovimientos;
 import Modelos.ModeloLayOut;
 import java.io.File;
-import java.math.BigDecimal;
 
 public class ControllerCapture extends HttpServlet {
 

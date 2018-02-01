@@ -5,7 +5,7 @@ Username:  administrator
 Password:  GFnkSP7b
 
 USUARIO SIN PRIVILEGIOS
-Username: Admingds
+Username: FTPgds
 Password: gds#2016
 
 

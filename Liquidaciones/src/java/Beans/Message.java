@@ -1,9 +1,3 @@
-/*
- *    Author     : Luis Antio Valerio Gayosso
- *    Fecha:                        14/03/2011
- *    Descripción:                  Controlador : "Message.java" Clase para manejar los mensajes que se muestran en una pagina web.
- *    Responsable:                  Carlos Altamirano
- */
 package Beans;
 
 public class Message {

@@ -1,15 +1,7 @@
-/*
- *    Creado por:                   Luis Antio Valerio Gayosso
- *    Fecha:                        21/06/2011
- *    Descripción:                  Controlador : "ControllerLiquidation.java" Gestiona las Peticiones del Usuario
- *    Responsable:                  Carlos Altamirano
- */
 package Servlets;
 
 import java.util.Vector;
-//import java.io.PrintWriter;
 import java.io.IOException;
-// java.math.BigInteger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
@@ -18,20 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import Beans.Usuario;
 import Beans.Message;
 import Beans.Movimiento;
-import Beans.ResumenMovimientos;
-import Common.clsFecha;
 import Modelos.ModelUpdate;
 import Modelos.ModeloLiquidation;
 import Modelos.AuthorizationModel;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
