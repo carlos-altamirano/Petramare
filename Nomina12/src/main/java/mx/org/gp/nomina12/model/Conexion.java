@@ -12,8 +12,8 @@ public class Conexion {
     BasicDataSource basicDataSource = new BasicDataSource();
 
     public Conexion() {
-        this.user = "sa";
-        this.password = "root";
+        this.user = "AdminGDS";
+        this.password = "Garante2018*";
         this.driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         this.url = "jdbc:sqlserver://localhost:1433;databaseName=garante;";
         basicDataSource.setDriverClassName(driver);

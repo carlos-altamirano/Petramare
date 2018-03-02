@@ -486,6 +486,22 @@
     <script src="/gestionfideicomisos/resources/js/Admin/index.js"></script>
     <script>
         $(function(){
+            
+            $.getJSON('/gestionfideicomisos/resources/js/ejemplo.json', function (datos){
+                if (datos.Status !== undefined) {
+                    if (datos.Status === 'OK'){
+                        $('#pld').fadeOut('slow');
+                        $('#validacion').fadeOut('slow');
+                        $('#socios').fadeIn('slow');
+                        $('#divFormValido').fadeIn('slow');
+                    } else {
+                        m.creaModal('modal', 'danger', '¡Atención!', datos.Message);
+                    }
+                } else {
+                    console.log(datos);
+                }
+            });
+            
             var m = new Main();
             $('#claveContrato').keyup(function(){
                 var clave = $(this).val();
