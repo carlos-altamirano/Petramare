@@ -274,7 +274,7 @@
     </div>
     
     <c:if test="${contrato.claveContrato ne null}">
-        <div class="large-8 large-centered centered columns" id="socios">
+        <div class="large-9 large-centered centered columns" id="socios">
             <fieldset class="fieldset">
                 <legend><h4>Socios y Representantes legales</h4></legend>
                 <form id="addSocio" method="post" action="/gestionfideicomisos/adm/socio/add">
@@ -293,15 +293,25 @@
                             <input type="text" name="nombre" id="nombreSocio" maxlength="50" placeholder="Nombre completo" required="required"/>
                         </div>
                         <div class="large-4 columns">
-                            <label>RFC</label>
-                            <input type="text" name="rfc" id="rfcSocio" maxlength="13" placeholder="RFC" pattern="[A-Z&Ñ]{4}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[A-Z0-9]{2}[0-9A]" title="Agrega un RFC valido" required="required"/>
+                            <label>Primer Apellido</label>
+                            <input type="text" name="apellido1" id="apellido1" maxlength="50" placeholder="Nombre completo" required="required"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="large-4 columns">
+                            <label>Segundo Apellido</label>
+                            <input type="text" name="apellido2" id="apellido2" maxlength="50" placeholder="Nombre completo" required="required"/>
+                        </div>
+                        <div class="large-4 columns">
+                            <label>RFC</label>
+                            <input type="text" name="rfc" id="rfcSocio" maxlength="13" placeholder="RFC" pattern="[A-Z&Ñ]{4}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[A-Z0-9]{2}[0-9A]" title="Agrega un RFC valido" required="required"/>
+                        </div>
+                        <div class="large-4 columns">
                             <label>CURP</label>
                             <input type="text" name="curp" id="curpSocio" maxlength="18" placeholder="CURP" pattern="[A-Z][AEIOUX][A-Z]{2}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[MH]([ABCMTZ]S|[BCJMOT]C|[CNPST]L|[GNQ]T|[GQS]R|C[MH]|[MY]N|[DH]G|NE|VZ|DF|SP)[BCDFGHJ-NP-TV-Z]{3}[0-9A-Z][0-9]" title="Agrega una CURP valida" required="required"/>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="large-4 columns">
                             <label>Nacionalidad</label>
                             <select name="nacionalidad" id="nacionalidadSocio" required="required">
@@ -314,9 +324,9 @@
                             <label>Porcentaje</label>
                             <input type="number" name="porcentaje" max="100.00" min="0.00" step="any" id="porcentajeSocio" placeholder="Porcentaje" required="required"/>
                         </div>
-                    </div>
-                    <div class="row centrar">
-                        <input type="submit" class="button botonSofom" value="Guardar">
+                        <div class="large-4 columns"><br/>
+                            <input type="submit" class="button botonSofom" value="Guardar">
+                        </div>
                     </div>
                 </form>
                 <br/>
@@ -326,6 +336,7 @@
                             <tr>
                                 <th>Tipo</th>
                                 <th>Nombre</th>
+                                <th>Apellidos</th>
                                 <th>RFC</th>
                                 <th>CURP</th>
                                 <th>Nacionalidad</th>
@@ -343,6 +354,7 @@
                                         <td>Socio</td>
                                     </c:if>
                                     <td>${i.nombre}</td>
+                                    <td>${i.apellido1} ${i.apellido2}</td>
                                     <td>${i.rfc}</td>
                                     <td>${i.curp}</td>
                                     <c:if test="${i.nacionalidad eq 1}">
@@ -486,22 +498,7 @@
     <script src="/gestionfideicomisos/resources/js/Admin/index.js"></script>
     <script>
         $(function(){
-            
-            $.getJSON('/gestionfideicomisos/resources/js/ejemplo.json', function (datos){
-                if (datos.Status !== undefined) {
-                    if (datos.Status === 'OK'){
-                        $('#pld').fadeOut('slow');
-                        $('#validacion').fadeOut('slow');
-                        $('#socios').fadeIn('slow');
-                        $('#divFormValido').fadeIn('slow');
-                    } else {
-                        m.creaModal('modal', 'danger', '¡Atención!', datos.Message);
-                    }
-                } else {
-                    console.log(datos);
-                }
-            });
-            
+                        
             var m = new Main();
             $('#claveContrato').keyup(function(){
                 var clave = $(this).val();
@@ -524,10 +521,20 @@
                 window.location = "/gestionfideicomisos/adm/cancela/cliente/pld?contrato="+$('#claveContrato').val()+"&nombreEmp="+$('#nombreCliente').val();
             });
             
-            var ajaxPLD = function(nombreCliente, tipo){
+            var ajaxPLD = function(nombre, apellido1, apellido2, tipo){
                 $('#verificaPersona').attr('var', tipo);
-                $.get('https://api.trade.gov/consolidated_screening_list/search?api_key=0b4lqNGmnWmC1MgPYrkCHltx&q='+nombreCliente, {}, function(data){
-                    if (data.results.length >= 1) {
+                $.post('/gestionfideicomisos/adm/busca/pld', {nombre, apellido1, apellido2}, function(datos){
+                datos = JSON.parse(datos);
+                //$.get('https://api.trade.gov/consolidated_screening_list/search?api_key=0b4lqNGmnWmC1MgPYrkCHltx&q='+nombreCliente, {}, function(data){
+                    if (datos.Status !== undefined) {
+                        if (datos.Status !== 'OK'){
+                            m.creaModal('modal', 'danger', '¡Atención!', datos.Message);
+                        }
+                        $('#pld').fadeOut('slow');
+                        $('#validacion').fadeOut('slow');
+                        $('#socios').fadeIn('slow');
+                        $('#divFormValido').fadeIn('slow');
+                    } else {
                         $('#pld').fadeIn('slow');
                         $('#validacion').fadeIn('slow');
                         $('#socios').fadeOut('slow');
@@ -541,57 +548,48 @@
                         $('#contratoEnviar').val($('#claveContrato').val());
                         $('#pldCampo').val('true');
                         var contenido = "";
-                        for (var i = 0; i < data.results.length; i++) {
-                            var encontrado = data.results[i];
+                        for (var i = 0; i < datos.length; i++) {
+                            var encontrado = datos[i];
                             contenido += "<ul class='vertical menu'>";
-                                contenido += "<li><a style='color: red; padding-bottom:1%;' class='muestrainfo' var='"+i+"'>* "+encontrado.name+"</a></li>";
-                                
+                                contenido += "<li><a style='color: red; padding-bottom:1%;' class='muestrainfo' var='"+i+"'>* "+encontrado.Denominacion+"</a></li>";
+
                                 contenido += "<li class='info"+i+"' style='display:none;'>";
-                                    contenido += "<a style='padding-left:6%; color: #3c97f5;' class='muestrainfo'>Nombres alternos: "+encontrado.alt_names.length+" encontrados</a>";
-                                    for (var j = 0; j < encontrado.alt_names.length; j++) {
-                                        var altEncuentra = encontrado.alt_names[j];
-                                        contenido += "<ul class='vertical menu'><li><a style='color:black; padding-left:8%'>"+altEncuentra+"</a></li></ul>";
-                                    }
+                                    contenido += "<a style='padding-left:6%; color: black;' class='muestrainfo'><span style='color: #3c97f5;'>Identificacion: </span>"+encontrado.Otra_Identificacion+"</a>";
+                                contenido += "</li>";
+
+                                contenido += "<li class='info"+i+"' style='display:none;'>";
+                                    contenido += "<a style='padding-left:6%; color: black;' class='muestrainfo'><span style='color: #3c97f5;'>Tipo: </span>"+encontrado.Tipo+"</a>";
                                 contenido += "</li>";
                                 
                                 contenido += "<li class='info"+i+"' style='display:none;'>";
-                                    contenido += "<a style='padding-left:6%; color: #3c97f5;' class='muestrainfo'>Programas a los que pertenece: "+encontrado.programs.length+" encontrados</a>";
-                                    for (var j = 0; j < encontrado.programs.length; j++) {
-                                        var programsEncuentra = encontrado.programs[j];
-                                        contenido += "<ul class='vertical menu'><li><a style='color:black; padding-left:8%'>"+programsEncuentra+"</a></li></ul>";
-                                    }
+                                    contenido += "<a style='padding-left:6%; color: black;' class='muestrainfo'><span style='color: #3c97f5;'>Lista: </span>"+encontrado.Lista+"</a>";
                                 contenido += "</li>";
-                                
+
                                 contenido += "<li class='info"+i+"' style='display:none;'>";
-                                    contenido += "<a style='padding-left:6%; padding-bottom:2%; color: black;' class='muestrainfo'><span style='color: #3c97f5;'>Fuente: </span>"+encontrado.source+"</a>";
+                                    contenido += "<a style='padding-left:6%; color: #3c97f5;' class='muestrainfo'>Fuente: "+encontrado.Lista+" encontrados</a>";
+                                    contenido += "<ul class='vertical menu'><li><a style='color:black; padding-bottom:2%; padding-left:8%'>"+encontrado.Enlace+"</a></li></ul>";
                                 contenido += "</li>";
-                                
+
                             contenido += "</ul>";
                         }
                         $("#encontradoPLD").html(contenido);
-                        
+
                         $('.muestrainfo').click(function(){
                             var valor = $(this).attr('var');
                             $('.info'+valor).toggle();
                         });
-                        
-                    } else {
-                        $('#pld').fadeOut('slow');
-                        $('#validacion').fadeOut('slow');
-                        $('#socios').fadeIn('slow');
-                        $('#divFormValido').fadeIn('slow');
                     }
                 });
             };
             
             $('#nombreSocio').change(function (){
                 var nombreCliente = $(this).val();
-                ajaxPLD(nombreCliente, "socio");
+                ajaxPLD(nombreCliente, $('#apellido1').val(), $('#apellido2').val(), "socio");
             });
             
             $('#nombreCliente').change(function (){
                 var nombreCliente = $(this).val();
-                ajaxPLD(nombreCliente, "cliente");
+                ajaxPLD("", nombreCliente, "", "cliente");
             });
             
             $('#validaUsuario').click(function (){
@@ -650,7 +648,7 @@
                             }
                             if ($('#sociostabla tr:nth-child('+i+') td:nth-child(1)').text() === 'Socio') {
                                 encuentraSocio = true;
-                                totalPorcentaje += parseFloat($('#sociostabla tr:nth-child('+i+') td:nth-child(6)').text().replace(' %',''));
+                                totalPorcentaje += parseFloat($('#sociostabla tr:nth-child('+i+') td:nth-child(7)').text().replace(' %',''));
                             }
                         }
                         totalPorcentaje = parseFloat(totalPorcentaje.toFixed(2));

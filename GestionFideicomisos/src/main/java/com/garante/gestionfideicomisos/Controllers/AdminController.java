@@ -52,9 +52,14 @@ public class AdminController {
 
     @ResponseBody
     @RequestMapping(value = "/busca/pld", method = RequestMethod.POST)
-    public String buscaPld(String nombre, String apellido) {
+    public String buscaPld(String nombre, String apellido1, String apellido2) {
         Client client = Client.create();
-        String datos = "{Apellido:'"+apellido+"', Nombre:'"+nombre+"', Usuario:'garantededesarrolloysalud', Password:'EC8E544F'}";
+        String apellidos = apellido1.trim() + " " + apellido2.trim();
+        String datos = "{Apellido:'" + apellidos;
+        if (!nombre.trim().equals("")) {
+            datos += "', Nombre:'" + nombre;
+        }
+        datos += "', Usuario:'garantededesarrolloysalud', Password:'EC8E544F'}";
         WebResource webResource = client.resource("https://www.prevenciondelavado.com/listas/api/busqueda");
         ClientResponse response = webResource.type("application/json").post(ClientResponse.class, datos);
         String salida;

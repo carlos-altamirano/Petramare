@@ -19,7 +19,7 @@ public class SociosDAO extends Conexion {
         Connection conn = this.conectar();
         PreparedStatement declaracion = null;
         
-        String sql = "insert into representantes (tipo, nombre, rfc, curp, nacionalidad, porcentaje, clave_contrato) values (?, ?, ?, ?,?, ?, ?);";
+        String sql = "insert into representantes (tipo, nombre, rfc, curp, nacionalidad, porcentaje, clave_contrato, apellido1, apellido2) values (?, ?, ?, ?,?, ?, ?, ?, ?);";
         try {
             declaracion = conn.prepareStatement(sql);
             declaracion.setInt(1, socios.getTipo());
@@ -29,6 +29,8 @@ public class SociosDAO extends Conexion {
             declaracion.setInt(5, socios.getNacionalidad());
             declaracion.setDouble(6, socios.getPorcentaje());
             declaracion.setString(7, socios.getClaveContrato());
+            declaracion.setString(8, socios.getApellido1());
+            declaracion.setString(9, socios.getApellido2());
             r = declaracion.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(SociosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,6 +58,8 @@ public class SociosDAO extends Conexion {
                 socio.setIdRepre(res.getInt("idRepre"));
                 socio.setTipo(res.getInt("tipo"));
                 socio.setNombre(res.getString("nombre"));
+                socio.setApellido1(res.getString("apellido1"));
+                socio.setApellido2(res.getString("apellido2"));
                 socio.setRfc(res.getString("rfc"));
                 socio.setCurp(res.getString("curp"));
                 socio.setNacionalidad(res.getInt("nacionalidad"));
