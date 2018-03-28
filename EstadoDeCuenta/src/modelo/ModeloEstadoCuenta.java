@@ -98,9 +98,9 @@ public class ModeloEstadoCuenta {
 //                System.out.println("honorario_mes=" + honorario_mes);
             }
 ///////Comienza el calculo de liquidacion_mes
-            MySql = " select sum(cast(cargo as float)) as iva_mes ";
+            MySql = " select sum(cast(cargo as float))*.16 as iva_mes ";
             MySql += " from EC_" + clave_contrato + " ";
-            MySql += " where concepto='I.V.A. DE HONORARIOS FIDUCIARIOS' ";
+            MySql += " where concepto='HONORARIOS FIDUCIARIOS' ";
             MySql += " and fecha>='" + fecha_ini + " 00:00:00.000' ";
             MySql += " and fecha<='" + fecha_fin + " 23:59:59.000' ";
             rstSQLServer = statement.executeQuery(MySql);
