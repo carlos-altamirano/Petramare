@@ -94,6 +94,7 @@ public class GeneraEdoCta {
 
     static boolean generaLayOut() {
         modelo.clsConexion conn = new modelo.clsConexion();
+        modelo.clsConexion conn2 = new modelo.clsConexion();
         modelo.clsConexion conn_In = new modelo.clsConexion();
         int movs_por_generar = 0;
         int movs_correctos = 0;
@@ -103,7 +104,9 @@ public class GeneraEdoCta {
         Writer writer = null;
 
         Connection connection = null;
+        Connection connection2 = null;
         Statement statement = null;
+        Statement statement2 = null;
         Connection connection_In = null;
         Statement statement_In = null;
         Vector contratos = new Vector();
@@ -112,12 +115,15 @@ public class GeneraEdoCta {
 
         try {
             connection = conn.ConectaSQLServer();
+            connection2 = conn2.ConectaSQLServer();
             statement = connection.createStatement();
+            statement2 = connection2.createStatement();
             ResultSet rstSQLServer = null;
             int i = 1;
             Date fechaHoy = ModeloEstadoCuenta.getUltimoDiaDeMes();
             SimpleDateFormat periodoEdoCta = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("es", "MX"));
             SimpleDateFormat formatoFechaCodes = new SimpleDateFormat("dd/MMM/yyyy");
+            SimpleDateFormat formatoFecha2 = new SimpleDateFormat("yyyy-MM");
             DecimalFormat formato_numero = new DecimalFormat("0.00");
             String correoCC = "";
             String correoCCO = "";
@@ -143,34 +149,39 @@ public class GeneraEdoCta {
             }
             System.out.println("Comienza while de contratos");
             while (rstSQLServer.next()) {
-                movs_por_generar++;
-                String contrato = rstSQLServer.getString("clave_contrato");
-                System.out.println("Obteniendo info de contrato= " + contrato);
-                String id_codes = rstSQLServer.getString("id_codes");
-                String correo_asesor = rstSQLServer.getString("correo").trim();
-                String correos_usuarios = ModeloEstadoCuenta.getCorreoUsuariosFideicomiso(contrato);
-                if (correo_asesor != null && !correo_asesor.equals("") && !correo_asesor.isEmpty()) {
-                    correoCCO = correo_asesor;
-                } else {
-                    correoCCO = "soporte@fideicomisogds.mx";
-                }
-                double saldo_inicio_mes = ModeloEstadoCuenta.getSaldo_inicio_mes(contrato, fecha_inicio_mes);
-                info_EC = ModeloEstadoCuenta.getDatos_EC(contrato, fecha_inicio_mes, fecha_hoy, saldo_inicio_mes);
-                Vector info_contratos = new Vector();
-                if (lanzaproceso.LanzaProceso.corteLast) {
-                    fechaHoy = ModeloEstadoCuenta.getUltimoDiaHabilDeMesAnterior();
-                }
-                info_contratos.add(id_codes + "|" + contrato + "|del 01 al " + periodoEdoCta.format(fechaHoy)
-                        + "|" + formato_numero.format(saldo_inicio_mes) + "|" + formato_numero.format(info_EC.get(0)));
+                String contrato = rstSQLServer.getString("clave_contrato").trim();
+                MySql = "select count(*) 'conteo' from EC_" + contrato + " where fecha >= '"+formatoFecha2.format(new Date())+"-01'";
+                ResultSet rstSQLServer2 = statement2.executeQuery(MySql);
+                if(rstSQLServer2.next()) {
+                    if (rstSQLServer2.getInt("conteo") > 0) {
+                        movs_por_generar++;
+                        System.out.println("Obteniendo info de contrato= " + contrato);
+                        String id_codes = rstSQLServer.getString("id_codes");
+                        String correo_asesor = rstSQLServer.getString("correo").trim();
+                        String correos_usuarios = ModeloEstadoCuenta.getCorreoUsuariosFideicomiso(contrato);
+                        if (correo_asesor != null && !correo_asesor.equals("") && !correo_asesor.isEmpty()) {
+                            correoCCO = correo_asesor;
+                        } else {
+                            correoCCO = "soporte@fideicomisogds.mx";
+                        }
+                        double saldo_inicio_mes = ModeloEstadoCuenta.getSaldo_inicio_mes(contrato, fecha_inicio_mes);
+                        info_EC = ModeloEstadoCuenta.getDatos_EC(contrato, fecha_inicio_mes, fecha_hoy, saldo_inicio_mes);
+                        Vector info_contratos = new Vector();
+                        if (lanzaproceso.LanzaProceso.corteLast) {
+                            fechaHoy = ModeloEstadoCuenta.getUltimoDiaHabilDeMesAnterior();
+                        }
+                        info_contratos.add(id_codes + "|" + contrato + "|del 01 al " + periodoEdoCta.format(fechaHoy)
+                                + "|" + formato_numero.format(saldo_inicio_mes) + "|" + formato_numero.format(info_EC.get(0)));
 
-                info_contratos.add("|" + formato_numero.format(info_EC.get(1)) + "|" + formato_numero.format(info_EC.get(2))
-                        + "|" + formato_numero.format(info_EC.get(3)) + "|" + formato_numero.format(info_EC.get(4)));
-                info_contratos.add(info_EC.get(5));
-                info_contratos.add("|" + correos_usuarios + "|" + correoCC + "|" + correoCCO);
-                info_contratos.add(info_EC.get(6));
-                info_contratos.add(contrato);
-                contratos.add(info_contratos);
-
+                        info_contratos.add("|" + formato_numero.format(info_EC.get(1)) + "|" + formato_numero.format(info_EC.get(2))
+                                + "|" + formato_numero.format(info_EC.get(3)) + "|" + formato_numero.format(info_EC.get(4)));
+                        info_contratos.add(info_EC.get(5));
+                        info_contratos.add("|" + correos_usuarios + "|" + correoCC + "|" + correoCCO);
+                        info_contratos.add(info_EC.get(6));
+                        info_contratos.add(contrato);
+                        contratos.add(info_contratos);
+                    }
+                }
             }
             System.out.println("finaliza while de contratos ");
             rstSQLServer.close();
@@ -234,7 +245,7 @@ public class GeneraEdoCta {
                     rstSQLServer_In.close();
                     statement_In.close();
                 } else if (numero_movimientos == 0) {
-                    writer.write("02|" + formatoFechaCodes.format(new java.util.Date()) + "|" + "NO EXISTEN MOVIMIENTOS" + "| " + " " + "|" + "0.0" + "|" + "0.0" + "|" + "0.0" + "\r\n");
+                    //writer.write("02|" + formatoFechaCodes.format(new java.util.Date()) + "|" + "NO EXISTEN MOVIMIENTOS" + "| " + " " + "|" + "0.0" + "|" + "0.0" + "|" + "0.0" + "\r\n");
                 }
                 //se realizará comparación entre saldo_actual y saldo_final_mes
                 campo = 1;

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="UserLogin.htm">UserLogin</prop>
+              
+                <prop key="menuLoadFile.htm">menuLoadFile</prop>
+
+                <prop key="PasswordChange.htm">PasswordChange</prop>
+
+                <prop key="ManualCaptureMovements.htm">ManualCaptureMovements</prop>
+
+                <prop key="LiquidationSummary.htm">LiquidationSummary</prop>
+                
+                <prop key="Saldo.htm">Saldo</prop>
+                
+                <prop key="EmpleadoLogin.htm">EmpleadoLogin</prop>
+                
+                <prop key="NuevaCuentaEmpleado.htm">NuevaCuentaEmpleado</prop>
+                
+                <prop key="ArchivosEmpleado.htm">ArchivosEmpleado</prop>
+                
+                <prop key="CambiaContra.htm">CambiaContra</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+    
+    <!--
+    The index controller.
+    -->
+    <bean name="UserLogin"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="UserLogin" />
+    
+    <bean name="Saldo"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="saldo" />    
+   
+    <bean name="menuLoadFile"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="menuLoadFile" />
+
+    <bean name="PasswordChange"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="PasswordChange" />
+
+    <bean name="ManualCaptureMovements"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="ManualCaptureMovements" />
+
+    <bean name="LiquidationSummary"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="LiquidationSummary" />
+    
+    <bean name="EmpleadoLogin"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Empleado/EmpleadoLogin" />
+    
+    <bean name="NuevaCuentaEmpleado"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Empleado/NuevaCuentaEmpleado" />
+    
+    <bean name="ArchivosEmpleado"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Empleado/Archivos" />
+    
+    <bean name="CambiaContra"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Empleado/CambiaContra" />
+
+</beans>
