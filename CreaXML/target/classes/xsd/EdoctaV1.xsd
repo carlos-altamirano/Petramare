@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edoctasme="https://www.gp.com.mx/cfd/addenda/edoctasme" targetNamespace="https://www.gp.com.mx/cfd/addenda/edoctasme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="EstadoDeCuenta">
+        <xs:annotation>
+            <xs:documentation>Addenda para los Estados de Cuenta de Soluciones Multiples Empresariales v1.0</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Movimientos" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Nodo opcional para expresar los movimientos de la seccion de resumen del Estado de Cuenta</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Movimiento" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>Nodo para expresar la información detallada de un movimiento</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="Fecha" type="xs:string" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar la fecha del movimiento</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Concepto" type="xs:string" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el concepto del movimiento</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Observaciones" type="xs:string" use="optional">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo opcional para expresar las observaciones del movimiento</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Cargo" type="edoctasme:t_Importe" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el monto correspondiente al cargo del movimiento</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Abono" type="edoctasme:t_Importe" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el monto correspondiente al abono del movimiento</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Saldo" type="edoctasme:t_Importe" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el monto correspondiente al saldo del movimiento</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Honorarios" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Nodo opcional para expresar los honorarios de la seccion de detalle de honorarios del Estado de Cuenta</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Honorario" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>Nodo para expresar la información detallada de un honorario</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="Fecha" type="xs:string" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar la fecha del honorario</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>						
+                                    <xs:attribute name="Honorario" type="edoctasme:t_Importe" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el monto correspondiente al honorario</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Iva" type="edoctasme:t_Importe" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el monto correspondiente al IVA del honorario</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="Total" type="edoctasme:t_Importe" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>Atributo requerido para expresar el monto correspondiente al total del honorario</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="TotalHonorario" type="edoctasme:t_Importe" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Atributo requerido para expresar la suma de los montos honorario</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="TotalIva" type="edoctasme:t_Importe" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Atributo requerido para expresar la suma de los montos IVA</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="TotalTotal" type="edoctasme:t_Importe" use="required">
+                            <xs:annotation>
+                                <xs:documentation>Atributo requerido para expresar la suma de los montos Total</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Version" type="xs:string" use="required" fixed="1.0">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para la expresión de la fecha del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="FechaEdoCta" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para la expresión de la fecha del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="RfcFideicomitente" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para la expresión del RFC del Fideicomitente al que va dirigido el Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Contrato" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para la expresión del Contrato relacionado al Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Moneda" type="xs:string" use="required" fixed="Pesos">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para la expresión de la moneda en la que esta expresado el Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="TipoContrato" type="xs:string" use="required" fixed="Fideicomiso de Garantia">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para la expresión del Tipo de Contrato relacionado al Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SaldoAnteriorPatrimonio" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar el Saldo Anterior de Patrimonio de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="AportacionTotalFideicomiso" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar la Aportacion Total al Fideicomiso de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="AportacionPatrimonio" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar la Aportacion al Patrimonio de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="RestitucionPatrimonio" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar la Restitucion a Patrimonio de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="LiquidacionFideicomisarios" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar la Liquidacion a Fideicomisarios de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="HonorariosFiduciarios" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar los Honorarios Fiduciarios de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="IvaHonorariosFiduciarios" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar el IVA de los Honorarios Fiduciarios de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SaldoFinalPatrimonio" type="edoctasme:t_Importe" use="required">
+                <xs:annotation>
+                    <xs:documentation>Atributo requerido para expresar el Saldo Final al Patrimonio de la seccion Resumen del Estado de Cuenta</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="t_Importe">
+        <xs:annotation>
+            <xs:documentation>Tipo definido para expresar importes numéricos con fracción</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

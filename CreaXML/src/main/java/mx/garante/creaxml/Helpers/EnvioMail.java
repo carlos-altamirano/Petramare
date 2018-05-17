@@ -23,8 +23,8 @@ public class EnvioMail {
             props = new Properties();
             props.setProperty("mail.smtp.host", "mail.abugaber.com");
             props.setProperty("mail.smtp.port", "587");
-            props.setProperty("mail.smtp.user", "erwin-leon@gp.org.mx");
-            props.setProperty("mail.password", "L30n2015*");
+            props.setProperty("mail.smtp.user", "soporte@fideicomisogds.mx");
+            props.setProperty("mail.password", "Soport3*");
             props.setProperty("mail.smtp.starttls.enable", "false"); //requiere tls?
             props.setProperty("mail.smtp.auth", "true");
             Session session = Session.getInstance(props);

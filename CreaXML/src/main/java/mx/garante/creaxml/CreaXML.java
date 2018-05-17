@@ -529,7 +529,7 @@ public class CreaXML {
                 }
                 html2 += "</ul>";
             }
-            EnvioMail.enviaCorreo("soporte@liquidacionesgds.mx", "Finalización de generación de estados de cuenta", html2);
+            EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalización de generación de estados de cuenta", html2);
         }
     }
 
@@ -832,7 +832,7 @@ public class CreaXML {
                 }
                 html2 += "</ul>";
             }
-            EnvioMail.enviaCorreo("soporte@liquidacionesgds.mx", "Finalizacion de generación de Comprobantes de Nómina", html2);
+            EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalizacion de generación de Comprobantes de Nómina", html2);
         }
     }
 
