@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EdoCuenta" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0002f2a5-80f3-4a1b-bfdc-119594d22929">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<style name="Table_TH" mode="Opaque" backcolor="#53E54A">
+	<style name="Table_TH" mode="Opaque" backcolor="#EF5350">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -70,333 +70,309 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="353" splitType="Stretch">
+		<band height="346" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="572" height="20" uuid="14e080fa-d2f9-44da-ba3d-7c313814f30d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="250" y="0" width="322" height="20" forecolor="#FF0400" uuid="14e080fa-d2f9-44da-ba3d-7c313814f30d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Soluciones Multiples Empresariales, S.A. de C.V. SOFOM, E.N.R]]></text>
+				<text><![CDATA[Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="19" width="572" height="14" uuid="5c17d6f7-aa25-4527-a1b5-8aea0544a82d"/>
-				<textElement textAlignment="Center" verticalAlignment="Top"/>
-				<text><![CDATA[Domicilio: Av. Ejército Nacional No.505, Desp. 1702, Col. Granada, C.P.11520, Del. Miguel Hidalgo, Ciudad de México]]></text>
+				<reportElement x="250" y="45" width="322" height="14" uuid="5c17d6f7-aa25-4527-a1b5-8aea0544a82d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Estado de Cuenta expedido en la Ciudad de México]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="33" width="572" height="12" uuid="f1fc3338-dda0-4320-aa35-dca4fd6dbf17"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement x="250" y="20" width="322" height="11" uuid="af67da14-c477-414a-b0d2-7fccde17f921"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GDS160406V45]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="73" width="322" height="12" uuid="3547ce89-ec21-44ef-9e40-0bd0ba140a25"/>
+				<textElement textAlignment="Left">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Tels.: (55) 22826500]]></text>
+				<text><![CDATA[       contacto@garante.mx                 +52 (55) 4164 3210]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="45" width="572" height="11" uuid="af67da14-c477-414a-b0d2-7fccde17f921"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[RFC. SME-060316-PB2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="55" width="572" height="11" uuid="1c544dd5-5c69-46c0-8d66-b856986273fb"/>
-				<textElement textAlignment="Center">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[EXPEDIDO EN CIUDAD DE MEXICO
-]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="74" width="572" height="8" uuid="3547ce89-ec21-44ef-9e40-0bd0ba140a25"/>
-				<textElement textAlignment="Center">
-					<font size="6"/>
-				</textElement>
-				<text><![CDATA[contacto@solucionesmultiples.com.mx]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="82" width="572" height="8" uuid="2b7465dc-725a-407e-ad9c-9d83cc2fe722"/>
-				<textElement textAlignment="Center">
-					<font size="5"/>
-				</textElement>
-				<text><![CDATA[www.solucionesmultiples.com.mx
-]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="93" width="572" height="4" uuid="f6f37997-3233-4701-82d0-335ba883f384"/>
+				<reportElement x="0" y="87" width="572" height="4" uuid="f6f37997-3233-4701-82d0-335ba883f384"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 				</box>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="94" width="572" height="13" uuid="2e9341e4-74ba-4076-86de-193473599715"/>
+				<reportElement x="0" y="88" width="572" height="13" uuid="2e9341e4-74ba-4076-86de-193473599715"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ESTADO DE CUENTA FIDEICOMISO DE GARANTÍA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="107" width="572" height="16" uuid="30cc94e5-bda6-4b82-b54b-828c53ad59c6"/>
+				<reportElement x="0" y="101" width="572" height="16" uuid="30cc94e5-bda6-4b82-b54b-828c53ad59c6"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{periodo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="122" width="572" height="4" uuid="02083ac0-8c08-4576-8196-d1c1a9eff74b"/>
+				<reportElement x="0" y="116" width="572" height="4" uuid="02083ac0-8c08-4576-8196-d1c1a9eff74b"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 				</box>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="124" width="572" height="13" uuid="e8612af8-dd7b-415f-b2f5-15b34040e8ac"/>
+				<reportElement x="0" y="118" width="572" height="13" uuid="e8612af8-dd7b-415f-b2f5-15b34040e8ac"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[INFORMACIÓN GENERAL FIDEICOMITENTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="137" width="128" height="14" uuid="19ef452f-a0f1-47ed-9bb3-5bb57010ca53"/>
+				<reportElement x="0" y="131" width="128" height="14" uuid="19ef452f-a0f1-47ed-9bb3-5bb57010ca53"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fideicomitente:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="151" width="128" height="14" uuid="dcb87f7c-7d16-433b-8a43-bc48aecc81be"/>
+				<reportElement x="0" y="145" width="128" height="14" uuid="dcb87f7c-7d16-433b-8a43-bc48aecc81be"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Dirección:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="165" width="128" height="14" uuid="804c3173-3794-4d84-97ac-b2af88ff6e1f"/>
+				<reportElement x="0" y="159" width="128" height="14" uuid="804c3173-3794-4d84-97ac-b2af88ff6e1f"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[RFC:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="179" width="128" height="14" uuid="718061d9-58a5-405b-89c5-647f6c6829d0"/>
+				<reportElement x="0" y="173" width="128" height="14" uuid="718061d9-58a5-405b-89c5-647f6c6829d0"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Moneda:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="193" width="128" height="14" uuid="c9346924-c9de-4bc6-b625-4ce32323f396"/>
+				<reportElement x="0" y="187" width="128" height="14" uuid="c9346924-c9de-4bc6-b625-4ce32323f396"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Contrato:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="207" width="128" height="14" uuid="3c5a1f8f-75e2-4fd2-8426-4ac54172e3c7"/>
+				<reportElement x="0" y="201" width="128" height="14" uuid="3c5a1f8f-75e2-4fd2-8426-4ac54172e3c7"/>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo de Contrato:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="128" y="137" width="444" height="14" uuid="6a91e474-d901-4f1b-9d9d-6117e10bda2d"/>
+				<reportElement x="128" y="131" width="444" height="14" uuid="6a91e474-d901-4f1b-9d9d-6117e10bda2d"/>
 				<textFieldExpression><![CDATA[$P{fideicomitente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="128" y="151" width="444" height="14" uuid="612c2423-cfc1-4182-ae73-67e601ec71af"/>
+				<reportElement x="128" y="145" width="444" height="14" uuid="612c2423-cfc1-4182-ae73-67e601ec71af"/>
 				<textFieldExpression><![CDATA[$P{direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="128" y="165" width="444" height="14" uuid="1b325329-87ec-4149-a99b-83559da20b25"/>
+				<reportElement x="128" y="159" width="444" height="14" uuid="1b325329-87ec-4149-a99b-83559da20b25"/>
 				<textFieldExpression><![CDATA[$P{rfc}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="128" y="179" width="444" height="14" uuid="0a14f01c-eb1a-432b-88b5-3c67e07a0650"/>
+				<reportElement x="128" y="173" width="444" height="14" uuid="0a14f01c-eb1a-432b-88b5-3c67e07a0650"/>
 				<textFieldExpression><![CDATA[$P{moneda}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="128" y="193" width="444" height="14" uuid="95688cf0-bdc3-4dd5-80ad-d5dc925eb44c"/>
+				<reportElement x="128" y="187" width="444" height="14" uuid="95688cf0-bdc3-4dd5-80ad-d5dc925eb44c"/>
 				<textFieldExpression><![CDATA[$P{contrato}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="128" y="207" width="444" height="14" uuid="270b4466-471f-4479-91c7-851a105697b0"/>
+				<reportElement x="128" y="201" width="444" height="14" uuid="270b4466-471f-4479-91c7-851a105697b0"/>
 				<textFieldExpression><![CDATA["Fideicomiso de garantía"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="222" width="572" height="4" uuid="07f6f0fa-907e-4aa8-9f36-583d8f5c7840"/>
+				<reportElement x="0" y="216" width="572" height="4" uuid="07f6f0fa-907e-4aa8-9f36-583d8f5c7840"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 				</box>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="224" width="572" height="13" backcolor="#FCF151" uuid="fcb835ec-c18d-409e-8260-ae016addfb29"/>
+				<reportElement mode="Opaque" x="0" y="218" width="572" height="13" backcolor="#FCF151" uuid="fcb835ec-c18d-409e-8260-ae016addfb29"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[RESUMEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="238" width="139" height="14" uuid="bf1334e4-58c0-458a-b294-d64688c2d1ef"/>
+				<reportElement x="120" y="232" width="139" height="14" uuid="bf1334e4-58c0-458a-b294-d64688c2d1ef"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saldo anterior de patrimonio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="252" width="139" height="14" uuid="ceea2cf3-afed-4b0e-a3f4-581f9a850e64"/>
+				<reportElement x="120" y="246" width="139" height="14" uuid="ceea2cf3-afed-4b0e-a3f4-581f9a850e64"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Aportación total al fideicomiso]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="266" width="139" height="14" uuid="4e0b3566-31f1-469c-961d-5ddcff90384c"/>
+				<reportElement x="120" y="260" width="139" height="14" uuid="4e0b3566-31f1-469c-961d-5ddcff90384c"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Restitución de patrimonio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="280" width="139" height="14" uuid="3a41ce7d-7443-4212-97e5-2ed6bd47349b"/>
+				<reportElement x="120" y="274" width="139" height="14" uuid="3a41ce7d-7443-4212-97e5-2ed6bd47349b"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Liquidación a fideicomisarios]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="294" width="139" height="14" uuid="b8f8e06a-1793-419a-a897-01f518ab1ed3"/>
+				<reportElement x="120" y="288" width="139" height="14" uuid="b8f8e06a-1793-419a-a897-01f518ab1ed3"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Honorarios fiduciarios]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="308" width="139" height="14" uuid="f2d1c034-3297-4280-874c-436201ad6141"/>
+				<reportElement x="120" y="302" width="139" height="14" uuid="f2d1c034-3297-4280-874c-436201ad6141"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[IVA honorarios fiduciarios]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="322" width="139" height="14" uuid="228b216b-4ff4-4c82-914d-6ef735035a44"/>
+				<reportElement x="120" y="316" width="139" height="14" uuid="228b216b-4ff4-4c82-914d-6ef735035a44"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saldo final patrimonio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="252" width="20" height="14" uuid="e2613aba-dda0-42b2-8ed1-296e322bb4b7"/>
+				<reportElement x="100" y="246" width="20" height="14" uuid="e2613aba-dda0-42b2-8ed1-296e322bb4b7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[+]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="266" width="20" height="14" uuid="38aaf9b4-cae7-44d8-af60-c22504929cee"/>
+				<reportElement x="100" y="260" width="20" height="14" uuid="38aaf9b4-cae7-44d8-af60-c22504929cee"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[+]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="294" width="20" height="14" uuid="5f16a917-4fad-4146-aa7c-fb102a13b287"/>
+				<reportElement x="100" y="288" width="20" height="14" uuid="5f16a917-4fad-4146-aa7c-fb102a13b287"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="280" width="20" height="14" uuid="a312075a-2191-4cd3-973b-c62f6535e9da"/>
+				<reportElement x="100" y="274" width="20" height="14" uuid="a312075a-2191-4cd3-973b-c62f6535e9da"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="308" width="20" height="14" uuid="1a86d7a6-6927-4f2f-b912-298cb9657352"/>
+				<reportElement x="100" y="302" width="20" height="14" uuid="1a86d7a6-6927-4f2f-b912-298cb9657352"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="238" width="110" height="14" uuid="01d0db63-26e1-45e9-83aa-460cd85753fb"/>
+				<reportElement x="300" y="232" width="110" height="14" uuid="01d0db63-26e1-45e9-83aa-460cd85753fb"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{saldoAnterior}]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="252" width="110" height="14" uuid="e1382a85-06ed-4e94-bc14-5098fadbe7ba"/>
+				<reportElement x="300" y="246" width="110" height="14" uuid="e1382a85-06ed-4e94-bc14-5098fadbe7ba"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{aportacionTotal}]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="266" width="110" height="14" uuid="cdb7e2ec-2076-4996-91b0-a5bff1d27591"/>
+				<reportElement x="300" y="260" width="110" height="14" uuid="cdb7e2ec-2076-4996-91b0-a5bff1d27591"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{restitucion}]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="280" width="110" height="14" uuid="c9131cf7-beb3-4d3f-9568-7551870a51a6"/>
+				<reportElement x="300" y="274" width="110" height="14" uuid="c9131cf7-beb3-4d3f-9568-7551870a51a6"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{liquidacion}]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="294" width="110" height="14" uuid="07dcf5d9-59f0-42cf-9058-e3abbf17035d"/>
+				<reportElement x="300" y="288" width="110" height="14" uuid="07dcf5d9-59f0-42cf-9058-e3abbf17035d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{honorarios}]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="308" width="110" height="14" uuid="cd7ca0ee-1e4f-4f20-8f89-71b76c378bcc"/>
+				<reportElement x="300" y="302" width="110" height="14" uuid="cd7ca0ee-1e4f-4f20-8f89-71b76c378bcc"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{iva}]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="300" y="322" width="110" height="14" uuid="7c226aac-971c-4608-8a30-dba1e905e0e6"/>
+				<reportElement x="300" y="316" width="110" height="14" uuid="7c226aac-971c-4608-8a30-dba1e905e0e6"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{saldoFinal}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="338" width="572" height="4" uuid="5d8a71b0-0ded-40b4-9e36-3af31a34e8c8"/>
+				<reportElement x="0" y="332" width="572" height="4" uuid="5d8a71b0-0ded-40b4-9e36-3af31a34e8c8"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 				</box>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="340" width="572" height="13" uuid="d7861a52-b755-44e6-8afb-9eadc29a897c"/>
+				<reportElement x="0" y="333" width="572" height="13" uuid="d7861a52-b755-44e6-8afb-9eadc29a897c"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Movimientos efectuados en el período]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="0" y="66" width="572" height="8" uuid="6b0af1de-8829-4e3d-89c9-4b04e4e07c92"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
-				</textElement>
-				<text><![CDATA[REGIMEN FISCAL: REGIMEN GENERAL DE LEY PERSONAS MORALES]]></text>
-			</staticText>
 			<image>
-				<reportElement x="0" y="36" width="170" height="50" uuid="3d509fee-c9f0-4d33-bc92-66c0ba8b9faf"/>
+				<reportElement x="0" y="4" width="220" height="75" uuid="3d509fee-c9f0-4d33-bc92-66c0ba8b9faf"/>
 				<imageExpression><![CDATA[$P{imagen1}]]></imageExpression>
 			</image>
-			<image>
-				<reportElement x="450" y="36" width="121" height="50" uuid="67b40df3-84e2-4a51-b525-7baa1bef808e"/>
-				<imageExpression><![CDATA[$P{imagen2}]]></imageExpression>
-			</image>
+			<staticText>
+				<reportElement x="250" y="31" width="322" height="14" uuid="a7fbed28-97ec-4311-8032-1f49958978e5"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Régimen de Ley Personas Morales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="59" width="322" height="14" uuid="13dc03d9-1b50-4dad-839c-17d330ebce64"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Rio Mississippi 49 int 1402 Cuauhtemoc, CDMX, 06500]]></text>
+			</staticText>
 		</band>
 		<band height="40">
 			<componentElement>
@@ -440,7 +416,7 @@
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="230" height="20" uuid="59d79a0e-678e-4bb0-8f04-95a912276534"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -457,7 +433,7 @@
 						<jr:detailCell style="Table_TD" height="20">
 							<textField pattern="$ #,##0.00">
 								<reportElement x="0" y="0" width="80" height="20" uuid="72f3442b-876f-43c2-905e-cb072b500369"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -474,7 +450,7 @@
 						<jr:detailCell style="Table_TD" height="20">
 							<textField pattern="$ #,##0.00">
 								<reportElement x="0" y="0" width="80" height="20" uuid="65e76f67-8841-4e09-8bbb-9792ace0b852"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{abono}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -493,7 +469,7 @@
 							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 							<textField pattern="$ #,##0.00">
 								<reportElement x="0" y="0" width="80" height="20" uuid="ded043c5-7242-46ee-b24a-1e7d1b25119e"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{saldo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -503,7 +479,7 @@
 		</band>
 	</detail>
 	<lastPageFooter>
-		<band height="207">
+		<band height="196">
 			<staticText>
 				<reportElement x="0" y="4" width="572" height="4" uuid="cee46cb9-fa76-4fec-972a-3c398638688c"/>
 				<box>
@@ -517,17 +493,17 @@
 			</staticText>
 			<textField>
 				<reportElement x="52" y="4" width="211" height="14" uuid="4a8ad679-ce81-4476-a365-6efc2372291f"/>
-				<textElement textAlignment="Center">
-					<font size="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{foliofiscal}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="263" y="4" width="167" height="14" uuid="b1419c79-c0ae-4861-9c88-8937e9590b5a"/>
+				<reportElement x="263" y="18" width="167" height="14" uuid="b1419c79-c0ae-4861-9c88-8937e9590b5a"/>
 				<text><![CDATA[No de Serie del Certificado del SAT:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="430" y="4" width="142" height="14" uuid="87dcbead-a01f-41e2-ab12-050e3891be9e"/>
+				<reportElement x="430" y="18" width="142" height="14" uuid="87dcbead-a01f-41e2-ab12-050e3891be9e"/>
 				<textFieldExpression><![CDATA[$P{noserie}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -630,14 +606,16 @@
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement x="1" y="153" width="571" height="43" uuid="5b94cadb-fa0e-4aee-bbd2-36182348b42c"/>
+				<reportElement x="1" y="153" width="571" height="36" uuid="5b94cadb-fa0e-4aee-bbd2-36182348b42c"/>
 				<textElement textAlignment="Justified">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[CUENTA CON 30 DÍAS NATURALES DESPUÉS DE LA EMISIÓN DE ESTE COMPROBANTE PARA OBJETAR LA INFORMACIÓN MOSTRADA. EN CASO DE DUDA O ACLARACIÓN, POR FAVOR ACUDA AL ÁREA DE UNIDAD ESPECIALIZADA DE ATENCIÓN DE USUARIOS, UBICADA EN AV. EJÉRCITO NACIONAL 505, DESPACHO 1702, COL. GRANADA, C.P. 11520, DEL. MIGUEL HIDALGO, CIUDAD DE MEXICO O BIEN COMUNICARSE AL 01 5522826500, ENVIAR UN CORREO  ELECTRONICO A contacto@solucionesmultiples.com.mx]]></text>
+				<text><![CDATA[CUENTA CON 30 DÍAS NATURALES DESPUÉS DE LA EMISIÓN DE ESTE COMPROBANTE PARA OBJETAR LA INFORMACIÓN MOSTRADA. EN
+CASO DE DUDA O ACLARACIÓN, POR FAVOR ACUDA AL ÁREA DE UNIDAD ESPECIALIZADA DE ATENCIÓN DE USUARIOS, UBICADA EN
+AV. RIO MISSISSIPPI CUAUHTEMOC, CIUDAD DE MEXICO, 06500, O BIEN COMUNICARSE AL +52 (55) 4164 3210]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="198" width="571" height="8" uuid="e8b30d06-2df5-47a7-8319-94b91be86217"/>
+				<reportElement x="1" y="188" width="571" height="8" uuid="e8b30d06-2df5-47a7-8319-94b91be86217"/>
 				<textElement textAlignment="Center">
 					<font size="6"/>
 				</textElement>

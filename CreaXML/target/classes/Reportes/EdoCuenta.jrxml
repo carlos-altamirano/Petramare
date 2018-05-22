@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EdoCuenta" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0002f2a5-80f3-4a1b-bfdc-119594d22929">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<style name="Table_TH" mode="Opaque" backcolor="#53E54A">
+	<style name="Table_TH" mode="Opaque" backcolor="#EF5350">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -76,26 +76,26 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Soluciones Multiples Empresariales, S.A. de C.V. SOFOM, E.N.R]]></text>
+				<text><![CDATA[Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="19" width="572" height="14" uuid="5c17d6f7-aa25-4527-a1b5-8aea0544a82d"/>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
-				<text><![CDATA[Domicilio: Av. Ejército Nacional No.505, Desp. 1702, Col. Granada, C.P.11520, Del. Miguel Hidalgo, Ciudad de México]]></text>
+				<text><![CDATA[Domicilio: Av. Rio Mississippi 49 1402 Cuauhtemoc, Ciudad de México, 06500]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="33" width="572" height="12" uuid="f1fc3338-dda0-4320-aa35-dca4fd6dbf17"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Tels.: (55) 22826500]]></text>
+				<text><![CDATA[Tels.: +52 (55) 4164 3210]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="45" width="572" height="11" uuid="af67da14-c477-414a-b0d2-7fccde17f921"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[RFC. SME-060316-PB2]]></text>
+				<text><![CDATA[RFC. GDS160406V45]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="55" width="572" height="11" uuid="1c544dd5-5c69-46c0-8d66-b856986273fb"/>
@@ -110,14 +110,14 @@
 				<textElement textAlignment="Center">
 					<font size="6"/>
 				</textElement>
-				<text><![CDATA[contacto@solucionesmultiples.com.mx]]></text>
+				<text><![CDATA[contacto@garante.mx]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="82" width="572" height="8" uuid="2b7465dc-725a-407e-ad9c-9d83cc2fe722"/>
 				<textElement textAlignment="Center">
 					<font size="5"/>
 				</textElement>
-				<text><![CDATA[www.solucionesmultiples.com.mx
+				<text><![CDATA[www.garante.mx
 ]]></text>
 			</staticText>
 			<staticText>
@@ -503,7 +503,7 @@
 		</band>
 	</detail>
 	<lastPageFooter>
-		<band height="207">
+		<band height="196">
 			<staticText>
 				<reportElement x="0" y="4" width="572" height="4" uuid="cee46cb9-fa76-4fec-972a-3c398638688c"/>
 				<box>
@@ -630,14 +630,16 @@
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement x="1" y="153" width="571" height="43" uuid="5b94cadb-fa0e-4aee-bbd2-36182348b42c"/>
+				<reportElement x="1" y="153" width="571" height="36" uuid="5b94cadb-fa0e-4aee-bbd2-36182348b42c"/>
 				<textElement textAlignment="Justified">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[CUENTA CON 30 DÍAS NATURALES DESPUÉS DE LA EMISIÓN DE ESTE COMPROBANTE PARA OBJETAR LA INFORMACIÓN MOSTRADA. EN CASO DE DUDA O ACLARACIÓN, POR FAVOR ACUDA AL ÁREA DE UNIDAD ESPECIALIZADA DE ATENCIÓN DE USUARIOS, UBICADA EN AV. EJÉRCITO NACIONAL 505, DESPACHO 1702, COL. GRANADA, C.P. 11520, DEL. MIGUEL HIDALGO, CIUDAD DE MEXICO O BIEN COMUNICARSE AL 01 5522826500, ENVIAR UN CORREO  ELECTRONICO A contacto@solucionesmultiples.com.mx]]></text>
+				<text><![CDATA[CUENTA CON 30 DÍAS NATURALES DESPUÉS DE LA EMISIÓN DE ESTE COMPROBANTE PARA OBJETAR LA INFORMACIÓN MOSTRADA. EN
+CASO DE DUDA O ACLARACIÓN, POR FAVOR ACUDA AL ÁREA DE UNIDAD ESPECIALIZADA DE ATENCIÓN DE USUARIOS, UBICADA EN
+AV. RIO MISSISSIPPI CUAUHTEMOC, CIUDAD DE MEXICO, 06500, O BIEN COMUNICARSE AL +52 (55) 4164 3210]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="198" width="571" height="8" uuid="e8b30d06-2df5-47a7-8319-94b91be86217"/>
+				<reportElement x="1" y="188" width="571" height="8" uuid="e8b30d06-2df5-47a7-8319-94b91be86217"/>
 				<textElement textAlignment="Center">
 					<font size="6"/>
 				</textElement>

@@ -19,7 +19,6 @@ import mx.garante.creaxml.DAOs.GenericEdoCtaDAO;
 import mx.garante.creaxml.DAOs.MovimientosDAO;
 import mx.garante.creaxml.Helpers.Empaquetar;
 import mx.garante.creaxml.Helpers.Encriptar;
-import mx.garante.creaxml.Helpers.EnvioMail;
 import mx.garante.creaxml.Helpers.Fecha;
 import mx.garante.creaxml.Models.Certificado;
 import mx.garante.creaxml.Models.CompEdoCta;
@@ -213,7 +212,7 @@ public class CreaXML {
                 if (compEdoCta == null) {
                     compEdoCta = new CompEdoCta();
                     compEdoCta.setFecha(dateFormat.format(new Date()));
-                    compEdoCta.setRfcProv("PAC010101TE0");
+                    compEdoCta.setRfcProv("FLI081010EK2");
                     CertificadosDAO certificadosDAO = new CertificadosDAO();
                     compEdoCta.setCertificado(certificadosDAO.get(1));
                 }
@@ -284,7 +283,7 @@ public class CreaXML {
                 }
                 comprobante.setMoneda(CMoneda.MXN);
                 comprobante.setTipoDeComprobante(CTipoDeComprobante.I);
-                comprobante.setLugarExpedicion("11520");
+                comprobante.setLugarExpedicion("06500");
 
                 //Emisor
                 Comprobante.Emisor emisor = new Comprobante.Emisor();
@@ -467,7 +466,7 @@ public class CreaXML {
                 marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATIONFinal);
                 marshaller.marshal(comprobante, new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml"));
 
-                if (!CreaPDF.edoCuenta(contrato, saldoAnterior, saldoFinal, totalRestitucion, totalOrdenLiq, totalHonorario, totalIVA, totalAbono, fechaEdoCta, tdf, salida + meses[c2.get(Calendar.MONTH)], cadorigen)) {
+                if (!CreaPDF.edoCuenta(contrato, saldoAnterior, saldoFinal, totalRestitucion, totalOrdenLiq, totalHonorario, totalIVA, totalAbono, fechaEdoCta, tdf, salida + meses[c2.get(Calendar.MONTH)], cadorigen, emisor.getRfc())) {
                     errorespdf++;
                     if (!rfcErrores.contains(comprobante.getReceptor().getRfc())) {
                         rfcErrores.add(comprobante.getReceptor().getRfc());
@@ -496,7 +495,7 @@ public class CreaXML {
                 rfcErrores.add(rfcActual);
             }
         } finally {
-            String html2 = "<h4>Se ha finalizado el proceso de generación masiva de Estados de Cuenta:</h4>\n"
+            /*String html2 = "<h4>Se ha finalizado el proceso de generación masiva de Estados de Cuenta:</h4>\n"
                     + "<table border=\"1\" padding=\"10px\">\n"
                     + "<thead></thead>\n"
                     + "<tdoby>\n";
@@ -529,7 +528,7 @@ public class CreaXML {
                 }
                 html2 += "</ul>";
             }
-            EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalización de generación de estados de cuenta", html2);
+            EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalización de generación de estados de cuenta", html2);*/
         }
     }
 
@@ -567,7 +566,7 @@ public class CreaXML {
                 if (compNomina == null) {
                     compNomina = new CompNomina();
                     compNomina.setFecha(dateFormat.format(new Date()));
-                    compNomina.setRfcProv("PAC010101TE0");
+                    compNomina.setRfcProv("FLI081010EK2");
                     CertificadosDAO certificadosDAO = new CertificadosDAO();
                     compNomina.setCertificado(certificadosDAO.get(1));
                 }
@@ -589,7 +588,7 @@ public class CreaXML {
 
                 comprobante.setTipoDeComprobante(CTipoDeComprobante.N);
                 comprobante.setMoneda(CMoneda.MXN);
-                comprobante.setLugarExpedicion("11520");
+                comprobante.setLugarExpedicion("06500");
 
                 comprobante.setMetodoPago(CMetodoPago.PUE);
                 comprobante.setFormaPago("99");
@@ -756,16 +755,13 @@ public class CreaXML {
 
                 String fecha = format2.format(fechaHoy);
                 String salida = File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "CFDI" + File.separator + rfc + File.separator + c2.get(Calendar.YEAR) + File.separator;
-                String salida2 = File.separator + "CFDI" + File.separator + contrato.getClave_contrato() + File.separator + fecha.substring(0, 4) + File.separator + fecha.substring(4, 6) + File.separator;
                 File carpetas = new File(salida);
-                File carpetas2 = new File(salida2);
                 carpetas.mkdirs();
-                carpetas2.mkdirs();
-
+                
                 marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION2Final);
                 marshaller.marshal(comprobante, new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml"));
 
-                if (!CreaPDF.nomina(comprobante, timbre, receptor, emisor, emisorNom, receptorNom, nomina, movimientos, concepto1, listOtroPagos, salida + meses[c2.get(Calendar.MONTH)], cadorigen)) {
+                if (!CreaPDF.nomina(comprobante, timbre, receptor, emisor, emisorNom, receptorNom, nomina, movimientos, concepto1, listOtroPagos, salida + meses[c2.get(Calendar.MONTH)], cadorigen, contrato.getNombre_cliente())) {
                     errorespdf++;
                     if (!rfcErrores.contains(rfc)) {
                         rfcErrores.add(rfc);
@@ -799,7 +795,7 @@ public class CreaXML {
                 rfcErrores.add(rfcActual);
             }
         } finally {
-            String html2 = "<h4>Se ha finalizado el proceso de generación masiva de Comprobantes de Nómina:</h4>\n"
+            /*String html2 = "<h4>Se ha finalizado el proceso de generación masiva de Comprobantes de Nómina:</h4>\n"
                     + "<table border=\"1\" padding=\"10px\">\n"
                     + "<thead></thead>\n"
                     + "<tdoby>\n";
@@ -832,7 +828,7 @@ public class CreaXML {
                 }
                 html2 += "</ul>";
             }
-            EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalizacion de generación de Comprobantes de Nómina", html2);
+            EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalizacion de generación de Comprobantes de Nómina", html2);*/
         }
     }
 

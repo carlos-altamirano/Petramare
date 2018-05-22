@@ -32,7 +32,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class CreaPDF {
 
-    public static boolean edoCuenta(Contrato contrato, Double saldoAnterior, Double saldoFinal, Double restitucion, Double liquidacion, Double honorarios, Double ivaHonorarios, Double totalAbono, String fechaEdoCta, TimbreFiscalDigital tfd, String salida, String cadenaOriginal) {
+    public static boolean edoCuenta(Contrato contrato, Double saldoAnterior, Double saldoFinal, Double restitucion, Double liquidacion, Double honorarios, Double ivaHonorarios, Double totalAbono, String fechaEdoCta, TimbreFiscalDigital tfd, String salida, String cadenaOriginal, String rfcEmisor) {
         String reportes = System.getProperty("user.dir") + "/src/main/resources/Reportes/";
         String imagen = System.getProperty("user.dir") + "/src/main/resources/img/";
         File file = new File(reportes + "EdoCuenta.jrxml");
@@ -67,7 +67,7 @@ public class CreaPDF {
             parameters.put("imagen1", imagen + "/imagen1.jpg");
             parameters.put("imagen2", imagen + "/imagen2.jpg");
 
-            parameters.put("qr", generaQr(tfd.getUUID(), "SME060316PB2", contrato.getRFC(), totalAbono, tfd.getSelloSAT()));
+            parameters.put("qr", generaQr(tfd.getUUID(), rfcEmisor, contrato.getRFC(), totalAbono, tfd.getSelloSAT()));
 
             List<EdoCta> detalle = contrato.getEdoCtas();
 
@@ -85,7 +85,7 @@ public class CreaPDF {
         return res;
     }
     
-    public static boolean nomina(Comprobante comprobante, TimbreFiscalDigital timbre, Comprobante.Receptor receptor, Comprobante.Emisor emisor, Nomina.Emisor emisorNom, Nomina.Receptor receptorNom, Nomina nomina, List<Movimiento> movimientos, Comprobante.Conceptos.Concepto concepto1, List<Nomina.OtrosPagos.OtroPago> detalle1, String salida, String cadenaOriginal) {
+    public static boolean nomina(Comprobante comprobante, TimbreFiscalDigital timbre, Comprobante.Receptor receptor, Comprobante.Emisor emisor, Nomina.Emisor emisorNom, Nomina.Receptor receptorNom, Nomina nomina, List<Movimiento> movimientos, Comprobante.Conceptos.Concepto concepto1, List<Nomina.OtrosPagos.OtroPago> detalle1, String salida, String cadenaOriginal, String nombreCliente) {
 
         List<Nomina.OtrosPagos.OtroPago> detalle = new ArrayList<>();
 
@@ -94,6 +94,7 @@ public class CreaPDF {
         }
 
         String reportes = System.getProperty("user.dir") + "/src/main/resources/Reportes/";
+        String imagen = System.getProperty("user.dir") + "/src/main/resources/img/";
         File file = new File(reportes + "ReporteNomina.jrxml");
         boolean res = false;
         try {
@@ -104,6 +105,7 @@ public class CreaPDF {
             parameters.put("ClaveFid", movimientos.get(0).getClave_contrato());
             parameters.put("RegPatronal", " ");
             parameters.put("NumFolio", " ");
+            parameters.put("NombrePatOrg", nombreCliente);
             parameters.put("RFCEmisor", emisor.getRfc());
             parameters.put("Fecha", comprobante.getFecha());
             parameters.put("RFCPatOrg", emisorNom.getRfcPatronOrigen());
@@ -135,7 +137,7 @@ public class CreaPDF {
             parameters.put("ConcVUni", concepto1.getValorUnitario());
             parameters.put("ConcImp", concepto1.getImporte());
             parameters.put("NominaT", nomina.getTipoNomina().toString());
-            parameters.put("NominaLFE", comprobante.getLugarExpedicion() + " - " + comprobante.getFecha());
+            parameters.put("NominaLFE", comprobante.getLugarExpedicion());
             parameters.put("NominaFP", comprobante.getFormaPago());
             parameters.put("NominaMP", comprobante.getMetodoPago().toString());
             parameters.put("TotalPerc", new BigDecimal(0));
@@ -151,8 +153,10 @@ public class CreaPDF {
             parameters.put("SelloDigCFDI", timbre.getSelloCFD());
             parameters.put("SelloDigSAT", timbre.getSelloSAT());
             parameters.put("CadCertSAT", cadenaOriginal);
+            
+            parameters.put("imagen", imagen + "/imagen1.jpg");
 
-            parameters.put("qr", generaQr(timbre.getUUID(), "SME060316PB2", receptor.getRfc(), comprobante.getTotal().doubleValue(), timbre.getSelloSAT()));
+            parameters.put("qr", generaQr(timbre.getUUID(), emisor.getRfc(), receptor.getRfc(), comprobante.getTotal().doubleValue(), timbre.getSelloSAT()));
 
             JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(detalle);
             parameters.put("detalle", itemsJRBean);
