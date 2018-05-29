@@ -1,11 +1,33 @@
 package mx.garante.creaxml.Helpers;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 public class Fecha {
+    
+    public static XMLGregorianCalendar crearXMLGregorianCalendar(Date fecha) {
+        XMLGregorianCalendar xmlgc = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try {
+            xmlgc = DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFormat.format(fecha));
+        } catch (DatatypeConfigurationException ex) {
+            Logger.getLogger(Fecha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return xmlgc;
+    }
+    
+    public static Date getXMLGregorianCalendar(XMLGregorianCalendar fecha) {
+        Date date = fecha.toGregorianCalendar().getTime();
+        return date;
+    }
     
     public static Calendar getPrimerDiaDeMes(Date fecha) {
         Calendar calMin = Calendar.getInstance();

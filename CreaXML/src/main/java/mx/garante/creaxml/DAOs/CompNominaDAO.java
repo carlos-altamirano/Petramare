@@ -6,10 +6,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CompNominaDAO extends Conexion {
+    
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public CompNomina getBy(String rfc, String fecha1) {
         CompNomina compNomina = null;
@@ -28,12 +32,12 @@ public class CompNominaDAO extends Conexion {
             if (rs.next()) {
                 compNomina = new CompNomina();
                 compNomina.setIdComprobante(rs.getInt("idComprobante"));
-                compNomina.setFecha(rs.getString("fecha"));
+                compNomina.setFecha(format.parse(rs.getString("fecha")));
                 compNomina.setFechaNomina(rs.getString("fechaNomina"));
                 compNomina.setClaveContrato(rs.getString("claveContrato"));
                 compNomina.setRfc(rs.getString("rfc"));
                 compNomina.setTotal(rs.getDouble("total"));
-                compNomina.setFechaTimbre(rs.getString("fechaTimbre"));
+                compNomina.setFechaTimbre(format.parse(rs.getString("fechaTimbre")));
                 compNomina.setRfcProv(rs.getString("rfcProv"));
                 compNomina.setUuid(rs.getString("uuid"));
                 compNomina.setSelloCFD(rs.getString("selloCFD"));
@@ -43,7 +47,7 @@ public class CompNominaDAO extends Conexion {
                 compNomina.setCertificado(certificadosDAO.get(rs.getInt("idCertificado")));
             }
 
-        } catch (SQLException ex) {
+        } catch (SQLException | ParseException ex) {
             Logger.getLogger(CompEdoCtaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.desconecta(con, rs, statement);
@@ -57,17 +61,17 @@ public class CompNominaDAO extends Conexion {
 
         Connection con = this.conecta();
         PreparedStatement statement = null;
-
+        
         try {
             String sql = "insert into comprobantesNomina (fecha, fechaNomina, claveContrato, rfc, total, fechaTimbre, rfcProv, uuid, selloCFD, nCertificado, selloSAT, idCertificado) "+
                     "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
-            statement.setString(1, compNomina.getFecha());
+            statement.setString(1, format.format(compNomina.getFecha()));
             statement.setString(2, compNomina.getFechaNomina().substring(0, 7));
             statement.setString(3, compNomina.getClaveContrato());
             statement.setString(4, compNomina.getRfc());
             statement.setDouble(5, compNomina.getTotal());
-            statement.setString(6, compNomina.getFechaTimbre());
+            statement.setString(6, format.format(compNomina.getFechaTimbre()));
             statement.setString(7, compNomina.getRfcProv());
             statement.setString(8, compNomina.getUuid());
             statement.setString(9, compNomina.getSelloCFD());

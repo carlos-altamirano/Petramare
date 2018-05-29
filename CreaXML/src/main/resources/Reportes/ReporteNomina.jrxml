@@ -149,7 +149,7 @@
 			</staticText>
 			<image>
 				<reportElement x="4" y="4" width="220" height="75" uuid="25530db3-bbe2-4207-9f87-67c615dadc2b"/>
-				<imageExpression><![CDATA[$P{imagen1}]]></imageExpression>
+				<imageExpression><![CDATA[$P{imagen}]]></imageExpression>
 			</image>
 		</band>
 	</title>

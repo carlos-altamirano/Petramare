@@ -14,6 +14,7 @@ import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mx.garante.creaxml.Helpers.Fecha;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -31,6 +33,9 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class CreaPDF {
+    
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    private static SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
 
     public static boolean edoCuenta(Contrato contrato, Double saldoAnterior, Double saldoFinal, Double restitucion, Double liquidacion, Double honorarios, Double ivaHonorarios, Double totalAbono, String fechaEdoCta, TimbreFiscalDigital tfd, String salida, String cadenaOriginal, String rfcEmisor) {
         String reportes = System.getProperty("user.dir") + "/src/main/resources/Reportes/";
@@ -45,7 +50,7 @@ public class CreaPDF {
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("foliofiscal", tfd.getUUID());
             parameters.put("noserie", tfd.getNoCertificadoSAT());
-            parameters.put("horacertificado", tfd.getFechaTimbrado());
+            parameters.put("horacertificado", dateFormat.format(Fecha.getXMLGregorianCalendar(tfd.getFechaTimbrado())));
             parameters.put("metodopago", "Transferencia Electrónica de Fondos");
             parameters.put("selloCFDI", tfd.getSelloCFD());
             parameters.put("selloSAT", tfd.getSelloSAT());
@@ -123,9 +128,9 @@ public class CreaPDF {
             parameters.put("AntRec", " ");
             parameters.put("TContRec", receptorNom.getTipoContrato());
             parameters.put("DPagRec", nomina.getNumDiasPagados().toString());
-            parameters.put("FecPag", nomina.getFechaPago());
-            parameters.put("FecIniPag", nomina.getFechaInicialPago());
-            parameters.put("FecFinPag", nomina.getFechaFinalPago());
+            parameters.put("FecPag", dateFormat2.format(Fecha.getXMLGregorianCalendar(nomina.getFechaPago())));
+            parameters.put("FecIniPag", dateFormat2.format(Fecha.getXMLGregorianCalendar(nomina.getFechaInicialPago())));
+            parameters.put("FecFinPag", dateFormat2.format(Fecha.getXMLGregorianCalendar(nomina.getFechaFinalPago())));
 
             parameters.put("STotRec", comprobante.getSubTotal());
             parameters.put("DescRec", new BigDecimal(0));
@@ -146,7 +151,7 @@ public class CreaPDF {
             parameters.put("Moneda", comprobante.getMoneda().toString());
 
             parameters.put("FolioFisc", timbre.getUUID());
-            parameters.put("FHCert", timbre.getFechaTimbrado());
+            parameters.put("FHCert", dateFormat.format(Fecha.getXMLGregorianCalendar(timbre.getFechaTimbrado())));
             parameters.put("NSCSAT", timbre.getNoCertificadoSAT());
             parameters.put("NSCCSD", comprobante.getNoCertificado());
             parameters.put("RegFisc", "General de Ley Personas Morales");

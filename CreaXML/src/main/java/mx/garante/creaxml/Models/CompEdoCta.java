@@ -1,13 +1,15 @@
 package mx.garante.creaxml.Models;
 
+import java.util.Date;
+
 public class CompEdoCta {
 
     private Integer idComprobante;
-    private String fecha;
+    private Date fecha;
     private String fechaEdoCta;
     private String claveContrato;
     private Double total;
-    private String fechaTimbre;
+    private Date fechaTimbre;
     private String rfcProv;
     private String uuid;
     private String selloCFD;
@@ -18,7 +20,7 @@ public class CompEdoCta {
     public CompEdoCta() {
     }
 
-    public CompEdoCta(Integer idComprobante, String fecha, String fechaEdoCta, String claveContrato, Double total, String fechaTimbre, String rfcProv, String uuid, String selloCFD, String nCertificado, String selloSAT, Certificado certificado) {
+    public CompEdoCta(Integer idComprobante, Date fecha, String fechaEdoCta, String claveContrato, Double total, Date fechaTimbre, String rfcProv, String uuid, String selloCFD, String nCertificado, String selloSAT, Certificado certificado) {
         this.idComprobante = idComprobante;
         this.fecha = fecha;
         this.fechaEdoCta = fechaEdoCta;
@@ -41,11 +43,11 @@ public class CompEdoCta {
         this.idComprobante = idComprobante;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -73,11 +75,11 @@ public class CompEdoCta {
         this.total = total;
     }
     
-    public String getFechaTimbre() {
+    public Date getFechaTimbre() {
         return fechaTimbre;
     }
 
-    public void setFechaTimbre(String fechaTimbre) {
+    public void setFechaTimbre(Date fechaTimbre) {
         this.fechaTimbre = fechaTimbre;
     }
 

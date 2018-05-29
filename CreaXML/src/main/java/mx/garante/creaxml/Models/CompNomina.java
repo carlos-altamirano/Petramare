@@ -1,14 +1,16 @@
 package mx.garante.creaxml.Models;
 
+import java.util.Date;
+
 public class CompNomina {
 
     private Integer idComprobante;
-    private String fecha;
+    private Date fecha;
     private String fechaNomina;
     private String claveContrato;
     private String rfc;
     private Double total;
-    private String fechaTimbre;
+    private Date fechaTimbre;
     private String rfcProv;
     private String uuid;
     private String selloCFD;
@@ -19,7 +21,7 @@ public class CompNomina {
     public CompNomina() {
     }
 
-    public CompNomina(Integer idComprobante, String fecha, String fechaNomina, String claveContrato, String rfc, Double total, String fechaTimbre, String rfcProv, String uuid, String selloCFD, String nCertificado, String selloSAT, Certificado certificado) {
+    public CompNomina(Integer idComprobante, Date fecha, String fechaNomina, String claveContrato, String rfc, Double total, Date fechaTimbre, String rfcProv, String uuid, String selloCFD, String nCertificado, String selloSAT, Certificado certificado) {
         this.idComprobante = idComprobante;
         this.fecha = fecha;
         this.fechaNomina = fechaNomina;
@@ -43,11 +45,11 @@ public class CompNomina {
         this.idComprobante = idComprobante;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -83,11 +85,11 @@ public class CompNomina {
         this.total = total;
     }
 
-    public String getFechaTimbre() {
+    public Date getFechaTimbre() {
         return fechaTimbre;
     }
 
-    public void setFechaTimbre(String fechaTimbre) {
+    public void setFechaTimbre(Date fechaTimbre) {
         this.fechaTimbre = fechaTimbre;
     }
 

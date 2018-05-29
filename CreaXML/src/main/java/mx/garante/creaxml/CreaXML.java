@@ -51,6 +51,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringReader;
 import java.io.Reader;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.Timbre33;
+import org.tempuri.IWSCFDI33;
+import org.tempuri.WSCFDI33;
 
 public class CreaXML {
 
@@ -64,9 +68,9 @@ public class CreaXML {
     private static final StreamSource formatoCadenaOriginal = new StreamSource(new File(directorioLocal + "/src/main/resources/configuration/cadenaoriginal_3_3.xslt"));
     private static final StreamSource formatoCadenaOriginalTimbre = new StreamSource(new File(directorioLocal + "/src/main/resources/configuration/cadenaoriginal_TFD_1_1.xslt"));
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss");
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMdd");
+    private static final SimpleDateFormat format3 = new SimpleDateFormat("yyyyMM");
 
     private static final NameSpaceMapper SPACE_MAPPER = new NameSpaceMapper();
     private static final String LOCATION = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd https://www.gp.org.mx/cfd/addenda/edoctasme https://www.gp.org.mx/EdoctaV1.xsd";
@@ -211,7 +215,7 @@ public class CreaXML {
 
                 if (compEdoCta == null) {
                     compEdoCta = new CompEdoCta();
-                    compEdoCta.setFecha(dateFormat.format(new Date()));
+                    compEdoCta.setFecha(new Date());
                     compEdoCta.setRfcProv("FLI081010EK2");
                     CertificadosDAO certificadosDAO = new CertificadosDAO();
                     compEdoCta.setCertificado(certificadosDAO.get(1));
@@ -221,7 +225,7 @@ public class CreaXML {
 
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
-                comprobante.setFecha(compEdoCta.getFecha());
+                comprobante.setFecha(Fecha.crearXMLGregorianCalendar(compEdoCta.getFecha()));
                 comprobante.setNoCertificado(compEdoCta.getCertificado().getnCertificado());
                 comprobante.setCertificado(compEdoCta.getCertificado().getCertificado());
                 comprobante.setFormaPago("03");
@@ -379,22 +383,40 @@ public class CreaXML {
                     StringWriter sw3 = new StringWriter();
                     marshaller.marshal(comprobante, sw3);
                     String xmlEnvio3 = sw3.toString();
+                    
+                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpoint();
+                    RespuestaTFD33 rtfd = servicio.timbrarCFDI("GDS160406V45", "HzrG4KXEe%", xmlEnvio3, contrato.getClave_contrato() + format3.format(fechaHoy));
 
-                    //WEB SERVICE
-                    System.out.println(xmlEnvio3);
+                    if (rtfd.isOperacionExitosa()) {
+                        Timbre33 timbre33 =  rtfd.getTimbre().getValue();
 
-                    compEdoCta.setFechaTimbre("2018-04-23T13:00:00");
+                        compEdoCta.setFechaTimbre(Fecha.getXMLGregorianCalendar(timbre33.getFechaTimbrado()));
+                        compEdoCta.setUuid(timbre33.getUUID().getValue());
+                        compEdoCta.setSelloCFD(timbre33.getSelloCFD().getValue());
+                        compEdoCta.setnCertificado(timbre33.getNumeroCertificadoSAT().getValue());
+                        compEdoCta.setSelloSAT(timbre33.getSelloSAT().getValue());
+
+                        // insertar en BD
+                        compEdoCta.setFechaEdoCta(format.format(fechaHoy));
+                        compEdoCta.setClaveContrato(contrato.getClave_contrato());
+                        compEdoCta.setTotal(comprobante.getTotal().doubleValue());
+                        ctaDAO.insert(compEdoCta);
+                    } else {
+                        System.out.println("Error edoCta -> " + contrato.getClave_contrato());
+                    }
+                    
+                    /*compEdoCta.setFechaTimbre(new Date());
                     compEdoCta.setUuid("71719215-789C-49A2-AA88-E78359E9B12A");
                     compEdoCta.setSelloCFD("YcmUTrHLcc2VwGwi1cauP0BrLsW4wJCsxIi9o1jzvsr3met/yozZADpPc4NXLSKOvgsgH8KyuYqreLsr1G8nzcrppgty87M5Gl1jYgborxU+7MmocB0SA34CR6TDuO13YPBF8naJbSV5Gs1VTY1dmOrmusUXf/sJs1j5wF4ylpMgjdi/fEG5LKf26OnEEhBeTZuZiFw4HWpUv7FkpcFZAYBX1shj93GJJhFDagp/wcyrBWtZT/4WTGEV0NBOouP31H55n6iIp058ucULQ9GOxwjKq+5JT1MOSIc8Xer/NgxslX5tt1YN+SlxK7QNu8flprwuOYhrIe/WzpC43I7PoA==");
                     compEdoCta.setnCertificado("00001000000404477432");
                     compEdoCta.setSelloSAT("L+CRAOScbb9DT8Zvxz3Hm1Ns4RPs1qjIqAeH+hauraseGfSJozM5vNFSl3cpSx3UVOFKQo7/R2x21W3+6w5OPyuuoZ6wqKf7llqCmKtbC1Z6e4hGiZmAcxGG0GEI6XA4QltzlrqyU/Ukyss7E7EgT5YO9vK8ogPGDdAM/CRuEIYRVXrxUI9MZ5pbLuJVvvSQa84wJNYlPX7HsCeIeQY+gsY5IrN6A/9cMLrs/H5zewjgdvG+z9bpcn+FTxzAnRY/O2X4ZFaiGIvIdUilqZ8x8rdY/eOxD35IT6LAUQgOWEhyhLpJFQ9uT/sou8aAfI5cUQ7DbyB1Bf4BEeWv0SnBtg==");
-
+                    
                     // insertar en BD
                     compEdoCta.setFechaEdoCta(format.format(fechaHoy));
                     compEdoCta.setClaveContrato(contrato.getClave_contrato());
                     compEdoCta.setTotal(comprobante.getTotal().doubleValue());
-                    ctaDAO.insert(compEdoCta);
-
+                    ctaDAO.insert(compEdoCta);*/
+                        
                 } else {
                     comprobante.setSello(compEdoCta.getSelloCFD());
                 }
@@ -404,7 +426,7 @@ public class CreaXML {
 
                 List<Object> tfds = new ArrayList<>();
                 TimbreFiscalDigital tdf = new TimbreFiscalDigital();
-                tdf.setFechaTimbrado(compEdoCta.getFechaTimbre());
+                tdf.setFechaTimbrado(Fecha.crearXMLGregorianCalendar(compEdoCta.getFechaTimbre()));
                 tdf.setVersion("1.1");
                 tdf.setRfcProvCertif(compEdoCta.getRfcProv());
                 tdf.setUUID(compEdoCta.getUuid());
@@ -565,7 +587,7 @@ public class CreaXML {
 
                 if (compNomina == null) {
                     compNomina = new CompNomina();
-                    compNomina.setFecha(dateFormat.format(new Date()));
+                    compNomina.setFecha(new Date());
                     compNomina.setRfcProv("FLI081010EK2");
                     CertificadosDAO certificadosDAO = new CertificadosDAO();
                     compNomina.setCertificado(certificadosDAO.get(1));
@@ -573,7 +595,7 @@ public class CreaXML {
 
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
-                comprobante.setFecha(compNomina.getFecha());
+                comprobante.setFecha(Fecha.crearXMLGregorianCalendar(compNomina.getFecha()));
                 comprobante.setNoCertificado(compNomina.getCertificado().getnCertificado());
                 comprobante.setCertificado(compNomina.getCertificado().getCertificado());
 
@@ -630,9 +652,9 @@ public class CreaXML {
                 Nomina nomina = new Nomina();
                 nomina.setVersion("1.2");
                 nomina.setTipoNomina(CTipoNomina.E);
-                nomina.setFechaPago(formatNomina.format(c2.getTime()));
-                nomina.setFechaInicialPago(formatNomina.format(c1.getTime()));
-                nomina.setFechaFinalPago(formatNomina.format(c2.getTime()));
+                nomina.setFechaPago(Fecha.crearXMLGregorianCalendar(c2.getTime()));
+                nomina.setFechaInicialPago(Fecha.crearXMLGregorianCalendar(c1.getTime()));
+                nomina.setFechaFinalPago(Fecha.crearXMLGregorianCalendar(c2.getTime()));
                 nomina.setNumDiasPagados(new BigDecimal(formatNomina.format(c2.getTime()).substring(8, 10)));
                 nomina.setTotalOtrosPagos(new BigDecimal(totalYSubTotal).setScale(2, RoundingMode.HALF_UP));
 
@@ -705,10 +727,28 @@ public class CreaXML {
                     marshaller.marshal(comprobante, sw3);
                     String xmlEnvio3 = sw3.toString();
 
-                    //WEB SERVICE
-                    System.out.println(xmlEnvio3);
+                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpoint();
+                    RespuestaTFD33 rtfd = servicio.timbrarCFDI("GDS160406V45", "HzrG4KXEe%", xmlEnvio3, rfc + format3.format(fechaHoy));
 
-                    compNomina.setFechaTimbre("2018-04-23T13:00:00");
+                    if (rtfd.isOperacionExitosa()) {
+                        Timbre33 timbre33 =  rtfd.getTimbre().getValue();
+                        compNomina.setFechaTimbre(Fecha.getXMLGregorianCalendar(timbre33.getFechaTimbrado()));
+                        compNomina.setUuid(timbre33.getUUID().getValue());
+                        compNomina.setSelloCFD(timbre33.getSelloCFD().getValue());
+                        compNomina.setnCertificado(timbre33.getNumeroCertificadoSAT().getValue());
+                        compNomina.setSelloSAT(timbre33.getSelloSAT().getValue());
+
+                        // insertar en BD
+                        compNomina.setFechaNomina(format.format(fechaHoy));
+                        compNomina.setClaveContrato(contrato.getClave_contrato());
+                        compNomina.setRfc(rfc);
+                        compNomina.setTotal(comprobante.getTotal().doubleValue());
+                        compNominaDAO.insert(compNomina);
+                    } else {
+                        System.out.println("Error web service RFC -> " + rfc);
+                    }
+                    
+                    /*compNomina.setFechaTimbre(new Date());
                     compNomina.setUuid("71719215-789C-49A2-AA88-E78359E9B12A");
                     compNomina.setSelloCFD("YcmUTrHLcc2VwGwi1cauP0BrLsW4wJCsxIi9o1jzvsr3met/yozZADpPc4NXLSKOvgsgH8KyuYqreLsr1G8nzcrppgty87M5Gl1jYgborxU+7MmocB0SA34CR6TDuO13YPBF8naJbSV5Gs1VTY1dmOrmusUXf/sJs1j5wF4ylpMgjdi/fEG5LKf26OnEEhBeTZuZiFw4HWpUv7FkpcFZAYBX1shj93GJJhFDagp/wcyrBWtZT/4WTGEV0NBOouP31H55n6iIp058ucULQ9GOxwjKq+5JT1MOSIc8Xer/NgxslX5tt1YN+SlxK7QNu8flprwuOYhrIe/WzpC43I7PoA==");
                     compNomina.setnCertificado("00001000000404477432");
@@ -719,7 +759,7 @@ public class CreaXML {
                     compNomina.setClaveContrato(contrato.getClave_contrato());
                     compNomina.setRfc(rfc);
                     compNomina.setTotal(comprobante.getTotal().doubleValue());
-                    compNominaDAO.insert(compNomina);
+                    compNominaDAO.insert(compNomina);*/
 
                 } else {
                     comprobante.setSello(compNomina.getSelloCFD());
@@ -731,7 +771,7 @@ public class CreaXML {
                 timbre.setSelloSAT(compNomina.getSelloSAT());
                 timbre.setNoCertificadoSAT(compNomina.getnCertificado());
                 timbre.setSelloCFD(compNomina.getSelloCFD());
-                timbre.setFechaTimbrado(compNomina.getFechaTimbre());
+                timbre.setFechaTimbrado(Fecha.crearXMLGregorianCalendar(compNomina.getFechaTimbre()));
                 timbre.setUUID(compNomina.getUuid());
 
                 StringWriter sw2 = new StringWriter();

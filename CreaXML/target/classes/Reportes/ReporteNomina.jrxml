@@ -101,9 +101,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="64" splitType="Stretch">
+		<band height="85" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="571" height="64" uuid="17123a08-90c3-4907-acb0-39333edcef58"/>
+				<reportElement x="0" y="0" width="571" height="84" uuid="17123a08-90c3-4907-acb0-39333edcef58"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -112,31 +112,43 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="373" y="0" width="192" height="14" uuid="7c09b28e-1c8b-4630-95ee-ff620e4fda72"/>
-				<textElement textAlignment="Right">
-					<font size="10" isBold="false"/>
+				<reportElement x="250" y="0" width="322" height="20" forecolor="#FF0400" uuid="617da4ec-2c95-4a20-979c-58f7c0b2c9d6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[RECIBO DE NÓMINA - OBLIGACIONES FIDEICOMISO]]></text>
+				<text><![CDATA[Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="443" y="36" width="122" height="14" uuid="5fa1a59f-e6dd-47a5-8b35-a7382ffd5581"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[FECHA DE EMISIÓN]]></text>
+				<reportElement x="250" y="45" width="322" height="14" uuid="d13be876-3fc4-489d-8913-740131d25340"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Nómina expedido en la Ciudad de México]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="443" y="50" width="122" height="14" uuid="15885b7d-3cfa-45aa-b2b8-6071a1469c7b"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="443" y="18" width="122" height="14" uuid="ce5b0d3e-3226-45c1-898a-e0f58020ce1c"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
+			<staticText>
+				<reportElement x="250" y="20" width="322" height="11" uuid="698547af-b24b-4be2-921a-39df33182dfb"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{ClaveFid}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[GDS160406V45]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="31" width="322" height="14" uuid="ec29dabf-d9d5-4bef-8469-2a225a92e603"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Régimen de Ley Personas Morales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="59" width="322" height="14" uuid="81eae8de-230f-42ff-8194-735160707029"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<text><![CDATA[Rio Mississippi 49 int 1402 Cuauhtemoc, CDMX, 06500]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="73" width="322" height="12" uuid="fba1284c-2acd-45b0-a050-0bdc8622db6c"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[       contacto@garante.mx                 +52 (55) 4164 3210]]></text>
+			</staticText>
 			<image>
-				<reportElement x="2" y="2" width="295" height="60" uuid="5eeb557a-3950-4fac-9fb7-cafbcd2730aa"/>
+				<reportElement x="4" y="4" width="220" height="75" uuid="25530db3-bbe2-4207-9f87-67c615dadc2b"/>
 				<imageExpression><![CDATA[$P{imagen}]]></imageExpression>
 			</image>
 		</band>
@@ -328,8 +340,8 @@
 				<text><![CDATA[Subtotal:]]></text>
 			</staticText>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="61" y="148" width="90" height="14" uuid="7e13da95-43af-48b5-937c-f7fa9dfc30f8"/>
-				<textElement textAlignment="Center">
+				<reportElement x="61" y="148" width="79" height="14" uuid="7e13da95-43af-48b5-937c-f7fa9dfc30f8"/>
+				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{STotRec}]]></textFieldExpression>
@@ -342,8 +354,8 @@
 				<text><![CDATA[Descuento:]]></text>
 			</staticText>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="61" y="160" width="90" height="14" uuid="a42fbaa4-9f28-47b4-aa34-2366be41c210"/>
-				<textElement textAlignment="Center">
+				<reportElement x="61" y="160" width="79" height="14" uuid="a42fbaa4-9f28-47b4-aa34-2366be41c210"/>
+				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{DescRec}]]></textFieldExpression>
@@ -356,8 +368,8 @@
 				<text><![CDATA[Total:]]></text>
 			</staticText>
 			<textField pattern="$ #,##0.00">
-				<reportElement x="60" y="174" width="90" height="14" uuid="3964a088-10a8-4be2-9532-d9a600308cfc"/>
-				<textElement textAlignment="Center">
+				<reportElement x="60" y="174" width="80" height="14" uuid="3964a088-10a8-4be2-9532-d9a600308cfc"/>
+				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TotRec}]]></textFieldExpression>
@@ -640,7 +652,7 @@
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="220" height="20" uuid="446df041-0448-4410-a9f2-7cf7be61687b"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
+								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
@@ -661,7 +673,7 @@
 						<jr:detailCell style="Table_TD" height="20">
 							<textField pattern="$ #,##0.00">
 								<reportElement x="0" y="0" width="122" height="20" uuid="384eb777-b681-4959-b890-3b24241d916a"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
@@ -872,7 +884,7 @@
 				<text><![CDATA[Este documento es una representación impresa de un CFDI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="223" width="572" height="34" uuid="57b6340b-4fa1-4f4c-9d78-0e0c59bac3d4"/>
+				<reportElement x="4" y="226" width="565" height="34" uuid="57b6340b-4fa1-4f4c-9d78-0e0c59bac3d4"/>
 				<textElement textAlignment="Justified">
 					<font size="6"/>
 				</textElement>
@@ -899,7 +911,7 @@
 				<text><![CDATA[Sello Digital del SAT:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="122" y="159" width="190" height="10" uuid="3656b956-c7b5-4aa5-9864-5483fc7e94af"/>
+				<reportElement x="122" y="159" width="218" height="10" uuid="3656b956-c7b5-4aa5-9864-5483fc7e94af"/>
 				<textElement>
 					<font size="7" isBold="true"/>
 				</textElement>

@@ -6,10 +6,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CompEdoCtaDAO extends Conexion {
+    
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public CompEdoCta getBy(String claveContrato, String fecha1) {
         CompEdoCta compEdoCta = null;
@@ -28,11 +32,11 @@ public class CompEdoCtaDAO extends Conexion {
             if (rs.next()) {
                 compEdoCta = new CompEdoCta();
                 compEdoCta.setIdComprobante(rs.getInt("idComprobante"));
-                compEdoCta.setFecha(rs.getString("fecha"));
+                compEdoCta.setFecha(format.parse(rs.getString("fecha")));
                 compEdoCta.setFechaEdoCta(rs.getString("fechaEdoCta"));
                 compEdoCta.setClaveContrato(rs.getString("claveContrato"));
                 compEdoCta.setTotal(rs.getDouble("total"));
-                compEdoCta.setFechaTimbre(rs.getString("fechaTimbre"));
+                compEdoCta.setFechaTimbre(format.parse(rs.getString("fechaTimbre")));
                 compEdoCta.setRfcProv(rs.getString("rfcProv"));
                 compEdoCta.setUuid(rs.getString("uuid"));
                 compEdoCta.setSelloCFD(rs.getString("selloCFD"));
@@ -42,7 +46,7 @@ public class CompEdoCtaDAO extends Conexion {
                 compEdoCta.setCertificado(certificadosDAO.get(rs.getInt("idCertificado")));
             }
 
-        } catch (SQLException ex) {
+        } catch (SQLException | ParseException ex) {
             Logger.getLogger(CompEdoCtaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.desconecta(con, rs, statement);
@@ -61,11 +65,11 @@ public class CompEdoCtaDAO extends Conexion {
             String sql = "insert into comprobantesEdoCta (fecha, fechaEdoCta, claveContrato, total, fechaTimbre, rfcProv, uuid, selloCFD, nCertificado, selloSAT, idCertificado) "+
                     "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
-            statement.setString(1, compEdoCta.getFecha());
+            statement.setString(1, format.format(compEdoCta.getFecha()));
             statement.setString(2, compEdoCta.getFechaEdoCta().substring(0, 7));
             statement.setString(3, compEdoCta.getClaveContrato());
             statement.setDouble(4, compEdoCta.getTotal());
-            statement.setString(5, compEdoCta.getFechaTimbre());
+            statement.setString(5, format.format(compEdoCta.getFechaTimbre()));
             statement.setString(6, compEdoCta.getRfcProv());
             statement.setString(7, compEdoCta.getUuid());
             statement.setString(8, compEdoCta.getSelloCFD());
