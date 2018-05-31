@@ -128,9 +128,9 @@ public class CreaPDF {
             parameters.put("AntRec", " ");
             parameters.put("TContRec", receptorNom.getTipoContrato());
             parameters.put("DPagRec", nomina.getNumDiasPagados().toString());
-            parameters.put("FecPag", dateFormat2.format(Fecha.getXMLGregorianCalendar(nomina.getFechaPago())));
-            parameters.put("FecIniPag", dateFormat2.format(Fecha.getXMLGregorianCalendar(nomina.getFechaInicialPago())));
-            parameters.put("FecFinPag", dateFormat2.format(Fecha.getXMLGregorianCalendar(nomina.getFechaFinalPago())));
+            parameters.put("FecPag", nomina.getFechaPago());
+            parameters.put("FecIniPag", nomina.getFechaInicialPago());
+            parameters.put("FecFinPag", nomina.getFechaFinalPago());
 
             parameters.put("STotRec", comprobante.getSubTotal());
             parameters.put("DescRec", new BigDecimal(0));

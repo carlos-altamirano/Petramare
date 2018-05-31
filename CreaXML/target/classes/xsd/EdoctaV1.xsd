@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edoctasme="https://www.gp.com.mx/cfd/addenda/edoctasme" targetNamespace="https://www.gp.com.mx/cfd/addenda/edoctasme" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edoctasme="https://www.garante.mx/cfd/addenda/edocta" targetNamespace="https://www.garante.mx/cfd/addenda/edocta" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:element name="EstadoDeCuenta">
         <xs:annotation>
             <xs:documentation>Addenda para los Estados de Cuenta de Soluciones Multiples Empresariales v1.0</xs:documentation>

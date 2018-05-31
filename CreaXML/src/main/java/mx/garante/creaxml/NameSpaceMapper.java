@@ -7,7 +7,7 @@ public class NameSpaceMapper extends NamespacePrefixMapper {
 
     private final String cfdi = "http://www.sat.gob.mx/cfd/3";
     private final String tfd = "http://www.sat.gob.mx/TimbreFiscalDigital";
-    private final String edocta = "https://www.gp.com.mx/cfd/addenda/edoctasme";
+    private final String edocta = "https://www.garante.mx/cfd/addenda/edocta";
     private final String nomina12 = "http://www.sat.gob.mx/nomina12";
 
     @Override

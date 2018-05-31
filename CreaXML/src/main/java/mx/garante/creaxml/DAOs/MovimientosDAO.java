@@ -21,7 +21,7 @@ public class MovimientosDAO extends Conexion {
         
         try {
             String sql = "select rfc from movimientos " +
-                    "where fecha_liquidacion >= ? and fecha_liquidacion <= ? " +
+                    "where rfc = 'TECC890312L67' and fecha_liquidacion >= ? and fecha_liquidacion <= ? " +
                     " group by rfc";
             statement = con.prepareStatement(sql);
             statement.setString(1, fecha1);

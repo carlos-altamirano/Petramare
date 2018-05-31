@@ -51,6 +51,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringReader;
 import java.io.Reader;
+import java.text.ParseException;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaValidacionRFC;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.Timbre33;
@@ -69,13 +70,14 @@ public class CreaXML {
     private static final StreamSource formatoCadenaOriginal = new StreamSource(new File(directorioLocal + "/src/main/resources/configuration/cadenaoriginal_3_3.xslt"));
     private static final StreamSource formatoCadenaOriginalTimbre = new StreamSource(new File(directorioLocal + "/src/main/resources/configuration/cadenaoriginal_TFD_1_1.xslt"));
 
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss");
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMdd");
     private static final SimpleDateFormat format3 = new SimpleDateFormat("yyyyMM");
 
     private static final NameSpaceMapper SPACE_MAPPER = new NameSpaceMapper();
-    private static final String LOCATION = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd https://www.gp.org.mx/cfd/addenda/edoctasme https://www.gp.org.mx/EdoctaV1.xsd";
-    private static final String LOCATIONFinal = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd https://www.gp.org.mx/cfd/addenda/edoctasme https://www.gp.org.mx/EdoctaV1.xsd";
+    private static final String LOCATION = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd https://www.garante.mx/cfd/addenda/edocta https://www.garante.mx/EdoctaV1.xsd";
+    private static final String LOCATIONFinal = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd https://www.garante.mx/cfd/addenda/edocta https://www.garante.mx/EdoctaV1.xsd";
     private static final String LOCATION2 = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
     private static final String LOCATION2Final = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
 
@@ -247,15 +249,19 @@ public class CreaXML {
                     compEdoCta = new CompEdoCta();
                     compEdoCta.setFecha(new Date());
                     compEdoCta.setRfcProv("FLI081010EK2");
-                    CertificadosDAO certificadosDAO = new CertificadosDAO();
-                    compEdoCta.setCertificado(certificadosDAO.get(1));
+                    Certificado certificado = new Certificado();
+                    certificado.setIdCertificado(1);
+                    certificado.setPassword("GDS160406");
+                    certificado.setnCertificado("00001000000402434213");
+                    certificado.setCertificado(Encriptar.base64File(directorioLocal + "/Certificados/00001000000402434213.cer"));
+                    compEdoCta.setCertificado(certificado);
                 }
 
                 List<EdoCta> edoCtas = edoCtaDAO.getEdoCta(contrato.getClave_contrato(), format.format(c1.getTime()), format.format(c2.getTime()));
 
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
-                comprobante.setFecha(Fecha.crearXMLGregorianCalendar(compEdoCta.getFecha()));
+                comprobante.setFecha(dateFormat.format(compEdoCta.getFecha()));
                 comprobante.setNoCertificado(compEdoCta.getCertificado().getnCertificado());
                 comprobante.setCertificado(compEdoCta.getCertificado().getCertificado());
                 comprobante.setFormaPago("03");
@@ -413,6 +419,9 @@ public class CreaXML {
                     StringWriter sw3 = new StringWriter();
                     marshaller.marshal(comprobante, sw3);
                     String xmlEnvio3 = sw3.toString();
+                    
+                    xmlEnvio3 = xmlEnvio3.replaceAll(" standalone=\"yes\"", "");
+                    xmlEnvio3 = xmlEnvio3.replaceAll(" https://www.garante.mx/cfd/addenda/edocta https://www.garante.mx/EdoctaV1.xsd", "");
 
                     String referencia = contrato.getClave_contrato() + format3.format(fechaHoy);
                     System.out.println("referencia: " + referencia);
@@ -612,13 +621,17 @@ public class CreaXML {
                     compNomina = new CompNomina();
                     compNomina.setFecha(new Date());
                     compNomina.setRfcProv("FLI081010EK2");
-                    CertificadosDAO certificadosDAO = new CertificadosDAO();
-                    compNomina.setCertificado(certificadosDAO.get(1));
+                    Certificado certificado = new Certificado();
+                    certificado.setIdCertificado(1);
+                    certificado.setPassword("GDS160406");
+                    certificado.setnCertificado("00001000000402434213");
+                    certificado.setCertificado(Encriptar.base64File(directorioLocal + "/Certificados/00001000000402434213.cer"));
+                    compNomina.setCertificado(certificado);
                 }
 
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
-                comprobante.setFecha(Fecha.crearXMLGregorianCalendar(compNomina.getFecha()));
+                comprobante.setFecha(dateFormat.format(compNomina.getFecha()));
                 comprobante.setNoCertificado(compNomina.getCertificado().getnCertificado());
                 comprobante.setCertificado(compNomina.getCertificado().getCertificado());
 
@@ -675,9 +688,9 @@ public class CreaXML {
                 Nomina nomina = new Nomina();
                 nomina.setVersion("1.2");
                 nomina.setTipoNomina(CTipoNomina.E);
-                nomina.setFechaPago(Fecha.crearXMLGregorianCalendar(c2.getTime()));
-                nomina.setFechaInicialPago(Fecha.crearXMLGregorianCalendar(c1.getTime()));
-                nomina.setFechaFinalPago(Fecha.crearXMLGregorianCalendar(c2.getTime()));
+                nomina.setFechaPago(formatNomina.format(c2.getTime()));
+                nomina.setFechaInicialPago(formatNomina.format(c1.getTime()));
+                nomina.setFechaFinalPago(formatNomina.format(c2.getTime()));
                 nomina.setNumDiasPagados(new BigDecimal(formatNomina.format(c2.getTime()).substring(8, 10)));
                 nomina.setTotalOtrosPagos(new BigDecimal(totalYSubTotal).setScale(2, RoundingMode.HALF_UP));
 
@@ -696,7 +709,7 @@ public class CreaXML {
                 receptorNom.setPeriodicidadPago("99");
                 receptorNom.setPuesto(movimientos.get(0).getPuesto_empleado());
                 receptorNom.setDepartamento(movimientos.get(0).getDepto_empleado());
-                receptorNom.setCuentaBancaria(new BigInteger(movimientos.get(0).getCuenta_deposito()));
+                receptorNom.setCuentaBancaria(movimientos.get(0).getCuenta_deposito());
                 receptorNom.setClaveEntFed(CEstado.fromValue(contrato.getEnt_fed()));
                 receptorNom.setBanco(String.format("%03d", Integer.parseInt(movimientos.get(0).getClave_banco())));
 
@@ -750,6 +763,16 @@ public class CreaXML {
                     marshaller.marshal(comprobante, sw3);
                     String xmlEnvio3 = sw3.toString();
 
+                    xmlEnvio3 = xmlEnvio3.replaceAll(" standalone=\"yes\"", "");
+                    //xmlEnvio3 = xmlEnvio3.replaceAll(" xmlns:edocta=\"https://www.garante.mx/cfd/addenda/edocta\"", "");
+                    //xmlEnvio3 = xmlEnvio3.replaceAll(" xmlns:tfd=\"http://www.sat.gob.mx/TimbreFiscalDigital\"", "");
+                    //xmlEnvio3 = xmlEnvio3.replaceAll(" xmlns:nomina12=\"http://www.sat.gob.mx/nomina12\"", "");
+                    //xmlEnvio3 = xmlEnvio3.replaceAll(" http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd", "");
+                    
+                    //xmlEnvio3 = xmlEnvio3.replaceAll("<nomina12:Nomina", "<nomina12:Nomina xmlns:nomina12=\"http://www.sat.gob.mx/nomina12\"");
+                    
+                    System.out.println(xmlEnvio3);
+                    
                     String referencia = rfc + format3.format(fechaHoy);
                     System.out.println("referencia: " + referencia);
                     
@@ -772,6 +795,9 @@ public class CreaXML {
                         compNominaDAO.insert(compNomina);
                     } else {
                         System.out.println("Error web service RFC -> " + rfc);
+                        System.out.println("Error edoCta -> " + contrato.getClave_contrato() + " ");
+                        System.out.println("CodigoRespuesta: " + rtfd.getCodigoRespuesta().getValue());
+                        System.out.println("MensajeError: " + rtfd.getMensajeError().getValue());
                     }
 
                 } else {
