@@ -52,6 +52,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.StringReader;
 import java.io.Reader;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaValidacionRFC;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.Timbre33;
 import org.tempuri.IWSCFDI33;
 import org.tempuri.WSCFDI33;
@@ -82,12 +83,6 @@ public class CreaXML {
         menu();
     }
 
-    private static void sistema() {
-        Date fechaHoy = new Date();
-        generaEdoCuenta(fechaHoy);
-        generaNomina(fechaHoy);
-    }
-
     private static void menu() {
         boolean res = true;
         while (res) {
@@ -96,7 +91,9 @@ public class CreaXML {
             System.out.println("2 .- Generar Estados de cuenta");
             System.out.println("3 .- Generar Nomina");
             System.out.println("4 .- Generar certificado");
-            System.out.println("5 .- Salir");
+            System.out.println("5 .- Consultar por referencia");
+            System.out.println("6 .- Consulta RFC");
+            System.out.println("7 .- Salir");
             System.out.print("Escribe el numero de tu seleccion -> ");
 
             Scanner entradaEscaner = new Scanner(System.in);
@@ -151,6 +148,12 @@ public class CreaXML {
                     generaCertificado();
                     break;
                 case "5":
+                    consultaPorReferencia();
+                    break;
+                case "6":
+                    consultaRFC();
+                    break;
+                case "7":
                     res = false;
                     System.out.println("Fin del proceso");
                     break;
@@ -160,6 +163,33 @@ public class CreaXML {
             }
 
         }
+    }
+    
+    private static void consultaPorReferencia() {
+        System.out.print("Ingresa la referencia formato (rfc+yyyyMM) o (contrato+yyyyMM)  -> ");
+        Scanner entradaEscaner = new Scanner(System.in);
+        String referencia = entradaEscaner.nextLine();
+        IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpointHttps();
+        RespuestaTFD33 rtfd = servicio.consultarTimbrePorReferencia("GDS160406V45", "HzrG4KXEe%", referencia.trim());
+        if (rtfd.isOperacionExitosa()) {
+            System.out.println(rtfd.getXMLResultado().getValue());
+        } else {
+            System.out.println("CodigoRespuesta: " + rtfd.getCodigoRespuesta().getValue());
+            System.out.println("MensajeError: " + rtfd.getMensajeError().getValue());
+        }
+    }
+    
+    private static void consultaRFC() {
+        System.out.print("Ingresa RFC a buscar  -> ");
+        Scanner entradaEscaner = new Scanner(System.in);
+        String rfc = entradaEscaner.nextLine();
+        IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpointHttps();
+        RespuestaValidacionRFC respuestaValidacionRFC = servicio.validarRFC("GDS160406V45", "HzrG4KXEe%", rfc.trim());
+        
+        System.out.println("Localizado: " + respuestaValidacionRFC.isRFCLocalizado());
+        System.out.println("Cancelado: " + respuestaValidacionRFC.isCancelado());
+        System.out.println("Subcontratacion: " + respuestaValidacionRFC.isSubcontratacion());
+        System.out.println("Unidad SNCF: " + respuestaValidacionRFC.isUnidadSNCF());
     }
 
     private static void generaCertificado() {
@@ -383,9 +413,12 @@ public class CreaXML {
                     StringWriter sw3 = new StringWriter();
                     marshaller.marshal(comprobante, sw3);
                     String xmlEnvio3 = sw3.toString();
+
+                    String referencia = contrato.getClave_contrato() + format3.format(fechaHoy);
+                    System.out.println("referencia: " + referencia);
                     
-                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpoint();
-                    RespuestaTFD33 rtfd = servicio.timbrarCFDI("GDS160406V45", "HzrG4KXEe%", xmlEnvio3, contrato.getClave_contrato() + format3.format(fechaHoy));
+                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpointHttps();
+                    RespuestaTFD33 rtfd = servicio.timbrarCFDI("GDS160406V45", "HzrG4KXEe%", xmlEnvio3, referencia);
 
                     if (rtfd.isOperacionExitosa()) {
                         Timbre33 timbre33 =  rtfd.getTimbre().getValue();
@@ -402,20 +435,10 @@ public class CreaXML {
                         compEdoCta.setTotal(comprobante.getTotal().doubleValue());
                         ctaDAO.insert(compEdoCta);
                     } else {
-                        System.out.println("Error edoCta -> " + contrato.getClave_contrato());
+                        System.out.println("Error edoCta -> " + contrato.getClave_contrato() + " ");
+                        System.out.println("CodigoRespuesta: " + rtfd.getCodigoRespuesta().getValue());
+                        System.out.println("MensajeError: " + rtfd.getMensajeError().getValue());
                     }
-                    
-                    /*compEdoCta.setFechaTimbre(new Date());
-                    compEdoCta.setUuid("71719215-789C-49A2-AA88-E78359E9B12A");
-                    compEdoCta.setSelloCFD("YcmUTrHLcc2VwGwi1cauP0BrLsW4wJCsxIi9o1jzvsr3met/yozZADpPc4NXLSKOvgsgH8KyuYqreLsr1G8nzcrppgty87M5Gl1jYgborxU+7MmocB0SA34CR6TDuO13YPBF8naJbSV5Gs1VTY1dmOrmusUXf/sJs1j5wF4ylpMgjdi/fEG5LKf26OnEEhBeTZuZiFw4HWpUv7FkpcFZAYBX1shj93GJJhFDagp/wcyrBWtZT/4WTGEV0NBOouP31H55n6iIp058ucULQ9GOxwjKq+5JT1MOSIc8Xer/NgxslX5tt1YN+SlxK7QNu8flprwuOYhrIe/WzpC43I7PoA==");
-                    compEdoCta.setnCertificado("00001000000404477432");
-                    compEdoCta.setSelloSAT("L+CRAOScbb9DT8Zvxz3Hm1Ns4RPs1qjIqAeH+hauraseGfSJozM5vNFSl3cpSx3UVOFKQo7/R2x21W3+6w5OPyuuoZ6wqKf7llqCmKtbC1Z6e4hGiZmAcxGG0GEI6XA4QltzlrqyU/Ukyss7E7EgT5YO9vK8ogPGDdAM/CRuEIYRVXrxUI9MZ5pbLuJVvvSQa84wJNYlPX7HsCeIeQY+gsY5IrN6A/9cMLrs/H5zewjgdvG+z9bpcn+FTxzAnRY/O2X4ZFaiGIvIdUilqZ8x8rdY/eOxD35IT6LAUQgOWEhyhLpJFQ9uT/sou8aAfI5cUQ7DbyB1Bf4BEeWv0SnBtg==");
-                    
-                    // insertar en BD
-                    compEdoCta.setFechaEdoCta(format.format(fechaHoy));
-                    compEdoCta.setClaveContrato(contrato.getClave_contrato());
-                    compEdoCta.setTotal(comprobante.getTotal().doubleValue());
-                    ctaDAO.insert(compEdoCta);*/
                         
                 } else {
                     comprobante.setSello(compEdoCta.getSelloCFD());
@@ -547,7 +570,7 @@ public class CreaXML {
                 html2 += "<h3>RFC QUE PRESENTARON ERRORES: </h3><br/><br/><ul>";
                 for (String rfc : rfcErrores) {
                     html2 += "<li>" + rfc + "</li>";
-                }
+            }
                 html2 += "</ul>";
             }
             EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalización de generación de estados de cuenta", html2);*/
@@ -727,8 +750,11 @@ public class CreaXML {
                     marshaller.marshal(comprobante, sw3);
                     String xmlEnvio3 = sw3.toString();
 
-                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpoint();
-                    RespuestaTFD33 rtfd = servicio.timbrarCFDI("GDS160406V45", "HzrG4KXEe%", xmlEnvio3, rfc + format3.format(fechaHoy));
+                    String referencia = rfc + format3.format(fechaHoy);
+                    System.out.println("referencia: " + referencia);
+                    
+                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpointHttps();
+                    RespuestaTFD33 rtfd = servicio.timbrarCFDI("GDS160406V45", "HzrG4KXEe%", xmlEnvio3, referencia);
 
                     if (rtfd.isOperacionExitosa()) {
                         Timbre33 timbre33 =  rtfd.getTimbre().getValue();
@@ -747,19 +773,6 @@ public class CreaXML {
                     } else {
                         System.out.println("Error web service RFC -> " + rfc);
                     }
-                    
-                    /*compNomina.setFechaTimbre(new Date());
-                    compNomina.setUuid("71719215-789C-49A2-AA88-E78359E9B12A");
-                    compNomina.setSelloCFD("YcmUTrHLcc2VwGwi1cauP0BrLsW4wJCsxIi9o1jzvsr3met/yozZADpPc4NXLSKOvgsgH8KyuYqreLsr1G8nzcrppgty87M5Gl1jYgborxU+7MmocB0SA34CR6TDuO13YPBF8naJbSV5Gs1VTY1dmOrmusUXf/sJs1j5wF4ylpMgjdi/fEG5LKf26OnEEhBeTZuZiFw4HWpUv7FkpcFZAYBX1shj93GJJhFDagp/wcyrBWtZT/4WTGEV0NBOouP31H55n6iIp058ucULQ9GOxwjKq+5JT1MOSIc8Xer/NgxslX5tt1YN+SlxK7QNu8flprwuOYhrIe/WzpC43I7PoA==");
-                    compNomina.setnCertificado("00001000000404477432");
-                    compNomina.setSelloSAT("L+CRAOScbb9DT8Zvxz3Hm1Ns4RPs1qjIqAeH+hauraseGfSJozM5vNFSl3cpSx3UVOFKQo7/R2x21W3+6w5OPyuuoZ6wqKf7llqCmKtbC1Z6e4hGiZmAcxGG0GEI6XA4QltzlrqyU/Ukyss7E7EgT5YO9vK8ogPGDdAM/CRuEIYRVXrxUI9MZ5pbLuJVvvSQa84wJNYlPX7HsCeIeQY+gsY5IrN6A/9cMLrs/H5zewjgdvG+z9bpcn+FTxzAnRY/O2X4ZFaiGIvIdUilqZ8x8rdY/eOxD35IT6LAUQgOWEhyhLpJFQ9uT/sou8aAfI5cUQ7DbyB1Bf4BEeWv0SnBtg==");
-
-                    // insertar en BD
-                    compNomina.setFechaNomina(format.format(fechaHoy));
-                    compNomina.setClaveContrato(contrato.getClave_contrato());
-                    compNomina.setRfc(rfc);
-                    compNomina.setTotal(comprobante.getTotal().doubleValue());
-                    compNominaDAO.insert(compNomina);*/
 
                 } else {
                     comprobante.setSello(compNomina.getSelloCFD());
@@ -865,7 +878,7 @@ public class CreaXML {
                 html2 += "<h3>RFC QUE PRESENTARON ERRORES: </h3><br/><br/><ul>";
                 for (String rfc : rfcErrores) {
                     html2 += "<li>" + rfc + "</li>";
-                }
+            }
                 html2 += "</ul>";
             }
             EnvioMail.enviaCorreo("erwin-leon@gp.org.mx", "Finalizacion de generación de Comprobantes de Nómina", html2);*/
