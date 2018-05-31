@@ -1,0 +1,376 @@
+/* 
+    Document   : formato
+    Created on : 21/02/2011, 02:52:17 PM
+    Author     : Luis Antio Valerio Gayosso
+    Description: Define el formato general
+    Purpose of the stylesheet follows.
+    TODO customize this sample styl
+    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+    #FACC2E
+*/
+
+
+
+.selectholder{
+    width:242px;
+    overflow:0px;
+    padding:4px;
+    height:22px;
+    display:block;
+    background:url(Imagen/Buscar.jpg);
+    color:#FFF;
+    font-family:Arial;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.selectholder select{
+    min-width:242px;
+}
+
+root { 
+    display: block;
+}
+
+.Title
+{
+    font-family:Arial;
+    font-size:17px;
+    color:#000000;
+    font-weight:bold;
+}
+
+.Titulo
+{
+    font-family:Arial;
+    font-size:16px;
+    color:#006699;
+    font-weight:bold;
+}
+.Subtitulo
+{
+    font-family:Arial;
+    font-size:12px;
+    color:#006699;
+    font-weight:bold;
+}
+
+.SubTitulo
+{
+    font-family:Arial;
+    font-size:12px;
+    color:#006699;
+    font-weight:bold;
+}
+.LetraInput
+{
+    font-family:Arial;
+    font-size:12px;
+    color:#000000;
+    font-weight:bold;
+
+}
+
+.TamDir
+{
+    height:220px;
+    width:380px;
+
+}
+
+.form-login {
+    background-color: #F7815E;   
+    width:360px;
+    height:230px;
+    font-family:Arial;
+    color:#18187d;
+    font-weight: 600;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.form-login input[type="text"]{
+    height: 20px;
+    width: 140px;
+    background-color: #e0e2e5;
+    border: none; 
+}
+
+.form-login input[type="password"]{    
+    height: 20px;
+    width: 140px;    
+    background-color: #e0e2e5;  
+    border: none;
+}
+.form-login input[type="button"]{
+    height: 30px;
+    width: 100px;    
+    background-color: #e0e2e5; 
+    border: none; 
+    font-size:14px;
+    color:#18187d;  
+    font-weight: 600;
+}
+.form-login input[type="button"]:hover{ 
+    cursor: pointer;
+    background-color: #ffffcc;
+}
+
+.form-login .encabezado{
+    font-size:20px;
+    font-weight: 600;
+}
+
+.form-noindent {
+    background-color: #ddf8cc;
+    border: #80c65a 1px solid;
+    font-family:Arial;
+    font-size:12px;
+    width:340px;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.form-inWhite{
+    background-color:#FFFFFF;
+    font-family:Arial;
+    font-size:12px;
+    border: #006699 1px solid;
+    border-radius: 3px;
+    padding: 10px 10px;
+}
+
+
+.form-noindentCaptureA {
+    background-color:#FFFFFF;
+    font-family:Arial;
+    font-size:13px;
+    border:#006699 1px solid;
+    border-radius: 3px;
+    padding: 10px 10px;
+}
+
+
+.form-noindentCaptureCT {
+    background-color:#FFFFFF;
+    font-family:Arial;
+    font-size:12px;
+    border:#006699 1px solid;
+    border-radius: 3px;
+    padding: 10px 10px;
+}
+
+
+.form-noindentCaptureCP {
+    background-color:#FFFFFF;
+    font-family:Arial;
+    font-size:11px;
+    border:#006699 1px solid;
+    width:690px;
+}
+
+
+.TamDirBienv
+{
+    height:110px;
+    width:420px;
+    border-radius: 3px;
+}
+
+.TamDivMov5
+{
+    background-color:#ddf8cc;
+    font-family:Arial;
+    font-size:12px;
+    border:#006699 1px solid;
+    height:180px;
+    width:400px;
+}
+
+.TamDivAct
+{
+    height:130px;
+    width:490px;
+}
+.NormalBoton
+{
+    font-family:Arial;
+    background:#006699;
+    color:#E7C904;
+    font-weight:bold;
+}
+
+.botonSeleccionAccion
+{
+    font-family:Arial;
+    font-size: medium;
+    background:#006699;
+    color:#E7C904;
+    font-weight:bold;
+    padding: 5px 10px;
+}
+
+.inputFormat
+{
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 11px;
+    color: #FFFFFF;
+    background-color: #6699CC;
+    border: #000099;
+    border-style: solid;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px
+}
+
+.sobreBoton
+{
+    background:#6F9EDA;
+}
+
+.LetraReporte
+{
+    font-family:Arial;
+    font-size:15px;
+}
+#pane1{height:232px;overflow:hidden;width:500px;}
+
+.jScrollPaneContainer {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.jScrollPaneTrack {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: #93c4ae;
+}
+.jScrollPaneDrag {
+    position: absolute;
+    background: #559777;
+    cursor: pointer;
+    overflow: hidden;
+}
+.jScrollPaneDragTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.jScrollPaneDragBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+a.jScrollArrowUp {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    text-indent: -2000px;
+    overflow: hidden;
+    /*background-color: #666;*/
+    height: 9px;
+}
+a.jScrollArrowUp:hover {
+    /*background-color: #f60;*/
+}
+
+a.jScrollArrowDown {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    text-indent: -2000px;
+    overflow: hidden;
+    /*background-color: #666;*/
+    height: 9px;
+}
+a.jScrollArrowDown:hover {
+    /*background-color: #f60;*/
+}
+a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
+    /*background-color: #f00;*/
+}
+
+.tabla_saldos{
+    background-color: #eeeeee;
+    font-family: sans-serif;
+    font-size: 16px;
+
+}
+.tabla_saldos td{
+    border-bottom-style: solid;
+    border-bottom-color: silver;
+    border-left-style: hidden;
+    border-right-style: hidden;
+}
+
+#agrupar {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    font-family: Verdana, Tahoma, Geneva, sans-serif;
+}
+
+#cabecera{
+    text-align: center;
+    margin: 20px;
+}
+#login{
+    /*background-color: #00f;*/
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    padding: 25px 0px;
+}
+
+#pie{
+    width:100%;
+    border-top: 5px #00008C solid;
+    background: rgb(187, 37, 44);
+    padding: 5px 20px;
+    margin: 100px 0px 0px 0px;
+    text-align: center;
+}
+
+#pie p{
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;	
+    line-height: 12px;
+    font-weight: 800;
+    padding: 0px 0px;
+    margin: 5px 0px;
+}
+
+#pie p a{
+    font-size: 12px;
+    color: #F7CA9A;
+    text-decoration: none;	
+}
+
+#pie p a:link {
+    font-size: 12px;
+    color: #F7CA9A;
+    text-decoration: none;
+}
+#pie p a:visited {
+    font-size: 12px;
+    color: #F7CA9A;
+    text-decoration: underline;
+}
+
+#pie p a:hover {
+    font-size: 12px;
+    color: #00008C;
+    text-decoration: underline;
+}
