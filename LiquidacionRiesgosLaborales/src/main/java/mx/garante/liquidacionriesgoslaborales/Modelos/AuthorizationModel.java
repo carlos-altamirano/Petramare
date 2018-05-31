@@ -1824,7 +1824,7 @@ public class AuthorizationModel {
             fecha_carga_lote = new clsFecha().CambiaFormatoFecha("yyyy-MM-dd HH:mm:ss.SSS", "dd/MM/yyyy HH:mm:ss", fecha_carga_lote);
 
             //version 3: con estado de cuenta saldos
-            seGuardo = this.creaReporteLiquidacion(realPath + "\\WEB-INF\\classes\\Common\\RL_FINAL_SALDOS.jrxml", clave_contrato, fecha_liquidacion, nombre_archivo,
+            seGuardo = this.creaReporteLiquidacion(realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\RL_FINAL_SALDOS.jrxml", clave_contrato, fecha_liquidacion, nombre_archivo,
                     mov1, mov2, mov3, mov4, mov5, importeTotalMXP, movs_tipo1, movs_tipo2, movs_tipo3, movs_tipo4, movs_tipo5, total_movs, fecha_carga_lote, fecha_hoy, url, idx_archivo,
                     saldo_actual, nuevo_saldo, connection, realPath);
 

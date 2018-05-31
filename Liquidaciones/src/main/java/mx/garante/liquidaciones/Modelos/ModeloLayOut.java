@@ -4137,14 +4137,14 @@ public class ModeloLayOut {
 
             if (apo_min_req.equals("$ 0.00")) {
                 if (resumen.total_movs_tipo5 > 0 || resumen.total_movs_tipo5_pend > 0) {
-                    url_jasper = realPath + "\\WEB-INF\\classes\\Common\\RL_SALDOS_M5.jrxml";
+                    url_jasper = realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidaciones\\Common\\RL_SALDOS_M5.jrxml";
                 } else {
-                    url_jasper = realPath + "\\WEB-INF\\classes\\Common\\RL_SALDOS.jrxml";
+                    url_jasper = realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidaciones\\Common\\RL_SALDOS.jrxml";
                 }
             } else if (resumen.total_movs_tipo5 > 0 || resumen.total_movs_tipo5_pend > 0) {
-                url_jasper = realPath + "\\WEB-INF\\classes\\Common\\RL_SALDOS_DEFICIT_M5.jrxml";
+                url_jasper = realPath + "\\WEB-INF\\classes\\Common\\mx\\garante\\liquidaciones\\RL_SALDOS_DEFICIT_M5.jrxml";
             } else {
-                url_jasper = realPath + "\\WEB-INF\\classes\\Common\\RL_SALDOS_DEFICIT.jrxml";
+                url_jasper = realPath + "\\WEB-INF\\classes\\Common\\mx\\garante\\liquidaciones\\RL_SALDOS_DEFICIT.jrxml";
             }
             seGuardo = this.creaRL_Cliente_Saldos(url_jasper, clave_contrato, fecha_liquidacion, formato_fecha, nombre_archivo,
                     mov1, mov2, mov3, mov4, mov5, mov5_pend, importeTotalMXP, movs_tipo1, movs_tipo2,
