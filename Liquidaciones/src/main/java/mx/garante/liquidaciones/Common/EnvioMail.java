@@ -200,7 +200,7 @@ public class EnvioMail {
      * @return boolean: True si la transacción se realizó satisfactoriamente ese
      * en otro caso.
      */
-    public static boolean enviaCorreo2(String correoOrigen, String correoDestino, String asunto, String texto, String puerto) {
+    public static boolean enviaCorreo2(String correoOrigen, String correoDestino, String asunto, String texto) {
 
         boolean envio = false;
         Transport t = null;
@@ -235,7 +235,7 @@ public class EnvioMail {
             t = session.getTransport("smtp");
             //Autentificamos usuario y password del emisor.
 //            t.connect(correoOrigen, "liquidaciones");
-            t.connect(correoOrigen, "L1qu1da*");
+            t.connect(correoOrigen, "GarConta16*");
             t.sendMessage(message, message.getAllRecipients());
 
             // Cerramos las conexiones.
@@ -245,14 +245,14 @@ public class EnvioMail {
             envio = true;
         } catch (Exception e) {
             envio = false;
-            System.out.println("enviaSoloCorreoLSin puerto=" + puerto + " :" + e.getMessage());
+            System.out.println("enviaSoloCorreoLSin:" + e.getMessage());
             // Cerramos las conexiones.
             try {
                 if (t != null) {
                     t.close();
                 }
             } catch (Exception ex) {
-                System.out.println("enviaSoloCorreoLSin_Close puerto=" + puerto + " :" + ex.getMessage());
+                System.out.println("enviaSoloCorreoLSin_Close :" + ex.getMessage());
             }
         }
         return envio;

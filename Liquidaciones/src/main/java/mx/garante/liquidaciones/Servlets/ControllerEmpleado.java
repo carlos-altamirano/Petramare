@@ -290,9 +290,9 @@ public class ControllerEmpleado extends HttpServlet {
                     html += "</tr>";
                 html += "</tdoby>\n" +
                 "    </table>";
-            if (!EnvioMail.enviaCorreo2("contacto@garante.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html, "587")) {
+            if (!EnvioMail.enviaCorreo2("contacto@garante.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html)) {
                 Thread.sleep(180000);
-                EnvioMail.enviaCorreo2("contacto@garante.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html, "587");
+                EnvioMail.enviaCorreo2("contacto@garante.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html);
             }
         } catch (InterruptedException ex) {
             System.out.println("Error al enviar correo " + ex);

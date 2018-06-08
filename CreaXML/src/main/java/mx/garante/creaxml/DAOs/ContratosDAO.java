@@ -62,7 +62,7 @@ public class ContratosDAO extends Conexion {
         ResultSet rs = null;
         
         try {
-            String sql = "select * from contratos where status = 'A'"; //and rfc = 'JMR5208089P1'";
+            String sql = "select * from contratos where status = 'A'";
             statement = con.prepareStatement(sql);
             rs = statement.executeQuery();
             

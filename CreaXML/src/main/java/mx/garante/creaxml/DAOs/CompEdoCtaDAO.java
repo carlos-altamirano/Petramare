@@ -54,6 +54,32 @@ public class CompEdoCtaDAO extends Conexion {
 
         return compEdoCta;
     }
+    
+    public Integer cuentaMes(String fecha) {
+        Integer res = 0;
+
+        Connection con = this.conecta();
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "select count(*) cuenta from comprobantesEdoCta where fechaEdoCta = ?";
+            statement = con.prepareStatement(sql);
+            statement.setString(1, fecha);
+            rs = statement.executeQuery();
+
+            if (rs.next()) {
+                res = rs.getInt("cuenta");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CompEdoCtaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.desconecta(con, rs, statement);
+        }
+
+        return res;
+    }
 
     public boolean insert(CompEdoCta compEdoCta) {
         boolean res = false;
