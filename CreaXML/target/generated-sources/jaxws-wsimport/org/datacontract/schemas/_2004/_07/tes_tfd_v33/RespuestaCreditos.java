@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaCreditos complex type.
+ * <p>Clase Java para RespuestaCreditos complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RespuestaCreditos">
@@ -46,7 +46,7 @@ public class RespuestaCreditos {
     protected JAXBElement<ArrayOfDetallesPaqueteCreditos> paquetes;
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class RespuestaCreditos {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class RespuestaCreditos {
     }
 
     /**
-     * Gets the value of the operacionExitosa property.
+     * Obtiene el valor de la propiedad operacionExitosa.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class RespuestaCreditos {
     }
 
     /**
-     * Sets the value of the operacionExitosa property.
+     * Define el valor de la propiedad operacionExitosa.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class RespuestaCreditos {
     }
 
     /**
-     * Gets the value of the paquetes property.
+     * Obtiene el valor de la propiedad paquetes.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class RespuestaCreditos {
     }
 
     /**
-     * Sets the value of the paquetes property.
+     * Define el valor de la propiedad paquetes.
      * 
      * @param value
      *     allowed object is

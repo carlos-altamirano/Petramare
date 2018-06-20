@@ -72,7 +72,7 @@ public class CreaPDF {
             parameters.put("imagen1", imagen + "/imagen1.jpg");
             parameters.put("imagen2", imagen + "/imagen2.jpg");
 
-            parameters.put("qr", generaQr(tfd.getUUID(), rfcEmisor, contrato.getRFC(), totalAbono, tfd.getSelloSAT()));
+            parameters.put("qr", generaQr(tfd.getUUID(), rfcEmisor, contrato.getRFC(), totalAbono, tfd.getSelloCFD()));
 
             List<EdoCta> detalle = contrato.getEdoCtas();
 
@@ -161,7 +161,7 @@ public class CreaPDF {
             
             parameters.put("imagen", imagen + "/imagen1.jpg");
 
-            parameters.put("qr", generaQr(timbre.getUUID(), emisor.getRfc(), receptor.getRfc(), comprobante.getTotal().doubleValue(), timbre.getSelloSAT()));
+            parameters.put("qr", generaQr(timbre.getUUID(), emisor.getRfc(), receptor.getRfc(), comprobante.getTotal().doubleValue(), timbre.getSelloCFD()));
 
             JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(detalle);
             parameters.put("detalle", itemsJRBean);
@@ -203,7 +203,7 @@ public class CreaPDF {
         qr += "&re=" + rfcEmisor;
         qr += "&rr=" + rfcReceptor;
         qr += "&tt=" + String.format("%018d", entero) + "." + decimalCeros;
-        qr += "&fe=" + caracteres.substring(caracteres.length() - 8, caracteres.length());
+        qr += "&fe=" + caracteres.substring(caracteres.trim().length() - 8, caracteres.trim().length());
 
         return qr;
     }

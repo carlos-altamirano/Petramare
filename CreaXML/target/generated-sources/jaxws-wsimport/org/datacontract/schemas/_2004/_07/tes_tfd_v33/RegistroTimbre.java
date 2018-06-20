@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for RegistroTimbre complex type.
+ * <p>Clase Java para RegistroTimbre complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RegistroTimbre">
@@ -61,7 +61,7 @@ public class RegistroTimbre {
     protected JAXBElement<String> uuid;
 
     /**
-     * Gets the value of the estado property.
+     * Obtiene el valor de la propiedad estado.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Sets the value of the estado property.
+     * Define el valor de la propiedad estado.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Gets the value of the fechaTimbrado property.
+     * Obtiene el valor de la propiedad fechaTimbrado.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Sets the value of the fechaTimbrado property.
+     * Define el valor de la propiedad fechaTimbrado.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Gets the value of the noFila property.
+     * Obtiene el valor de la propiedad noFila.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Sets the value of the noFila property.
+     * Define el valor de la propiedad noFila.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Gets the value of the rfcEmisor property.
+     * Obtiene el valor de la propiedad rfcEmisor.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Sets the value of the rfcEmisor property.
+     * Define el valor de la propiedad rfcEmisor.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Gets the value of the rfcReceptor property.
+     * Obtiene el valor de la propiedad rfcReceptor.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Sets the value of the rfcReceptor property.
+     * Define el valor de la propiedad rfcReceptor.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +181,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Gets the value of the uuid property.
+     * Obtiene el valor de la propiedad uuid.
      * 
      * @return
      *     possible object is
@@ -193,7 +193,7 @@ public class RegistroTimbre {
     }
 
     /**
-     * Sets the value of the uuid property.
+     * Define el valor de la propiedad uuid.
      * 
      * @param value
      *     allowed object is

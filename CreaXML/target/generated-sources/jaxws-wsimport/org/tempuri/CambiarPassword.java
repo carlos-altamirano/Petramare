@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType>
@@ -47,7 +47,7 @@ public class CambiarPassword {
     protected JAXBElement<String> passwordNuevo;
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -59,7 +59,7 @@ public class CambiarPassword {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -71,7 +71,7 @@ public class CambiarPassword {
     }
 
     /**
-     * Gets the value of the passwordActual property.
+     * Obtiene el valor de la propiedad passwordActual.
      * 
      * @return
      *     possible object is
@@ -83,7 +83,7 @@ public class CambiarPassword {
     }
 
     /**
-     * Sets the value of the passwordActual property.
+     * Define el valor de la propiedad passwordActual.
      * 
      * @param value
      *     allowed object is
@@ -95,7 +95,7 @@ public class CambiarPassword {
     }
 
     /**
-     * Gets the value of the passwordNuevo property.
+     * Obtiene el valor de la propiedad passwordNuevo.
      * 
      * @return
      *     possible object is
@@ -107,7 +107,7 @@ public class CambiarPassword {
     }
 
     /**
-     * Sets the value of the passwordNuevo property.
+     * Define el valor de la propiedad passwordNuevo.
      * 
      * @param value
      *     allowed object is

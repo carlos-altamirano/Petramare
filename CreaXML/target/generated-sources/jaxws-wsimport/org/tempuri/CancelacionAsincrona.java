@@ -11,9 +11,9 @@ import com.microsoft.schemas._2003._10.serialization.arrays.ArrayOfstring;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType>
@@ -60,7 +60,7 @@ public class CancelacionAsincrona {
     protected JAXBElement<String> passwordClavePrivada;
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the password property.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the password property.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the rfcEmisor property.
+     * Obtiene el valor de la propiedad rfcEmisor.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the rfcEmisor property.
+     * Define el valor de la propiedad rfcEmisor.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the listaCFDI property.
+     * Obtiene el valor de la propiedad listaCFDI.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the listaCFDI property.
+     * Define el valor de la propiedad listaCFDI.
      * 
      * @param value
      *     allowed object is
@@ -156,7 +156,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the clavePrivadaBase64 property.
+     * Obtiene el valor de la propiedad clavePrivadaBase64.
      * 
      * @return
      *     possible object is
@@ -168,7 +168,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the clavePrivadaBase64 property.
+     * Define el valor de la propiedad clavePrivadaBase64.
      * 
      * @param value
      *     allowed object is
@@ -180,7 +180,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the passwordClavePrivada property.
+     * Obtiene el valor de la propiedad passwordClavePrivada.
      * 
      * @return
      *     possible object is
@@ -192,7 +192,7 @@ public class CancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the passwordClavePrivada property.
+     * Define el valor de la propiedad passwordClavePrivada.
      * 
      * @param value
      *     allowed object is

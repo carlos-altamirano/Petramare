@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaEstatusCancelacionAsincrona complex type.
+ * <p>Clase Java para RespuestaEstatusCancelacionAsincrona complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RespuestaEstatusCancelacionAsincrona">
@@ -54,7 +54,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     protected JAXBElement<String> xmlAcuse;
 
     /**
-     * Gets the value of the estatus property.
+     * Obtiene el valor de la propiedad estatus.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the estatus property.
+     * Define el valor de la propiedad estatus.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the operacionExitosa property.
+     * Obtiene el valor de la propiedad operacionExitosa.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the operacionExitosa property.
+     * Define el valor de la propiedad operacionExitosa.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the referencia property.
+     * Obtiene el valor de la propiedad referencia.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the referencia property.
+     * Define el valor de la propiedad referencia.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the xmlAcuse property.
+     * Obtiene el valor de la propiedad xmlAcuse.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class RespuestaEstatusCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the xmlAcuse property.
+     * Define el valor de la propiedad xmlAcuse.
      * 
      * @param value
      *     allowed object is

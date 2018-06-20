@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaCancelacionAsincrona complex type.
+ * <p>Clase Java para RespuestaCancelacionAsincrona complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="RespuestaCancelacionAsincrona">
@@ -50,7 +50,7 @@ public class RespuestaCancelacionAsincrona {
     protected JAXBElement<String> referencia;
 
     /**
-     * Gets the value of the detallesCancelacion property.
+     * Obtiene el valor de la propiedad detallesCancelacion.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the detallesCancelacion property.
+     * Define el valor de la propiedad detallesCancelacion.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the operacionExitosa property.
+     * Obtiene el valor de la propiedad operacionExitosa.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the operacionExitosa property.
+     * Define el valor de la propiedad operacionExitosa.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Gets the value of the referencia property.
+     * Obtiene el valor de la propiedad referencia.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class RespuestaCancelacionAsincrona {
     }
 
     /**
-     * Sets the value of the referencia property.
+     * Define el valor de la propiedad referencia.
      * 
      * @param value
      *     allowed object is

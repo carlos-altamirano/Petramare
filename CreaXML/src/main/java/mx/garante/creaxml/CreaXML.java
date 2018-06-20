@@ -50,6 +50,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringReader;
 import java.io.Reader;
+import mx.garante.creaxml.Helpers.ErroresXML;
+import mx.garante.creaxml.Helpers.ReportesExcel;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaValidacionRFC;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.Timbre33;
@@ -251,7 +253,10 @@ public class CreaXML {
     }
 
     private static void generaEdoCuenta(Date fechaHoy) {
-        
+        int errorestimbrado = 0, errorespdf = 0, erroresxml = 0, totaledoscta = 0;
+        String rfcActual = "";
+        List<String> rfcErrores = new ArrayList<>();
+        List<ErroresXML> lErrores = new ArrayList<>();
         ContratosDAO contratosDAO = new ContratosDAO();
         GenericEdoCtaDAO edoCtaDAO = new GenericEdoCtaDAO();
         CompEdoCtaDAO compEdoCtaDAO = new CompEdoCtaDAO();
@@ -261,6 +266,8 @@ public class CreaXML {
 
         Calendar c1 = Fecha.getPrimerDiaDeMes(fechaHoy);
         Calendar c2 = Fecha.getUltimoDiaDeMes(fechaHoy);
+        
+        totaledoscta = contratos.size();
 
         System.out.println("Generando estados de cuenta");
 
@@ -271,8 +278,9 @@ public class CreaXML {
             System.out.println(contrato.getClave_contrato() + " " + cont + " de " + contratos.size());
             cont++;
             
+            rfcActual = contrato.getRFC();
+            
             try {
-
                 CompEdoCtaDAO ctaDAO = new CompEdoCtaDAO();
                 CompEdoCta compEdoCta = ctaDAO.getBy(contrato.getClave_contrato(), format.format(c1.getTime()));
 
@@ -478,6 +486,7 @@ public class CreaXML {
                         System.out.println("Error edoCta -> " + contrato.getClave_contrato() + " ");
                         System.out.println("CodigoRespuesta: " + rtfd.getCodigoRespuesta().getValue());
                         System.out.println("MensajeError: " + rtfd.getMensajeError().getValue());
+                        guardaError(lErrores, new ErroresXML(rfcActual,format.format(new Date()),rtfd.getMensajeError().getValue()));
                     }
 
                 } else {
@@ -571,16 +580,22 @@ public class CreaXML {
 
             } catch (JAXBException | TransformerException ex) {
                 Logger.getLogger(CreaXML.class.getName()).log(Level.SEVERE, null, ex);
+                erroresxml++;
+                if( !rfcErrores.contains(rfcActual) ) rfcErrores.add(rfcActual);
+                guardaError(lErrores, new ErroresXML(rfcActual,format.format(new Date()),ex.getMessage()));
             }
             
         }
-        
+        ReportesExcel reportes = new ReportesExcel(); reportes.generaExcel("EDOCTA_"+format4.format(fechaHoy), lErrores);   
     }
 
     private static void generaNomina(Date fechaHoy) {
         System.out.println("Generando Nomina");
         SimpleDateFormat formatNomina = new SimpleDateFormat("yyyy-MM-dd");
-
+        int errorestimbrado = 0, errorespdf = 0, erroresxml = 0, totalcompsnomina = 0;
+        String rfcActual = "";
+        List<String> rfcErrores = new ArrayList<>();
+        List<ErroresXML> lErrores = new ArrayList<>();
         ContratosDAO contratosDAO = new ContratosDAO();
         MovimientosDAO movimientosDAO = new MovimientosDAO();
         CompNominaDAO compNominaDAO = new CompNominaDAO();
@@ -596,7 +611,9 @@ public class CreaXML {
 
             System.out.println(rfc + " " + cont + " de " + rfcs.size());
             cont++;
-
+            
+            rfcActual = rfc;
+            
             try {
             
                 List<Movimiento> movimientos = movimientosDAO.getAll(rfc, format.format(c1.getTime()), format.format(c2.getTime()));
@@ -784,6 +801,7 @@ public class CreaXML {
                         System.out.println("Error edoCta -> " + contrato.getClave_contrato() + " ");
                         System.out.println("CodigoRespuesta: " + rtfd.getCodigoRespuesta().getValue());
                         System.out.println("MensajeError: " + rtfd.getMensajeError().getValue());
+                        guardaError(lErrores, new ErroresXML(rfc,format.format(new Date()),rtfd.getMensajeError().getValue()));
                     }
 
                 } else {
@@ -850,10 +868,24 @@ public class CreaXML {
 
             } catch (JAXBException | TransformerException ex) {
                 Logger.getLogger(CreaXML.class.getName()).log(Level.SEVERE, null, ex);
+                erroresxml++;
+                if( !rfcErrores.contains(rfcActual) ) rfcErrores.add(rfcActual);
+                guardaError(lErrores, new ErroresXML(rfc,format.format(new Date()),ex.getMessage()));
             }
 
         }
-        
+        ReportesExcel reportes = new ReportesExcel(); reportes.generaExcel("NOMINA_"+format4.format(fechaHoy), lErrores);
     }
-
+    
+    private static void guardaError(List<ErroresXML> lErrores, ErroresXML error){
+        boolean registrado = false;
+        for(ErroresXML e : lErrores){
+            if(error.equals(e)){
+                registrado = true;
+                break;
+            }
+        }
+        if(!registrado)
+            lErrores.add(error);
+    }
 }

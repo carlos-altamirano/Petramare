@@ -11,9 +11,9 @@ import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCancelacionAsincr
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType>
@@ -40,7 +40,7 @@ public class CancelacionAsincronaResponse {
     protected JAXBElement<RespuestaCancelacionAsincrona> cancelacionAsincronaResult;
 
     /**
-     * Gets the value of the cancelacionAsincronaResult property.
+     * Obtiene el valor de la propiedad cancelacionAsincronaResult.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class CancelacionAsincronaResponse {
     }
 
     /**
-     * Sets the value of the cancelacionAsincronaResult property.
+     * Define el valor de la propiedad cancelacionAsincronaResult.
      * 
      * @param value
      *     allowed object is
