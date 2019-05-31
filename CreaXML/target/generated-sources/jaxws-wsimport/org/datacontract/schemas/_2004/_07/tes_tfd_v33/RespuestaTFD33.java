@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RespuestaTFD33 complex type.
+ * <p>Java class for RespuestaTFD33 complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RespuestaTFD33">
@@ -70,7 +70,7 @@ public class RespuestaTFD33 {
     protected JAXBElement<String> xmlResultado;
 
     /**
-     * Obtiene el valor de la propiedad codigoConfirmacion.
+     * Gets the value of the codigoConfirmacion property.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad codigoConfirmacion.
+     * Sets the value of the codigoConfirmacion property.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad codigoRespuesta.
+     * Gets the value of the codigoRespuesta property.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad codigoRespuesta.
+     * Sets the value of the codigoRespuesta property.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad creditosRestantes.
+     * Gets the value of the creditosRestantes property.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad creditosRestantes.
+     * Sets the value of the creditosRestantes property.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad mensajeError.
+     * Gets the value of the mensajeError property.
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad mensajeError.
+     * Sets the value of the mensajeError property.
      * 
      * @param value
      *     allowed object is
@@ -166,7 +166,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad mensajeErrorDetallado.
+     * Gets the value of the mensajeErrorDetallado property.
      * 
      * @return
      *     possible object is
@@ -178,7 +178,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad mensajeErrorDetallado.
+     * Sets the value of the mensajeErrorDetallado property.
      * 
      * @param value
      *     allowed object is
@@ -190,7 +190,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad operacionExitosa.
+     * Gets the value of the operacionExitosa property.
      * 
      * @return
      *     possible object is
@@ -202,7 +202,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad operacionExitosa.
+     * Sets the value of the operacionExitosa property.
      * 
      * @param value
      *     allowed object is
@@ -214,7 +214,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad pdfResultado.
+     * Gets the value of the pdfResultado property.
      * 
      * @return
      *     possible object is
@@ -226,7 +226,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad pdfResultado.
+     * Sets the value of the pdfResultado property.
      * 
      * @param value
      *     allowed object is
@@ -238,7 +238,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad timbre.
+     * Gets the value of the timbre property.
      * 
      * @return
      *     possible object is
@@ -250,7 +250,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad timbre.
+     * Sets the value of the timbre property.
      * 
      * @param value
      *     allowed object is
@@ -262,7 +262,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad xmlResultado.
+     * Gets the value of the xmlResultado property.
      * 
      * @return
      *     possible object is
@@ -274,7 +274,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Define el valor de la propiedad xmlResultado.
+     * Sets the value of the xmlResultado property.
      * 
      * @param value
      *     allowed object is

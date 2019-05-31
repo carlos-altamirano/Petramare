@@ -55,7 +55,7 @@ public class Fecha {
         try {
             //c1.setTimeInMillis(0);
             c1.setTime(formato.parse(fecha));
-            c1.set(Calendar.DAY_OF_MONTH, Calendar.DAY_OF_MONTH);
+            c1.set(Calendar.DAY_OF_MONTH, 31);
             c1.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY);
             c1.set(Calendar.MINUTE, Calendar.MINUTE);
             c1.set(Calendar.SECOND, Calendar.SECOND);

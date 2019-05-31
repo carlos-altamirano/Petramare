@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para Timbre33 complex type.
+ * <p>Java class for Timbre33 complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Timbre33">
@@ -61,7 +61,7 @@ public class Timbre33 {
     protected JAXBElement<String> uuid;
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Gets the value of the estado property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class Timbre33 {
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Sets the value of the estado property.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class Timbre33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaTimbrado.
+     * Gets the value of the fechaTimbrado property.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class Timbre33 {
     }
 
     /**
-     * Define el valor de la propiedad fechaTimbrado.
+     * Sets the value of the fechaTimbrado property.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class Timbre33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad numeroCertificadoSAT.
+     * Gets the value of the numeroCertificadoSAT property.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class Timbre33 {
     }
 
     /**
-     * Define el valor de la propiedad numeroCertificadoSAT.
+     * Sets the value of the numeroCertificadoSAT property.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class Timbre33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad selloCFD.
+     * Gets the value of the selloCFD property.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class Timbre33 {
     }
 
     /**
-     * Define el valor de la propiedad selloCFD.
+     * Sets the value of the selloCFD property.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class Timbre33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad selloSAT.
+     * Gets the value of the selloSAT property.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class Timbre33 {
     }
 
     /**
-     * Define el valor de la propiedad selloSAT.
+     * Sets the value of the selloSAT property.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +181,7 @@ public class Timbre33 {
     }
 
     /**
-     * Obtiene el valor de la propiedad uuid.
+     * Gets the value of the uuid property.
      * 
      * @return
      *     possible object is
@@ -193,7 +193,7 @@ public class Timbre33 {
     }
 
     /**
-     * Define el valor de la propiedad uuid.
+     * Sets the value of the uuid property.
      * 
      * @param value
      *     allowed object is

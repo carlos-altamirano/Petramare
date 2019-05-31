@@ -567,7 +567,7 @@ public class CreaXML {
                     File files[] = new File[2];
                     files[0] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml");
                     files[1] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".pdf");
-                    File zip = new File(File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + "EDOCTA_" + contrato.getClave_contrato() + "_" + c2.get(Calendar.YEAR) + "_" + Empaquetar.numMes(c2.get(Calendar.MONTH)) + "" + ".zip");
+                    File zip = new File("c:" + File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + "EDOCTA_" + contrato.getClave_contrato() + "_" + c2.get(Calendar.YEAR) + "_" + Empaquetar.numMes(c2.get(Calendar.MONTH)) + "" + ".zip");
                     try {
                         Empaquetar.addFilesToExistingZip2(zip, files);
                         if (!Empaquetar.eliminaR(carpetas)) {
@@ -601,7 +601,9 @@ public class CreaXML {
         CompNominaDAO compNominaDAO = new CompNominaDAO();
         
         Calendar c1 = Fecha.getPrimerDiaDeMes(fechaHoy);
+        c1.set(Calendar.YEAR, 2019);
         Calendar c2 = Fecha.getUltimoDiaDeMes(fechaHoy);
+        c2.set(Calendar.YEAR, 2019);
 
         List<String> rfcs = movimientosDAO.getRFCMes(format.format(c1.getTime()), format.format(c2.getTime()));
         Integer totalTimbrados = compNominaDAO.cuentaMes(format4.format(fechaHoy));
@@ -712,9 +714,13 @@ public class CreaXML {
                 receptorNom.setPeriodicidadPago("99");
                 receptorNom.setPuesto(movimientos.get(0).getPuesto_empleado());
                 receptorNom.setDepartamento(movimientos.get(0).getDepto_empleado());
-                receptorNom.setCuentaBancaria(movimientos.get(0).getCuenta_deposito());
+                if (movimientos.get(0).getCuenta_deposito().length() == 10) {
+                    receptorNom.setCuentaBancaria(movimientos.get(0).getCuenta_deposito());
+                }
                 receptorNom.setClaveEntFed(CEstado.fromValue(contrato.getEnt_fed()));
-                receptorNom.setBanco(String.format("%03d", Integer.parseInt(movimientos.get(0).getClave_banco())));
+                //if (movimientos.get(0).getClave_banco().length() == 10) {
+                    //receptorNom.setBanco(String.format("%03d", Integer.parseInt(movimientos.get(0).getClave_banco())));
+                //}
 
                 Nomina.OtrosPagos otrosPagos = new Nomina.OtrosPagos();
                 List<Nomina.OtrosPagos.OtroPago> listOtroPagos = new ArrayList<>();
@@ -774,7 +780,7 @@ public class CreaXML {
 
                     //xmlEnvio3 = xmlEnvio3.replaceAll("<nomina12:Nomina", "<nomina12:Nomina xmlns:nomina12=\"http://www.sat.gob.mx/nomina12\"");
 
-                    System.out.println(xmlEnvio3);
+                    //System.out.println(xmlEnvio3);
 
                     String referencia = rfc + format3.format(fechaHoy);
                     System.out.println("referencia: " + referencia);

@@ -11,9 +11,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para DetallesPaqueteCreditos complex type.
+ * <p>Java class for DetallesPaqueteCreditos complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="DetallesPaqueteCreditos">
@@ -67,7 +67,7 @@ public class DetallesPaqueteCreditos {
     protected Boolean vigente;
 
     /**
-     * Obtiene el valor de la propiedad enUso.
+     * Gets the value of the enUso property.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad enUso.
+     * Sets the value of the enUso property.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaActivacion.
+     * Gets the value of the fechaActivacion property.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad fechaActivacion.
+     * Sets the value of the fechaActivacion property.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaVencimiento.
+     * Gets the value of the fechaVencimiento property.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad fechaVencimiento.
+     * Sets the value of the fechaVencimiento property.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +139,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad paquete.
+     * Gets the value of the paquete property.
      * 
      * @return
      *     possible object is
@@ -151,7 +151,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad paquete.
+     * Sets the value of the paquete property.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +163,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad timbres.
+     * Gets the value of the timbres property.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad timbres.
+     * Sets the value of the timbres property.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad timbresRestantes.
+     * Gets the value of the timbresRestantes property.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad timbresRestantes.
+     * Sets the value of the timbresRestantes property.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad timbresUsados.
+     * Gets the value of the timbresUsados property.
      * 
      * @return
      *     possible object is
@@ -223,7 +223,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad timbresUsados.
+     * Sets the value of the timbresUsados property.
      * 
      * @param value
      *     allowed object is
@@ -235,7 +235,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Obtiene el valor de la propiedad vigente.
+     * Gets the value of the vigente property.
      * 
      * @return
      *     possible object is
@@ -247,7 +247,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Define el valor de la propiedad vigente.
+     * Sets the value of the vigente property.
      * 
      * @param value
      *     allowed object is

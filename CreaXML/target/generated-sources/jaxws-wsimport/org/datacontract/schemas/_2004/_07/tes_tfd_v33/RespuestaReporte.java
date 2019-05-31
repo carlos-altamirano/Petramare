@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RespuestaReporte complex type.
+ * <p>Java class for RespuestaReporte complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RespuestaReporte">
@@ -50,7 +50,7 @@ public class RespuestaReporte {
     protected Integer totalComprobantesPeriodo;
 
     /**
-     * Obtiene el valor de la propiedad listaComprobantes.
+     * Gets the value of the listaComprobantes property.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Define el valor de la propiedad listaComprobantes.
+     * Sets the value of the listaComprobantes property.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Obtiene el valor de la propiedad mensajeError.
+     * Gets the value of the mensajeError property.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Define el valor de la propiedad mensajeError.
+     * Sets the value of the mensajeError property.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Obtiene el valor de la propiedad operacionExitosa.
+     * Gets the value of the operacionExitosa property.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Define el valor de la propiedad operacionExitosa.
+     * Sets the value of the operacionExitosa property.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Obtiene el valor de la propiedad totalComprobantesPeriodo.
+     * Gets the value of the totalComprobantesPeriodo property.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Define el valor de la propiedad totalComprobantesPeriodo.
+     * Sets the value of the totalComprobantesPeriodo property.
      * 
      * @param value
      *     allowed object is

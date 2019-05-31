@@ -16,7 +16,6 @@ public class clsConexion {
             System.out.println("SQLException-clsConexion" + sqlE.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("Exception-clsConexion:" + e.getMessage());
-        } finally {
         }
         return lcnnConexion;
     }

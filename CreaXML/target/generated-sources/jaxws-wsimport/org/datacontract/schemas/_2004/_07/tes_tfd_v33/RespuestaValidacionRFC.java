@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RespuestaValidacionRFC complex type.
+ * <p>Java class for RespuestaValidacionRFC complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RespuestaValidacionRFC">
@@ -58,7 +58,7 @@ public class RespuestaValidacionRFC {
     protected Boolean unidadSNCF;
 
     /**
-     * Obtiene el valor de la propiedad cancelado.
+     * Gets the value of the cancelado property.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Define el valor de la propiedad cancelado.
+     * Sets the value of the cancelado property.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Obtiene el valor de la propiedad mensajeError.
+     * Gets the value of the mensajeError property.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Define el valor de la propiedad mensajeError.
+     * Sets the value of the mensajeError property.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Obtiene el valor de la propiedad rfc.
+     * Gets the value of the rfc property.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Define el valor de la propiedad rfc.
+     * Sets the value of the rfc property.
      * 
      * @param value
      *     allowed object is
@@ -130,7 +130,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Obtiene el valor de la propiedad rfcLocalizado.
+     * Gets the value of the rfcLocalizado property.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Define el valor de la propiedad rfcLocalizado.
+     * Sets the value of the rfcLocalizado property.
      * 
      * @param value
      *     allowed object is
@@ -154,7 +154,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Obtiene el valor de la propiedad subcontratacion.
+     * Gets the value of the subcontratacion property.
      * 
      * @return
      *     possible object is
@@ -166,7 +166,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Define el valor de la propiedad subcontratacion.
+     * Sets the value of the subcontratacion property.
      * 
      * @param value
      *     allowed object is
@@ -178,7 +178,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Obtiene el valor de la propiedad unidadSNCF.
+     * Gets the value of the unidadSNCF property.
      * 
      * @return
      *     possible object is
@@ -190,7 +190,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Define el valor de la propiedad unidadSNCF.
+     * Sets the value of the unidadSNCF property.
      * 
      * @param value
      *     allowed object is

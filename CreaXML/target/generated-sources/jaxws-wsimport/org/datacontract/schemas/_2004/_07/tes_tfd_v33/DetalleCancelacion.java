@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para DetalleCancelacion complex type.
+ * <p>Java class for DetalleCancelacion complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="DetalleCancelacion">
@@ -45,7 +45,7 @@ public class DetalleCancelacion {
     protected JAXBElement<String> uuid;
 
     /**
-     * Obtiene el valor de la propiedad codigoResultado.
+     * Gets the value of the codigoResultado property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Define el valor de la propiedad codigoResultado.
+     * Sets the value of the codigoResultado property.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad mensajeResultado.
+     * Gets the value of the mensajeResultado property.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Define el valor de la propiedad mensajeResultado.
+     * Sets the value of the mensajeResultado property.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Obtiene el valor de la propiedad uuid.
+     * Gets the value of the uuid property.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Define el valor de la propiedad uuid.
+     * Sets the value of the uuid property.
      * 
      * @param value
      *     allowed object is

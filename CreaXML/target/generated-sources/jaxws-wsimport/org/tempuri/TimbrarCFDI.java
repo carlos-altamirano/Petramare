@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -51,7 +51,7 @@ public class TimbrarCFDI {
     protected JAXBElement<String> referencia;
 
     /**
-     * Obtiene el valor de la propiedad usuario.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
@@ -63,7 +63,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Define el valor de la propiedad usuario.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
@@ -75,7 +75,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Obtiene el valor de la propiedad password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Define el valor de la propiedad password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Obtiene el valor de la propiedad cadenaXML.
+     * Gets the value of the cadenaXML property.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Define el valor de la propiedad cadenaXML.
+     * Sets the value of the cadenaXML property.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Obtiene el valor de la propiedad referencia.
+     * Gets the value of the referencia property.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class TimbrarCFDI {
     }
 
     /**
-     * Define el valor de la propiedad referencia.
+     * Sets the value of the referencia property.
      * 
      * @param value
      *     allowed object is

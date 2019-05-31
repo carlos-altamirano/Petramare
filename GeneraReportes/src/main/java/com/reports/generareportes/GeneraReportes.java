@@ -10,8 +10,10 @@ import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class GeneraReportes {
     
@@ -23,7 +25,18 @@ public class GeneraReportes {
     public static void main(String[] args) throws ParseException {
         
         Consultas consultas = new Consultas();
-        String dataBase = args[1];
+        
+        System.out.print("Ingresa la fecha en este formato yyyy-MM en caso contrario dejar vacio -> ");
+        Scanner entradaEscaner = new Scanner(System.in);
+        String fechaConsola = entradaEscaner.nextLine();
+        Date fechaHoy = null;
+        if (fechaConsola.equals("")) {
+            fechaHoy = new Date();
+        } else {
+            fechaHoy = GeneraReportes.creaDate(fechaConsola);
+        }
+        
+        String dataBase = "garante";
         String path = System.getProperty("user.dir");
         
         File contraFile = new File(path + "\\Contratos.xlsx");
@@ -52,12 +65,10 @@ public class GeneraReportes {
             "CURP", "RFC", "Cuenta Deposito", "Fecha Ingreso", "Departamento", "Puesto", "Tipo", 
             "Importe Liquidacion" , "Importe Liquidacion MXN"
         };
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
         SimpleDateFormat formatSalida = new SimpleDateFormat("yyyy-MM-dd");
         
-        Date date = dateFormat.parse(args[0]);
-        
-        List<Movimiento> movimientos = consultas.consultaMovs(dataBase, formatSalida.format(Fechas.getPrimerDiaDeMes(date)), formatSalida.format(Fechas.getUltimoDiaDeMes(date)));
+        List<Movimiento> movimientos = consultas.consultaMovs(dataBase, formatSalida.format(Fechas.getPrimerDiaDeMes(fechaHoy)), formatSalida.format(Fechas.getUltimoDiaDeMes(fechaHoy)));
         boolean r2 = GenExcel.generaExcel("Movimientos", titulosMovs, movimientos, null);
         
         if (r1 && r2) {
@@ -65,7 +76,7 @@ public class GeneraReportes {
             List<File> archivos = new ArrayList<>();
             archivos.add(movFile);
             archivos.add(contraFile);
-            Boolean resEnvio = mail.enviar("Reportes mensuales", "Reporte de " + dataBase, "carlos-altamirano@gp.org.mx", archivos);
+            Boolean resEnvio = mail.enviar("Reportes mensuales", "Reporte de " + dataBase, "contacto@garante.mx", archivos);
             if (resEnvio) {
                 System.out.println("Correo enviado correctamente");
             } else {
@@ -73,6 +84,22 @@ public class GeneraReportes {
             }
         }
         
+    }
+    
+    public static Date creaDate(String fecha) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM");
+        Calendar c1 = Calendar.getInstance();
+        try {
+            //c1.setTimeInMillis(0);
+            c1.setTime(formato.parse(fecha));
+            c1.set(Calendar.DAY_OF_MONTH, Calendar.DAY_OF_MONTH);
+            c1.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY);
+            c1.set(Calendar.MINUTE, Calendar.MINUTE);
+            c1.set(Calendar.SECOND, Calendar.SECOND);
+        } catch (ParseException ex) {
+            System.out.println("Error formato de fecha");
+        }
+        return c1.getTime();
     }
     
 }

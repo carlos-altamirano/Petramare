@@ -11,9 +11,9 @@ import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -40,7 +40,7 @@ public class ObtenerAcuseEnvioResponse {
     protected JAXBElement<RespuestaTFD33> obtenerAcuseEnvioResult;
 
     /**
-     * Obtiene el valor de la propiedad obtenerAcuseEnvioResult.
+     * Gets the value of the obtenerAcuseEnvioResult property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class ObtenerAcuseEnvioResponse {
     }
 
     /**
-     * Define el valor de la propiedad obtenerAcuseEnvioResult.
+     * Sets the value of the obtenerAcuseEnvioResult property.
      * 
      * @param value
      *     allowed object is
