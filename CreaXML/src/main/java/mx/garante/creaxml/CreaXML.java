@@ -620,7 +620,7 @@ public class CreaXML {
             
                 List<Movimiento> movimientos = movimientosDAO.getAll(rfc, format.format(c1.getTime()), format.format(c2.getTime()));
 
-                CompNomina compNomina = compNominaDAO.getBy(rfc, format.format(c1.getTime()));
+                CompNomina compNomina = compNominaDAO.getBy(rfc, format4.format(c1.getTime()));
 
                 if (compNomina == null) {
                     compNomina = new CompNomina();
