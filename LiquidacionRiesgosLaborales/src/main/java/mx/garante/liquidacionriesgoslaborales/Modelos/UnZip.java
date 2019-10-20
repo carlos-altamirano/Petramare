@@ -99,7 +99,7 @@ public class UnZip {
     private synchronized static String copy_ESTADOS_CUENTA() throws IOException {
         String destino = "C:\\EDOS_CTA_UPLOADS\\" + generaNombre_ESTADOS_CUENTA();
         //URL en Servidor Virtual
-        String origen = "D:\\apache-tomcat-8.5.23\\bin\\uploads\\ESTADOS_CUENTA\\EdosCta_temporal.zip";
+        String origen = "D:\\tomcat\\bin\\uploads\\ESTADOS_CUENTA\\EdosCta_temporal.zip";
 
         Path FROM = Paths.get(origen);
         Path TO = Paths.get(destino);

@@ -75,7 +75,7 @@ public class DescargaArchivo extends HttpServlet {
                 }
                 if (correcto) {
                     System.out.println("Se ha generado correctamente file:" + pdfFileName);
-                    String urlReporte = "D:\\apache-tomcat-8.5.23\\bin\\temp\\";
+                    String urlReporte = "D:\\tomcat\\bin\\temp\\";
                     File pdfFile = new File(urlReporte + pdfFileName);
                     response.setContentType("text/csv;");
                     response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
