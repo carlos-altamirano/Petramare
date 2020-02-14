@@ -12,24 +12,24 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="fechaInicial" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="fechaFinal" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="filaInicial" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="fechaInicial" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="fechaFinal" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="filaInicial" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -56,7 +56,7 @@ public class ConsultarComprobantes {
     protected Integer filaInicial;
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Gets the value of the password property.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Sets the value of the password property.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
@@ -104,7 +104,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Gets the value of the fechaInicial property.
+     * Obtiene el valor de la propiedad fechaInicial.
      * 
      * @return
      *     possible object is
@@ -116,7 +116,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Sets the value of the fechaInicial property.
+     * Define el valor de la propiedad fechaInicial.
      * 
      * @param value
      *     allowed object is
@@ -128,7 +128,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Gets the value of the fechaFinal property.
+     * Obtiene el valor de la propiedad fechaFinal.
      * 
      * @return
      *     possible object is
@@ -140,7 +140,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Sets the value of the fechaFinal property.
+     * Define el valor de la propiedad fechaFinal.
      * 
      * @param value
      *     allowed object is
@@ -152,7 +152,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Gets the value of the filaInicial property.
+     * Obtiene el valor de la propiedad filaInicial.
      * 
      * @return
      *     possible object is
@@ -164,7 +164,7 @@ public class ConsultarComprobantes {
     }
 
     /**
-     * Sets the value of the filaInicial property.
+     * Define el valor de la propiedad filaInicial.
      * 
      * @param value
      *     allowed object is

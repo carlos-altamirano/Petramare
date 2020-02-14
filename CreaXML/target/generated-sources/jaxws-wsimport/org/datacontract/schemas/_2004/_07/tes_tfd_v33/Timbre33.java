@@ -12,25 +12,25 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for Timbre33 complex type.
+ * <p>Clase Java para Timbre33 complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="Timbre33">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="FechaTimbrado" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="NumeroCertificadoSAT" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="SelloCFD" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="SelloSAT" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="UUID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Timbre33"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="Estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="FechaTimbrado" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="NumeroCertificadoSAT" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="SelloCFD" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="SelloSAT" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="UUID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -61,7 +61,7 @@ public class Timbre33 {
     protected JAXBElement<String> uuid;
 
     /**
-     * Gets the value of the estado property.
+     * Obtiene el valor de la propiedad estado.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class Timbre33 {
     }
 
     /**
-     * Sets the value of the estado property.
+     * Define el valor de la propiedad estado.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class Timbre33 {
     }
 
     /**
-     * Gets the value of the fechaTimbrado property.
+     * Obtiene el valor de la propiedad fechaTimbrado.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class Timbre33 {
     }
 
     /**
-     * Sets the value of the fechaTimbrado property.
+     * Define el valor de la propiedad fechaTimbrado.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class Timbre33 {
     }
 
     /**
-     * Gets the value of the numeroCertificadoSAT property.
+     * Obtiene el valor de la propiedad numeroCertificadoSAT.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class Timbre33 {
     }
 
     /**
-     * Sets the value of the numeroCertificadoSAT property.
+     * Define el valor de la propiedad numeroCertificadoSAT.
      * 
      * @param value
      *     allowed object is
@@ -133,7 +133,7 @@ public class Timbre33 {
     }
 
     /**
-     * Gets the value of the selloCFD property.
+     * Obtiene el valor de la propiedad selloCFD.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class Timbre33 {
     }
 
     /**
-     * Sets the value of the selloCFD property.
+     * Define el valor de la propiedad selloCFD.
      * 
      * @param value
      *     allowed object is
@@ -157,7 +157,7 @@ public class Timbre33 {
     }
 
     /**
-     * Gets the value of the selloSAT property.
+     * Obtiene el valor de la propiedad selloSAT.
      * 
      * @return
      *     possible object is
@@ -169,7 +169,7 @@ public class Timbre33 {
     }
 
     /**
-     * Sets the value of the selloSAT property.
+     * Define el valor de la propiedad selloSAT.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +181,7 @@ public class Timbre33 {
     }
 
     /**
-     * Gets the value of the uuid property.
+     * Obtiene el valor de la propiedad uuid.
      * 
      * @return
      *     possible object is
@@ -193,7 +193,7 @@ public class Timbre33 {
     }
 
     /**
-     * Sets the value of the uuid property.
+     * Define el valor de la propiedad uuid.
      * 
      * @param value
      *     allowed object is

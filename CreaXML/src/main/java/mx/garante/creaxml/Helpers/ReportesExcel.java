@@ -34,7 +34,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ReportesExcel {
     
     private String path;
-    
+    private static final String BASE_PATH = "c:" + File.separator +"inetpub" + File.separator + "ftproot" + File.separator;
+
     public ReportesExcel(){
         path = System.getProperty("user.dir");
     }
@@ -44,7 +45,8 @@ public class ReportesExcel {
     }
     
     public boolean generaExcelFull(String nombre, String[] titulos, List<String> elementos, List<String> fechasHora) {
-        File reporte = new File(File.separator+ "inetpub" + File.separator + "ftproot" + File.separator + nombre + ".xlsx");
+        //File reporte = new File(File.separator+ "inetpub" + File.separator + "ftproot" + File.separator + nombre + ".xlsx");
+    	File reporte = new File(nombre + ".xlsx");
         if (reporte.exists()) reporte.delete();
         System.out.println("Generando reporte " + nombre + ".xlsx");
         boolean res = false;
@@ -90,7 +92,7 @@ public class ReportesExcel {
             for (int i = 0; i < titulos.length; i++) {
                 sheet.autoSizeColumn(i);
             }   
-            OutputStream out = new FileOutputStream(File.separator+ "inetpub" + File.separator + "ftproot" + File.separator + nombre + ".xlsx");
+            OutputStream out = new FileOutputStream(BASE_PATH + File.separator + nombre + ".xlsx");
             workbook.write(out);
             res = true;
         } catch (FileNotFoundException ex) {
@@ -108,7 +110,7 @@ public class ReportesExcel {
         PrintWriter printWriter = null;
         PrintWriter printWriter2 = null;
         try {
-            File archivo = new File(File.separator + "inetpub" + File.separator + "ftproot" + File.separator + nombre + ".csv");
+        	File archivo = new File( BASE_PATH + File.separator + nombre + ".csv");
             if(archivo.exists()) {
                 fileWriter = new FileWriter(archivo, true);
             } else {

@@ -1,17 +1,17 @@
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Common\clsFecha.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Servlets\SubirArchivo.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Common\clsExcel.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Modelos\ModeloLiquidation.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Beans\ResumenMovimientos.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Modelos\AuthorizationModel.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Servlets\DescargaArchivo.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Servlets\DescargaEdoCta.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Beans\Movimiento.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Modelos\UnZip.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Servlets\ControllerLiquidation.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Modelos\ModelUpdate.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Common\clsConexion.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Common\UTF8Filter.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Common\EnvioMail.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Beans\Message.java
-C:\Users\Erwin\Documents\NetBeansProjects\liquidacionesgds\LiquidacionRiesgosLaborales\src\main\java\mx\garante\liquidacionriesgoslaborales\Beans\Usuario.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Servlets/DescargaEdoCta.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Common/clsFecha.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Servlets/DescargaArchivo.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Beans/Movimiento.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Modelos/ModeloLiquidation.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Beans/Usuario.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Servlets/ControllerLiquidation.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Modelos/UnZip.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Beans/Message.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Common/clsConexion.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Common/UTF8Filter.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Common/EnvioMail.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Beans/ResumenMovimientos.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Common/clsExcel.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Modelos/AuthorizationModel.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Modelos/ModelUpdate.java
+/home/anitag/Trabajo/Liquidaciones ART/Garante/LiquidacionRiesgosLaborales/src/main/java/mx/garante/liquidacionriesgoslaborales/Servlets/SubirArchivo.java

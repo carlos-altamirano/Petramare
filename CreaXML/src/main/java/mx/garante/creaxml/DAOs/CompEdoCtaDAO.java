@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,19 +91,24 @@ public class CompEdoCtaDAO extends Conexion {
 
         try {
             String sql = "insert into comprobantesEdoCta (fecha, fechaEdoCta, claveContrato, total, fechaTimbre, rfcProv, uuid, selloCFD, nCertificado, selloSAT, idCertificado) "+
-                    "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "values(?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
-            statement.setString(1, format.format(compEdoCta.getFecha()));
-            statement.setString(2, compEdoCta.getFechaEdoCta().substring(0, 7));
-            statement.setString(3, compEdoCta.getClaveContrato());
-            statement.setDouble(4, compEdoCta.getTotal());
-            statement.setString(5, format.format(compEdoCta.getFechaTimbre()));
-            statement.setString(6, compEdoCta.getRfcProv());
-            statement.setString(7, compEdoCta.getUuid());
-            statement.setString(8, compEdoCta.getSelloCFD());
-            statement.setString(9, compEdoCta.getnCertificado());
-            statement.setString(10, compEdoCta.getSelloSAT());
-            statement.setInt(11, compEdoCta.getCertificado().getIdCertificado());
+            
+//            statement.setString(1, format.format(compEdoCta.getFecha()));
+          statement.setDate(1, new java.sql.Date(new Date().getTime()));
+//          statement.setString(2, compEdoCta.getFechaEdoCta().substring(0, 7));
+          statement.setDate(2, new java.sql.Date(new Date().getTime()));
+          statement.setString(3, compEdoCta.getClaveContrato());
+          statement.setDouble(4, compEdoCta.getTotal());
+//          statement.setString(5, format.format(compEdoCta.getFechaTimbre()));
+          statement.setDate(5, new java.sql.Date(new Date().getTime()));
+          statement.setString(6, compEdoCta.getRfcProv());
+          statement.setString(7, compEdoCta.getUuid());
+          statement.setString(8, compEdoCta.getSelloCFD());
+          statement.setString(9, compEdoCta.getnCertificado());
+          statement.setString(10, compEdoCta.getSelloSAT());
+          statement.setInt(11, compEdoCta.getCertificado().getIdCertificado());
+            
             statement.executeUpdate();
             res = true;
         } catch (SQLException ex) {

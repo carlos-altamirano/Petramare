@@ -9,22 +9,22 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DetalleCancelacion complex type.
+ * <p>Clase Java para DetalleCancelacion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="DetalleCancelacion">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="CodigoResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="MensajeResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="UUID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="DetalleCancelacion"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="CodigoResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="UUID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -45,7 +45,7 @@ public class DetalleCancelacion {
     protected JAXBElement<String> uuid;
 
     /**
-     * Gets the value of the codigoResultado property.
+     * Obtiene el valor de la propiedad codigoResultado.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Sets the value of the codigoResultado property.
+     * Define el valor de la propiedad codigoResultado.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Gets the value of the mensajeResultado property.
+     * Obtiene el valor de la propiedad mensajeResultado.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Sets the value of the mensajeResultado property.
+     * Define el valor de la propiedad mensajeResultado.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Gets the value of the uuid property.
+     * Obtiene el valor de la propiedad uuid.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class DetalleCancelacion {
     }
 
     /**
-     * Sets the value of the uuid property.
+     * Define el valor de la propiedad uuid.
      * 
      * @param value
      *     allowed object is

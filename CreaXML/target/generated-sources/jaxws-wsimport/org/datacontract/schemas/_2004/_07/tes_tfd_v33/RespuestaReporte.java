@@ -10,23 +10,23 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaReporte complex type.
+ * <p>Clase Java para RespuestaReporte complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="RespuestaReporte">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="ListaComprobantes" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}ArrayOfRegistroTimbre" minOccurs="0"/>
- *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="OperacionExitosa" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="TotalComprobantesPeriodo" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RespuestaReporte"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="ListaComprobantes" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}ArrayOfRegistroTimbre" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="OperacionExitosa" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="TotalComprobantesPeriodo" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -50,7 +50,7 @@ public class RespuestaReporte {
     protected Integer totalComprobantesPeriodo;
 
     /**
-     * Gets the value of the listaComprobantes property.
+     * Obtiene el valor de la propiedad listaComprobantes.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Sets the value of the listaComprobantes property.
+     * Define el valor de la propiedad listaComprobantes.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Gets the value of the operacionExitosa property.
+     * Obtiene el valor de la propiedad operacionExitosa.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Sets the value of the operacionExitosa property.
+     * Define el valor de la propiedad operacionExitosa.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Gets the value of the totalComprobantesPeriodo property.
+     * Obtiene el valor de la propiedad totalComprobantesPeriodo.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class RespuestaReporte {
     }
 
     /**
-     * Sets the value of the totalComprobantesPeriodo property.
+     * Define el valor de la propiedad totalComprobantesPeriodo.
      * 
      * @param value
      *     allowed object is

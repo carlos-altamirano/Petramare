@@ -11,20 +11,20 @@ import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCancelacion;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="CancelarCFDIResult" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}RespuestaCancelacion" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="CancelarCFDIResult" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}RespuestaCancelacion" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -40,7 +40,7 @@ public class CancelarCFDIResponse {
     protected JAXBElement<RespuestaCancelacion> cancelarCFDIResult;
 
     /**
-     * Gets the value of the cancelarCFDIResult property.
+     * Obtiene el valor de la propiedad cancelarCFDIResult.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class CancelarCFDIResponse {
     }
 
     /**
-     * Sets the value of the cancelarCFDIResult property.
+     * Define el valor de la propiedad cancelarCFDIResult.
      * 
      * @param value
      *     allowed object is

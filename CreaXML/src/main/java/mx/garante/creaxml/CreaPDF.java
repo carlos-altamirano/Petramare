@@ -72,7 +72,7 @@ public class CreaPDF {
             parameters.put("imagen1", imagen + "/imagen1.jpg");
             parameters.put("imagen2", imagen + "/imagen2.jpg");
 
-            parameters.put("qr", generaQr(tfd.getUUID(), rfcEmisor, contrato.getRFC(), totalAbono, tfd.getSelloCFD()));
+            parameters.put("qr", "qr");//generaQr(tfd.getUUID(), rfcEmisor, contrato.getRFC(), totalAbono, tfd.getSelloCFD()));
 
             List<EdoCta> detalle = contrato.getEdoCtas();
 

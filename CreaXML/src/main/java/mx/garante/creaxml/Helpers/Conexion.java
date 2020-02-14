@@ -15,7 +15,8 @@ public class Conexion {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conexion = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=garante;", "AdminGDS", "Garante2018*");
-        } catch (ClassNotFoundException | SQLException ex) {
+//            conexion = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=garante;", "SA", "nrivApet3FiiK4k9");
+            } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return conexion;

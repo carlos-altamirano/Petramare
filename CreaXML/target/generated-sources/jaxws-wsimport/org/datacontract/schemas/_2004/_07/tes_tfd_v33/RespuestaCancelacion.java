@@ -10,24 +10,24 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaCancelacion complex type.
+ * <p>Clase Java para RespuestaCancelacion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="RespuestaCancelacion">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="DetallesCancelacion" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}ArrayOfDetalleCancelacion" minOccurs="0"/>
- *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="MensajeErrorDetallado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="OperacionExitosa" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="XMLAcuse" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RespuestaCancelacion"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="DetallesCancelacion" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}ArrayOfDetalleCancelacion" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeErrorDetallado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="OperacionExitosa" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="XMLAcuse" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -54,7 +54,7 @@ public class RespuestaCancelacion {
     protected JAXBElement<String> xmlAcuse;
 
     /**
-     * Gets the value of the detallesCancelacion property.
+     * Obtiene el valor de la propiedad detallesCancelacion.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Sets the value of the detallesCancelacion property.
+     * Define el valor de la propiedad detallesCancelacion.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Gets the value of the mensajeErrorDetallado property.
+     * Obtiene el valor de la propiedad mensajeErrorDetallado.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Sets the value of the mensajeErrorDetallado property.
+     * Define el valor de la propiedad mensajeErrorDetallado.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Gets the value of the operacionExitosa property.
+     * Obtiene el valor de la propiedad operacionExitosa.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Sets the value of the operacionExitosa property.
+     * Define el valor de la propiedad operacionExitosa.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Gets the value of the xmlAcuse property.
+     * Obtiene el valor de la propiedad xmlAcuse.
      * 
      * @return
      *     possible object is
@@ -162,7 +162,7 @@ public class RespuestaCancelacion {
     }
 
     /**
-     * Sets the value of the xmlAcuse property.
+     * Define el valor de la propiedad xmlAcuse.
      * 
      * @param value
      *     allowed object is

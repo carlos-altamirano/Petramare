@@ -11,27 +11,27 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for DetallesPaqueteCreditos complex type.
+ * <p>Clase Java para DetallesPaqueteCreditos complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="DetallesPaqueteCreditos">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="EnUso" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="FechaActivacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="FechaVencimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="Paquete" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Timbres" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="TimbresRestantes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="TimbresUsados" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="Vigente" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="DetallesPaqueteCreditos"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="EnUso" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="FechaActivacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="FechaVencimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="Paquete" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="Timbres" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="TimbresRestantes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="TimbresUsados" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="Vigente" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -67,7 +67,7 @@ public class DetallesPaqueteCreditos {
     protected Boolean vigente;
 
     /**
-     * Gets the value of the enUso property.
+     * Obtiene el valor de la propiedad enUso.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the enUso property.
+     * Define el valor de la propiedad enUso.
      * 
      * @param value
      *     allowed object is
@@ -91,7 +91,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the fechaActivacion property.
+     * Obtiene el valor de la propiedad fechaActivacion.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the fechaActivacion property.
+     * Define el valor de la propiedad fechaActivacion.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the fechaVencimiento property.
+     * Obtiene el valor de la propiedad fechaVencimiento.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the fechaVencimiento property.
+     * Define el valor de la propiedad fechaVencimiento.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +139,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the paquete property.
+     * Obtiene el valor de la propiedad paquete.
      * 
      * @return
      *     possible object is
@@ -151,7 +151,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the paquete property.
+     * Define el valor de la propiedad paquete.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +163,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the timbres property.
+     * Obtiene el valor de la propiedad timbres.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the timbres property.
+     * Define el valor de la propiedad timbres.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the timbresRestantes property.
+     * Obtiene el valor de la propiedad timbresRestantes.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the timbresRestantes property.
+     * Define el valor de la propiedad timbresRestantes.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the timbresUsados property.
+     * Obtiene el valor de la propiedad timbresUsados.
      * 
      * @return
      *     possible object is
@@ -223,7 +223,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the timbresUsados property.
+     * Define el valor de la propiedad timbresUsados.
      * 
      * @param value
      *     allowed object is
@@ -235,7 +235,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Gets the value of the vigente property.
+     * Obtiene el valor de la propiedad vigente.
      * 
      * @return
      *     possible object is
@@ -247,7 +247,7 @@ public class DetallesPaqueteCreditos {
     }
 
     /**
-     * Sets the value of the vigente property.
+     * Define el valor de la propiedad vigente.
      * 
      * @param value
      *     allowed object is

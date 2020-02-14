@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ public class GenericEdoCtaDAO extends Conexion {
 
     public List<EdoCta> getEdoCta(String clave_contrato, String fecha1, String fecha2) {
         
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         List<EdoCta> edoCtas = new ArrayList<>();
         
@@ -32,14 +33,15 @@ public class GenericEdoCtaDAO extends Conexion {
                     + "and fecha <= ? "
                     + "order by fecha";
             statement = con.prepareStatement(sql);
-            statement.setString(1, fecha1);
-            statement.setString(2, fecha2);
+//            statement.setString(1, fecha1);
+//            statement.setString(2, fecha2);
+            statement.setDate(1, new java.sql.Date(new Date().getTime()));//format.parse(fecha1).getTime())); 
+            statement.setDate(2, new java.sql.Date(new Date().getTime()));//format.parse(fecha2).getTime())); 
             rs = statement.executeQuery();
-            
-            
+
             while (rs.next()) {
                 EdoCta edoCta = new EdoCta();
-                edoCta.setFecha(format.parse(rs.getString("fecha")));
+                edoCta.setFecha(rs.getDate("fecha"));
                 edoCta.setConcepto(rs.getString("concepto"));
                 edoCta.setObservaciones(rs.getString("observaciones"));
                 edoCta.setCargo(rs.getDouble("cargo"));
@@ -50,7 +52,7 @@ public class GenericEdoCtaDAO extends Conexion {
                 edoCtas.add(edoCta);
             }
             
-        } catch (SQLException | ParseException ex) {
+        } catch (SQLException ex) {//| ParseException ex) {
             Logger.getLogger(GenericEdoCtaDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.desconecta(con, rs, statement);

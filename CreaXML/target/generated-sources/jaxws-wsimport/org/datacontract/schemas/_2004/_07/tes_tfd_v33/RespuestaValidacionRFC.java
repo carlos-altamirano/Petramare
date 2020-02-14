@@ -10,25 +10,25 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaValidacionRFC complex type.
+ * <p>Clase Java para RespuestaValidacionRFC complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="RespuestaValidacionRFC">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Cancelado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="RFC" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="RFCLocalizado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="Subcontratacion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="UnidadSNCF" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RespuestaValidacionRFC"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="Cancelado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="RFC" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="RFCLocalizado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="Subcontratacion" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="UnidadSNCF" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -58,7 +58,7 @@ public class RespuestaValidacionRFC {
     protected Boolean unidadSNCF;
 
     /**
-     * Gets the value of the cancelado property.
+     * Obtiene el valor de la propiedad cancelado.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Sets the value of the cancelado property.
+     * Define el valor de la propiedad cancelado.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -106,7 +106,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Gets the value of the rfc property.
+     * Obtiene el valor de la propiedad rfc.
      * 
      * @return
      *     possible object is
@@ -118,7 +118,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Sets the value of the rfc property.
+     * Define el valor de la propiedad rfc.
      * 
      * @param value
      *     allowed object is
@@ -130,7 +130,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Gets the value of the rfcLocalizado property.
+     * Obtiene el valor de la propiedad rfcLocalizado.
      * 
      * @return
      *     possible object is
@@ -142,7 +142,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Sets the value of the rfcLocalizado property.
+     * Define el valor de la propiedad rfcLocalizado.
      * 
      * @param value
      *     allowed object is
@@ -154,7 +154,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Gets the value of the subcontratacion property.
+     * Obtiene el valor de la propiedad subcontratacion.
      * 
      * @return
      *     possible object is
@@ -166,7 +166,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Sets the value of the subcontratacion property.
+     * Define el valor de la propiedad subcontratacion.
      * 
      * @param value
      *     allowed object is
@@ -178,7 +178,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Gets the value of the unidadSNCF property.
+     * Obtiene el valor de la propiedad unidadSNCF.
      * 
      * @return
      *     possible object is
@@ -190,7 +190,7 @@ public class RespuestaValidacionRFC {
     }
 
     /**
-     * Sets the value of the unidadSNCF property.
+     * Define el valor de la propiedad unidadSNCF.
      * 
      * @param value
      *     allowed object is

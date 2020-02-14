@@ -1,0 +1,17 @@
+.idea/
+target/
+.idea_modules/
+.history
+out
+.DS_Store
+*.iws
+*.iml
+*.log
+src_managed/
+.gradle
+build/
+suigeneris
+atlassian-ide-plugin.xml
+resources.out
+runtime/
+gradle_cache/

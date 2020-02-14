@@ -10,28 +10,28 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RespuestaTFD33 complex type.
+ * <p>Clase Java para RespuestaTFD33 complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="RespuestaTFD33">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="CodigoConfirmacion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="CodigoRespuesta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="CreditosRestantes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="MensajeErrorDetallado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="OperacionExitosa" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="PDFResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="Timbre" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}Timbre33" minOccurs="0"/>
- *         &lt;element name="XMLResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RespuestaTFD33"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="CodigoConfirmacion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="CodigoRespuesta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="CreditosRestantes" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeError" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="MensajeErrorDetallado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="OperacionExitosa" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="PDFResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="Timbre" type="{http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios}Timbre33" minOccurs="0"/&gt;
+ *         &lt;element name="XMLResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -70,7 +70,7 @@ public class RespuestaTFD33 {
     protected JAXBElement<String> xmlResultado;
 
     /**
-     * Gets the value of the codigoConfirmacion property.
+     * Obtiene el valor de la propiedad codigoConfirmacion.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the codigoConfirmacion property.
+     * Define el valor de la propiedad codigoConfirmacion.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the codigoRespuesta property.
+     * Obtiene el valor de la propiedad codigoRespuesta.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the codigoRespuesta property.
+     * Define el valor de la propiedad codigoRespuesta.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the creditosRestantes property.
+     * Obtiene el valor de la propiedad creditosRestantes.
      * 
      * @return
      *     possible object is
@@ -130,7 +130,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the creditosRestantes property.
+     * Define el valor de la propiedad creditosRestantes.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +142,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the mensajeError property.
+     * Obtiene el valor de la propiedad mensajeError.
      * 
      * @return
      *     possible object is
@@ -154,7 +154,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the mensajeError property.
+     * Define el valor de la propiedad mensajeError.
      * 
      * @param value
      *     allowed object is
@@ -166,7 +166,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the mensajeErrorDetallado property.
+     * Obtiene el valor de la propiedad mensajeErrorDetallado.
      * 
      * @return
      *     possible object is
@@ -178,7 +178,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the mensajeErrorDetallado property.
+     * Define el valor de la propiedad mensajeErrorDetallado.
      * 
      * @param value
      *     allowed object is
@@ -190,7 +190,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the operacionExitosa property.
+     * Obtiene el valor de la propiedad operacionExitosa.
      * 
      * @return
      *     possible object is
@@ -202,7 +202,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the operacionExitosa property.
+     * Define el valor de la propiedad operacionExitosa.
      * 
      * @param value
      *     allowed object is
@@ -214,7 +214,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the pdfResultado property.
+     * Obtiene el valor de la propiedad pdfResultado.
      * 
      * @return
      *     possible object is
@@ -226,7 +226,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the pdfResultado property.
+     * Define el valor de la propiedad pdfResultado.
      * 
      * @param value
      *     allowed object is
@@ -238,7 +238,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the timbre property.
+     * Obtiene el valor de la propiedad timbre.
      * 
      * @return
      *     possible object is
@@ -250,7 +250,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the timbre property.
+     * Define el valor de la propiedad timbre.
      * 
      * @param value
      *     allowed object is
@@ -262,7 +262,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Gets the value of the xmlResultado property.
+     * Obtiene el valor de la propiedad xmlResultado.
      * 
      * @return
      *     possible object is
@@ -274,7 +274,7 @@ public class RespuestaTFD33 {
     }
 
     /**
-     * Sets the value of the xmlResultado property.
+     * Define el valor de la propiedad xmlResultado.
      * 
      * @param value
      *     allowed object is
