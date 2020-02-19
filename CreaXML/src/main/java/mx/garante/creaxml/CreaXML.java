@@ -89,8 +89,9 @@ public class CreaXML {
     private static final String LOCATION2 = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
     private static final String LOCATION2Final = "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
 
-    private static final String BASE_PATH = "c:" + File.separator +  "inetpub" + File.separator + "ftproot" + File.separator;
-    
+//    private static final String BASE_PATH = "c:" + File.separator +  "inetpub" + File.separator + "ftproot" + File.separator;
+    private static final String BASE_PATH = "inetpub" + File.separator + "ftproot" + File.separator;
+
     public static void main(String[] args) {
         menu();
     }
@@ -290,7 +291,7 @@ public class CreaXML {
         Calendar c2 = Fecha.getUltimoDiaDeMes(fechaHoy);
         c2.set(Calendar.YEAR, 2019);
 
-        List<String> rfcs = movimientosDAO.getRFCMes(format.format(c1.getTime()), format.format(c2.getTime()));
+        List<String> rfcs = movimientosDAO.getRFCMes(format2.format(c1.getTime()), format2.format(c2.getTime()));
         Integer totalTimbrados = compNominaDAO.cuentaMes(format4.format(fechaHoy));
 
         int cont = 1;
@@ -303,7 +304,7 @@ public class CreaXML {
             
             try {
             
-                List<Movimiento> movimientos = movimientosDAO.getAll(rfc, format.format(c1.getTime()), format.format(c2.getTime()));
+                List<Movimiento> movimientos = movimientosDAO.getAll(rfc, format2.format(c1.getTime()), format2.format(c2.getTime()));
 
                 CompNomina compNomina = compNominaDAO.getBy(rfc, format4.format(c1.getTime()));
 
@@ -433,7 +434,7 @@ public class CreaXML {
                 JAXBContext jAXBContext = JAXBContext.newInstance(Comprobante.class);
                 Marshaller marshaller = jAXBContext.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                marshaller.setProperty("com.sun.xml.internal.bind.namespacePrefixMapper", SPACE_MAPPER);
+//                marshaller.setProperty("com.sun.xml.internal.bind.namespacePrefixMapper", SPACE_MAPPER);
                 marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION2);
 
                 if (compNomina.getUuid() == null) {
@@ -588,7 +589,7 @@ public class CreaXML {
                     compEdoCta.setCertificado(certificado);
                 }
 
-                List<EdoCta> edoCtas = edoCtaDAO.getEdoCta(contrato.getClave_contrato(), format.format(c1.getTime()), format.format(c2.getTime()));
+                List<EdoCta> edoCtas = edoCtaDAO.getEdoCta(contrato.getClave_contrato(), format2.format(c1.getTime()), format2.format(c2.getTime()));
 
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
@@ -927,7 +928,7 @@ public class CreaXML {
                     compEdoCta.setCertificado(certificado);
                 }
 
-                List<EdoCta> edoCtas = edoCtaDAO.getEdoCta(contrato.getClave_contrato(), format.format(c1.getTime()), format.format(c2.getTime()));
+                List<EdoCta> edoCtas = edoCtaDAO.getEdoCta(contrato.getClave_contrato(), format2.format(c1.getTime()), format2.format(c2.getTime()));
 
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
@@ -1240,7 +1241,7 @@ public class CreaXML {
         Calendar c2 = Fecha.getUltimoDiaDeMes(fechaHoy);
         c2.set(Calendar.YEAR, 2019);
 
-        List<String> rfcs = movimientosDAO.getRFCMes(format.format(c1.getTime()), format.format(c2.getTime()));
+        List<String> rfcs = movimientosDAO.getRFCMes(format2.format(c1.getTime()), format2.format(c2.getTime()));
         Integer totalTimbrados = compNominaDAO.cuentaMes(format4.format(fechaHoy));
 
         int cont = 1;

@@ -12,6 +12,7 @@ public class clsConexion {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             lcnnConexion = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=garante;", "AdminGDS", "Garante2018*");
+//            lcnnConexion = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=garante;", "SA", "nrivApet3FiiK4k9");
         } catch (SQLException sqlE) {
             System.out.println("SQLException-clsConexion" + sqlE.getMessage());
         } catch (ClassNotFoundException e) {

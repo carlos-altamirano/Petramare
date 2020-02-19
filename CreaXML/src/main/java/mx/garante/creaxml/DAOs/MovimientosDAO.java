@@ -25,10 +25,10 @@ public class MovimientosDAO extends Conexion {
                     "where fecha_liquidacion >= ? and fecha_liquidacion <= ? " +
                     " group by rfc";
             statement = con.prepareStatement(sql);
-//            statement.setString(1, fecha1);
-//            statement.setString(2, fecha2);
-            statement.setDate(1, new java.sql.Date(new Date().getTime()));//format.parse(fecha1).getTime())); 
-            statement.setDate(2, new java.sql.Date(new Date().getTime()));//format.parse(fecha2).getTime())); 
+            statement.setString(1, fecha1);
+            statement.setString(2, fecha2);
+//            statement.setDate(1, new java.sql.Date(new Date().getTime()));//format.parse(fecha1).getTime())); 
+//            statement.setDate(2, new java.sql.Date(new Date().getTime()));//format.parse(fecha2).getTime())); 
             
             
             rs = statement.executeQuery();

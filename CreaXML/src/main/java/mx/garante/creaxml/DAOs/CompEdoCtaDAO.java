@@ -15,7 +15,8 @@ import java.util.logging.Logger;
 
 public class CompEdoCtaDAO extends Conexion {
     
-    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+//    		new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public CompEdoCta getBy(String claveContrato, String fecha1) {
         CompEdoCta compEdoCta = null;
@@ -94,14 +95,14 @@ public class CompEdoCtaDAO extends Conexion {
                     "values(?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = con.prepareStatement(sql);
             
-//            statement.setString(1, format.format(compEdoCta.getFecha()));
-          statement.setDate(1, new java.sql.Date(new Date().getTime()));
-//          statement.setString(2, compEdoCta.getFechaEdoCta().substring(0, 7));
-          statement.setDate(2, new java.sql.Date(new Date().getTime()));
+            statement.setString(1, format.format(compEdoCta.getFecha()));
+//          statement.setDate(1, new java.sql.Date(new Date().getTime()));
+          statement.setString(2, compEdoCta.getFechaEdoCta().substring(0, 7));
+//          statement.setDate(2, new java.sql.Date(new Date().getTime()));
           statement.setString(3, compEdoCta.getClaveContrato());
           statement.setDouble(4, compEdoCta.getTotal());
-//          statement.setString(5, format.format(compEdoCta.getFechaTimbre()));
-          statement.setDate(5, new java.sql.Date(new Date().getTime()));
+          statement.setString(5, format.format(compEdoCta.getFechaTimbre()));
+//          statement.setDate(5, new java.sql.Date(new Date().getTime()));
           statement.setString(6, compEdoCta.getRfcProv());
           statement.setString(7, compEdoCta.getUuid());
           statement.setString(8, compEdoCta.getSelloCFD());

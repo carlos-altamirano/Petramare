@@ -34,7 +34,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ReportesExcel {
     
     private String path;
-    private static final String BASE_PATH = "c:" + File.separator +"inetpub" + File.separator + "ftproot" + File.separator;
+//    private static final String BASE_PATH = "c:" + File.separator +"inetpub" + File.separator + "ftproot" + File.separator;
+    private static final String BASE_PATH = "inetpub" + File.separator + "ftproot" + File.separator;
 
     public ReportesExcel(){
         path = System.getProperty("user.dir");
