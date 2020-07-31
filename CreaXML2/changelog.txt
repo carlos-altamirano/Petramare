@@ -1,0 +1,9 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [2.0.0] - 2020-07-15 crodriguezen
+
+- Se agrega soporte de GregorianCalendar
+- Se agrega validación de nulos en recuperación de datos
+- Se modifica consulta a BBDD que no contemplaba registos no habilitados
+- Se corrige codificación de caracteres del documento
