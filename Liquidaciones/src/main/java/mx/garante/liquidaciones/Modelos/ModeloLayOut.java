@@ -1516,6 +1516,7 @@ public class ModeloLayOut {
             archivo = new File(urlArchivo);
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
+            IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpoint();
 
             while ((linea = br.readLine()) != null) {
                 line++;
@@ -1604,7 +1605,6 @@ public class ModeloLayOut {
                             String expresion = "[A-Z&Ñ]{4}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[A-Z0-9]{2}[0-9A]";
                             if (campo.matches(expresion)) {
                                 try {
-                                    IWSCFDI33 servicio = new WSCFDI33().getSoapHttpEndpoint();
                                     RespuestaValidacionRFC respuesta = servicio.validarRFC("GDS160406V45", "HzrG4KXEe%", campo);
                                     if (!respuesta.isCancelado()) {
                                         if (!respuesta.isRFCLocalizado()) {
@@ -3974,7 +3974,7 @@ public class ModeloLayOut {
      * @param lcnnConexion : Conexión a la Base de Datos.
      * @return Regresa true si se genero satisfactoriamente, else en otro caso
      */
-    private synchronized boolean creaRL_Cliente_Saldos(String archivo_jasper, String clave_contrato, String fecha_liquidacion, String fecha, String fileName,
+    private synchronized int creaRL_Cliente_Saldos(String archivo_jasper, String clave_contrato, String fecha_liquidacion, String fecha, String fileName,
             String monto1, String monto2, String monto3, String monto4, String monto5, String monto5_pend, String montoTotalMXP,
             String movs_tipo1, String movs_tipo2, String movs_tipo3, String movs_tipo4, String movs_tipo5, String movs_tipo5_pend,
             String total_movs, String fecha_carga_lote, String fecha_hoy, String url, int idx,
@@ -3993,14 +3993,14 @@ public class ModeloLayOut {
             //Verificamos si el nombre del archivo es válido.
             if (archivo == null || archivo.equals("")) {
                 System.out.println("creaRL_Cliente : Archivo *.jrxml inválido");
-                return false;
+                return 1;
             }
             if (!fecha.equals("") && !url.equals("")) {
                 //Verificamos si existe el directorio de la fecha de liquidación, si no existe lo creamos.
                 file = new File(url);
                 if (!file.isDirectory()) {
                     if (!file.mkdirs()) {
-                        return false;
+                        return 4;
                     }
                 }
                 try {
@@ -4011,7 +4011,7 @@ public class ModeloLayOut {
 //                JasperCompileManager.compileReportToFile(archivo, "./Common/ReporteLiquidacion.jasper");
                 } catch (JRException jre) {
                     System.out.println("creaRL_Cliente:" + jre.toString());
-                    return false;
+                    return 2;
                 }
                 parametro.put("importe_M1", monto1);
                 parametro.put("importe_M2", monto2);
@@ -4061,15 +4061,10 @@ public class ModeloLayOut {
 
                     output.flush();
                     output.close();
-                    genera = true;
-                } else {
-                    genera = false;
+                    return 0;
                 }
-            } else {
-                genera = false;
             }
         } catch (Exception e) {
-            genera = false;
             System.out.println("ModeloLayOut-creaRL_Cliente_SALDOS:" + e.getMessage());
             try {
                 if (output != null) {
@@ -4079,8 +4074,9 @@ public class ModeloLayOut {
             } catch (IOException ioe) {
                 System.out.println("ModeloLayOut-creaRL_Cliente_SALDOS:" + ioe.getMessage());
             }
+            return 3;
         }
-        return genera;
+        return 1;
     }
 
     /**
@@ -4101,7 +4097,7 @@ public class ModeloLayOut {
      * @return boolean valido: Regresa true si se genero satisfactoriamente,
      * else en otro caso
      */
-    public boolean getRL_Cliente_Saldos(String clave_contrato, String fecha_liquidacion, String formato_fecha, String nombre_archivo, ResumenMovimientos resumen, String url, int idx_archivo, Connection connection, String realPath) {
+    public int getRL_Cliente_Saldos(String clave_contrato, String fecha_liquidacion, String formato_fecha, String nombre_archivo, ResumenMovimientos resumen, String url, int idx_archivo, Connection connection, String realPath) {
 
         String url_jasper = "", mov1 = "", mov2 = "", mov3 = "", mov4 = "", mov5 = "", mov5_pend = "", importeTotalMXP = "";
         String movs_tipo1 = "", movs_tipo2 = "", movs_tipo3 = "", movs_tipo4 = "", movs_tipo5 = "", movs_tipo5_pend = "", total_movs = "";
@@ -4109,7 +4105,7 @@ public class ModeloLayOut {
         String fecha_hoy = "", fecha_carga_lote = "";
         String saldo_actual = "", txt_NuevoSaldo = "", nuevo_saldo = "", pendientes = "", apo_min_req = "";
 
-        boolean seGuardo = false;
+        int seGuardo = 0;
         try {
             mov1 = resumen.pago_mov_tipo1 + "";
             mov2 = resumen.pago_mov_tipo2 + "";
@@ -4137,14 +4133,14 @@ public class ModeloLayOut {
 
             if (apo_min_req.equals("$ 0.00")) {
                 if (resumen.total_movs_tipo5 > 0 || resumen.total_movs_tipo5_pend > 0) {
-                    url_jasper = realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidaciones\\Common\\RL_SALDOS_M5.jrxml";
+                    url_jasper = realPath + "\\WEB-INF\\common\\RL_SALDOS_M5.jrxml";
                 } else {
-                    url_jasper = realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidaciones\\Common\\RL_SALDOS.jrxml";
+                    url_jasper = realPath + "\\WEB-INF\\common\\RL_SALDOS.jrxml";
                 }
             } else if (resumen.total_movs_tipo5 > 0 || resumen.total_movs_tipo5_pend > 0) {
-                url_jasper = realPath + "\\WEB-INF\\classes\\Common\\mx\\garante\\liquidaciones\\RL_SALDOS_DEFICIT_M5.jrxml";
+                url_jasper = realPath + "\\WEB-INF\\common\\RL_SALDOS_DEFICIT_M5.jrxml";
             } else {
-                url_jasper = realPath + "\\WEB-INF\\classes\\Common\\mx\\garante\\liquidaciones\\RL_SALDOS_DEFICIT.jrxml";
+                url_jasper = realPath + "\\WEB-INF\\common\\RL_SALDOS_DEFICIT.jrxml";
             }
             seGuardo = this.creaRL_Cliente_Saldos(url_jasper, clave_contrato, fecha_liquidacion, formato_fecha, nombre_archivo,
                     mov1, mov2, mov3, mov4, mov5, mov5_pend, importeTotalMXP, movs_tipo1, movs_tipo2,
@@ -4155,8 +4151,8 @@ public class ModeloLayOut {
 //                System.out.println("Error en la longitud del arreglo de consulta de saldo.");
 //            }
         } catch (Exception e) {
-            seGuardo = false;
             System.out.println("ModeloLayOut-getRL_Cliente_SALDOS:" + e.getMessage());
+            return 1;
         }
         return seGuardo;
     }
@@ -4178,7 +4174,7 @@ public class ModeloLayOut {
         Connection connection = null;
         clsConexion conn = new clsConexion();
         String mensaje = "";
-        boolean genera = false;
+        int genera = 0;
         try {
             //Realizamos una conexión a la BD.
             connection = conn.ConectaSQLServer();
@@ -4186,10 +4182,14 @@ public class ModeloLayOut {
 //            genera = this.getRL_Cliente(clave_contrato, fecha_liquidacion, formato_fecha, fileName, resumenMovimientos, url, idx_archivo,infoSaldo, connection);
             genera = this.getRL_Cliente_Saldos(clave_contrato, fecha_liquidacion, formato_fecha, fileName, resumenMovimientos, url, idx_archivo, connection, realPath);
             //Verificamos si se creo satisfactoriamente el Reporte de Liquidación.
-            if (genera) {
-                mensaje = "";
-            } else {
-                mensaje = " Error al generar reporte de liquidación";
+            if (genera == 1) {
+                mensaje = " Error desconocido ";
+            } else if (genera == 2) {
+                mensaje = " Error al generar reporte de liquidación: "+ realPath;
+            } else if (genera == 3) {
+                mensaje = " Error al generar reporte de liquidación: logo image";
+            } else if (genera == 4) {
+                mensaje = " Error al generar reporte de liquidación: " + url;
             }
             //Cerramos la conexión a la Base de Datos.
             if (connection != null) {

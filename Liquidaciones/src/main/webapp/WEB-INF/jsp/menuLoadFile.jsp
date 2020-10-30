@@ -1,4 +1,4 @@
-<%@page import="java.text.DecimalFormat"%>
+<%@ page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -22,7 +22,6 @@
                 <c:if test="${sessionScope.messageBean != null && sessionScope.messageBean.desc != ''}">
                     onLoad="alert('<c:out value="${sessionScope.messageBean.desc}"/>');"
                     <c:remove var="messageBean" scope="session" />
-                    <
                 </c:if>
 
                 <c:if test="${sessionScope.messageClean != null}">
@@ -414,9 +413,8 @@
                             </tr>
                             <tr>  <td colspan ="2"> &nbsp; </td></tr>
                         </table>
-                    </form>
-                </c:if>
-
+                    </c:if>
+                </form>
 
                 <%--
                     Información a Imprimir

@@ -511,12 +511,12 @@ public class ControllerUpload extends HttpServlet {
                                             // Url local
                                             //urlReporte = "C:\\Reportes Liquidacion\\" + clave_contrato + "\\" + fecha_l;
                                             // Url servidor
-                                            urlReporte = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + fecha_l;
+                                            urlReporte = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + fecha_l;
                                             idx_archivo = ModeloLayOut.getClaveArchivo(clave_contrato, fecha_liquidacion, fileName);
 //                                            if(!infoSaldo.equals("") && !infoSaldo.equals("0.0%def%0.0")){
                                             //Generamos el reporte de liquidación.
-                                            
-                                            genera = modelo_l.genera_RL(clave_contrato, fecha_liquidacion, fecha_l, fileName, resumenMovimientos, idx_archivo, urlReporte,getServletContext().getRealPath(File.separator));
+                                            String realPath = getServletContext().getRealPath(File.separator);
+                                            genera = modelo_l.genera_RL(clave_contrato, fecha_liquidacion, fecha_l, fileName, resumenMovimientos, idx_archivo, urlReporte, realPath);
                                             if (genera.equals("")) {
                                                 asunto = "LIQUIDACIÓN " + clave_contrato + " " + fecha_liquidacion;
                                                 correo_d = ModeloLayOut.obtenCorreos("'SISTEMAS','OPERACION'");
