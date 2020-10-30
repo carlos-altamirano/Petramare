@@ -509,7 +509,7 @@ public class ControllerUpload extends HttpServlet {
                                         if (!fecha_l.equals("")) {
                                             
                                             // Url local
-                                            //urlReporte = "C:\\Reportes Liquidacion\\" + clave_contrato + "\\" + fecha_l;
+                                            //urlReporte = ".\\Reportes Liquidacion\\" + clave_contrato + "\\" + fecha_l;
                                             // Url servidor
                                             urlReporte = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + fecha_l;
                                             idx_archivo = ModeloLayOut.getClaveArchivo(clave_contrato, fecha_liquidacion, fileName);

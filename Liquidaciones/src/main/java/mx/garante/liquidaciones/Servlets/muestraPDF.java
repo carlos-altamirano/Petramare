@@ -57,7 +57,7 @@ public class muestraPDF extends HttpServlet {
                             String nombre_archivo = ModeloLayOut.getNombreResumenLiquidacion(usuarioApp.getClave_contrato(), fecha_corta, nombreArchivo, Integer.parseInt(datos[0]));
 //                    pdfFileName = "hola.pdf";
                             pdfFileName = nombre_archivo;
-                            String urlReporte = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + usuarioApp.getClave_contrato() + "\\" + fecha_corta + "\\";
+                            String urlReporte = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + usuarioApp.getClave_contrato() + "\\" + fecha_corta + "\\";
                             File pdfFile = new File(urlReporte + pdfFileName);
                             response.setContentType("aplication/pdf;");
                             response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
@@ -73,7 +73,7 @@ public class muestraPDF extends HttpServlet {
                         } else if ("descargaEdoCta".equals(accion) && nombreArchivo != null && !nombreArchivo.equals("")) {
                             String zipName = request.getParameter("selComboPeriodo");
                             String datos[] = null;
-                            String urlZip = "C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + usuarioApp.getClave_contrato() + "\\";
+                            String urlZip = ".\\inetpub\\ftproot\\EstadosDeCuenta\\" + usuarioApp.getClave_contrato() + "\\";
                             File zipFile = new File(urlZip + zipName);
                             response.setContentType("application/zip;");
                             response.addHeader("Content-Disposition", "attachment; filename=" + zipName);

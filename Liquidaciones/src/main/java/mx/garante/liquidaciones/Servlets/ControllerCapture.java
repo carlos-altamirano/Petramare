@@ -765,7 +765,7 @@ public class ControllerCapture extends HttpServlet {
                                         formato_fecha = ModeloLayOut.getFormatoFecha(fecha_liquidacion); // DDMMYYYY --> YYMMDD.
                                         if (!formato_fecha.equals("")) {
                                             modelo_l = new ModeloLayOut();
-                                            urlArchivo = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha;
+                                            urlArchivo = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha;
                                             //Generamos el reporte de liquidación.
                                             genera_l = modelo_l.genera_RL(clave_contrato, fecha_liquidacion, formato_fecha, nombre_archivo, resumenMovs, idx_archivo, urlArchivo, getServletContext().getRealPath(File.separator));
                                             if (genera_l.equals("")) {

@@ -4441,7 +4441,7 @@ public class ModeloLayOut {
 
         try {
             SimpleDateFormat dateF = new SimpleDateFormat("MMMM 'de' yyyy");
-            File directorio = new File("C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\");
+            File directorio = new File(".\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\");
             if (directorio.exists()) {
                 if (directorio.isDirectory()) {
                     String[] listaArchivos = directorio.list();
