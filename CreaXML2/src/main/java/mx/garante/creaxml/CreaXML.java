@@ -73,29 +73,29 @@ public class CreaXML {
     private static final String csds_path = "Certificados";
 
     // Configuration PSC
-//    private static final String user = "PSC181023RJ7";
-//    private static final String password = "HzrG4KX%";
-//
-//    private static final String rfc_emisor = "PSC181023RJ7";
-//    private static final String razon_social_emisor = "Petramare Servicios Consolidados, S.A. de C.V. SOFOM E.N.R.";
-//    private static final String cp_emisor = "53500";
-//    private static final String regimen_emisor = "601";
-//
-//    private static final String cer_number = "00001000000502158019";
-//    private static final String cer_filename = "CSD_PETRAMARE_SERVICIOS.cer";
-//    private static final String key_filename = "CSD_PETRAMARE_SERVICIOS.key";
-//    private static final String cer_password = "petramare6605";
-    // Configuration GDS
-    private static final String user = "GDS160406V45";
-    private static final String password = "HzrG4KXEe%";
-    private static final String rfc_emisor = "GDS160406V45";
-    private static final String razon_social_emisor = "Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.";
-    private static final String cp_emisor = "06500";
+    private static final String user = "PSC181023RJ7";
+    private static final String password = "HzrG4KX%";
+
+    private static final String rfc_emisor = "PSC181023RJ7";
+    private static final String razon_social_emisor = "Petramare Servicios Consolidados, S.A. de C.V. SOFOM E.N.R.";
+    private static final String cp_emisor = "53500";
     private static final String regimen_emisor = "601";
-    private static final String cer_number = "00001000000503921958";
-    private static final String cer_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051s.cer";
-    private static final String key_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051.key";
-    private static final String cer_password = "GDS160406";
+
+    private static final String cer_number = "00001000000502158019";
+    private static final String cer_filename = "CSD_PETRAMARE_SERVICIOS.cer";
+    private static final String key_filename = "CSD_PETRAMARE_SERVICIOS.key";
+    private static final String cer_password = "petramare6605";
+    // Configuration GDS
+//    private static final String user = "GDS160406V45";
+//    private static final String password = "HzrG4KXEe%";
+//    private static final String rfc_emisor = "GDS160406V45";
+//    private static final String razon_social_emisor = "Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.";
+//    private static final String cp_emisor = "06500";
+//    private static final String regimen_emisor = "601";
+//    private static final String cer_number = "00001000000503921958";
+//    private static final String cer_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051s.cer";
+//    private static final String key_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051.key";
+//    private static final String cer_password = "GDS160406";
     private static final String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo",
         "Junio", "Julio", "Agosto", "Septiembre",
         "Octubre", "Noviembre", "Diciembre"};
