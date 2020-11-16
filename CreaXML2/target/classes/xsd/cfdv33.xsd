@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:catCFDI="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" xmlns:tdCFDI="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" targetNamespace="http://www.sat.gob.mx/cfd/3" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:import namespace="http://www.sat.gob.mx/sitio_internet/cfd/catalogos" schemaLocation="http://www.sat.gob.mx/sitio_internet/cfd/catalogos/catCFDI.xsd"/>
   <xs:import namespace="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI" schemaLocation="http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI/tdCFDI.xsd"/>
@@ -76,7 +76,7 @@
               <xs:documentation>Nodo requerido para precisar la información del contribuyente receptor del comprobante.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-              <xs:attribute name="Rfc" use="required"  type="tdCFDI:t_RFC">
+              <xs:attribute name="Rfc" use="required" type="tdCFDI:t_RFC">
                   <xs:annotation>
                     <xs:documentation>Atributo requerido para precisar la Clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del comprobante.</xs:documentation>
                   </xs:annotation>
@@ -293,7 +293,7 @@
                         </xs:annotation>
                         <xs:complexType>
                           <xs:sequence>
-                            <xs:any maxOccurs="unbounded"></xs:any>
+                            <xs:any maxOccurs="unbounded"/>
                           </xs:sequence>
                         </xs:complexType>
                       </xs:element>
@@ -308,7 +308,7 @@
                                 <xs:documentation>Nodo opcional para introducir la información aduanera aplicable cuando se trate de ventas de primera mano de mercancías importadas o se trate de operaciones de comercio exterior con bienes o servicios.</xs:documentation>
                               </xs:annotation>
                               <xs:complexType>
-                                <xs:attribute name="NumeroPedimento" use="required" >
+                                <xs:attribute name="NumeroPedimento" use="required">
                                   <xs:annotation>
                                     <xs:documentation>Atributo requerido para expresar el número del pedimento que ampara la importación del bien que se expresa en el siguiente formato: últimos 2 dígitos del año de validación seguidos por dos espacios, 2 dígitos de la aduana de despacho seguidos por dos espacios, 4 dígitos del número de la patente seguidos por dos espacios, 1 dígito que corresponde al último dígito del año en curso, salvo que se trate de un pedimento consolidado iniciado en el año inmediato anterior o del pedimento original de una rectificación, seguido de 6 dígitos de la numeración progresiva por aduana.</xs:documentation>
                                   </xs:annotation>
@@ -734,4 +734,3 @@
       </xs:complexType>
     </xs:element>
   </xs:schema>
-  

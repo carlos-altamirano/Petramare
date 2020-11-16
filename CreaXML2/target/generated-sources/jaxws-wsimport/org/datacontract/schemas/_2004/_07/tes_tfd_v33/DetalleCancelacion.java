@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="CodigoResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="EsCancelable" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="MensajeResultado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="UUID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DetalleCancelacion", propOrder = {
     "codigoResultado",
+    "esCancelable",
     "mensajeResultado",
     "uuid"
 })
@@ -39,6 +41,8 @@ public class DetalleCancelacion {
 
     @XmlElementRef(name = "CodigoResultado", namespace = "http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios", type = JAXBElement.class, required = false)
     protected JAXBElement<String> codigoResultado;
+    @XmlElementRef(name = "EsCancelable", namespace = "http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> esCancelable;
     @XmlElementRef(name = "MensajeResultado", namespace = "http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios", type = JAXBElement.class, required = false)
     protected JAXBElement<String> mensajeResultado;
     @XmlElementRef(name = "UUID", namespace = "http://schemas.datacontract.org/2004/07/TES.TFD.V33.Negocios", type = JAXBElement.class, required = false)
@@ -66,6 +70,30 @@ public class DetalleCancelacion {
      */
     public void setCodigoResultado(JAXBElement<String> value) {
         this.codigoResultado = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad esCancelable.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getEsCancelable() {
+        return esCancelable;
+    }
+
+    /**
+     * Define el valor de la propiedad esCancelable.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setEsCancelable(JAXBElement<String> value) {
+        this.esCancelable = value;
     }
 
     /**

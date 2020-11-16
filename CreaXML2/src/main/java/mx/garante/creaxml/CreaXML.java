@@ -1,17 +1,17 @@
 package mx.garante.creaxml;
 
 import com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper;
-import mx.garante.xmls.CEstado;
-import mx.garante.xmls.CMetodoPago;
-import mx.garante.xmls.CMoneda;
-import mx.garante.xmls.CTipoDeComprobante;
-import mx.garante.xmls.CTipoFactor;
-import mx.garante.xmls.CTipoNomina;
-import mx.garante.xmls.CUsoCFDI;
-import mx.garante.xmls.Comprobante;
-import mx.garante.xmls.EstadoDeCuenta;
-import mx.garante.xmls.Nomina;
-import mx.garante.xmls.TimbreFiscalDigital;
+import mx.garante.xmls.v2.CEstado;
+import mx.garante.xmls.v2.CMetodoPago;
+import mx.garante.xmls.v2.CMoneda;
+import mx.garante.xmls.v2.CTipoDeComprobante;
+import mx.garante.xmls.v2.CTipoFactor;
+import mx.garante.xmls.v2.CTipoNomina;
+import mx.garante.xmls.v2.CUsoCFDI;
+import mx.garante.xmls.v2.Comprobante;
+import mx.garante.xmls.v2.EstadoDeCuenta;
+import mx.garante.xmls.v2.Nomina;
+import mx.garante.xmls.v2.TimbreFiscalDigital;
 import mx.garante.creaxml.DAOs.CertificadosDAO;
 import mx.garante.creaxml.DAOs.CompEdoCtaDAO;
 import mx.garante.creaxml.DAOs.CompNominaDAO;
@@ -71,36 +71,31 @@ public class CreaXML {
 
     private static final String rfc_prov_cert = "FLI081010EK2";
     private static final String csds_path = "Certificados";
-    
-    // Configuration PSC
-    private static final String user = "PSC181023RJ7";
-    private static final String password = "HzrG4KX%";
-    
-    private static final String rfc_emisor = "PSC181023RJ7";
-    private static final String razon_social_emisor = "Petramare Servicios Consolidados, S.A. de C.V. SOFOM E.N.R.";
-    private static final String cp_emisor = "53500";
-    private static final String regimen_emisor = "601";
-    
-    private static final String cer_number   = "00001000000502158019";
-    private static final String cer_filename = "CSD_PETRAMARE_SERVICIOS.cer";
-    private static final String key_filename = "CSD_PETRAMARE_SERVICIOS.key";
-    private static final String cer_password = "petramare6605";
-    
-    // Configuration GDS
-    //private static final String user = "GDS160406V45";
-    //private static final String password = "HzrG4KXEe%";
-    
-    //private static final String rfc_emisor = "GDS160406V45";
-    //private static final String razon_social_emisor =  "Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.";
-    //private static final String cp_emisor = "06500";
-    //private static final String regimen_emisor = "601";
-    
-    // private static final String cer_number   = "00001000000503921958";
-    //private static final String cer_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051s.cer";
-    //private static final String key_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051.key";
-    //private static final String cer_password = "GDS160406";
-    
 
+    // Configuration PSC
+//    private static final String user = "PSC181023RJ7";
+//    private static final String password = "HzrG4KX%";
+//
+//    private static final String rfc_emisor = "PSC181023RJ7";
+//    private static final String razon_social_emisor = "Petramare Servicios Consolidados, S.A. de C.V. SOFOM E.N.R.";
+//    private static final String cp_emisor = "53500";
+//    private static final String regimen_emisor = "601";
+//
+//    private static final String cer_number = "00001000000502158019";
+//    private static final String cer_filename = "CSD_PETRAMARE_SERVICIOS.cer";
+//    private static final String key_filename = "CSD_PETRAMARE_SERVICIOS.key";
+//    private static final String cer_password = "petramare6605";
+    // Configuration GDS
+    private static final String user = "GDS160406V45";
+    private static final String password = "HzrG4KXEe%";
+    private static final String rfc_emisor = "GDS160406V45";
+    private static final String razon_social_emisor = "Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.";
+    private static final String cp_emisor = "06500";
+    private static final String regimen_emisor = "601";
+    private static final String cer_number = "00001000000503921958";
+    private static final String cer_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051s.cer";
+    private static final String key_filename = "CSD_MATRIZ_GDS160406V45_20200504_135051.key";
+    private static final String cer_password = "GDS160406";
     private static final String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo",
         "Junio", "Julio", "Agosto", "Septiembre",
         "Octubre", "Noviembre", "Diciembre"};
@@ -129,18 +124,17 @@ public class CreaXML {
         }
         menu();
     }
-    
+
     private static boolean isCSDFiles() {
         try {
             File cer = new File(directorioLocal + "/" + csds_path + "/" + cer_filename);
             File key = new File(directorioLocal + "/" + csds_path + "/" + key_filename);
             return cer.exists() && key.exists();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
-    
+
     private static void menu() {
         boolean res = true;
         while (res) {
@@ -158,13 +152,13 @@ public class CreaXML {
 
             Scanner entradaEscaner = new Scanner(System.in);
             String entradaTeclado = entradaEscaner.next();
-            
+
             entradaEscaner = new Scanner(System.in);
             switch (entradaTeclado) {
                 case "1": {
                     System.out.print("Ingresa la fecha en este formato yyyy-MM en caso contrario dejar vacio -> ");
                     String fechaConsola = entradaEscaner.nextLine();
-                    
+
                     Date fechaHoy = null;
                     if (fechaConsola.equals("")) {
                         fechaHoy = new Date();
@@ -342,7 +336,7 @@ public class CreaXML {
         Calendar c2 = Fecha.getUltimoDiaDeMes(fechaHoy);
 
         totaledoscta = contratos.size();
-        
+
         int cont = 1;
 
         for (Contrato contrato : contratos) {
@@ -371,40 +365,40 @@ public class CreaXML {
                 }
 
                 List<EdoCta> edoCtas = edoCtaDAO.getEdoCta(contrato.getClave_contrato(), format.format(c1.getTime()), format.format(c2.getTime()));
-                
+
                 System.out.println("Estados de Cta: " + edoCtas.size());
-                
+
                 Comprobante comprobante = new Comprobante();
                 comprobante.setVersion("3.3");
                 //comprobante.setFecha(dateFormat.format(compEdoCta.getFecha()));
 
                 GregorianCalendar cal = new GregorianCalendar();
                 cal.setTime(compEdoCta.getFecha());
-                
+
                 try {
                     javax.xml.datatype.XMLGregorianCalendar fecha;
-                    fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal.get(Calendar.YEAR), 
-                                                                                  cal.get(Calendar.MONTH) + 1, 
-                                                                                  cal.get(Calendar.DAY_OF_MONTH), 
-                                                                                  cal.get(Calendar.HOUR_OF_DAY), 
-                                                                                  cal.get(Calendar.MINUTE), 
-                                                                                  cal.get(Calendar.SECOND), 
-                                                                                  DatatypeConstants.FIELD_UNDEFINED,
-                                                                                  DatatypeConstants.FIELD_UNDEFINED);
-                    
+                    fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal.get(Calendar.YEAR),
+                            cal.get(Calendar.MONTH) + 1,
+                            cal.get(Calendar.DAY_OF_MONTH),
+                            cal.get(Calendar.HOUR_OF_DAY),
+                            cal.get(Calendar.MINUTE),
+                            cal.get(Calendar.SECOND),
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED);
+
                     comprobante.setFecha(fecha);
-                    
+
                 } catch (DatatypeConfigurationException ex) {
                     Logger.getLogger(CreaXML.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
                 System.out.println("No Certificado: " + cer_number);
                 comprobante.setNoCertificado(cer_number);
                 //comprobante.setNoCertificado(compEdoCta.getCertificado().getnCertificado());
                 comprobante.setCertificado(compEdoCta.getCertificado().getCertificado().replace("?", ""));
                 comprobante.setFormaPago("03");
                 comprobante.setMetodoPago(CMetodoPago.PUE);
-                
+
                 Double totalIVA = 0.00;
                 Double totalHonorario = 0.00;
                 Double totalAbono = 0.00;
@@ -478,7 +472,7 @@ public class CreaXML {
                 receptor.setRfc(contrato.getRFC());
                 receptor.setNombre(contrato.getNombre_cliente());
                 receptor.setUsoCFDI(CUsoCFDI.G_03);
-                
+
                 comprobante.setReceptor(receptor);
 
                 //Conceptos
@@ -546,11 +540,12 @@ public class CreaXML {
                 JAXBContext jAXBContext = JAXBContext.newInstance(Comprobante.class);
                 Marshaller marshaller = jAXBContext.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                //marshaller.setProperty("com.sun.xml.internal.bind.namespacePrefixMapper", SPACE_MAPPER);
+
+                // marshaller.setProperty("com.sun.xml.internal.bind.namespacePrefixMapper", new MyNamespaceMapper());
                 marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION);
-                
+
                 StringWriter sw = new StringWriter();
-                marshaller.marshal(comprobante, sw);                    
+                marshaller.marshal(comprobante, sw);
                 String xmlEnvio = sw.toString();
                 //System.exit(100);
                 Reader reader = new StringReader(xmlEnvio);
@@ -562,21 +557,23 @@ public class CreaXML {
                 StringWriter writer = new StringWriter();
                 StreamResult result = new StreamResult(writer);
                 transformer.transform(sourceXML, result);
-                
+
                 if (compEdoCta.getUuid() == null) {
-                    
+
                     // Bloque 503 - 517
+                    System.out.println(writer.toString());
                     Encriptar.setKeyFilename(key_filename);
                     comprobante.setSello(Encriptar.rsaTexto(writer.toString(), compEdoCta.getCertificado().getPassword()));
 
                     StringWriter sw3 = new StringWriter();
                     marshaller.marshal(comprobante, sw3);
-                    marshaller.marshal(comprobante, System.out); // Display XML
+                    //marshaller.marshal(comprobante, System.out); // Display XML
                     String xmlEnvio3 = sw3.toString();
 
                     xmlEnvio3 = xmlEnvio3.replaceAll(" standalone=\"yes\"", "");
                     xmlEnvio3 = xmlEnvio3.replaceAll(" https://www.garante.mx/cfd/addenda/edocta https://www.garante.mx/EdoctaV1.xsd", "");
-                    
+                    System.out.println(xmlEnvio3);
+
                     String referencia = contrato.getClave_contrato() + format3.format(fechaHoy);
                     System.out.println("referencia: " + referencia);
 
@@ -605,106 +602,112 @@ public class CreaXML {
                         System.out.println("MensajeError: " + rtfd.getMensajeError().getValue());
                         guardaError(lErrores, new ErroresXML(rfcActual, format.format(new Date()), rtfd.getMensajeError().getValue()));
                     }
-
                 } else {
                     comprobante.setSello(compEdoCta.getSelloCFD());
                 }
                 //Proceso de generacion XML y PDF
-                if (totalTimbrados == contratos.size()) {
-                    System.out.println("Timbrados: " + totalTimbrados + " Contratos: " + contratos.size() + " - se genera estado de cuenta");
-                    List<Comprobante.Complemento> complementos = new ArrayList<>();
-                    Comprobante.Complemento complemento = new Comprobante.Complemento();
+                //if (totalTimbrados == contratos.size()) {
+                System.out.println("Timbrados: " + totalTimbrados + " Contratos: " + contratos.size() + " - se genera estado de cuenta");
+                List<Comprobante.Complemento> complementos = new ArrayList<>();
+                Comprobante.Complemento complemento = new Comprobante.Complemento();
 
-                    List<Object> tfds = new ArrayList<>();
-                    TimbreFiscalDigital tdf = new TimbreFiscalDigital();
-                    tdf.setFechaTimbrado(Fecha.crearXMLGregorianCalendar(compEdoCta.getFechaTimbre()));
-                    tdf.setVersion("1.1");
-                    tdf.setRfcProvCertif(compEdoCta.getRfcProv());
-                    tdf.setUUID(compEdoCta.getUuid());
-                    tdf.setSelloCFD(compEdoCta.getSelloCFD());
-                    tdf.setNoCertificadoSAT(compEdoCta.getnCertificado());
-                    tdf.setSelloSAT(compEdoCta.getSelloSAT());
-                    tfds.add(tdf);
+                List<Object> tfds = new ArrayList<>();
+                TimbreFiscalDigital tdf = new TimbreFiscalDigital();
+                tdf.setFechaTimbrado(Fecha.crearXMLGregorianCalendar(compEdoCta.getFechaTimbre()));
+                tdf.setVersion("1.1");
+                tdf.setRfcProvCertif(compEdoCta.getRfcProv());
+                tdf.setUUID(compEdoCta.getUuid());
+                tdf.setSelloCFD(compEdoCta.getSelloCFD());
+                tdf.setNoCertificadoSAT(compEdoCta.getnCertificado());
+                tdf.setSelloSAT(compEdoCta.getSelloSAT());
+                tfds.add(tdf);
 
-                    StringWriter sw2 = new StringWriter();
-                    marshaller.marshal(tdf, sw2);
-                    String xmlEnvio2 = sw2.toString();
+                StringWriter sw2 = new StringWriter();
+                marshaller.marshal(tdf, sw2);
+                String xmlEnvio2 = sw2.toString();
 
-                    Reader reader2 = new StringReader(xmlEnvio2);
-                    StreamSource sourceXML2 = new StreamSource(reader2);
+                Reader reader2 = new StringReader(xmlEnvio2);
+                StreamSource sourceXML2 = new StreamSource(reader2);
 
-                    TransformerFactory tFactory2 = TransformerFactory.newInstance();
-                    Transformer transformer2 = tFactory2.newTransformer(formatoCadenaOriginalTimbre);
+                TransformerFactory tFactory2 = TransformerFactory.newInstance();
+                Transformer transformer2 = tFactory2.newTransformer(formatoCadenaOriginalTimbre);
 
-                    StringWriter writer2 = new StringWriter();
-                    StreamResult result2 = new StreamResult(writer2);
-                    transformer2.transform(sourceXML2, result2);
+                StringWriter writer2 = new StringWriter();
+                StreamResult result2 = new StreamResult(writer2);
+                transformer2.transform(sourceXML2, result2);
 
-                    String cadorigen = writer.toString();
+                String cadorigen = "||1.1|"
+                        + tdf.getUUID() + "|"
+                        + tdf.getFechaTimbrado() + "|"
+                        + tdf.getRfcProvCertif() + "|"
+                        + "ValorDelAtributoLeyenda|"
+                        + tdf.getSelloCFD() + "|"
+                        + tdf.getNoCertificadoSAT() + "||";
+                System.out.println("Cadena Origen: " + cadorigen);
 
-                    //complemento.setAny(tfds);
-                    complemento.getAny().clear();
-                    complemento.getAny().addAll(tfds);
-                    complementos.add(complemento);
-                    //comprobante.setComplemento(complementos);
-                    comprobante.getComplemento().clear();
-                    comprobante.getComplemento().addAll(complementos);
+                //complemento.setAny(tfds);
+                complemento.getAny().clear();
+                complemento.getAny().addAll(tfds);
+                complementos.add(complemento);
+                //comprobante.setComplemento(complementos);
+                comprobante.getComplemento().clear();
+                comprobante.getComplemento().addAll(complementos);
 
-                    Comprobante.Addenda addenda = new Comprobante.Addenda();
-                    List<Object> edoCuentas = new ArrayList<>();
+                Comprobante.Addenda addenda = new Comprobante.Addenda();
+                List<Object> edoCuentas = new ArrayList<>();
 
-                    EstadoDeCuenta edoDeCuenta = new EstadoDeCuenta();
-                    edoDeCuenta.setAportacionTotalFideicomiso(new BigDecimal(totalAbono).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setContrato(contrato.getClave_contrato());
-                    String fechaEdoCta = format.format(c1.getTime()).substring(8, 10) + " al " + format.format(c2.getTime()).substring(8, 10) + " de " + meses[c1.get(Calendar.MONTH)] + " de " + c1.get(Calendar.YEAR);
-                    edoDeCuenta.setFechaEdoCta(fechaEdoCta);
-                    edoDeCuenta.setHonorariosFiduciarios(new BigDecimal(totalHonorario).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setIvaHonorariosFiduciarios(new BigDecimal(totalIVA).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setLiquidacionFideicomisarios(new BigDecimal(totalOrdenLiq).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setMoneda(CMoneda.MXN.toString());
-                    edoDeCuenta.setRestitucionPatrimonio(new BigDecimal(totalRestitucion).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setRfcFideicomitente(contrato.getRFC());
-                    edoDeCuenta.setSaldoAnteriorPatrimonio(new BigDecimal(saldoAnterior).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setSaldoFinalPatrimonio(new BigDecimal(saldoFinal).setScale(2, RoundingMode.HALF_UP));
-                    edoDeCuenta.setTipoContrato("Fideicomiso de Garantia");
-                    edoDeCuenta.setVersion("1.0");
+                EstadoDeCuenta edoDeCuenta = new EstadoDeCuenta();
+                edoDeCuenta.setAportacionTotalFideicomiso(new BigDecimal(totalAbono).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setContrato(contrato.getClave_contrato());
+                String fechaEdoCta = format.format(c1.getTime()).substring(8, 10) + " al " + format.format(c2.getTime()).substring(8, 10) + " de " + meses[c1.get(Calendar.MONTH)] + " de " + c1.get(Calendar.YEAR);
+                edoDeCuenta.setFechaEdoCta(fechaEdoCta);
+                edoDeCuenta.setHonorariosFiduciarios(new BigDecimal(totalHonorario).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setIvaHonorariosFiduciarios(new BigDecimal(totalIVA).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setLiquidacionFideicomisarios(new BigDecimal(totalOrdenLiq).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setMoneda(CMoneda.MXN.toString());
+                edoDeCuenta.setRestitucionPatrimonio(new BigDecimal(totalRestitucion).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setRfcFideicomitente(contrato.getRFC());
+                edoDeCuenta.setSaldoAnteriorPatrimonio(new BigDecimal(saldoAnterior).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setSaldoFinalPatrimonio(new BigDecimal(saldoFinal).setScale(2, RoundingMode.HALF_UP));
+                edoDeCuenta.setTipoContrato("Fideicomiso de Garantia");
+                edoDeCuenta.setVersion("1.0");
 
-                    edoDeCuenta.setMovimientos(movs);
+                edoDeCuenta.setMovimientos(movs);
 
-                    edoCuentas.add(edoDeCuenta);
-                    //addenda.setAny(edoCuentas);
-                    addenda.getAny().clear();
-                    addenda.getAny().addAll(edoCuentas);
-                    comprobante.setAddenda(addenda);
+                edoCuentas.add(edoDeCuenta);
+                //addenda.setAny(edoCuentas);
+                addenda.getAny().clear();
+                addenda.getAny().addAll(edoCuentas);
+                comprobante.setAddenda(addenda);
 
-                    contrato.setEdoCtas(edoCtas);
+                contrato.setEdoCtas(edoCtas);
 
-                    String salida = File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + c2.get(Calendar.YEAR) + File.separator;
-                    // Local Test Output Path
-                    //salida = "./" + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + c2.get(Calendar.YEAR) + File.separator;
-                    File carpetas = new File(salida);
-                    carpetas.mkdirs();
-                    marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATIONFinal);
-                    marshaller.marshal(comprobante, new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml"));
+                String salida = File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + c2.get(Calendar.YEAR) + File.separator;
+                // Local Test Output Path
+                //salida = "./" + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + c2.get(Calendar.YEAR) + File.separator;
+                File carpetas = new File(salida);
+                carpetas.mkdirs();
+                marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATIONFinal);
+                marshaller.marshal(comprobante, new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml"));
 
-                    CreaPDF.edoCuenta(contrato, saldoAnterior, saldoFinal, totalRestitucion, totalOrdenLiq, totalHonorario, totalIVA, totalAbono, fechaEdoCta, tdf, salida + meses[c2.get(Calendar.MONTH)], cadorigen, emisor.getRfc());
+                CreaPDF.edoCuenta(contrato, saldoAnterior, saldoFinal, totalRestitucion, totalOrdenLiq, totalHonorario, totalIVA, totalAbono, fechaEdoCta, tdf, salida + meses[c2.get(Calendar.MONTH)], cadorigen, emisor.getRfc());
 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////// CREACION DE ZIP
-                    File files[] = new File[2];
-                    files[0] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml");
-                    files[1] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".pdf");
-                    File zip = new File("c:" + File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + "EDOCTA_" + contrato.getClave_contrato() + "_" + c2.get(Calendar.YEAR) + "_" + Empaquetar.numMes(c2.get(Calendar.MONTH)) + "" + ".zip");
-                    try {
-                        Empaquetar.addFilesToExistingZip2(zip, files);
-                        if (!Empaquetar.eliminaR(carpetas)) {
-                            System.out.println("Error al eliminar carpeta " + carpetas.getAbsolutePath());
-                        }
-                    } catch (IOException e) {
-                        System.out.println("Error: " + e.getMessage());
+                /////////////////////////////////////////////////////////////////////////////////////////////////// CREACION DE ZIP
+                File files[] = new File[2];
+                files[0] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml");
+                files[1] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".pdf");
+                File zip = new File("c:" + File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "EstadosDeCuenta" + File.separator + contrato.getClave_contrato() + File.separator + "EDOCTA_" + contrato.getClave_contrato() + "_" + c2.get(Calendar.YEAR) + "_" + Empaquetar.numMes(c2.get(Calendar.MONTH)) + "" + ".zip");
+                try {
+                    Empaquetar.addFilesToExistingZip2(zip, files);
+                    if (!Empaquetar.eliminaR(carpetas)) {
+                        System.out.println("Error al eliminar carpeta " + carpetas.getAbsolutePath());
                     }
-                } else {
-                    System.out.println("Timbrados: " + totalTimbrados + " Contratos: " + contratos.size() + " - No se genera estado de cuenta");
+                } catch (IOException e) {
+                    System.out.println("Error: " + e.getMessage());
                 }
+//                } else {
+//                    System.out.println("Timbrados: " + totalTimbrados + " Contratos: " + contratos.size() + " - No se genera estado de cuenta");
+//                }
 
             } catch (JAXBException | TransformerException ex) {
                 Logger.getLogger(CreaXML.class.getName()).log(Level.SEVERE, null, ex);
@@ -912,14 +915,14 @@ public class CreaXML {
                     JAXBContext jAXBContext = JAXBContext.newInstance(Comprobante.class);
                     Marshaller marshaller = jAXBContext.createMarshaller();
                     marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                    
+
                     marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", SPACE_MAPPER);
 //                    marshaller.setProperty("com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper", SPACE_MAPPER);
                     marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION);
 
                     comprobante.setSello(compEdoCta.getSelloCFD());
                     //Proceso de generacion XML y PDF
-                    System.out.println("totalTimbrados ="+totalTimbrados+"; contratos.size()="+contratos.size());
+                    System.out.println("totalTimbrados =" + totalTimbrados + "; contratos.size()=" + contratos.size());
                     if (totalTimbrados == contratos.size()) {
 //                    if (totalTimbrados != contratos.size()) {
                         List<Comprobante.Complemento> complementos = new ArrayList<>();
@@ -955,7 +958,13 @@ public class CreaXML {
                         StreamResult result2 = new StreamResult(writer2);
                         transformer2.transform(sourceXML2, result2);
 
-                        String cadorigen = writer2.toString();
+                        String cadorigen = "||1.1|"
+                                + tdf.getUUID() + "|"
+                                + tdf.getFechaTimbrado() + "|"
+                                + tdf.getRfcProvCertif() + "|"
+                                + "ValorDelAtributoLeyenda|"
+                                + tdf.getSelloCFD() + "|"
+                                + tdf.getNoCertificadoSAT() + "||";
 
 //          complemento.setAny(tfds);
                         complemento.getAny().clear();
@@ -1083,22 +1092,20 @@ public class CreaXML {
                 //comprobante.setFecha(dateFormat.format(compNomina.getFecha()));
 
                 GregorianCalendar cal = new GregorianCalendar();
-                
-                
-                
+
                 cal.setTime(compNomina.getFecha());
                 try {
                     comprobante.setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(cal));
                     System.out.println("Fecha 1: " + comprobante.getFecha().toString());
                     javax.xml.datatype.XMLGregorianCalendar fecha;
-                    fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal.get(Calendar.YEAR), 
-                                                                                  cal.get(Calendar.MONTH) + 1, 
-                                                                                  cal.get(Calendar.DAY_OF_MONTH), 
-                                                                                  cal.get(Calendar.HOUR_OF_DAY), 
-                                                                                  cal.get(Calendar.MINUTE), 
-                                                                                  cal.get(Calendar.SECOND), 
-                                                                                  DatatypeConstants.FIELD_UNDEFINED,
-                                                                                  DatatypeConstants.FIELD_UNDEFINED);
+                    fecha = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal.get(Calendar.YEAR),
+                            cal.get(Calendar.MONTH) + 1,
+                            cal.get(Calendar.DAY_OF_MONTH),
+                            cal.get(Calendar.HOUR_OF_DAY),
+                            cal.get(Calendar.MINUTE),
+                            cal.get(Calendar.SECOND),
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED);
                     comprobante.setFecha(fecha);
                     System.out.println("Fecha 2: " + comprobante.getFecha().toString());
                 } catch (DatatypeConfigurationException ex) {
@@ -1163,20 +1170,20 @@ public class CreaXML {
                 Nomina nomina = new Nomina();
                 nomina.setVersion("1.2");
                 nomina.setTipoNomina(CTipoNomina.E);
-                
+
                 //nomina.setFechaPago(formatNomina.format(c2.getTime()));
                 GregorianCalendar cal1 = new GregorianCalendar();
                 cal1.setTime(c2.getTime());
                 try {
                     javax.xml.datatype.XMLGregorianCalendar nominaFechaPago;
-                    nominaFechaPago = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal1.get(Calendar.YEAR), 
-                                                                                            cal1.get(Calendar.MONTH) +1, 
-                                                                                            cal1.get(Calendar.DAY_OF_MONTH), 
-                                                                                            DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                            DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                            DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                            DatatypeConstants.FIELD_UNDEFINED,
-                                                                                            DatatypeConstants.FIELD_UNDEFINED);
+                    nominaFechaPago = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal1.get(Calendar.YEAR),
+                            cal1.get(Calendar.MONTH) + 1,
+                            cal1.get(Calendar.DAY_OF_MONTH),
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED);
                     nomina.setFechaPago(DatatypeFactory.newInstance().newXMLGregorianCalendar(cal1));
                     System.out.println("FechaPago 1:" + nomina.getFechaPago().toString());
                     nomina.setFechaPago(nominaFechaPago);
@@ -1190,14 +1197,14 @@ public class CreaXML {
                 cal2.setTime(c1.getTime());
                 try {
                     javax.xml.datatype.XMLGregorianCalendar nominaFechaInicialPago;
-                    nominaFechaInicialPago = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal2.get(Calendar.YEAR), 
-                                                                                                   cal2.get(Calendar.MONTH) + 1, 
-                                                                                                   cal2.get(Calendar.DAY_OF_MONTH), 
-                                                                                                   DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                                   DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                                   DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                                   DatatypeConstants.FIELD_UNDEFINED,
-                                                                                                   DatatypeConstants.FIELD_UNDEFINED);
+                    nominaFechaInicialPago = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal2.get(Calendar.YEAR),
+                            cal2.get(Calendar.MONTH) + 1,
+                            cal2.get(Calendar.DAY_OF_MONTH),
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED);
                     nomina.setFechaInicialPago(DatatypeFactory.newInstance().newXMLGregorianCalendar(cal2));
                     System.out.println("FechaPagoInicial 1:" + nomina.getFechaInicialPago().toString());
                     nomina.setFechaInicialPago(nominaFechaInicialPago);
@@ -1211,14 +1218,14 @@ public class CreaXML {
                 cal3.setTime(c2.getTime());
                 try {
                     javax.xml.datatype.XMLGregorianCalendar nominaFechaFinalPago;
-                    nominaFechaFinalPago = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal3.get(Calendar.YEAR), 
-                                                                                                 cal3.get(Calendar.MONTH) + 1, 
-                                                                                                 cal3.get(Calendar.DAY_OF_MONTH), 
-                                                                                                 DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                                 DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                                 DatatypeConstants.FIELD_UNDEFINED, 
-                                                                                                 DatatypeConstants.FIELD_UNDEFINED,
-                                                                                                 DatatypeConstants.FIELD_UNDEFINED);
+                    nominaFechaFinalPago = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal3.get(Calendar.YEAR),
+                            cal3.get(Calendar.MONTH) + 1,
+                            cal3.get(Calendar.DAY_OF_MONTH),
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED,
+                            DatatypeConstants.FIELD_UNDEFINED);
                     nomina.setFechaFinalPago(DatatypeFactory.newInstance().newXMLGregorianCalendar(cal3));
                     System.out.println("FechaPagoFinal 1:" + nomina.getFechaFinalPago().toString());
                     nomina.setFechaFinalPago(nominaFechaFinalPago);
@@ -1242,9 +1249,9 @@ public class CreaXML {
                     System.out.println("Contrato " + _contrato + " Inactivo - Skip");
                     continue;
                 }
-                
+
                 nomina.setEmisor(emisorNom);
-                
+
                 //Nomina Receptor
                 Nomina.Receptor receptorNom = new Nomina.Receptor();
                 receptorNom.setCurp(movimientos.get(0).getCurp());
@@ -1254,8 +1261,7 @@ public class CreaXML {
                 receptorNom.setPeriodicidadPago("99");
                 receptorNom.setPuesto(movimientos.get(0).getPuesto_empleado());
                 receptorNom.setDepartamento(movimientos.get(0).getDepto_empleado());
-               
-                
+
                 // Si se registra una cuenta de tarjeta de débito a 16 posiciones 
                 // o una cuenta bancaria a 11 posiciones 
                 // o un número de teléfono celular a 10 posiciones, debe existir el banco.
@@ -1265,8 +1271,8 @@ public class CreaXML {
                     receptorNom.setCuentaBancaria(new BigInteger(movimientos.get(0).getCuenta_deposito()));
                     receptorNom.setBanco(String.format("%03d", Integer.parseInt(movimientos.get(0).getClave_banco())));
                 }
-                
-                if (contrato != null) { 
+
+                if (contrato != null) {
                     receptorNom.setClaveEntFed(CEstado.fromValue(contrato.getEnt_fed()));
                 }
                 //if (movimientos.get(0).getClave_banco().length() == 10) {
@@ -1307,23 +1313,23 @@ public class CreaXML {
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
                 //marshaller.setProperty("com.sun.xml.internal.bind.namespacePrefixMapper", SPACE_MAPPER);
                 marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION2);
-                
+
                 StringWriter sw = new StringWriter();
                 marshaller.marshal(comprobante, sw);
                 String xmlEnvio = sw.toString();
 
                 Reader reader = new StringReader(xmlEnvio);
                 StreamSource sourceXML = new StreamSource(reader);
-                
+
                 TransformerFactory tFactory = TransformerFactory.newInstance();
                 Transformer transformer = tFactory.newTransformer(formatoCadenaOriginal);
-                
+
                 StringWriter writer = new StringWriter();
                 StreamResult result = new StreamResult(writer);
                 transformer.transform(sourceXML, result);
-                
+
                 if (compNomina.getUuid() == null) {
-                //if (compNomina.getUuid() != null) { // Dejar pasar timbrados para pruebas
+                    //if (compNomina.getUuid() != null) { // Dejar pasar timbrados para pruebas
                     System.out.println("UUID NOT FOUND");
                     // Aquí estaba el bloue 1258 - 1270
                     Encriptar.setKeyFilename(key_filename);
@@ -1383,66 +1389,72 @@ public class CreaXML {
                     comprobante.setSello(compNomina.getSelloCFD());
                 }
 
-                if (totalTimbrados == rfcs.size()) {
-                    TimbreFiscalDigital timbre = new TimbreFiscalDigital();
-                    timbre.setVersion("1.1");
-                    timbre.setRfcProvCertif(compNomina.getRfcProv());
-                    timbre.setSelloSAT(compNomina.getSelloSAT());
-                    timbre.setNoCertificadoSAT(compNomina.getnCertificado());
-                    timbre.setSelloCFD(compNomina.getSelloCFD());
-                    timbre.setFechaTimbrado(Fecha.crearXMLGregorianCalendar(compNomina.getFechaTimbre()));
-                    timbre.setUUID(compNomina.getUuid());
+                //if (totalTimbrados == rfcs.size()) {
+                TimbreFiscalDigital timbre = new TimbreFiscalDigital();
+                timbre.setVersion("1.1");
+                timbre.setRfcProvCertif(compNomina.getRfcProv());
+                timbre.setSelloSAT(compNomina.getSelloSAT());
+                timbre.setNoCertificadoSAT(compNomina.getnCertificado());
+                timbre.setSelloCFD(compNomina.getSelloCFD());
+                timbre.setFechaTimbrado(Fecha.crearXMLGregorianCalendar(compNomina.getFechaTimbre()));
+                timbre.setUUID(compNomina.getUuid());
 
-                    StringWriter sw2 = new StringWriter();
-                    marshaller.marshal(timbre, sw2);
-                    String xmlEnvio2 = sw2.toString();
+                StringWriter sw2 = new StringWriter();
+                marshaller.marshal(timbre, sw2);
+                String xmlEnvio2 = sw2.toString();
 
-                    Reader reader2 = new StringReader(xmlEnvio2);
-                    StreamSource sourceXML2 = new StreamSource(reader2);
+                Reader reader2 = new StringReader(xmlEnvio2);
+                StreamSource sourceXML2 = new StreamSource(reader2);
 
-                    TransformerFactory tFactory2 = TransformerFactory.newInstance();
-                    Transformer transformer2 = tFactory2.newTransformer(formatoCadenaOriginalTimbre);
+                TransformerFactory tFactory2 = TransformerFactory.newInstance();
+                Transformer transformer2 = tFactory2.newTransformer(formatoCadenaOriginalTimbre);
 
-                    StringWriter writer2 = new StringWriter();
-                    StreamResult result2 = new StreamResult(writer2);
-                    transformer2.transform(sourceXML2, result2);
+                StringWriter writer2 = new StringWriter();
+                StreamResult result2 = new StreamResult(writer2);
+                transformer2.transform(sourceXML2, result2);
 
-                    String cadorigen = writer.toString();
-                    //System.out.println("Cadena Original: " + writer.toString());
+                String cadorigen = "||1.1|"
+                        + compNomina.getUuid() + "|"
+                        + Fecha.crearXMLGregorianCalendar(compNomina.getFechaTimbre()) + "|"
+                        + compNomina.getRfcProv() + "|"
+                        + "ValorDelAtributoLeyenda|"
+                        + compNomina.getSelloCFD() + "|"
+                        + compNomina.getnCertificado() + "||";
+                System.out.println("Cadena Original: " + cadorigen);
 
-                    listaComplementos.add(timbre);
-                    //complemento.setAny(listaComplementos);
-                    complemento.getAny().clear();
-                    complemento.getAny().addAll(listaComplementos);
+                listaComplementos.add(timbre);
+                //complemento.setAny(listaComplementos);
+                complemento.getAny().clear();
+                complemento.getAny().addAll(listaComplementos);
 
-                    String fecha = format2.format(fechaHoy);
-                    String salida = File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "CFDI" + File.separator + rfc + File.separator + c2.get(Calendar.YEAR) + File.separator;
-                    File carpetas = new File(salida);
-                    carpetas.mkdirs();
+                String fecha = format2.format(fechaHoy);
+                String salida = File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "CFDI" + File.separator + rfc + File.separator + c2.get(Calendar.YEAR) + File.separator;
+                File carpetas = new File(salida);
+                carpetas.mkdirs();
 
-                    marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION2Final);
-                    marshaller.marshal(comprobante, new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml"));
+                marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, LOCATION2Final);
+                marshaller.marshal(comprobante, new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml"));
 
-                    CreaPDF.nomina(comprobante, timbre, receptor, emisor, emisorNom, receptorNom, nomina, movimientos, concepto1, listOtroPagos, salida + meses[c2.get(Calendar.MONTH)], cadorigen, contrato.getNombre_cliente());
+                CreaPDF.nomina(comprobante, timbre, receptor, emisor, emisorNom, receptorNom, nomina, movimientos, concepto1, listOtroPagos, salida + meses[c2.get(Calendar.MONTH)], cadorigen, contrato.getNombre_cliente());
 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////// CREACION DE ZIP
-                    File files[] = new File[2];
-                    files[0] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml");
-                    files[1] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".pdf");
+                /////////////////////////////////////////////////////////////////////////////////////////////////// CREACION DE ZIP
+                File files[] = new File[2];
+                files[0] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".xml");
+                files[1] = new File(salida + meses[c2.get(Calendar.MONTH)] + ".pdf");
 
-                    File zip = new File(File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "CFDI" + File.separator + receptor.getRfc() + File.separator + fecha.substring(0, 4) + File.separator + Fecha.nombreMes(fecha.substring(4, 6)) + ".zip");
-                    try {
-                        Empaquetar.addFilesToExistingZip2(zip, files);
-                        if (!Empaquetar.eliminaR(files[0])) {
-                            System.out.println("Error al eliminar " + carpetas.getAbsolutePath());
-                        }
-                        if (!Empaquetar.eliminaR(files[1])) {
-                            System.out.println("Error al eliminar " + carpetas.getAbsolutePath());
-                        }
-                    } catch (IOException e) {
-                        System.out.println("Error: " + e.getMessage());
+                File zip = new File(File.separator + "inetpub" + File.separator + "ftproot" + File.separator + "CFDI" + File.separator + receptor.getRfc() + File.separator + fecha.substring(0, 4) + File.separator + Fecha.nombreMes(fecha.substring(4, 6)) + ".zip");
+                try {
+                    Empaquetar.addFilesToExistingZip2(zip, files);
+                    if (!Empaquetar.eliminaR(files[0])) {
+                        System.out.println("Error al eliminar " + carpetas.getAbsolutePath());
                     }
+                    if (!Empaquetar.eliminaR(files[1])) {
+                        System.out.println("Error al eliminar " + carpetas.getAbsolutePath());
+                    }
+                } catch (IOException e) {
+                    System.out.println("Error: " + e.getMessage());
                 }
+                //}
 
             } catch (JAXBException | TransformerException ex) {
                 Logger.getLogger(CreaXML.class.getName()).log(Level.SEVERE, null, ex);

@@ -10,10 +10,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 import com.microsoft.schemas._2003._10.serialization.arrays.ArrayOfstring;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.ArrayOfDetalleCFDICancelacion;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.ArrayOfUUIDProcesarRespuesta;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaAceptacionRechazo;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCancelacion;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCancelacionAsincrona;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCreditos;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaEstatusCancelacionAsincrona;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaPeticionesPendientes;
+import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaRelacionados;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaReporte;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaValidacionRFC;
@@ -262,6 +267,26 @@ public interface IWSCFDI33 {
     /**
      * 
      * @param password
+     * @param sello
+     * @param usuario
+     * @return
+     *     returns org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33
+     */
+    @WebMethod(operationName = "ConsultarTimbrePorSello", action = "http://tempuri.org/IWSCFDI33/ConsultarTimbrePorSello")
+    @WebResult(name = "ConsultarTimbrePorSelloResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ConsultarTimbrePorSello", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ConsultarTimbrePorSello")
+    @ResponseWrapper(localName = "ConsultarTimbrePorSelloResponse", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ConsultarTimbrePorSelloResponse")
+    public RespuestaTFD33 consultarTimbrePorSello(
+        @WebParam(name = "usuario", targetNamespace = "http://tempuri.org/")
+        String usuario,
+        @WebParam(name = "password", targetNamespace = "http://tempuri.org/")
+        String password,
+        @WebParam(name = "sello", targetNamespace = "http://tempuri.org/")
+        String sello);
+
+    /**
+     * 
+     * @param password
      * @param usuario
      * @return
      *     returns org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCreditos
@@ -321,5 +346,115 @@ public interface IWSCFDI33 {
         String password,
         @WebParam(name = "rfc", targetNamespace = "http://tempuri.org/")
         String rfc);
+
+    /**
+     * 
+     * @param password
+     * @param rFCReceptor
+     * @param usuario
+     * @return
+     *     returns org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaPeticionesPendientes
+     */
+    @WebMethod(operationName = "ObtenerPeticionesPendientesCancelacion", action = "http://tempuri.org/IWSCFDI33/ObtenerPeticionesPendientesCancelacion")
+    @WebResult(name = "ObtenerPeticionesPendientesCancelacionResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ObtenerPeticionesPendientesCancelacion", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ObtenerPeticionesPendientesCancelacion")
+    @ResponseWrapper(localName = "ObtenerPeticionesPendientesCancelacionResponse", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ObtenerPeticionesPendientesCancelacionResponse")
+    public RespuestaPeticionesPendientes obtenerPeticionesPendientesCancelacion(
+        @WebParam(name = "usuario", targetNamespace = "http://tempuri.org/")
+        String usuario,
+        @WebParam(name = "password", targetNamespace = "http://tempuri.org/")
+        String password,
+        @WebParam(name = "rFCReceptor", targetNamespace = "http://tempuri.org/")
+        String rFCReceptor);
+
+    /**
+     * 
+     * @param uUIDs
+     * @param password
+     * @param passwordClavePrivada
+     * @param rFCReceptor
+     * @param clavePrivadaBase64
+     * @param usuario
+     * @return
+     *     returns org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaAceptacionRechazo
+     */
+    @WebMethod(operationName = "ProcesarAceptacionRechazo", action = "http://tempuri.org/IWSCFDI33/ProcesarAceptacionRechazo")
+    @WebResult(name = "ProcesarAceptacionRechazoResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ProcesarAceptacionRechazo", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ProcesarAceptacionRechazo")
+    @ResponseWrapper(localName = "ProcesarAceptacionRechazoResponse", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ProcesarAceptacionRechazoResponse")
+    public RespuestaAceptacionRechazo procesarAceptacionRechazo(
+        @WebParam(name = "usuario", targetNamespace = "http://tempuri.org/")
+        String usuario,
+        @WebParam(name = "password", targetNamespace = "http://tempuri.org/")
+        String password,
+        @WebParam(name = "rFCReceptor", targetNamespace = "http://tempuri.org/")
+        String rFCReceptor,
+        @WebParam(name = "uUIDs", targetNamespace = "http://tempuri.org/")
+        ArrayOfUUIDProcesarRespuesta uUIDs,
+        @WebParam(name = "clavePrivada_Base64", targetNamespace = "http://tempuri.org/")
+        String clavePrivadaBase64,
+        @WebParam(name = "passwordClavePrivada", targetNamespace = "http://tempuri.org/")
+        String passwordClavePrivada);
+
+    /**
+     * 
+     * @param password
+     * @param passwordClavePrivada
+     * @param listaCFDI
+     * @param rFCEmisor
+     * @param clavePrivadaBase64
+     * @param usuario
+     * @return
+     *     returns org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaCancelacion
+     */
+    @WebMethod(operationName = "CancelarCFDIConValidacion", action = "http://tempuri.org/IWSCFDI33/CancelarCFDIConValidacion")
+    @WebResult(name = "CancelarCFDIConValidacionResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "CancelarCFDIConValidacion", targetNamespace = "http://tempuri.org/", className = "org.tempuri.CancelarCFDIConValidacion")
+    @ResponseWrapper(localName = "CancelarCFDIConValidacionResponse", targetNamespace = "http://tempuri.org/", className = "org.tempuri.CancelarCFDIConValidacionResponse")
+    public RespuestaCancelacion cancelarCFDIConValidacion(
+        @WebParam(name = "usuario", targetNamespace = "http://tempuri.org/")
+        String usuario,
+        @WebParam(name = "password", targetNamespace = "http://tempuri.org/")
+        String password,
+        @WebParam(name = "rFCEmisor", targetNamespace = "http://tempuri.org/")
+        String rFCEmisor,
+        @WebParam(name = "listaCFDI", targetNamespace = "http://tempuri.org/")
+        ArrayOfDetalleCFDICancelacion listaCFDI,
+        @WebParam(name = "clavePrivada_Base64", targetNamespace = "http://tempuri.org/")
+        String clavePrivadaBase64,
+        @WebParam(name = "passwordClavePrivada", targetNamespace = "http://tempuri.org/")
+        String passwordClavePrivada);
+
+    /**
+     * 
+     * @param rfcReceptor
+     * @param pfxReceptorBase64
+     * @param password
+     * @param usuario
+     * @param passwdPfx
+     * @param uuid
+     * @param rfcEmisor
+     * @return
+     *     returns org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaRelacionados
+     */
+    @WebMethod(operationName = "ConsultarComprobantesRelacionados", action = "http://tempuri.org/IWSCFDI33/ConsultarComprobantesRelacionados")
+    @WebResult(name = "ConsultarComprobantesRelacionadosResult", targetNamespace = "http://tempuri.org/")
+    @RequestWrapper(localName = "ConsultarComprobantesRelacionados", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ConsultarComprobantesRelacionados")
+    @ResponseWrapper(localName = "ConsultarComprobantesRelacionadosResponse", targetNamespace = "http://tempuri.org/", className = "org.tempuri.ConsultarComprobantesRelacionadosResponse")
+    public RespuestaRelacionados consultarComprobantesRelacionados(
+        @WebParam(name = "usuario", targetNamespace = "http://tempuri.org/")
+        String usuario,
+        @WebParam(name = "password", targetNamespace = "http://tempuri.org/")
+        String password,
+        @WebParam(name = "UUID", targetNamespace = "http://tempuri.org/")
+        String uuid,
+        @WebParam(name = "RFCReceptor", targetNamespace = "http://tempuri.org/")
+        String rfcReceptor,
+        @WebParam(name = "RFCEmisor", targetNamespace = "http://tempuri.org/")
+        String rfcEmisor,
+        @WebParam(name = "pfxReceptorBase64", targetNamespace = "http://tempuri.org/")
+        String pfxReceptorBase64,
+        @WebParam(name = "passwdPfx", targetNamespace = "http://tempuri.org/")
+        String passwdPfx);
 
 }

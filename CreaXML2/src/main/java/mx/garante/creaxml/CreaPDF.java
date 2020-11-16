@@ -1,9 +1,9 @@
 package mx.garante.creaxml;
 
-import mx.garante.xmls.CMoneda;
-import mx.garante.xmls.Comprobante;
-import mx.garante.xmls.Nomina;
-import mx.garante.xmls.TimbreFiscalDigital;
+import mx.garante.xmls.v2.CMoneda;
+import mx.garante.xmls.v2.Comprobante;
+import mx.garante.xmls.v2.Nomina;
+import mx.garante.xmls.v2.TimbreFiscalDigital;
 import mx.garante.creaxml.Models.Contrato;
 import mx.garante.creaxml.Models.EdoCta;
 import mx.garante.creaxml.Models.Movimiento;

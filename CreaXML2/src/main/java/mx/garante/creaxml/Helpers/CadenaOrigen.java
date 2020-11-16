@@ -5,7 +5,7 @@
  */
 package mx.garante.creaxml.Helpers;
 
-import mx.garante.xmls.Comprobante;
+import mx.garante.xmls.v2.Comprobante;
 import java.math.BigDecimal;
 import java.util.List;
 

@@ -15,12 +15,13 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.ssl.PKCS8Key;
 
 public class Encriptar {
+
     private static String key_filename = "";
-    
+
     public static void setKeyFilename(String name) {
         key_filename = name;
     }
-    
+
     public static String base64File(String archivo) {
         InputStream inputStream = null;
         String cadena = "";
