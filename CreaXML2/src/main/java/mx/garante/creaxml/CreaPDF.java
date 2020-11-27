@@ -33,13 +33,13 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class CreaPDF {
-    
+
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private static SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
 
     public static boolean edoCuenta(Contrato contrato, Double saldoAnterior, Double saldoFinal, Double restitucion, Double liquidacion, Double honorarios, Double ivaHonorarios, Double totalAbono, String fechaEdoCta, TimbreFiscalDigital tfd, String salida, String cadenaOriginal, String rfcEmisor) {
-        String reportes = System.getProperty("user.dir") + "/src/main/resources/Reportes/";
-        String imagen = System.getProperty("user.dir") + "/src/main/resources/img/";
+        String reportes = System.getProperty("user.dir") + "/ReportesPetramare/";
+        String imagen = System.getProperty("user.dir") + "/img/";
         File file = new File(reportes + "EdoCuenta.jrxml");
         boolean res = false;
 
@@ -69,8 +69,9 @@ public class CreaPDF {
             parameters.put("iva", ivaHonorarios);
             parameters.put("saldoFinal", saldoFinal);
 
-            parameters.put("imagen1", imagen + "/imagen1.jpg");
-            parameters.put("imagen2", imagen + "/imagen2.jpg");
+            parameters.put("imagen1", imagen + "imagen3.jpg");
+            parameters.put("imagen2", imagen + "correo.jpg");
+            parameters.put("imagen3", imagen + "telefono.jpg");
 
             parameters.put("qr", generaQr(tfd.getUUID(), rfcEmisor, contrato.getRFC(), totalAbono, tfd.getSelloCFD()));
 
@@ -89,7 +90,7 @@ public class CreaPDF {
 
         return res;
     }
-    
+
     public static boolean nomina(Comprobante comprobante, TimbreFiscalDigital timbre, Comprobante.Receptor receptor, Comprobante.Emisor emisor, Nomina.Emisor emisorNom, Nomina.Receptor receptorNom, Nomina nomina, List<Movimiento> movimientos, Comprobante.Conceptos.Concepto concepto1, List<Nomina.OtrosPagos.OtroPago> detalle1, String salida, String cadenaOriginal, String nombreCliente) {
 
         List<Nomina.OtrosPagos.OtroPago> detalle = new ArrayList<>();
@@ -98,14 +99,14 @@ public class CreaPDF {
             detalle.add(op);
         }
 
-        String reportes = System.getProperty("user.dir") + "/src/main/resources/Reportes/";
-        String imagen = System.getProperty("user.dir") + "/src/main/resources/img/";
+        String reportes = System.getProperty("user.dir") + "/ReportesPetramare/";
+        String imagen = System.getProperty("user.dir") + "/img/";
         File file = new File(reportes + "ReporteNomina.jrxml");
         boolean res = false;
         try {
             JasperDesign jasperDesign = JRXmlLoader.load(file);
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            
+
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("ClaveFid", movimientos.get(0).getClave_contrato());
             parameters.put("RegPatronal", " ");
@@ -151,15 +152,15 @@ public class CreaPDF {
             parameters.put("Moneda", comprobante.getMoneda().toString());
 
             parameters.put("FolioFisc", timbre.getUUID());
-            parameters.put("FHCert", dateFormat.format(Fecha.getXMLGregorianCalendar(timbre.getFechaTimbrado())) );
+            parameters.put("FHCert", dateFormat.format(Fecha.getXMLGregorianCalendar(timbre.getFechaTimbrado())));
             parameters.put("NSCSAT", timbre.getNoCertificadoSAT());
             parameters.put("NSCCSD", comprobante.getNoCertificado());
             parameters.put("RegFisc", "General de Ley Personas Morales");
             parameters.put("SelloDigCFDI", timbre.getSelloCFD());
             parameters.put("SelloDigSAT", timbre.getSelloSAT());
             parameters.put("CadCertSAT", cadenaOriginal);
-            
-            parameters.put("imagen", imagen + "/imagen1.jpg");
+
+            parameters.put("imagen", imagen + "/imagen4.jpg");
 
             parameters.put("qr", generaQr(timbre.getUUID(), emisor.getRfc(), receptor.getRfc(), comprobante.getTotal().doubleValue(), timbre.getSelloCFD()));
 
@@ -207,5 +208,5 @@ public class CreaPDF {
 
         return qr;
     }
-    
+
 }
