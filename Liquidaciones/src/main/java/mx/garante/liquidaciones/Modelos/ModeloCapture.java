@@ -15,6 +15,7 @@ import mx.garante.liquidaciones.Common.clsFecha;
 import mx.garante.liquidaciones.Beans.Usuario;
 import mx.garante.liquidaciones.Beans.Movimiento;
 import mx.garante.liquidaciones.Beans.ResumenMovimientos;
+import mx.garante.liquidaciones.Beans.Empleado;
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1391,7 +1392,30 @@ public class ModeloCapture {
 
                     if (m.matches()) {
                         if (campo.equals(m.group())) {
-                            valido = "CORRECTO";
+                            clsConexion conn = new clsConexion();
+                            Connection connection = null;
+                            Statement statement = null;
+                            String MySql = "";
+                            boolean flag=false;
+                            try {
+                                connection = conn.ConectaSQLServer();
+                                statement = connection.createStatement();
+                                statement.execute("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
+
+                                MySql = "select * from comprobantesNomina";
+                                MySql += " where rfc ='" + campo + "'";
+
+                                ResultSet rstSQLServer = statement.executeQuery(MySql);
+
+                                if (rstSQLServer.next()) {
+                                    valido = "CORRECTO";
+                                }
+                                else{
+                                    valido = "INCORRECTO";
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Kiosco-validaRFC:" + e.toString());
+                            }
                         }
                     }
                 } else {
@@ -1407,4 +1431,50 @@ public class ModeloCapture {
         return valido;
     }
 
+    public static Empleado getInfoCFDI(String rfc) {
+
+        clsConexion conn = new clsConexion();
+        Connection connection = null;
+        Statement statement = null;
+
+        Empleado userApp = new Empleado();
+        String userIngApp = "";
+        String userTmp = "";
+        String tmp = "";
+        String MySql = "";
+        boolean flag=false;
+        try {
+            connection = conn.ConectaSQLServer();
+            statement = connection.createStatement();
+            statement.execute("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
+
+            MySql = "select nombre_empleado,apellidoP_empleado,apellidoM_empleado,curp from movimientos";
+            MySql += " where rfc ='" + rfc + "' ";
+            MySql += " order by fecha_ingreso desc";
+
+            ResultSet rstSQLServer = statement.executeQuery(MySql);
+
+            if (rstSQLServer.next()) {
+
+                tmp = rstSQLServer.getString(1).trim(); //Password de cliente
+                userApp.setNombre(tmp);
+
+                tmp = rstSQLServer.getString(2).trim(); //Password de cliente
+                userApp.setAppat(tmp);
+
+                tmp = rstSQLServer.getString(3).trim(); //Password de cliente
+                userApp.setApmat(tmp);
+
+                tmp = rstSQLServer.getString(4).trim(); //Password de cliente
+                userApp.setCurp(tmp);
+
+                userApp.setRfc(rfc);
+
+            }
+        } catch (Exception e) {
+            userApp = null;
+            System.out.println("Kiosco-getInfoCFDI:" + e.toString());
+        }
+        return userApp;
+    }
 }

@@ -31,7 +31,7 @@ public class UnZip {
         //4.- Extraer cada uno de los archivos contenidos en la carpeta temporal, y copiarlos en 
         //    su carpeta correspondiente de cada fideicomiso modificando el nombre con la nomenclatura correcta.
         try {
-//            copyFile("C:\\prueba\\contratos.txt", "C:\\prueba\\prueba\\contratos_copy.txt");
+//            copyFile(".\\prueba\\contratos.txt", ".\\prueba\\prueba\\contratos_copy.txt");
             fileZip_origen = copy_ESTADOS_CUENTA();
         } catch (IOException ex) {
             System.out.println("Exception al copiar archivo");
@@ -40,7 +40,7 @@ public class UnZip {
 
         if (!fileZip_origen.equals("")) {
             boolean correcto = unZip(fileZip_origen);
-            //Se tiene descomprimido el .zip y cada uno de los estados de cuenta en C:\\EDOS_CTA_UPLOADS\\temporal
+            //Se tiene descomprimido el .zip y cada uno de los estados de cuenta en .\\EDOS_CTA_UPLOADS\\temporal
             //Se prosigue a copiar cada uno de los estados de cuenta en su correspondiente carpeta para el fideicomiso
             if (correcto) {
                 String respuesta = ordenaEdosCta();
@@ -61,7 +61,7 @@ public class UnZip {
             return "No se puede localizar el archivo";
         }
 
-        eliminaArchivosTemp("C:\\EDOS_CTA_UPLOADS\\temporal\\");
+        eliminaArchivosTemp(".\\EDOS_CTA_UPLOADS\\temporal\\");
 
         return resultado;
     }
@@ -97,9 +97,9 @@ public class UnZip {
     }
 
     private synchronized static String copy_ESTADOS_CUENTA() throws IOException {
-        String destino = "C:\\EDOS_CTA_UPLOADS\\" + generaNombre_ESTADOS_CUENTA();
+        String destino = ".\\EDOS_CTA_UPLOADS\\" + generaNombre_ESTADOS_CUENTA();
         //URL en Servidor Virtual
-        String origen = "D:\\tomcat\\bin\\uploads\\ESTADOS_CUENTA\\EdosCta_temporal.zip";
+        String origen = ".\\tomcat\\bin\\uploads\\ESTADOS_CUENTA\\EdosCta_temporal.zip";
 
         Path FROM = Paths.get(origen);
         Path TO = Paths.get(destino);
@@ -109,7 +109,7 @@ public class UnZip {
             StandardCopyOption.REPLACE_EXISTING,
             StandardCopyOption.COPY_ATTRIBUTES
         };
-        System.out.println("Copiando .zip a la carpeta con nombre para registro C:\\EDOS_CTA_UPLOADS\\");
+        System.out.println("Copiando .zip a la carpeta con nombre para registro .\\EDOS_CTA_UPLOADS\\");
         Files.copy(FROM, TO, options);
         System.out.println("Archivo copiado: " + destino);
         return destino;
@@ -126,7 +126,7 @@ public class UnZip {
         boolean unZipCorrecto = false;
 
         try {
-            File dirDestino = new File("C:\\EDOS_CTA_UPLOADS\\temporal");
+            File dirDestino = new File(".\\EDOS_CTA_UPLOADS\\temporal");
             BufferedOutputStream dest = null;
 //            FileInputStream fis = new FileInputStream(fileZip_origen);
             FileInputStream fis = new FileInputStream(zipOrigen);
@@ -189,7 +189,7 @@ public class UnZip {
         Vector<Message> messages = new Vector<Message>();
         String respuesta = "";
         int correcto = 0;
-        File directorio = new File("C:\\EDOS_CTA_UPLOADS\\temporal\\");
+        File directorio = new File(".\\EDOS_CTA_UPLOADS\\temporal\\");
         String[] listaArchivos = directorio.list();
         if (directorio.isDirectory()) {
             System.out.println("Se han encontrado [" + listaArchivos.length + "] estados de cuenta");
@@ -202,7 +202,7 @@ public class UnZip {
                     //Verificamos si el contrato existe
                     if (ModeloLiquidation.existeContrato(clave_contrato)) {
                         //Verificamos si la ruta para almacenar el estado de cuenta existe en el sistema
-                        File directorioFideicomiso = new File("C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\");
+                        File directorioFideicomiso = new File(".\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\");
                         if (!directorioFideicomiso.exists()) {
                             if (!directorioFideicomiso.mkdir()) {
                                 messages.add(new Message(0, "Carpeta de Fideicomiso", listaArchivos[i], "No se pudo crear la carpeta para el fideicomiso correspondiente al nombre del archivo."));
@@ -212,8 +212,8 @@ public class UnZip {
                             String ext = listaArchivos[i].substring(33, listaArchivos[i].length());
                             if (ext.equals("zip") || ext.equals("ZIP")) {
                                 try {
-                                    String destino = "C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\" + nombreCorrecto;
-                                    String origen = "C:\\EDOS_CTA_UPLOADS\\temporal\\" + listaArchivos[i];
+                                    String destino = ".\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\" + nombreCorrecto;
+                                    String origen = ".\\EDOS_CTA_UPLOADS\\temporal\\" + listaArchivos[i];
                                     copyFile(origen, destino);
                                     correcto++;
                                 } catch (IOException ex) {

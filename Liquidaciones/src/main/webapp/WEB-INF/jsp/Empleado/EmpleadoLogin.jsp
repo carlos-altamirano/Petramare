@@ -17,7 +17,7 @@
             <form action="ControllerEmpleado" method="post" style="width: 500px; background-color: #e3f2fe; margin-top: 30px; padding: 7px; padding-bottom: 10px;">
                 <input type="hidden" name="accion" value="iniciaSesion:3">
                 <fieldset>
-                    <legend style="color: #006699; font-size: 1.5em;">Kiosco recuperación CFDI</legend>
+                    <legend style="color: #006699; font-size: 1.5em; text-align: center;">Kiosco recuperación CFDI</legend>
                     <table>
                         <tr><br>
                             <th><label>RFC:</label></th>

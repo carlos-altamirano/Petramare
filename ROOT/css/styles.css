@@ -4,7 +4,7 @@
     padding: 0px; /* Es el espacio del borde del elemento hacia el contenido del mismo*/
 }
 body{
-    background-color: rgb(247, 232, 227);
+    background-color: #fff;
 }
 #agrupar {
     width: 100%;
@@ -29,14 +29,14 @@ body{
 .bigButton{
     width: 200px;
     height:80px;
-    background:#F7815E url("../Imagenes/GDS_icono.png") left center no-repeat;
+    background:#339CFF url("../Imagenes/PSC_icono.png") left center no-repeat;
     background-size: 30px 50px;
-    border: 1px #EA4817 solid;
+    /* border: 1px #EA4817 solid; */
     padding: 30px 20px 20px 30px;
     border-radius: 15px 0px 15px 0px;
     margin: auto;
     text-align: center;
-    color: #051F82;
+    color: #18187d;
     font-size: 20px;
     font-weight: 800;
     font-family: Verdana, Tahoma, Geneva, sans-serif;
@@ -53,12 +53,14 @@ body{
 }
 
 #pie{
-    width:100%;
-    border-top: 5px #00008C solid;
-    background: rgb(187, 37, 44);
+    width: 100%;
+    border-top: 5px #022C53 solid;
+    background: #022C53;
     padding: 5px 20px;
     margin: 100px 0px 0px 0px;
     text-align: center;
+    position: absolute; /*pp*/
+    bottom: 0;/*pp*/
 }
 
 #pie p{

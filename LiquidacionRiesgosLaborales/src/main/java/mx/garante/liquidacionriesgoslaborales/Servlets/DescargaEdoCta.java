@@ -44,8 +44,8 @@ public class DescargaEdoCta extends HttpServlet {
 //                            String zipName = nombreArchivo;
 //                            zipName = "EDOCTA_FID158AZO0514_2014_07.zip";
                     String datos[] = null;
-                    String urlZip = "C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + session.getAttribute("clave_contratoC").toString() + "\\";
-//                    urlZip = "C:\\inetpub\\ftproot\\EstadosDeCuenta\\FID158AZO0514\\";
+                    String urlZip = ".\\inetpub\\ftproot\\EstadosDeCuenta\\" + session.getAttribute("clave_contratoC").toString() + "\\";
+//                    urlZip = ".\\inetpub\\ftproot\\EstadosDeCuenta\\FID158AZO0514\\";
                     File zipFile = new File(urlZip + zipName);
                     response.setContentType("application/zip;");
                     response.addHeader("Content-Disposition", "attachment; filename=" + zipName);

@@ -35,7 +35,9 @@ public class EnvioMail {
         try {
             props = new Properties();
             // Nombre del host de correo.
-            props.put("mail.smtp.host", "mail.abugaber.com");
+            //props.put("mail.smtp.host", "mail.abugaber.com");
+            props.put("mail.smtp.host", "webmail.emailsrvr.com");//pp2020.11.24
+
             props.setProperty("mail.smtp.starttls.enable", "true");
             // Puerto para envio de correos.
             props.setProperty("mail.smtp.port", "587");
@@ -101,7 +103,8 @@ public class EnvioMail {
         try {
             props = new Properties();
             // Nombre del host de correo.
-            props.put("mail.smtp.host", "mail.abugaber.com");
+            //props.put("mail.smtp.host", "mail.abugaber.com");
+            props.put("mail.smtp.host", "webmail.emailsrvr.com");//pp2020.11.24
             props.setProperty("mail.smtp.starttls.enable", "true");
             // Puerto para envio de correos.
             props.setProperty("mail.smtp.port", "587");

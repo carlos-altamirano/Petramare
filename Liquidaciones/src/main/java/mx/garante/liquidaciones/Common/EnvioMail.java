@@ -35,7 +35,9 @@ public class EnvioMail {
         try {
             props = new Properties();
             // Nombre del host de correo.
-            props.put("mail.smtp.host", "mail.abugaber.com");
+            //props.put("mail.smtp.host", "mail.abugaber.com");
+            props.put("mail.smtp.host", "webmail.emailsrvr.com");//pp2020.11.24
+
             props.setProperty("mail.smtp.starttls.enable", "true");
             // Puerto para envio de correos.
             props.setProperty("mail.smtp.port", "587");
@@ -102,7 +104,8 @@ public class EnvioMail {
         try {
             props = new Properties();
             // Nombre del host de correo.
-            props.put("mail.smtp.host", "mail.abugaber.com");
+            //props.put("mail.smtp.host", "mail.abugaber.com");
+            props.put("mail.smtp.host", "webmail.emailsrvr.com");//pp2020.11.24
             props.setProperty("mail.smtp.starttls.enable", "true");
             // Puerto para envio de correos.
             props.setProperty("mail.smtp.port", "587");
@@ -210,7 +213,9 @@ public class EnvioMail {
             props = new Properties();
             // Nombre del host de correo.
 //            props.setProperty("mail.smtp.host", "smtp.solucionesmultiples.com.mx");
-            props.setProperty("mail.smtp.host", "mail.abugaber.com");
+            //props.setProperty("mail.smtp.host", "mail.abugaber.com");
+            props.put("mail.smtp.host", "webmail.emailsrvr.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
             // Puerto para envio de correos.
             props.setProperty("mail.smtp.port", "587");
 //            props.setProperty("mail.smtp.sport", puerto);
@@ -235,7 +240,7 @@ public class EnvioMail {
             t = session.getTransport("smtp");
             //Autentificamos usuario y password del emisor.
 //            t.connect(correoOrigen, "liquidaciones");
-            t.connect(correoOrigen, "GarConta16*");
+            t.connect(correoOrigen, "L1qu1da*");
             t.sendMessage(message, message.getAllRecipients());
 
             // Cerramos las conexiones.

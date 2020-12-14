@@ -6,80 +6,122 @@
     Purpose of the stylesheet follows.
     TODO customize this sample styl
     Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-    #FACC2E
 */
-
-
-
-.selectholder{
-    width:242px;
-    overflow:0px;
-    padding:4px;
-    height:22px;
-    display:block;
-    background:url(Imagen/Buscar.jpg);
-    color:#FFF;
-    font-family:Arial;
-    font-weight:bold;
-    font-size:13px;
-}
-
-.selectholder select{
-    min-width:242px;
-}
 
 root { 
     display: block;
 }
 
-.Title
-{
-    font-family:Arial;
-    font-size:17px;
-    color:#000000;
-    font-weight:bold;
+#login{
+    background-color: #fff;
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    padding: 25px 0px;
 }
 
 .Titulo
 {
     font-family:Arial;
-    font-size:16px;
+    font-size:19px;
     color:#006699;
     font-weight:bold;
 }
+
+.letraDefault
+{
+    font-family:Arial;
+    font-size:12px;
+}
+
 .Subtitulo
 {
     font-family:Arial;
-    font-size:12px;
+    font-size:13px;
     color:#006699;
     font-weight:bold;
 }
-
-.SubTitulo
+.NormalBoton
 {
-    font-family:Arial;
-    font-size:12px;
-    color:#006699;
+    background:#006699;
+    color:#fff;
     font-weight:bold;
 }
-.LetraInput
+
+.botonFecha {
+    border:none;
+    width:30px;
+    height:25px;
+}
+
+.sobreBoton
+{
+    background:#6F9EDA;
+}
+
+.LetraReporte
 {
     font-family:Arial;
-    font-size:12px;
-    color:#000000;
-    font-weight:bold;
+    font-size:15px;
+}
+
+.TamDirBienv
+{
+    height:260px;
+    width:375px;
 
 }
 
-.TamDir
-{
-    height:220px;
+/*.form-noindent {
+    background-color: rgb(255,175,102);
+    background: -webkit-radial-gradient(circle, #f2cf65, #ff7f00);  For Safari 5.1 to 6.0 
+    background: -o-radial-gradient(circle,  #f2cf65,  #ff7f00);  For Opera 11.6 to 12.0 
+    background: -moz-radial-gradient(circle,  #f2cf65,  #ff7f00);  For Fx 3.6 to 15 
+    background: radial-gradient(circle,  #f2cf65, #ff7f00);  Standard syntax (must be last)     
     width:380px;
-
+    height:270px;
+    font-family:Arial;
+    font-size:15px;
+    color:#660166;
+    font-weight: 600;
 }
+
+.form-noindent input[type="text"]{
+    height: 20px;
+    width: 140px;
+    background-color: #e0e2e5;
+    border: none; 
+}
+
+.form-noindent input[type="password"]{    
+    height: 20px;
+    width: 140px;    
+    background-color: #e0e2e5;  
+    border: none;
+}
+.form-noindent input[type="button"]{
+    height: 30px;
+    width: 100px;    
+    background-color: #e0e2e5; 
+    border: none; 
+    margin-right: 45px;
+    font-size:14px;
+    color:#660166; 
+    font-weight: 600;
+}
+.form-noindent input[type="button"]:hover{ 
+    cursor: pointer;
+    background-color: #b4bdc4;
+}
+
+.form-noindent .encabezado{
+    font-size:20px;
+    font-weight: 600;
+}*/
 
 .form-login {
-    background-color: #F7815E;   
+    background-color: #339CFF;   
     width:360px;
     height:230px;
     font-family:Arial;
@@ -112,7 +154,7 @@ root {
 }
 .form-login input[type="button"]:hover{ 
     cursor: pointer;
-    background-color: #ffffcc;
+    /*background-color: #ffffcc;*/
 }
 
 .form-login .encabezado{
@@ -120,119 +162,28 @@ root {
     font-weight: 600;
 }
 
-.form-noindent {
-    background-color: #ddf8cc;
-    border: #80c65a 1px solid;
-    font-family:Arial;
-    font-size:12px;
-    width:340px;
-    border-radius: 3px;
-    padding: 15px;
+.form-noindentCapture {
+    background-color: #E3F2FE;
+    border:#006699 1px solid;
+    width:610px;
+    height:620px;
 }
 
-.form-inWhite{
-    background-color:#FFFFFF;
-    font-family:Arial;
-    font-size:12px;
-    border: #006699 1px solid;
-    border-radius: 3px;
-    padding: 10px 10px;
-}
-
-
-.form-noindentCaptureA {
-    background-color:#FFFFFF;
-    font-family:Arial;
+.form-errorCapture {
+    background-color: #E3F2FE;
+    border:#006699 1px solid;
     font-size:13px;
-    border:#006699 1px solid;
-    border-radius: 3px;
-    padding: 10px 10px;
+    width:660px;
 }
 
-
-.form-noindentCaptureCT {
-    background-color:#FFFFFF;
-    font-family:Arial;
-    font-size:12px;
+.form-UserConfim {
+    background-color: #E3F2FE;
     border:#006699 1px solid;
-    border-radius: 3px;
-    padding: 10px 10px;
-}
-
-
-.form-noindentCaptureCP {
-    background-color:#FFFFFF;
-    font-family:Arial;
-    font-size:11px;
-    border:#006699 1px solid;
-    width:690px;
-}
-
-
-.TamDirBienv
-{
-    height:110px;
-    width:420px;
-    border-radius: 3px;
-}
-
-.TamDivMov5
-{
-    background-color:#ddf8cc;
-    font-family:Arial;
-    font-size:12px;
-    border:#006699 1px solid;
+    border-radius: 5px;
+    width:310px;
     height:180px;
-    width:400px;
 }
 
-.TamDivAct
-{
-    height:130px;
-    width:490px;
-}
-.NormalBoton
-{
-    font-family:Arial;
-    background:#006699;
-    color:#E7C904;
-    font-weight:bold;
-}
-
-.botonSeleccionAccion
-{
-    font-family:Arial;
-    font-size: medium;
-    background:#006699;
-    color:#E7C904;
-    font-weight:bold;
-    padding: 5px 10px;
-}
-
-.inputFormat
-{
-    font-family: Tahoma, Verdana, Arial;
-    font-size: 11px;
-    color: #FFFFFF;
-    background-color: #6699CC;
-    border: #000099;
-    border-style: solid;
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px
-}
-
-.sobreBoton
-{
-    background:#6F9EDA;
-}
-
-.LetraReporte
-{
-    font-family:Arial;
-    font-size:15px;
-}
 #pane1{height:232px;overflow:hidden;width:500px;}
 
 .jScrollPaneContainer {
@@ -313,6 +264,7 @@ a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
     border-right-style: hidden;
 }
 
+
 #agrupar {
     width: 100%;
     height: 100%;
@@ -325,7 +277,7 @@ a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
     margin: 20px;
 }
 #login{
-    /*background-color: #00f;*/
+    background-color: #fff;
     margin-top: 100px;
     margin-left: 10%;
     margin-right: 10%;
@@ -335,8 +287,8 @@ a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
 
 #pie{
     width:100%;
-    border-top: 5px #00008C solid;
-    background: rgb(187, 37, 44);
+    border-top: 5px #022C53 solid;
+    background: #022C53;
     padding: 5px 20px;
     margin: 100px 0px 0px 0px;
     text-align: center;
@@ -371,6 +323,6 @@ a.jScrollActiveArrowButton, a.jScrollActiveArrowButton:hover {
 
 #pie p a:hover {
     font-size: 12px;
-    color: #00008C;
+    color: #022C53;
     text-decoration: underline;
 }
