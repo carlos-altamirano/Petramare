@@ -53,12 +53,14 @@ import java.io.StringReader;
 import java.io.Reader;
 import java.math.BigInteger;
 import java.util.GregorianCalendar;
+import java.util.Properties;
 import javax.xml.XMLConstants;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import mx.garante.creaxml.Helpers.ErroresXML;
 import mx.garante.creaxml.Helpers.ReportesExcel;
+import mx.garante.creaxml.util.UtilDocument;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaTFD33;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.RespuestaValidacionRFC;
 import org.datacontract.schemas._2004._07.tes_tfd_v33.Timbre33;
@@ -69,7 +71,7 @@ public class CreaXML {
 
     private static final double iva = 0.16;
 
-    private static final String rfc_prov_cert = "FLI081010EK2";
+    private static String rfc_prov_cert = "FLI081010EK2";
     private static final String csds_path = "Certificados";
 
     // Configuration PSC
@@ -156,6 +158,7 @@ public class CreaXML {
             entradaEscaner = new Scanner(System.in);
             switch (entradaTeclado) {
                 case "1": {
+                    cargarConfiguracion();
                     System.out.print("Ingresa la fecha en este formato yyyy-MM en caso contrario dejar vacio -> ");
                     String fechaConsola = entradaEscaner.nextLine();
 
@@ -454,9 +457,11 @@ public class CreaXML {
                     Double subtotal = totalAbono - totalIVA;
                     comprobante.setSubTotal(new BigDecimal(subtotal.toString()).setScale(2, RoundingMode.HALF_UP));
                 } else {
-                    comprobante.setTotal(new BigDecimal(0.00));
-                    comprobante.setSubTotal(new BigDecimal(0.00));
+                    comprobante.setTotal(new BigDecimal(0.00).setScale(2, RoundingMode.HALF_UP));
+                    comprobante.setSubTotal(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    comprobante.setDescuento(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
                 }
+                
                 comprobante.setMoneda(CMoneda.MXN);
                 comprobante.setTipoDeComprobante(CTipoDeComprobante.I);
                 comprobante.setLugarExpedicion(cp_emisor);
@@ -476,7 +481,6 @@ public class CreaXML {
 
                 comprobante.setReceptor(receptor);
 
-                //Conceptos
                 List<Comprobante.Conceptos.Concepto> listaConceptos = new ArrayList<>();
                 Comprobante.Conceptos conceptos = new Comprobante.Conceptos();
 
@@ -488,6 +492,15 @@ public class CreaXML {
                 concepto1.setDescripcion("GARANTIA FIDUCIARIA");
                 concepto1.setValorUnitario(new BigDecimal(totalAbono - totalHonorario - totalIVA).setScale(2, RoundingMode.HALF_UP));
                 concepto1.setImporte(new BigDecimal(totalAbono - totalHonorario - totalIVA).setScale(2, RoundingMode.HALF_UP));
+                boolean estadoVacio = false;
+                boolean estadoVacio2 = false;
+
+                if (concepto1.getImporte().doubleValue() <= 0) {
+                    concepto1.setValorUnitario(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    concepto1.setImporte(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    concepto1.setDescuento(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    estadoVacio = true;
+                }
 
                 Comprobante.Conceptos.Concepto concepto2 = new Comprobante.Conceptos.Concepto();
                 concepto2.setClaveProdServ("84101500");
@@ -497,27 +510,50 @@ public class CreaXML {
                 concepto2.setDescripcion("HONORARIOS POR SERVICIOS FIDUCIARIOS");
                 concepto2.setValorUnitario(new BigDecimal(totalHonorario).setScale(2, RoundingMode.HALF_UP));
                 concepto2.setImporte(new BigDecimal(totalHonorario).setScale(2, RoundingMode.HALF_UP));
-                Comprobante.Conceptos.Concepto.Impuestos impuestos = new Comprobante.Conceptos.Concepto.Impuestos();
-                Comprobante.Conceptos.Concepto.Impuestos.Traslados traslados = new Comprobante.Conceptos.Concepto.Impuestos.Traslados();
-                List<Comprobante.Conceptos.Concepto.Impuestos.Traslados.Traslado> trasladoss = new ArrayList<>();
-                Comprobante.Conceptos.Concepto.Impuestos.Traslados.Traslado traslado = new Comprobante.Conceptos.Concepto.Impuestos.Traslados.Traslado();
-                traslado.setBase(new BigDecimal(totalHonorario).setScale(2, RoundingMode.HALF_UP));
-                traslado.setImpuesto("002");
-                traslado.setTipoFactor(CTipoFactor.TASA);
-                traslado.setTasaOCuota(new BigDecimal(iva).setScale(6, RoundingMode.HALF_UP));
-                traslado.setImporte(new BigDecimal(totalIVA).setScale(2, RoundingMode.HALF_UP));
-                trasladoss.add(traslado);
+
+                if (concepto2.getImporte().doubleValue() > 0) {
+                    Comprobante.Conceptos.Concepto.Impuestos impuestos = new Comprobante.Conceptos.Concepto.Impuestos();
+                    Comprobante.Conceptos.Concepto.Impuestos.Traslados traslados = new Comprobante.Conceptos.Concepto.Impuestos.Traslados();
+
+                    List<Comprobante.Conceptos.Concepto.Impuestos.Traslados.Traslado> trasladoss = new ArrayList<>();
+                    Comprobante.Conceptos.Concepto.Impuestos.Traslados.Traslado traslado = new Comprobante.Conceptos.Concepto.Impuestos.Traslados.Traslado();
+                    traslado.setBase(new BigDecimal(totalHonorario).setScale(2, RoundingMode.HALF_UP));
+                    traslado.setImpuesto("002");
+                    traslado.setTipoFactor(CTipoFactor.TASA);
+                    traslado.setTasaOCuota(new BigDecimal(iva).setScale(6, RoundingMode.HALF_UP));
+                    traslado.setImporte(new BigDecimal(totalIVA).setScale(2, RoundingMode.HALF_UP));
+                    trasladoss.add(traslado);
 
 //        traslados.setTraslado(trasladoss);
-                traslados.getTraslado().clear();
-                traslados.getTraslado().addAll(trasladoss);
-                impuestos.setTraslados(traslados);
-                concepto2.setImpuestos(impuestos);
+                    traslados.getTraslado().clear();
+                    traslados.getTraslado().addAll(trasladoss);
+                    impuestos.setTraslados(traslados);
+                    concepto2.setImpuestos(impuestos);
+                } else {
+                    concepto2.setValorUnitario(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    concepto2.setImporte(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    concepto2.setDescuento(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    estadoVacio2 = true;
+                }
 
-                listaConceptos.add(concepto2);
-                listaConceptos.add(concepto1);
+                if (estadoVacio && estadoVacio2) {
+                    System.out.println("Entro en concepto comodin para estado de cuenta a cero");
+                    Comprobante.Conceptos.Concepto concepto3 = new Comprobante.Conceptos.Concepto();
+                    concepto3.setClaveProdServ("84101500");
+                    concepto3.setCantidad(new BigDecimal(1));
+                    concepto3.setClaveUnidad("E48");
+                    concepto3.setUnidad("SERVICIO");
+                    concepto3.setDescripcion("ASISTENCIA FINANCIERA");
+                    concepto3.setValorUnitario(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    concepto3.setImporte(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    concepto3.setDescuento(new BigDecimal(0.01).setScale(2, RoundingMode.HALF_UP));
+                    listaConceptos.add(concepto3);
+                } else {
+                    listaConceptos.add(concepto2);
+                    listaConceptos.add(concepto1);
+                }
+
 //        conceptos.setConcepto(listaConceptos);
-
                 conceptos = new Comprobante.Conceptos();
                 conceptos.getConcepto().addAll(listaConceptos);
                 comprobante.setConceptos(conceptos);
@@ -533,10 +569,13 @@ public class CreaXML {
                 traslado2.setImporte(new BigDecimal(totalIVA).setScale(2, RoundingMode.HALF_UP));
                 trasladoss2.add(traslado2);
                 //traslados2.setTraslado(trasladoss2);
-                traslados2.getTraslado().clear();
-                traslados2.getTraslado().addAll(trasladoss2);
-                impuestos2.setTraslados(traslados2);
-                comprobante.setImpuestos(impuestos2);
+
+                if (!(estadoVacio && estadoVacio2)) {
+                    traslados2.getTraslado().clear();
+                    traslados2.getTraslado().addAll(trasladoss2);
+                    impuestos2.setTraslados(traslados2);
+                    comprobante.setImpuestos(impuestos2);
+                }
 
                 JAXBContext jAXBContext = JAXBContext.newInstance(Comprobante.class);
                 Marshaller marshaller = jAXBContext.createMarshaller();
@@ -1470,7 +1509,7 @@ public class CreaXML {
         ReportesExcel reportes = new ReportesExcel();
         reportes.generaExcel("NOMINA_" + format4.format(fechaHoy), lErrores);
     }
-    
+
     private static void RegeneraNomina(Date fechaHoy) {
         System.out.println("Generando Nomina");
         SimpleDateFormat formatNomina = new SimpleDateFormat("yyyy-MM-dd");
@@ -1909,6 +1948,16 @@ public class CreaXML {
         }
         if (!registrado) {
             lErrores.add(error);
+        }
+    }
+
+    public static void cargarConfiguracion() {
+        try {
+            Properties ex = UtilDocument.loadConfiguration();
+            rfc_prov_cert = ex.getProperty("rfc_prov_cert");
+            System.out.println("Obtuvo variables de configuracion.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

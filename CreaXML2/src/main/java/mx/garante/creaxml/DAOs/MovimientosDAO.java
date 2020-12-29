@@ -12,23 +12,30 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MovimientosDAO extends Conexion {
-    
+
     public List<String> getRFCMes(String fecha1, String fecha2) {
         List<String> rfcs = new ArrayList<>();
         Connection con = this.conecta();
         PreparedStatement statement = null;
         ResultSet rs = null;
-        
+
         try {
-            String sql = "select rfc from movimientos " +
-                    "where fecha_liquidacion >= ? and fecha_liquidacion <= ? " +
-                    " group by rfc";
+            String sql = "select a.rfc from movimientos a, movimientos_h b "
+                    + "where "
+                    + "a.clave_contrato = b.clave_contrato "
+                    + "and a.nombre_archivo = b.nombre_archivo "
+                    + "and a.fecha_liquidacion >= ? and a.fecha_liquidacion <= ? "
+                    + "and b.status_autoriza = 'A' "
+                    + "and b.fecha_usuario_autoriza >=? and b.fecha_usuario_autoriza <= ? "
+                    + " group by rfc";
             statement = con.prepareStatement(sql);
             statement.setString(1, fecha1);
             statement.setString(2, fecha2);
-            
+            statement.setString(3, fecha1);
+            statement.setString(4, fecha2);
+
             rs = statement.executeQuery();
-            
+
             while (rs.next()) {
                 String rfc = rs.getString("rfc");
                 rfcs.add(rfc);
@@ -38,28 +45,38 @@ public class MovimientosDAO extends Conexion {
         } finally {
             this.desconecta(con, rs, statement);
         }
-        
+
         return rfcs;
     }
-    
+
     public List<Movimiento> getAll(String rfc, String fecha1, String fecha2) {
         List<Movimiento> movimientos = new ArrayList<>();
         Connection con = this.conecta();
         PreparedStatement statement = null;
         ResultSet rs = null;
-        
+
         try {
-            String sql = "select * from movimientos "
-                    + "where rfc = ? "
-                    + "and fecha_liquidacion >= ? "
-                    + "and fecha_liquidacion <= ? "
-                    + "order by fecha_liquidacion";
+
+            String sql = "select a.* from movimientos a, movimientos_h b "
+                    + "where "
+                    + "a.clave_contrato = b.clave_contrato "
+                    + "and a.nombre_archivo = b.nombre_archivo "
+                    + "and a.fecha_liquidacion = b.fecha_liquidacion "
+                    + "and a.rfc = ? "
+                    + "and a.fecha_liquidacion >= ? and a.fecha_liquidacion <= ? "
+                    + "and b.status_autoriza = 'A' "
+                    + "and b.fecha_usuario_autoriza >=? and b.fecha_usuario_autoriza <= ? "
+  //                  + " group by a.rfc "
+                    + "order by a.clave_contrato,a.rfc,a.fecha_liquidacion";
+
             statement = con.prepareStatement(sql);
             statement.setString(1, rfc);
             statement.setString(2, fecha1);
             statement.setString(3, fecha2);
+            statement.setString(4, fecha1);
+            statement.setString(5, fecha2);
             rs = statement.executeQuery();
-            
+
             while (rs.next()) {
                 Movimiento movimiento = new Movimiento();
                 movimiento.setClave_contrato(rs.getString("clave_contrato"));
@@ -92,17 +109,17 @@ public class MovimientosDAO extends Conexion {
                 movimiento.setTel_fidei_ext(rs.getString("tel_fidei_ext"));
                 movimiento.setNombre_archivo(rs.getString("nombre_archivo"));
                 movimiento.setRfc(rs.getString("rfc"));
-                
+
                 movimientos.add(movimiento);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(MovimientosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             this.desconecta(con, rs, statement);
         }
-        
+
         return movimientos;
     }
-    
+
 }
