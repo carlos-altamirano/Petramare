@@ -1,6 +1,7 @@
 package com.reports.generareportes;
 
 import com.reports.generareportes.DAO.Consultas;
+import com.reports.generareportes.Helpers.Fecha;
 import com.reports.generareportes.Helpers.Fechas;
 import com.reports.generareportes.Helpers.GenExcel;
 import com.reports.generareportes.Helpers.ServicioEnviar;
@@ -63,12 +64,15 @@ public class GeneraReportes {
             "Clave Contrato", "Fecha Usuario Autoriza", "Fecha Liquidacion",
             "Clave Empleado", "Nombre Empleado", "Apellido Paterno", "Apellido Materno",
             "CURP", "RFC", "Cuenta Deposito", "Fecha Ingreso", "Departamento", "Puesto", "Tipo", 
-            "Importe Liquidacion" , "Importe Liquidacion MXN"
+            "Importe Liquidacion" , "Importe Liquidacion MXN","UUID"
         };
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
         SimpleDateFormat formatSalida = new SimpleDateFormat("yyyy-MM-dd");
-        
-        List<Movimiento> movimientos = consultas.consultaMovs(dataBase, formatSalida.format(Fechas.getPrimerDiaDeMes(fechaHoy)), formatSalida.format(Fechas.getUltimoDiaDeMes(fechaHoy)));
+        Calendar c1 = Fecha.getPrimerDiaDeMes(fechaHoy);
+        Calendar c2 = Fecha.getUltimoDiaDeMes(fechaHoy);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        List<Movimiento> movimientos = consultas.getAll(dataBase, format.format(c1.getTime()), format.format(c2.getTime()));
+        //List<Movimiento> movimientos = consultas.consultaMovs(dataBase, formatSalida.format(Fechas.getPrimerDiaDeMes(fechaHoy)), formatSalida.format(Fechas.getUltimoDiaDeMes(fechaHoy)));
         boolean r2 = GenExcel.generaExcel("Movimientos", titulosMovs, movimientos, null);
         
         if (r1 && r2) {

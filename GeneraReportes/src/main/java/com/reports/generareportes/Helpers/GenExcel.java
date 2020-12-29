@@ -21,21 +21,21 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class GenExcel {
-    
+
     public static boolean generaExcel(String nombre, String[] titulos, List<Movimiento> movs, List<Contrato> contratos) {
         System.out.println("Generando reporte " + nombre);
         boolean res = false;
         try {
-            
+
             String path = System.getProperty("user.dir");
-            
+
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet(nombre);
-            
+
             XSSFRow headers = sheet.createRow(0);
             for (int i = 0; i < titulos.length; i++) {
                 XSSFCell campo = headers.createCell(i);
-                
+
                 // estilo fondo negro letra blanca
                 XSSFCellStyle style = workbook.createCellStyle();
                 style.setFillBackgroundColor(IndexedColors.BLACK.getIndex());
@@ -43,25 +43,25 @@ public class GenExcel {
                 Font font = workbook.createFont();
                 font.setColor(IndexedColors.WHITE.getIndex());
                 style.setFont(font);
-                
+
                 campo.setCellValue(titulos[i]);
                 campo.setCellStyle(style);
             }
-            
+
             if (movs != null) {
                 XSSFCellStyle style = workbook.createCellStyle();
                 style.setBorderBottom(BorderStyle.THIN);
                 style.setBorderTop(BorderStyle.THIN);
                 style.setBorderLeft(BorderStyle.THIN);
                 style.setBorderRight(BorderStyle.THIN);
-                
+
                 for (int x = 0; x < movs.size(); x++) {
                     Movimiento mov = movs.get(x);
-                    XSSFRow row = sheet.createRow(x+1);
+                    XSSFRow row = sheet.createRow(x + 1);
                     for (int j = 0; j < titulos.length; j++) {
                         XSSFCell cell = row.createCell(j);
                         cell.setCellStyle(style);
-                        switch(j) {
+                        switch (j) {
                             case 0:
                                 cell.setCellValue(mov.getClaveContrato());
                                 break;
@@ -110,6 +110,9 @@ public class GenExcel {
                             case 15:
                                 cell.setCellValue(mov.getImporteLiquidacionMxn());
                                 break;
+                            case 16:
+                                cell.setCellValue(mov.getUuid());
+                                break;
                         }
                     }
                 }
@@ -122,11 +125,11 @@ public class GenExcel {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 for (int x = 0; x < contratos.size(); x++) {
                     Contrato contrato = contratos.get(x);
-                    XSSFRow row = sheet.createRow(x+1);
+                    XSSFRow row = sheet.createRow(x + 1);
                     for (int i = 0; i < titulos.length; i++) {
                         XSSFCell cell = row.createCell(i);
                         cell.setCellStyle(style);
-                        switch(i) {
+                        switch (i) {
                             case 0:
                                 cell.setCellValue(contrato.getClaveContrato());
                                 break;
@@ -182,11 +185,11 @@ public class GenExcel {
                     }
                 }
             }
-            
+
             for (int i = 0; i < titulos.length; i++) {
                 sheet.autoSizeColumn(i);
             }
-            
+
             OutputStream out = new FileOutputStream(path + "\\" + nombre + ".xlsx");
             workbook.write(out);
             res = true;
@@ -197,5 +200,5 @@ public class GenExcel {
         }
         return res;
     }
-    
+
 }

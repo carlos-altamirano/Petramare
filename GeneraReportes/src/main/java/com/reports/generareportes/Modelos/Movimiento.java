@@ -20,6 +20,7 @@ public class Movimiento implements Serializable {
     private String tipo;
     private String importeLiquidacion;
     private String importeLiquidacionMxn;
+    private String uuid;
 
     public String getClaveContrato() {
         return claveContrato;
@@ -152,6 +153,14 @@ public class Movimiento implements Serializable {
     @Override
     public String toString() {
         return "Movimiento{" + "claveContrato=" + claveContrato + ", fechaUsuarioAutoriza=" + fechaUsuarioAutoriza + ", fechaLiquidacion=" + fechaLiquidacion + ", claveEmpleado=" + claveEmpleado + ", nombreEmpleado=" + nombreEmpleado + ", apellidoPEmpleado=" + apellidoPEmpleado + ", apellidoMEmpleado=" + apellidoMEmpleado + ", curp=" + curp + ", rfc=" + rfc + ", cuentaDeposito=" + cuentaDeposito + ", fechaIngreso=" + fechaIngreso + ", deptoEmpleado=" + deptoEmpleado + ", puestoEmpleado=" + puestoEmpleado + ", importeLiquidacion=" + importeLiquidacion + '}';
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
     
 }
