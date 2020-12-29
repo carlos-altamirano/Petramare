@@ -15,7 +15,7 @@
         <script language="javascript" type="text/javascript" src="scripts/login.js"></script>
     </head>
 
-    <body style=" background-color: rgb(247, 232, 227);"
+    <body style=" background-color: #fff;"
           <c:if test="${sessionScope.messageBean != null && sessionScope.messageBean.desc != ''}">
               onLoad="alert('<c:out value="${sessionScope.messageBean.desc}"/>');"
               <c:remove var="messageBean" scope="session" />
@@ -78,11 +78,11 @@
             </article>
             <aside id="noticias"></aside>
             <footer id="pie">
-                <p>Garante Desarrollo y Salud, S.A. de C.V. SOFOM E.N.R.</p>
-                <p>Río Mississippi #49 Piso 14 Int 1405, Colonia Cuauhtémoc, Delegación Cuauhtémoc, Ciudad de México, 06500</p>
-                <p>Tel&eacute;fono: (55) 4164 3210 </p>
-                <p><a href="mailto:contacto@garante.mx">contacto@garante.mx</a></p>
-                <p><a href="http://www.garante.mx/">www.garante.mx</a></p>
+                <p>Petramare Servicios Consolidados, S.A. de C.V. SOFOM E.N.R.</p>
+				<p>Blvd. Manuel Ávila Camacho 92-A int 303 Piso 3, El Conde, Naucalpan de Juárez, Estado de México, 53500</p>
+				<p>Tel&eacute;fono (55) 8848 3841 </p>
+				<p><a href="mailto:contacto@petramare.com.mx">contacto@petramare.com.mx</a></p>
+				<p><a href="http://www.petramare.com.mx/">www.petramare.com.mx</a></p>
             </footer> 
         </div>
     </body>

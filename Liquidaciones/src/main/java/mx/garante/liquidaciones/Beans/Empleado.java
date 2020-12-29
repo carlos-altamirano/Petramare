@@ -13,6 +13,7 @@ public class Empleado {
     private String contra;
     private String email;
     private String estatus;
+    boolean autentificado = false;
 
     public Integer getId() {
         return id;
@@ -84,6 +85,13 @@ public class Empleado {
 
     public void setCurp(String curp) {
         this.curp = curp;
+    }
+
+    public boolean isAutentificado() {
+        return autentificado;
+    }
+    public void setAutentificado(boolean autentificado) {
+        this.autentificado = autentificado;
     }
 
     @Override

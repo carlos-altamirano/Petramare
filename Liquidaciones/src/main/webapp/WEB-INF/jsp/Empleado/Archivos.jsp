@@ -34,8 +34,7 @@
                     <tr>
                         <td style="text-align: center;">
                             <select id="anio" style="width: 50%;">
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
+                                <option value="">Seleccione</option>
                             </select>
                         </td>
                         <td style="text-align: center;">
@@ -52,8 +51,18 @@
 <script src="scripts/jquery.min.js"></script>
 <script>
     $(function(){
+        $.post('ControllerEmpleado', {accion:'buscarArchivos:10'}, function(data){
+            var datos = JSON.parse(data);
+            var opciones = "<option value=''>Seleccione</option>";
+            var arreglo2 = [];
+            for (var i = 0; i < datos.length; i++) {
+                opciones += "<option value='"+datos[i]+"'>"+datos[i]+"</option>";
+            }
+            $('#anio').html(opciones);
+        });
+
         var cambiaPeriodos = function() {
-            $.post('/Liquidaciones/ControllerEmpleado', {accion:'buscarArchivos:7', anio:$('#anio').val()}, function(data){
+            $.post('ControllerEmpleado', {accion:'buscarArchivos:7', anio:$('#anio').val()}, function(data){
                 var meses = ["Enero.zip", "Febrero.zip", "Marzo.zip", "Abril.zip", "Mayo.zip", 
                     "Junio.zip", "Julio.zip", "Agosto.zip", "Septiembre.zip", "Octubre.zip", "Nobiembre.zip", "Diciembre.zip"];
                 var datos = JSON.parse(data);
@@ -76,7 +85,7 @@
                 $('.selArchivo').html(opciones);
             });
         };
-        cambiaPeriodos();
+
         $('#anio').change(function(){
             cambiaPeriodos();
         });
@@ -84,7 +93,7 @@
         $('.selArchivo').change(function(){
             var archivo = $(this).val();
             if (archivo !== '') {
-                window.open('/Liquidaciones/ControllerEmpleado?accion=descarga:6&archivo='+archivo+"&anio="+$('#anio').val());
+                window.open('ControllerEmpleado?accion=descarga:6&archivo='+archivo+"&anio="+$('#anio').val());
             }
         });
     });

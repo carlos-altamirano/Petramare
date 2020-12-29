@@ -132,7 +132,7 @@ public class SubirArchivo extends HttpServlet {
                                     if(accion!=null && accion.equals("subirArchivo")){
                                         nomenclaturaCorrecta = ModelUpdate.getUrlEdoCtaFid(fileName);
                                         if(nomenclaturaCorrecta)
-                                        dirNameTmp = "C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + fileName.substring(7,20) + "\\";
+                                        dirNameTmp = ".\\inetpub\\ftproot\\EstadosDeCuenta\\" + fileName.substring(7,20) + "\\";
                                     }
                                     if(nomenclaturaCorrecta){
                                     File saveTo = new File(dirNameTmp + fileName);

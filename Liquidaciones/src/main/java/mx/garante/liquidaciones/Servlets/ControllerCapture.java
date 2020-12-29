@@ -748,8 +748,8 @@ public class ControllerCapture extends HttpServlet {
                                 if (userApp1 != null && userApp1.isAutentificado()) {
                                     //Obtenemos la clave del contrato.
                                     clave_contrato = userApp.getClave_contrato();
-                                    correo_o = "liquidaciones@fideicomisogds.mx";
-                                    correo_d = "liquidaciones@fideicomisogds.mx";
+                                    correo_o = "liquidaciones@fideicomisopsc.mx";
+                                    correo_d = "liquidaciones@fideicomisopsc.mx";
                                     modelo_c = new ModeloCapture();
                                     //Se realiza la consulta del saldo actual
 //                                        String infoSaldo = "";
@@ -774,7 +774,7 @@ public class ControllerCapture extends HttpServlet {
                                                 correos = ModeloLayOut.obtenCorreos("'SISTEMAS','OPERACION'");
                                                 if (correos.equals("")) {
                                                     body = "Correo NO enviado al personal de la SOFOM debido a lista de correos vacia, favor de verificar";
-                                                    correos = "soporte@fideicomisogds.mx";
+                                                    correos = "soporte@fideicomisopsc.mx";
                                                 }
                                                 asunto = "LIQUIDACIÓN MANUAL " + clave_contrato + " " + fecha_liquidacion;
                                                 String nombre_r = ModeloLayOut.getNombreResumenLiquidacion(clave_contrato, formato_fecha, nombre_archivo, idx_archivo);

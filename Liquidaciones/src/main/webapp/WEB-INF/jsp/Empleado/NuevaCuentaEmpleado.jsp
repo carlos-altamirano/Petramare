@@ -107,10 +107,10 @@
                 
                 $('#buscaRFC').click(function(){
                     //ocultaPartes();
-                    $.post('/Liquidaciones/ControllerEmpleado', {rfc:$('#rfc').val(), accion:'buscaRFC:8'}, function(data){
+                    $.post('ControllerEmpleado', {rfc:$('#rfc').val(), accion:'buscaRFC:8'}, function(data){
                         if (data.trim() === 'CORRECTO') {
                             $.ajax({
-                                url:'/Liquidaciones/ControllerEmpleado',
+                                url:'ControllerEmpleado',
                                 data:{accion:'buscaRFC:1', rfc:$('#rfc').val()},
                                 type:'post'
                             }).done(function(data){

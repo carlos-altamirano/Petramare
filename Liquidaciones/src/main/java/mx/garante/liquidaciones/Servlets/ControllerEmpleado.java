@@ -45,19 +45,19 @@ public class ControllerEmpleado extends HttpServlet {
             switch (Integer.parseInt(accion.split(":")[1])) {
                 case 1: {
                     String rfc = request.getParameter("rfc");
-
-                    Empleado empleado = empleadoDAO.buscaRFC(rfc);
+//                    Empleado empleado = empleadoDAO.buscaRFC(rfc);
+                    Empleado empleado = ModeloCapture.getInfoCFDI(rfc);
                     PrintWriter out = response.getWriter();
                     out.println(empleado);
                     out.close();
                     break;
                 }
                 case 2: {
-                    String idEmpleado = request.getParameter("idEmpleado");
+                    String rfc = request.getParameter("buequeda");
                     String curp = request.getParameter("curp");
                     String email = request.getParameter("email");
 
-                    final Empleado emp = empleadoDAO.busca(Integer.parseInt(idEmpleado));
+                    final Empleado emp = ModeloCapture.getInfoCFDI(rfc);
 
                     if (emp!= null) {
                         if (emp.getCurp().equals(curp)) {
@@ -153,7 +153,7 @@ public class ControllerEmpleado extends HttpServlet {
                     Empleado emp3 = empleadoDAO.busca((Integer) request.getSession().getAttribute("sesionidUser"));
                     String archivo = request.getParameter("archivo");
                     String anio0 = request.getParameter("anio");
-                    String ruta = "/inetpub/ftproot/CFDI/"+emp3.getRfc()+"/"+ anio0 + "/" +archivo;
+                    String ruta = ".\\inetpub\\ftproot\\CFDI\\"+emp3.getRfc()+"\\"+ anio0 + "\\" +archivo;
                     try {
                         descargar(ruta, response);
                     } catch (Exception ex) {
@@ -165,7 +165,7 @@ public class ControllerEmpleado extends HttpServlet {
                     Empleado emp4 = empleadoDAO.busca((Integer) request.getSession().getAttribute("sesionidUser"));
                     String anio = request.getParameter("anio");
                     List<String> lista = new ArrayList<>();
-                    String rutaLista = "/inetpub/ftproot/CFDI/"+ emp4.getRfc()+"/"+anio;
+                    String rutaLista = ".\\inetpub\\ftproot\\CFDI\\"+ emp4.getRfc()+"\\"+anio;
                     File folder = new File(rutaLista);
                     File[] listFiles = folder.listFiles();
                     for (File file : listFiles) {
@@ -211,6 +211,21 @@ public class ControllerEmpleado extends HttpServlet {
                         out.close();
                     }
                     break;
+                }
+                case 10: {
+                    Empleado emp4 = empleadoDAO.busca((Integer) request.getSession().getAttribute("sesionidUser"));
+                    List<String> lista = new ArrayList<>();
+                    String rutaLista = ".\\inetpub\\ftproot\\CFDI\\"+ emp4.getRfc();
+                    File folder = new File(rutaLista);
+                    if (folder.exists()) {
+                        String[] listFiles = folder.list();
+                        for (String nombre : listFiles) {
+                            lista.add(nombre);
+                        }
+                        PrintWriter salidaJSON = response.getWriter();
+                        salidaJSON.println(new Gson().toJson(lista));
+                        salidaJSON.close();
+                    }
                 }
             }
         } else {
@@ -290,9 +305,9 @@ public class ControllerEmpleado extends HttpServlet {
                     html += "</tr>";
                 html += "</tdoby>\n" +
                 "    </table>";
-            if (!EnvioMail.enviaCorreo2("contacto@garante.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html)) {
+            if (!EnvioMail.enviaCorreo2("liquidaciones@fideicomisopsc.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html)) {
                 Thread.sleep(180000);
-                EnvioMail.enviaCorreo2("contacto@garante.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html);
+                EnvioMail.enviaCorreo2("liquidaciones@fideicomisopsc.mx", empleado.getEmail(), "Kiosco recuperación CFDI", html);
             }
         } catch (InterruptedException ex) {
             System.out.println("Error al enviar correo " + ex);

@@ -1960,8 +1960,8 @@ public class ModelUpdate {
         System.out.println("Comprobando nomenclatura de nombre para:" + nombre_archivo);
         if (nombre_archivo.length() == "EDOCTA_ClaveContrato_YYYY_MM.zip".length()) {
             //la ruta que debe  de existir, tiene el siguiente formato:
-            //"C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato +  "\\";
-            File directorio = new File("C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + nombre_archivo.substring(7, 20) + "\\");
+            //".\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato +  "\\";
+            File directorio = new File(".\\inetpub\\ftproot\\EstadosDeCuenta\\" + nombre_archivo.substring(7, 20) + "\\");
             if (directorio.exists()) {
                 if (directorio.isDirectory()) {
                     return true;

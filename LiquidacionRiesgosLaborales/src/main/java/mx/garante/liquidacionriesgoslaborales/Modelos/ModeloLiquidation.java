@@ -3450,6 +3450,14 @@ public class ModeloLiquidation {
                     if (verifica >= 0 && clave_contrato.length() >= 9) {
                         clave_fideicomitente = clave_contrato.substring(6, 9);
 
+                        final File parent = new File(urlArchivo);
+                        if (!parent.exists()) {
+                            if (!parent.mkdirs()) {
+                                System.err.println("No se pudieron crear directorios principales ");
+                                return false;
+                            }
+                        }
+
                         // Creamos reporte 
                         reporte = new File(urlArchivo + clave_fideicomitente + "-0" + verifica + "-" + type_netcash + countArchivoOut + fecha + ext);
 
@@ -3514,6 +3522,15 @@ public class ModeloLiquidation {
                 if (!fecha.equals("")) {
                     if (verifica >= 0 && clave_contrato.length() >= 9) {
                         clave_fideicomitente = clave_contrato.substring(6, 9);
+
+                        final File parent = new File(urlArchivo);
+                        if (!parent.exists()) {
+                            if (!parent.mkdirs()) {
+                                System.err.println("No se pudieron crear directorios principales ");
+                                return false;
+                            }
+                        }
+
                         if (verifica > 0 && verifica <= 9) {
                             //Si es movimiento tipo 4 damos nombre especifico al archivo de salida: CIDDMMYY.N01
                             if (mov.equals("CH")) {
@@ -3593,6 +3610,13 @@ public class ModeloLiquidation {
                 fecha = ModeloLiquidation.getFormatoFecha(fecha_liq);
                 if (!fecha.equals("")) {
                     if (verifica >= 0 && clave_contrato.length() >= 9) {
+                        final File parent = new File(urlArchivo);
+                        if (!parent.exists()) {
+                            if (!parent.mkdirs()) {
+                                System.err.println("No se pudieron crear directorios principales ");
+                                return false;
+                            }
+                        }
                         //Si es movimiento de CHEQUES, no se crearán varios archivos, solo se crea un .NO1
                         if (mov.equals("CH")) {
                             noArchivoFideicomiso = (verifica > 0 && verifica <= 9) ? ("0" + verifica + "-") : ("-" + verifica + "-");
@@ -4355,6 +4379,14 @@ public class ModeloLiquidation {
                     //System.exit(3);
                 }
                 if (!error) {
+                    final File parent = new File(urlArchivo);
+                    if (!parent.exists()) {
+                        if (!parent.mkdirs()) {
+                            System.err.println("No se pudieron crear directorios principales ");
+                            return false;
+                        }
+                    }
+
                     if (mov.equals("CH")) {
                         Vector receptores = AuthorizationModel.getReceptorEnvioCheque(n_cliente, clave_contrato, fecha_liquidacion, status, nombre_archivo);
                         if (receptores != null && receptores.size() >= 0) {
@@ -4456,11 +4488,11 @@ public class ModeloLiquidation {
                                         nombreReporte = clave_fideicomitente + "-" + verifica + "-" + mov + "-" + idx + "-" + fecha + ".pdf";
                                         output = new FileOutputStream(new File(urlArchivo + nombreReporte));
                                     }
-//                                    //Generamos el reporte
+                                    //Generamos el reporte
                                     print = JasperFillManager.fillReport(report, parametro, lcnnConexion);
-//                                    //Exportamos a PDF
+                                    //Exportamos a PDF
                                     JasperExportManager.exportReportToPdfStream(print, output);
-//
+
                                     output.flush();
                                     output.close();
                                     reportes = ModeloLiquidation.getReportes_generados();
@@ -4486,15 +4518,20 @@ public class ModeloLiquidation {
                         parametro.put("status", status);
                         parametro.put("persona_elabora", persona_elabora);
 
+                        File reporteFile;
                         if (verifica > 0 && verifica <= 9) {
                             //Creamos la salida del archivo generado
                             nombreReporte = clave_fideicomitente + "-0" + verifica + "-" + mov + "-01-" + fecha + ".pdf";
-                            output = new FileOutputStream(new File(urlArchivo + nombreReporte));
+                            reporteFile = new File(urlArchivo + nombreReporte);
                         } else {
                             //Creamos la salida del archivo generado
                             nombreReporte = clave_fideicomitente + "-" + verifica + "-" + mov + "-01-" + fecha + ".pdf";
-                            output = new FileOutputStream(new File(urlArchivo + nombreReporte));
                         }
+                        reporteFile = new File(urlArchivo + nombreReporte);
+                        if (!reporteFile.exists()) {
+                            reporteFile.createNewFile();
+                        }
+                        output = new FileOutputStream(reporteFile);
                         //Generamos el reporte
                         //System.out.println("Antes de JasperFillManager");
 //                        print = JasperFillManager.fillReport(archivo, parametro, lcnnConexion);
@@ -5891,6 +5928,13 @@ public class ModeloLiquidation {
                 if (!fecha.equals("")) {
                     clave_fidei = clave_contrato.substring(6, 9);
                     if (idx_archivo > 0) {
+                        final File parent = new File(urlArchivo);
+                        if (!parent.exists()) {
+                            if (!parent.mkdirs()) {
+                                return "No se pudieron crear directorios principales ";
+                            }
+                        }
+
                         if (idx_archivo > 0 && idx_archivo <= 9) {
                             file_name = clave_fidei + "-0" + idx_archivo + "-" + "LQ" + "-01-" + fecha + ".xls";
                         } else {
@@ -5977,7 +6021,7 @@ public class ModeloLiquidation {
                     switch (movimiento) {
                         case 1:
                             //Generamos el Reporte de Liquidación Correspondiente al Movimiento de Tipo 1.
-                            reporte = this.creaReporteLiquidacion("BB", realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\LayOutM1.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("BB", realPath + "\\WEB-INF\\common\\LayOutM1.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {
@@ -5987,7 +6031,7 @@ public class ModeloLiquidation {
                             }
                             break;
                         case 2:
-                            reporte = this.creaReporteLiquidacion("OT", realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\LayOutM2.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("OT", realPath + "\\WEB-INF\\common\\LayOutM2.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {
@@ -5997,7 +6041,7 @@ public class ModeloLiquidation {
                             }
                             break;
                         case 3:
-                            reporte = this.creaReporteLiquidacion("TD", realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\LayOutM3.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("TD", realPath + "\\WEB-INF\\common\\LayOutM3.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {
@@ -6008,7 +6052,7 @@ public class ModeloLiquidation {
                             break;
                         case 4:
                             //Generamos el Reporte de Liquidación Correspondiente al Movimiento Tipo 4.
-                            reporte = this.creaReporteLiquidacion("CH", realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\LayOutM4.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+                            reporte = this.creaReporteLiquidacion("CH", realPath + "\\WEB-INF\\common\\LayOutM4.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
                             //Verificamos si surgio algun error al generar el reporte de liquidación.
                             if (reporte == false) {
                                 if (connection != null) {
@@ -6053,7 +6097,7 @@ public class ModeloLiquidation {
         try {
             //Creamos la conexión a la Base de Datos.
             connection = conn.ConectaSQLServer();
-            creaRM5 = this.creaReporteLiquidacion("IN", realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\LayOutM5.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
+            creaRM5 = this.creaReporteLiquidacion("IN", realPath + "\\WEB-INF\\common\\LayOutM5.jrxml", clave_contrato, fecha_liquidacion, n_cliente, connection, nombre_archivo, status, urlArchivo, persona_genera, verifica, realPath);
             if (creaRM5 == false) {
                 genera = " Error generando reportes de movimientos a bancos extranjeros ";
             }

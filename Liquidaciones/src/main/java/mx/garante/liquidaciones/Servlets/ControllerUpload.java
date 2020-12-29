@@ -263,7 +263,7 @@ public class ControllerUpload extends HttpServlet {
                                 correoDestino = ModeloLayOut.getCorreoUsuario(custNum, usuario);
                                 if (correoDestino != null) {
                                     if (!correoDestino.equals("")) {
-                                        bloqueaUser = ModeloLayOut.regeneraPassword(custNum, usuario, "liquidaciones@fideicomisogds.mx", correoDestino);
+                                        bloqueaUser = ModeloLayOut.regeneraPassword(custNum, usuario, "liquidaciones@fideicomisopsc.mx", correoDestino);
                                         if (bloqueaUser) {
                                             messageBean.setDesc(" Su contraseña ha cambiado por seguridad. Consulte su correo electrónico.");
                                         } else {
@@ -491,7 +491,7 @@ public class ControllerUpload extends HttpServlet {
                                 Usuario userApp1 = ModeloLayOut.validaUsuario(cliente, usuario, contrasenna);
                                 //Verificamos la Autentificación del Usuario.
                                 if (userApp1 != null && userApp1.isAutentificado()) {
-                                    correo_o = "liquidaciones@fideicomisogds.mx";
+                                    correo_o = "liquidaciones@fideicomisopsc.mx";
                                     //Clave asociada al contrato del cliente.
                                     String clave_contrato = (String) userApp.getClave_contrato();
                                     modelo_l = new ModeloLayOut();
@@ -522,7 +522,7 @@ public class ControllerUpload extends HttpServlet {
                                                 correo_d = ModeloLayOut.obtenCorreos("'SISTEMAS','OPERACION'");
                                                 if (correo_d.equals("")) {
                                                     body = "Correo NO enviado al personal de la SOFOM debido a lista de correos vacia, favor de verificar";
-                                                    correo_d = "soporte@fideicomisogds.mx";
+                                                    correo_d = "soporte@fideicomisopsc.mx";
                                                 }
                                                 String nombre_r = ModeloLayOut.getNombreResumenLiquidacion(clave_contrato, fecha_l, fileName, idx_archivo);
                                                 if (!nombre_r.equals("")) {

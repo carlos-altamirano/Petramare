@@ -41,10 +41,10 @@ public class ModeloEmpleado {
             html += "</tdoby>\n"
                     + "    </table>";
 
-            if (!EnvioMail.enviaCorreo("liquidaciones@fideicomisogds.mx", "soporte@fideicomisogds.mx", "Error al insertar empleados en la base", html, "587")) {
+            if (!EnvioMail.enviaCorreo("liquidaciones@fideicomisopsc.mx", "soporte@fideicomisopsc.mx", "Error al insertar empleados en la base", html, "587")) {
                 try {
                     Thread.sleep(180000);
-                    EnvioMail.enviaCorreo("liquidaciones@fideicomisogds.mx", "soporte@fideicomisogds.mx", "Error al insertar empleados en la base", html, "587");
+                    EnvioMail.enviaCorreo("liquidaciones@fideicomisopsc.mx", "soporte@fideicomisopsc.mx", "Error al insertar empleados en la base", html, "587");
                 } catch (InterruptedException ex) {
                     System.out.println("Exception Correo:" + ex.getMessage());
                 }
@@ -218,37 +218,68 @@ public class ModeloEmpleado {
     }
 
     public boolean activa(Empleado empleado) {
-        boolean resG = false;
 
-        Connection connection = null;
-        PreparedStatement statement = null;
-
-        try {
+        if (empleado != null) {
+            Connection connection = null;
+            PreparedStatement statement = null;
+            Empleado empTemporal = null;
             clsConexion conexion = new clsConexion();
-            connection = conexion.ConectaSQLServer();
-            String sql = "update empleados set email=?, contra=?, estatus='A' where idEmpleado = ?";
-            statement = connection.prepareStatement(sql);
-            statement.setString(1, empleado.getEmail());
-            statement.setString(2, empleado.getContra());
-            statement.setInt(3, empleado.getId());
-            statement.executeUpdate();
-            resG = true;
-        } catch (SQLException e) {
-            System.out.println("Error activa(Empleado empleado) " + e);
-        } finally {
             try {
-                if (connection != null) {
-                    connection.close();
+                connection = conexion.ConectaSQLServer();
+                empTemporal = empleado;
+
+                String busca = "select * from empleados where rfc = ?;";
+                statement = connection.prepareStatement(busca);
+                statement.setString(1, empleado.getRfc());
+
+                ResultSet rs = statement.executeQuery();
+
+                if (rs.next()) {
+                    String actualiza = "update empleados set nombre = ?, appat = ?, apmat = ?, curp = ?,contra= ?,email= ?,estatus= ? where rfc = ?;";
+                    statement = connection.prepareStatement(actualiza);
+                    statement.setString(1, empleado.getNombre());
+                    statement.setString(2, empleado.getAppat());
+                    statement.setString(3, empleado.getApmat());
+                    statement.setString(4, empleado.getCurp());
+                    statement.setString(5, empleado.getContra());
+                    statement.setString(6, empleado.getEmail());
+                    statement.setString(7, empleado.getEstatus());
+                    statement.setString(8, empleado.getRfc());
+                    statement.executeUpdate();
+                    empleado.setAutentificado(true);
+
+                } else {
+                    String inserta = "insert into empleados values(?, ?, ?, ?, ?, 'A', ?, ?)";
+                    statement = connection.prepareStatement(inserta);
+                    statement.setString(1, empleado.getNombre());
+                    statement.setString(2, empleado.getAppat());
+                    statement.setString(3, empleado.getApmat());
+                    statement.setString(4, empleado.getEmail());
+                    statement.setString(5, empleado.getContra());
+                    statement.setString(6, empleado.getRfc());
+                    statement.setString(7, empleado.getCurp());
+                    statement.executeUpdate();
+                    empleado.setAutentificado(true);
                 }
-                if (statement != null) {
-                    statement.close();
+
+            } catch (Exception ex) {
+                System.out.println("Exception:empleadosBD:" + ex.getMessage());
+                return false;
+            } finally {
+                try {
+                    if (connection != null) {
+                        connection.close();
+                    }
+                    if (statement != null) {
+                        statement.close();
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar conexion");
                 }
-            } catch (SQLException ex) {
-                System.out.println("Error al cerrar conexion");
             }
         }
 
-        return resG;
+        return true;
     }
 
     public boolean cambiaPassword(Empleado empleado) {

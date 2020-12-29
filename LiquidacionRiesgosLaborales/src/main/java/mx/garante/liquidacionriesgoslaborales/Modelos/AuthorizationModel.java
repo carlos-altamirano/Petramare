@@ -123,7 +123,7 @@ public class AuthorizationModel {
         Writer writer = null;
 
         try {
-            writer = new OutputStreamWriter(new FileOutputStream("temp/" + nombre_archivo + ".csv"), "UTF-8");
+            writer = new OutputStreamWriter(new FileOutputStream("./temp/" + nombre_archivo + ".csv"), "UTF-8");
             writer.write("FECHA,FIDEICOMISO,CUENTA_ORIGEN,SALDO \r\n");
             Calendar c = Calendar.getInstance();
             int anio = Integer.parseInt(fecha.substring(0,4));
@@ -274,7 +274,7 @@ public class AuthorizationModel {
             MySql += " order by TABLE_NAME ";
 
             ResultSet rstSQLServer = statement.executeQuery(MySql);
-            writer = new OutputStreamWriter(new FileOutputStream("temp/consulta.csv"), "UTF-8");
+            writer = new OutputStreamWriter(new FileOutputStream("./temp/consulta.csv"), "UTF-8");
             while (rstSQLServer.next()) {
                 String nombre_tabla = rstSQLServer.getString("TABLE_NAME");
                 Vector<String> movimientos = getMovimientosFiduciarios(nombre_tabla, "", "");
@@ -306,7 +306,7 @@ public class AuthorizationModel {
         Writer writer = null;
 
         try {
-            writer = new OutputStreamWriter(new FileOutputStream("temp/" + nombre_archivo + ".csv"), "UTF-8");
+            writer = new OutputStreamWriter(new FileOutputStream("./temp/" + nombre_archivo + ".csv"), "UTF-8");
             if (nombre_archivo.equals("consulta_ejecutiva")) {
                 writer.write("FIDEICOMISO,APORTACIONES,RESTITUCIONES,LIQUIDACIONES,HONORARIOS,I.V.A. \r\n");
                 Vector totales = (Vector) vector_info.get(vector_info.size() - 1);
@@ -900,7 +900,7 @@ public class AuthorizationModel {
         SimpleDateFormat dateF = new SimpleDateFormat("MMMM 'de' yyyy");
 
         try {
-            File directorio = new File("C:\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\");
+            File directorio = new File(".\\inetpub\\ftproot\\EstadosDeCuenta\\" + clave_contrato + "\\");
             if (directorio.exists()) {
                 if (directorio.isDirectory()) {
                     String[] listaArchivos = directorio.list();
@@ -1245,6 +1245,8 @@ public class AuthorizationModel {
 
         try {
             saldo_a = Double.parseDouble(saldo_actual);
+            DecimalFormat formato = new DecimalFormat("0.00");
+            importe_liquidacion = Double.parseDouble(formato.format(importe_liquidacion));
             nuevo_saldo = saldo_a - importe_liquidacion;
         } catch (Exception e) {
             nuevo_saldo = null;
@@ -1824,7 +1826,7 @@ public class AuthorizationModel {
             fecha_carga_lote = new clsFecha().CambiaFormatoFecha("yyyy-MM-dd HH:mm:ss.SSS", "dd/MM/yyyy HH:mm:ss", fecha_carga_lote);
 
             //version 3: con estado de cuenta saldos
-            seGuardo = this.creaReporteLiquidacion(realPath + "\\WEB-INF\\classes\\mx\\garante\\liquidacionriesgoslaborales\\Common\\RL_FINAL_SALDOS.jrxml", clave_contrato, fecha_liquidacion, nombre_archivo,
+            seGuardo = this.creaReporteLiquidacion(realPath + "\\WEB-INF\\common\\RL_FINAL_SALDOS.jrxml", clave_contrato, fecha_liquidacion, nombre_archivo,
                     mov1, mov2, mov3, mov4, mov5, importeTotalMXP, movs_tipo1, movs_tipo2, movs_tipo3, movs_tipo4, movs_tipo5, total_movs, fecha_carga_lote, fecha_hoy, url, idx_archivo,
                     saldo_actual, nuevo_saldo, connection, realPath);
 
@@ -3234,7 +3236,7 @@ public class AuthorizationModel {
             }
             lstrMensaje = "Estos movimientos sólo podrán ser rehabilitados y operados por el fideicomiso a través de ";
             lstrMensaje += "un nuevo LAY-OUT generado para el efecto, o en su caso, a través de su alta en nuestra página: ";
-            lstrMensaje += " <a href=\"http://www.fideicomisogds.mx\"> [www.fideicomisogds.mx] </a>";
+            lstrMensaje += " <a href=\"http://www.fideicomisopsc.mx\"> [www.fideicomisopsc.mx] </a>";
             lstrBody += "<tr> ";
             lstrBody += "<td colspan=\"2\" f><font size=2 face=\"Arial\">" + lstrMensaje + "</font></td> ";
             lstrBody += "</tr> ";

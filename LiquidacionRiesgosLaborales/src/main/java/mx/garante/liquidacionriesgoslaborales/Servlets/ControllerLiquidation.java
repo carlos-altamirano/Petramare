@@ -371,10 +371,10 @@ public class ControllerLiquidation extends HttpServlet {
                     if (!formato_fecha.equals("")) {
 
                         // Url local
-                        //urlArchivo = "C:\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
+                        //urlArchivo = ".\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
 //                            System.out.println("URL ARCHIVO: " + urlArchivo);
                         // Url Servidor
-                        urlArchivo = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
+                        urlArchivo = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
 
                         usuario = userApp.getUsuario();
                         persona_genera = userApp.getNombre_usuario();
@@ -881,7 +881,7 @@ public class ControllerLiquidation extends HttpServlet {
                     incluir_actualizados = true;
                 }
                 if (!formato_fecha.equals("")) {
-                    urlArchivo = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
+                    urlArchivo = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
                     // Se obtiene el importe en MXP.
                     if (request.getParameter("importe_MXP") != null && !request.getParameter("importe_MXP").equals("")) {
                         imp_mxp_str = request.getParameter("importe_MXP");
@@ -1193,7 +1193,7 @@ public class ControllerLiquidation extends HttpServlet {
                     formato_fecha = ModeloLiquidation.getFormatoFecha(fecha_liquidacion);//Fecha en formato DDMMAA
                     if (!formato_fecha.equals("")) {
                         //Ruta donde se gereraran los reportes
-                        urlArchivo = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
+                        urlArchivo = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
                         //Usuario que autoriza el lote.C
                         usuario = userApp.getUsuario();
                         //Nombre completo del usuario que autoriza.
@@ -1201,7 +1201,7 @@ public class ControllerLiquidation extends HttpServlet {
                         //Identificador único del lote.
                         id_archivo = ModeloLiquidation.getClaveArchivo(clave_contrato, fecha_liquidacion, fileName);
                         if (id_archivo >= 0) {
-                            autorizaL = modeloAutoriza.autorizaLote(nombre_cliente, clave_contrato, fecha_liquidacion, fileName, usuario, urlArchivo, persona_genera, id_archivo, "liquidaciones@fideicomisogds.mx", "T", "A", "P", getServletContext().getRealPath(File.separator));
+                            autorizaL = modeloAutoriza.autorizaLote(nombre_cliente, clave_contrato, fecha_liquidacion, fileName, usuario, urlArchivo, persona_genera, id_archivo, "liquidaciones@fideicomisopsc.mx", "T", "A", "P", getServletContext().getRealPath(File.separator));
                             messageBean.setDesc(autorizaL);
                         } else {
                             messageBean.setDesc(" Error consultando identificador de lote ");
@@ -1276,14 +1276,14 @@ public class ControllerLiquidation extends HttpServlet {
                             formato_fecha = ModeloLiquidation.getFormatoFecha(fecha_liquidacion);//Fecha en formato DDMMAA
                             if (!formato_fecha.equals("")) {
                                 //Ruta donde se gereraran los reportes
-                                urlArchivo = "C:\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
+                                urlArchivo = ".\\inetpub\\ftproot\\Reportes Liquidacion\\" + clave_contrato + "\\" + formato_fecha + "\\";
                                 //Verificamos cuantos archivos diferentes se han almacenado para este cliente y fecha
                                 id_archivo = ModeloLiquidation.getClaveArchivo(clave_contrato, fecha_liquidacion, fileName);
                                 if (id_archivo > 0) {
                                     //Nombre del reporte de liquidación.
                                     nombre_reporte = ModeloLiquidation.getNombreResumenLiquidacion(clave_contrato, fecha_liquidacion, id_archivo);
                                     if (!nombre_reporte.equals("")) {
-                                        correo_origen = "liquidaciones@fideicomisogds.mx";
+                                        correo_origen = "liquidaciones@fideicomisopsc.mx";
                                         correo_destino = AuthorizationModel.getCorreoUsuariosFideicomiso(clave_cliente, clave_contrato);
                                         if (!correo_destino.equals("")) {
                                             asunto = "CANCELACIÓN TOTAL " + clave_contrato + " " + fecha_liquidacion;
