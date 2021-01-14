@@ -64,7 +64,7 @@
         var cambiaPeriodos = function() {
             $.post('ControllerEmpleado', {accion:'buscarArchivos:7', anio:$('#anio').val()}, function(data){
                 var meses = ["Enero.zip", "Febrero.zip", "Marzo.zip", "Abril.zip", "Mayo.zip", 
-                    "Junio.zip", "Julio.zip", "Agosto.zip", "Septiembre.zip", "Octubre.zip", "Nobiembre.zip", "Diciembre.zip"];
+                    "Junio.zip", "Julio.zip", "Agosto.zip", "Septiembre.zip", "Octubre.zip", "Noviembre.zip", "Diciembre.zip"];
                 var datos = JSON.parse(data);
                 var opciones = "<option value=''>Seleccione</option>";
                 var arreglo2 = [];
