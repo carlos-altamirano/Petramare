@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garante</title>
+    <title>Petramare</title>
     <link rel="icon" type="image/png" href="/gestionfideicomisos/resources/img/icono.png" />
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation.min.css">
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation-icons/foundation-icons.css">
@@ -18,7 +18,7 @@
     <div class="large-8 large-centered centered columns">
         <form:form commandName="user" action="${action}" method="post">
         <fieldset class="fieldset">
-                <legend><h4>Usuario garante</h4></legend>
+                <legend><h4>Usuario petramare</h4></legend>
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Nombre</label>

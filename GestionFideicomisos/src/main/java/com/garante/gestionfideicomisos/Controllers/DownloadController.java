@@ -21,7 +21,7 @@ public class DownloadController {
     @RequestMapping(value = "/verifica/{nombreArchivo}/{contrato}", method = RequestMethod.POST)
     public String listaArchivos(@PathVariable String nombreArchivo, @PathVariable String contrato){
         List<String> lista = new ArrayList<>();
-        String ruta = "/inetpub/ftproot/expedientes/" + contrato + "/" + nombreArchivo;
+        String ruta = ".\\inetpub\\ftproot\\expedientes\\" + contrato + "\\" + nombreArchivo;
         File folder = new File(ruta);
         File[] listFiles = folder.listFiles();
         for (File archivo : listFiles) {
@@ -34,7 +34,7 @@ public class DownloadController {
     @RequestMapping(value = "/download/{tipo}/{nombreArchivo}/{contrato}", method = RequestMethod.GET)
     public void descargaArchivo(@PathVariable String tipo, @PathVariable String nombreArchivo, @PathVariable String contrato, HttpServletResponse response) throws Exception {
         
-        String ruta = "/inetpub/ftproot/expedientes/" + contrato + "/" + tipo + "/" + nombreArchivo;
+        String ruta = ".\\inetpub\\ftproot\\expedientes\\" + contrato + "\\" + tipo + "\\" + nombreArchivo;
         if (new File(ruta).exists()){
             this.descargar(ruta, response);
         }

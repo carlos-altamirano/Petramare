@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garante</title>
+    <title>Petramare</title>
     <link rel="icon" type="image/png" href="/gestionfideicomisos/resources/img/icono.png" />
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation.min.css">
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation-icons/foundation-icons.css">
@@ -15,7 +15,7 @@
 <body>
     <div class="top-bar">
         <div class="top-bar-title">
-            <strong><a href="/gestionfideicomisos" style="color:white;">Garante</a></strong>
+            <strong><a href="/gestionfideicomisos" style="color:white;">Petramare</a></strong>
             <!--img src="/resources/img/fideifuturo.jpg" alt="Fideifuturo"-->
         </div>
 

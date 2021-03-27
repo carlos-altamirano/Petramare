@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garante</title>
+    <title>Petramare</title>
     <link rel="icon" type="image/png" href="/gestionfideicomisos/resources/img/icono.png" />
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation.min.css">
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation-icons/foundation-icons.css">
@@ -18,7 +18,7 @@
     <br>
     <div class="row">
         <div style="text-align: center;">
-            <h4>Usuarios garante &nbsp;&nbsp; <c:if test="${depa ne 'Cumplimiento'}"><a href="/gestionfideicomisos/adm/usuario/new"><button style="margin: 5px;" class="button small botonSofom">Nuevo</button></a></c:if></h4>
+            <h4>Usuarios petramare &nbsp;&nbsp; <c:if test="${depa ne 'Cumplimiento'}"><a href="/gestionfideicomisos/adm/usuario/new"><button style="margin: 5px;" class="button small botonSofom">Nuevo</button></a></c:if></h4>
         </div>
         <hr>
         <table>

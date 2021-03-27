@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
-    private int maxUploadSizeInMb = 15 * 1024 * 1024; //15 megas de subida
+    private int maxUploadSizeInMb = 50 * 1024 * 1024; // megas de subida
 
     @Bean
     public ViewResolver getViewResolver() {
@@ -29,7 +29,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(maxUploadSizeInMb * 2);
+        multipartResolver.setMaxUploadSize(maxUploadSizeInMb);
         return multipartResolver;
     }
 

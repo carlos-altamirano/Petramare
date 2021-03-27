@@ -24,7 +24,7 @@ public class UploadController {
         try {
             if (!archivo.isEmpty()) {
                 byte[] archivoBytes = archivo.getBytes();
-                if (archivoBytes.length > 10000000) {
+                if (archivoBytes.length > 52428800) {
                     url = "redirect:/adm/contrato/"+documentacion.getClaveContrato()+"/edit?msg=1";
                 } else {
                     String ext = this.extValidas(archivo.getContentType());
@@ -74,10 +74,10 @@ public class UploadController {
                                 break;
                         }
                         
-                        File ruta = new File("\\inetpub\\ftproot\\expedientes\\"+documentacion.getClaveContrato()+"\\"+nombreArchivo);
+                        File ruta = new File(".\\inetpub\\ftproot\\expedientes\\"+documentacion.getClaveContrato()+"\\"+nombreArchivo);
                         ruta.mkdirs();
                         String nombreArchivo2 = nombreArchivo+fecha;
-                        File file = new File("/inetpub/ftproot/expedientes/"+documentacion.getClaveContrato()+"/"+nombreArchivo+"/"+nombreArchivo2+"."+ext);
+                        File file = new File(".\\inetpub\\ftproot\\expedientes\\"+documentacion.getClaveContrato()+"\\"+nombreArchivo+"\\"+nombreArchivo2+"."+ext);
                         
                         BufferedOutputStream stream;
                         stream = new BufferedOutputStream(new FileOutputStream(file));

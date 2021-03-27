@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garante</title>
+    <title>Petramare</title>
     <link rel="icon" type="image/png" href="/gestionfideicomisos/resources/img/icono.png" />
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation.min.css">
     <link rel="stylesheet" href="/gestionfideicomisos/resources/css/Foundation/foundation-icons/foundation-icons.css">
@@ -22,7 +22,7 @@
             <div class="large-6 columns">
                 <a href="/gestionfideicomisos/adm/usuarios" class="button large expanded" style="background-color: #032280;">
                     <i class="step fi-address-book size-72 iconoTam"></i><br>
-                    Usuarios garante
+                    Usuarios petramare
                 </a>
             </div>
             <div class="large-6 columns">
