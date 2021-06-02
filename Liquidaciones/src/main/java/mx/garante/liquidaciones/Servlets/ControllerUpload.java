@@ -1,35 +1,35 @@
 package mx.garante.liquidaciones.Servlets;
 
-import mx.garante.liquidaciones.Beans.Usuario;
-import mx.garante.liquidaciones.Beans.Message;
-import mx.garante.liquidaciones.Modelos.ModeloCapture;
-import mx.garante.liquidaciones.Beans.ResumenMovimientos;
-import mx.garante.liquidaciones.Common.clsConexion;
-
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 import java.sql.Connection;
-
 import java.util.List;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Vector;
+import mx.garante.liquidaciones.Beans.Usuario;
+import mx.garante.liquidaciones.Beans.Message;
+import mx.garante.liquidaciones.Modelos.ModeloCapture;
+import mx.garante.liquidaciones.Beans.ResumenMovimientos;
+import mx.garante.liquidaciones.Common.clsConexion;
 import mx.garante.liquidaciones.Modelos.ModeloLayOut;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
-
 //Para Cargar Archivo
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -345,7 +345,7 @@ public class ControllerUpload extends HttpServlet {
                                                     fileItem.write(saveTo);
                                                     // Hasta aqui el archivo ya esta en el servidor y se puede leer, escribir, mover, etc.
                                                     String clave_contrato = userApp.getClave_contrato().toString().trim();
-                                                    salario_minimo = 88.36F;
+                                                    salario_minimo = this.cargaSalarioMinimo();
                                                     //Se realiza la validación del Archivo
                                                     String messageVal = ModeloLayOut.isArchivoValido(dirNameTmp + fileName, clave_contrato, salario_minimo);
                                                     
@@ -968,5 +968,44 @@ public class ControllerUpload extends HttpServlet {
             response.getOutputStream().print(stringWriter.toString());
         }
         return genera;
+    }
+
+    private float cargaSalarioMinimo() {
+        String fName = "./salario_minimo.txt";
+        File fp = new File(fName);
+        float salarioMinimo = 88.36F;
+
+        try  {
+            if (fp.exists()) {
+                String line = null;
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fp)));
+                if ((line = reader.readLine()) != null) {
+                    salarioMinimo = Float.valueOf(line.trim());
+                }
+            } else {
+                fp.createNewFile();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            return salarioMinimo;
+        }
+    }
+
+    private boolean guardarSalarioMinimo(String salarioMinimo) {
+        String fName = "./salario_minimo.txt";
+        File fp = new File(fName);
+
+        if (fp.exists()) {
+            String line = null;
+            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fp)))) {
+                writer.write(salarioMinimo);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
+
+        return true;
     }
 }

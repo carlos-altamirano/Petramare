@@ -74,6 +74,16 @@ function actualizaPassword(formulario,accion){
     return false;
 }
 
+function cambiaSalarioMinimo() {
+    $.post('ControllerLiquidation', {accion:'cambiaSalarioMinimo:200'}, function(data) {
+        $('#salario_minimo').val(data);
+        $('#salaryModal').modal();
+    });
+}
 
-
-
+function guardarSalarioMinimo() {
+    $.post('ControllerLiquidation', {accion:'guardarSalarioMinimo:300', salario:$('#salario_minimo').val()}, function(data) {
+        if (data == 0) return;
+        $('#noticeModal').modal();
+    });
+}

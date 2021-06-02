@@ -18,14 +18,16 @@
                 <link rel="shortcut icon" href="images/icono.png">
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <!-- Aqui importamos los estilos que necesitemos-->
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
                 <link rel="stylesheet" type="text/css" href="css/formato.css">
                 <link rel="stylesheet" type="text/css" href="css/Saldo.css">
                 <!--Aqui importamos los scripts que necesitemos-->
+                <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
                 <script language="javascript" type="text/javascript" src="scripts/login.js"></script>
                 <script language="javascript" type="text/javascript" src="scripts/liquidation.js"></script>
                 <script language="javascript" type="text/javascript" src="scripts/popCalendar.js"></script>
                 <script language="javascript" type="text/javascript" src="scripts/Saldo.js"></script>
-                <script language="javascript" type="text/javascript" src="scripts/jquery.min.js"></script>
                 <script language="javascript" type="text/javascript" src="scripts/validaPLD.js"></script>
             </head>
 
@@ -52,7 +54,10 @@
 
                     <table align ="center" width="100%">
                         <tr >
-                            <td width="75%">&nbsp;</td>
+                            <td width="60%">&nbsp;</td>
+                            <td align ="center">
+                                <b ><button type="button" class="btn btn-outline-primary" onclick="cambiaSalarioMinimo();"><u>cambiar salario minimo</u></button></b>
+                            </td>
                             <td align ="center" width="15%">
                                 <b ><a href="" onclick="return cambiaPassword(formLiquidation, 'cambiaPassword:6');" target="main"><u>cambiar contraseña</u></a></b>
                             </td>
@@ -61,6 +66,57 @@
                             </td>
                         </tr>
                     </table>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="salaryModal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Salario Minimo</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <input type="text" id="salario_minimo" class="form-control">
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="guardarSalarioMinimo()" data-dismiss="modal">Guardar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div class="modal fade" id="noticeModal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title"></h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body text-center">
+                                    <h3>Guardado exitosamente!</h3>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <c:if test="${sessionScope.cancela_movs == null }">
                         <div align="center">

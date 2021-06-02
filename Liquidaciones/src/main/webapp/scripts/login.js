@@ -115,7 +115,3 @@ function setAction(formulario,accion){
     formulario.submit();
     return false;
 }
-
-
-
-

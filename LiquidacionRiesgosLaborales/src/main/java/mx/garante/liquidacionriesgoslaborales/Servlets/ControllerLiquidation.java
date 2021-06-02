@@ -1,7 +1,22 @@
 package mx.garante.liquidacionriesgoslaborales.Servlets;
 
-import java.util.Vector;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
@@ -13,13 +28,6 @@ import mx.garante.liquidacionriesgoslaborales.Beans.Movimiento;
 import mx.garante.liquidacionriesgoslaborales.Modelos.ModelUpdate;
 import mx.garante.liquidacionriesgoslaborales.Modelos.ModeloLiquidation;
 import mx.garante.liquidacionriesgoslaborales.Modelos.AuthorizationModel;
-import java.io.File;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import mx.garante.liquidacionriesgoslaborales.Modelos.UnZip;
 
 public class ControllerLiquidation extends HttpServlet {
@@ -2713,6 +2721,28 @@ public class ControllerLiquidation extends HttpServlet {
             /**
              * Fin de eliminacion de objetos de la sesion actual*
              */
+
+            case 200:
+                float salarioMinimo = this.cargaSalarioMinimo();
+                PrintWriter salida = response.getWriter();
+                salida.println(salarioMinimo);
+                salida.close();
+                return;
+
+            case 300:
+                int res = 0;
+                String minSalary = "88.36";
+
+                if (!request.getParameter("salario").equals("")) {
+                    minSalary = request.getParameter("salario");
+                }
+                if (this.guardarSalarioMinimo(minSalary)) {
+                    res = 1;
+                }
+                PrintWriter ajaxResult = response.getWriter();
+                ajaxResult.println(res);
+                ajaxResult.close();
+                return;
         }//Fin del switch
 
 //        System.out.println("Redirigiendo: " + urlResponse);
@@ -2774,4 +2804,43 @@ public class ControllerLiquidation extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private float cargaSalarioMinimo() {
+        String fName = "./salario_minimo.txt";
+        File fp = new File(fName);
+        float salarioMinimo = 88.36F;
+
+        try  {
+            if (fp.exists()) {
+                String line = null;
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fp)));
+                if ((line = reader.readLine()) != null) {
+                    salarioMinimo = Float.valueOf(line.trim());
+                }
+            } else {
+                fp.createNewFile();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            return salarioMinimo;
+        }
+    }
+
+    private boolean guardarSalarioMinimo(String salarioMinimo) {
+        String fName = "./salario_minimo.txt";
+        File fp = new File(fName);
+
+        if (fp.exists()) {
+            String line = null;
+            try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fp)))) {
+                writer.write(salarioMinimo);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
